@@ -61,7 +61,9 @@ interface Api {
         const val MEAL_ORDER = "api/Order" //套餐下单\套餐订单详情
         const val ADD_BRIDE_INFO = "api/Order/Info" //添加新人信息
         const val ADD_CAMERAMAN = "api/Order/Teacher" //添加摄影师
-        const val RECHERGE = "api/UserCenter/Recharge" //充值
+        const val RECHERGE = "api/UserCenter/Recharge" //余额充值
+        const val RECHERGE_CASH_PLEDGE = "api/UserDeposit" //押金充值
+        const val CASH_PLEDGE = "api/UserDeposit/User" //押金
 
 
         const val BIND_MOBILE = "api/WebUser/BindingMobile"//编辑用户信息

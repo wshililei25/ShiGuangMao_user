@@ -90,5 +90,7 @@ class BaseConstant {
         const val KEY_CAMERAMAN_TYPE = "cameramanType"
         //支付成功提示语
         const val KEY_PAY_CONTENT = "payContent"
+        //余额充值还是押金充值
+        const val KEY_IS_CASHPLEDGE = "isCashPledge"
     }
 }

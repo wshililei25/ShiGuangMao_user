@@ -3,5 +3,6 @@
     <application>
         <activity android:name=".ui.activity.RechargeActivity"/>
         <activity android:name=".ui.activity.WithdrawActivity"/>
+        <activity android:name=".ui.activity.CashPledgeActivity"/>
     </application>
 </manifest>

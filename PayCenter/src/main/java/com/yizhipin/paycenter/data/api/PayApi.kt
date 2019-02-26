@@ -1,10 +1,12 @@
 package com.yizhipin.shop.data.api
 
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.base.data.response.ShopDetails
+import com.yizhipin.base.data.response.CashPledge
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 
 /**
@@ -14,4 +16,10 @@ interface PayApi {
 
     @POST(Api.RECHERGE)
     fun recharge(): Observable<BaseResp<String>>
+
+    @POST(Api.RECHERGE_CASH_PLEDGE)
+    fun rechargeCashPledge(): Observable<BaseResp<String>>
+
+    @GET(Api.CASH_PLEDGE)
+    fun getCashPledge(@Query("uid") uid: String): Observable<BaseResp<CashPledge>>
 }

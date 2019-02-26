@@ -20,6 +20,7 @@ import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.ordercender.ui.activity.OrderActivity
 import com.yizhipin.ordercender.ui.activity.ShipAddressActivity
+import com.yizhipin.paycenter.ui.activity.CashPledgeActivity
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.common.isLogined
@@ -84,6 +85,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mInvitationCodeView.onClick(this)
         mGradeIv.onClick(this)
         mRelevanceTv.onClick(this)
+        mForegiftTv.onClick(this)
     }
 
     private fun loadData() {
@@ -166,6 +168,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             R.id.mAllOrderTv -> { //订单
                 afterLogin {
                     startActivity<OrderActivity>()
+                }
+            }
+            R.id.mForegiftTv -> { //押金
+                afterLogin {
+                    startActivity<CashPledgeActivity>()
                 }
             }
             R.id.mCouponTv -> { //我的优惠券

@@ -10,47 +10,37 @@ import android.os.Message
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.alipay.sdk.app.PayTask
 import com.google.gson.Gson
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.AliPayResult
+import com.yizhipin.base.data.response.CashPledge
 import com.yizhipin.base.ext.onClick
-import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.payresult.PayResult
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.activity.PaySuccessActivity
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.base.widgets.PayRadioGroup
-import com.yizhipin.base.widgets.PayRadioPurified
 import com.yizhipin.paycenter.R
-import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.shop.injection.component.DaggerPayComponent
 import com.yizhipin.shop.injection.module.PayModule
-import com.yizhipin.shop.presenter.PayPresenter
-import com.yizhipin.shop.presenter.view.PayView
-import kotlinx.android.synthetic.main.activity_recharge.*
+import com.yizhipin.shop.presenter.CashPledgePresenter
+import com.yizhipin.shop.presenter.view.CashPledgeView
+import kotlinx.android.synthetic.main.activity_cash_pledge.*
 import org.jetbrains.anko.startActivity
 
 /**
  * Created by ${XiLei} on 2018/9/24.
  *
- * 充值
+ * 押金
  */
-@Route(path = RouterPath.PayCenter.PATH_PAY_RECHARGE)
-class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickListener {
-
-    @Autowired(name = BaseConstant.KEY_IS_CASHPLEDGE)
-    @JvmField
-    var mIsCashPledge: Boolean = false //余额充值还是押金充值
+class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeView, View.OnClickListener {
 
     private var mType = "Alipay" //支付方式
     private val SDK_PAY_FLAG = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recharge)
+        setContentView(R.layout.activity_cash_pledge)
 
         initView()
     }
@@ -61,61 +51,37 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     }
 
     private fun initView() {
-
-        if (mIsCashPledge) {
-            mHintView.setVisible(true)
-            mBalanceRadio.setVisible(true)
-            mContentTv.text = getString(R.string.cash_pledge_recharge)
-            mHeaderBar.getTiTleTv().text = getString(R.string.cash_pledge_pay)
-        }
-
-        mMinusIv.onClick(this)
-        mPlusIv.onClick(this)
         mConfirmBtn.onClick(this)
+        mRebackBtn.onClick(this)
+    }
 
-        mPayRadioGroup.setOnCheckedChangeListener(object : PayRadioGroup.OnCheckedChangeListener {
-            override fun onCheckedChanged(group: PayRadioGroup, checkedId: Int) {
-                for (i in 0 until group.getChildCount()) {
-                    (group.getChildAt(i) as PayRadioPurified).setChangeImg(checkedId)
-                }
-                if (mBalanceRadio.isChecked) {
-                    mType = "yue"
-                }
-                if (mAliRadio.isChecked) {
-                    mType = "Alipay"
-                }
-                if (mWechatRadio.isChecked) {
-                    mType = "Weixin"
-                }
-            }
-        })
+    override fun onStart() {
+        super.onStart()
+        loadData()
+    }
+
+    private fun loadData() {
+        var map = mutableMapOf<String, String>()
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        mBasePresenter.getCashPledge(map)
+    }
+
+    override fun onGetCashPledgeSuccess(result: CashPledge) {
+        mAmountTv.text = "¥ ${result.total}"
+        mRebackAmountTv.text = "(¥ ${result.available}可退)"
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.mMinusIv -> {
-                if (mAmountEt.text.toString().toInt() > 100) {
-                    var amount = mAmountEt.text.toString().toInt() - 100
-                    mAmountEt.setText(amount.toString())
-                }
-            }
-            R.id.mPlusIv -> {
-                var amount = mAmountEt.text.toString().toInt() + 100
-                mAmountEt.setText(amount.toString())
-            }
-            R.id.mConfirmBtn -> {
+            R.id.mConfirmBtn -> startActivity<RechargeActivity>(BaseConstant.KEY_IS_CASHPLEDGE to true)
+            R.id.mRebackBtn -> {
 
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
 //                map.put("amount", mAmountEt.text.toString()) //暂时注释
                 map.put("amount", "0.01")
                 map.put("payType", mType)
-                if (mIsCashPledge) { //押金充值
-                    mBasePresenter.rechargeCashPledge(map)
-                } else {  //余额充值
-                    mBasePresenter.recharge(map)
-                }
-
+                mBasePresenter.recharge(map)
             }
         }
 
@@ -123,14 +89,9 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
 
     override fun onRechargeSuccess(result: String) {
         when (mType) {
-
-            "yue" -> {
-                startActivity<PaySuccessActivity>(BaseConstant.KEY_PAY_CONTENT to "成功充值押金" + mAmountEt.text.toString() + "元")
-                finish()
-            }
             "Alipay" -> {
                 val payRunnable = Runnable {
-                    val alipay = PayTask(this@RechargeActivity)
+                    val alipay = PayTask(this@CashPledgeActivity)
                     val result = alipay.payV2(result, true)
                     Log.i("XiLei", "aliPay=" + result.toString())
                     val msg = Message()
@@ -171,10 +132,10 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知
                         if (TextUtils.equals(resultStatus, "6001")) {
-                            showAlert(this@RechargeActivity, getString(R.string.pay_cancel))
+                            showAlert(this@CashPledgeActivity, getString(R.string.pay_cancel))
                             return
                         }
-                        showAlert(this@RechargeActivity, getString(R.string.pay_failed))
+                        showAlert(this@CashPledgeActivity, getString(R.string.pay_failed))
                     }
                 }
             }

@@ -178,7 +178,6 @@
     <string name="select_pay_type">押金在退还衣服后，可全额退款，支付即视为同意《时光猫平台服装租借协议》</string>
     <string name="red_reper">红包</string>
     <string name="pay_type">支付方式</string>
-    <string name="balance_pay">好友代付</string>
     <string name="balance_insufficient">余额不足</string>
     <string name="ali_pay">支付宝快捷支付</string>
     <string name="wechat_pay">微信支付</string>
@@ -390,7 +389,14 @@
     <string name="shop_receive">门店接待</string>
     <string name="group">群组</string>
     <string name="pay_success">支付成功</string>
-    <string name="pay_failed">支付失败:</string>
-    <string name="auth_success">授权成功:</string>
-    <string name="auth_failed">授权失败:</string>
+    <string name="pay_failed">支付失败</string>
+    <string name="pay_cancel">支付已取消</string>
+    <string name="cash_pledge">押金</string>
+    <string name="cash_pledge_hint">您退还租借的服装后，可申请退还押金</string>
+    <string name="cash_pledge_hint2">租借服装时，押金不足需充值押金</string>
+    <string name="cash_pledge_recharge">充值押金</string>
+    <string name="reback_recharge">退押金</string>
+    <string name="cash_pledge_pay">支付押金</string>
+    <string name="cash_pledge_pay_hint">押金在退还商品后，可全额退款，支付即视为同意《时光猫押金协议》</string>
+    <string name="balance_pay">余额支付</string>
 </resources>

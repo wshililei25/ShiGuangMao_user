@@ -10,6 +10,7 @@
         app:titleText="@string/recharge"/>
 
     <TextView
+        android:id="@+id/mContentTv"
         style="@style/MatchWrap"
         android:layout_gravity="center_horizontal"
         android:background="@color/yWhite"
@@ -41,10 +42,10 @@
             android:layout_height="@dimen/yEditHeight"
             android:layout_marginLeft="@dimen/yPadding"
             android:layout_marginRight="@dimen/yPadding"
+            android:clickable="false"
+            android:enabled="false"
             android:gravity="center"
             android:text="100"
-            android:enabled="false"
-            android:clickable="false"
             android:textColor="@color/yMain"
             android:textSize="@dimen/yTextMaxSize"
             android:textStyle="bold"
@@ -54,6 +55,26 @@
             android:id="@+id/mPlusIv"
             style="@style/WrapWrap"
             android:src="@drawable/increase"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mHintView"
+        style="@style/MatchWrap.White"
+        android:gravity="center"
+        android:paddingBottom="@dimen/yPadding"
+        android:visibility="gone">
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:src="@drawable/tirps"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:text="@string/cash_pledge_pay_hint"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextSmallSize"/>
     </LinearLayout>
 
     <LinearLayout
@@ -75,6 +96,15 @@
             android:id="@+id/mPayRadioGroup"
             style="@style/MatchWrap"
             android:orientation="vertical">
+
+            <com.yizhipin.base.widgets.PayRadioPurified
+                android:id="@+id/mBalanceRadio"
+                style="@style/MatchWrap"
+                app:checked="false"
+                app:logo1="@drawable/wallet"
+                app:radio="@drawable/radio"
+                android:visibility="gone"
+                app:title1="@string/balance_pay"/>
 
             <com.yizhipin.base.widgets.PayRadioPurified
                 android:id="@+id/mAliRadio"

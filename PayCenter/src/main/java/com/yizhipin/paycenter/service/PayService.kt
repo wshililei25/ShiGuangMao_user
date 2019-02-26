@@ -1,7 +1,6 @@
 package com.yizhipin.shop.service
 
-import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.*
+import com.yizhipin.base.data.response.CashPledge
 import io.reactivex.Observable
 
 
@@ -11,4 +10,6 @@ import io.reactivex.Observable
 interface PayService {
 
     fun recharge(map: MutableMap<String, String>): Observable<String>
+    fun rechargeCashPledge(map: MutableMap<String, String>): Observable<String>
+    fun getCashPledge(map: MutableMap<String, String>): Observable<CashPledge>
 }
