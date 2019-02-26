@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:layout_height="@dimen/yBtnHeight"
+        android:background="@color/yWhite"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingRight="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mNewIv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/yPaddingMiddle"
+            android:src="@drawable/bell"/>
+
+        <ImageView
+            android:id="@+id/mNewCountIv"
+            style="@style/WrapWrap"
+            android:layout_alignRight="@+id/mNewIv"
+            android:layout_marginTop="@dimen/yPaddingMinSmall"
+            android:src="@drawable/point"
+            android:visibility="gone"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerInParent="true"
+            android:text="@string/nav_bar_extend"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextLargeSize"/>
+
+        <TextView
+            android:id="@+id/mStoreTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/route"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleLarSize"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mInteractionTv"
+        style="@style/MeItemStyle"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:drawableLeft="@drawable/othericon2"
+        android:drawablePadding="@dimen/yPaddingSmall"
+        android:text="@string/interaction"/>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <TextView
+        android:id="@+id/mWeddingInteractionTv"
+        style="@style/MeItemStyle"
+        android:drawableLeft="@drawable/othericon2"
+        android:drawablePadding="@dimen/yPaddingSmall"
+        android:text="@string/wedding_invitation"
+        android:visibility="gone"/>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/mTimeTopTv"
+        style="@style/MeItemStyle"
+        android:drawableLeft="@drawable/othericon1"
+        android:drawablePadding="@dimen/yPaddingSmall"
+        android:text="@string/time_top"/>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <TextView
+        android:id="@+id/mIntegralMallTv"
+        style="@style/MeItemStyle"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:drawableLeft="@drawable/othericon4"
+        android:drawablePadding="@dimen/yPaddingSmall"
+        android:text="@string/integral_mall"/>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <TextView
+        android:id="@+id/mOnSelectionTv"
+        style="@style/MeItemStyle"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:drawableLeft="@drawable/othericon5"
+        android:drawablePadding="@dimen/yPaddingSmall"
+        android:text="@string/on_selection"/>
+
+</LinearLayout>

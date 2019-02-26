@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical"
+              android:background="@drawable/ssssss">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mBackIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/yPaddingSmall"
+            android:paddingRight="@dimen/yPaddingSmall"
+            android:src="@drawable/leftarroww"/>
+
+        <TextView
+            android:id="@+id/mTitleTv"
+            style="@style/WrapWrap"
+            android:layout_centerInParent="true"
+            android:text="@string/forget_pwd"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextLargeSize"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:alpha="0.5"
+        android:background="@drawable/shape_login"
+        android:paddingLeft="@dimen/yPaddingMiddle">
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/telephonew"/>
+
+        <EditText
+            android:id="@+id/mMobileEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:background="@null"
+            android:hint="@string/input_mobile"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/yBlackLight"
+            android:textColorHint="@color/yHint"
+            android:textSize="@dimen/yTextBigSize"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:alpha="0.5"
+        android:background="@drawable/shape_login"
+        android:paddingLeft="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/iv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/abw"/>
+
+        <EditText
+            android:id="@+id/mCodeEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/iv"
+            android:background="@null"
+            android:hint="@string/input_sms_code"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/yBlackLight"
+            android:textColorHint="@color/yHint"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/mSendCodeTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:text="@string/get_code"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextBigSize"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:alpha="0.5"
+        android:background="@drawable/shape_login"
+        android:paddingLeft="@dimen/yPaddingMiddle">
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/unlockw"/>
+
+        <EditText
+            android:id="@+id/mPswEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:background="@null"
+            android:hint="@string/input_pwd"
+            android:inputType="textPassword"
+            android:maxLength="11"
+            android:textColor="@color/yBlackLight"
+            android:textColorHint="@color/yHint"
+            android:textSize="@dimen/yTextBigSize"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mLoginBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPadding"
+        android:text="@string/reset_pwd"/>
+
+</LinearLayout>

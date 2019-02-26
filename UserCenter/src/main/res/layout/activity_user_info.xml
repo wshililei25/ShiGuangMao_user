@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical"
+              android:background="@drawable/ssssss">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mBackIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/yPaddingSmall"
+            android:paddingRight="@dimen/yPaddingSmall"
+            android:src="@drawable/leftarroww"/>
+
+        <TextView
+            android:id="@+id/mTitleTv"
+            style="@style/WrapWrap"
+            android:layout_centerInParent="true"
+            android:text="@string/info"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextLargeSize"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:layout_marginRight="@dimen/yPadding"
+        android:gravity="center_horizontal">
+
+        <RelativeLayout
+            android:id="@+id/mUserIconView"
+            style="@style/WrapWrap">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/mUserIconIv"
+                android:layout_width="@dimen/yHeadWidth"
+                android:layout_height="@dimen/yHeadHeight"
+                android:src="@drawable/avatarw"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_below="@+id/mUserIconIv"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:text="@string/add_head"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextBigSize"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_marginTop="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:alpha="0.5"
+            android:background="@drawable/shape_login"
+            android:paddingLeft="@dimen/yPaddingMiddle">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/userw"/>
+
+            <EditText
+                android:id="@+id/mNickEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:background="@null"
+                android:hint="@string/input_nickname"
+                android:maxLength="11"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextBigSize"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/mConfirmBtn"
+            style="@style/FullBtnStyle"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_marginTop="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:text="@string/affirm_commit"
+            android:textSize="@dimen/yTextBigSize"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical.White"
+    >
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPadding">
+
+        <ImageView
+            android:id="@+id/mGoodsIv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/folder"/>
+
+        <TextView
+            android:id="@+id/mNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_toRightOf="@+id/mGoodsIv"
+            android:text="dddd"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleLarSize"/>
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/rightarrow"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+</LinearLayout>

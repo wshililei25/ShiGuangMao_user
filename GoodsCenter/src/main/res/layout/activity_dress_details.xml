@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch"
+                android:background="@color/yWhite">
+
+    <ScrollView
+        style="@style/MatchMatch"
+        android:layout_above="@+id/bottomView">
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/MatchWrap">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/mBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="375dp"/>
+
+                <ImageView
+                    android:id="@+id/mBackIv"
+                    style="@style/WrapWrap"
+                    android:padding="@dimen/yPadding"
+                    android:src="@drawable/leftarroww"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/mGoodName"
+                style="@style/WrapWrap"
+                android:padding="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextHugeSize"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:paddingLeft="@dimen/yPaddingMiddle"
+                android:paddingRight="@dimen/yPaddingMiddle"
+                android:paddingBottom="@dimen/yPaddingMiddle">
+
+                <TextView
+                    android:id="@+id/mSoldNumTv"
+                    style="@style/WrapWrap"
+                    android:text="0"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleBigSize"/>
+
+                <com.c.gaoyuan.star_view_lib.StarView
+                    android:id="@+id/mStarView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_toRightOf="@+id/mSoldNumTv"
+                    app:checkStarDrawable="@drawable/starform"
+                    app:starCount="5"
+                    app:starDrawable="@drawable/starform2"
+                    app:starHeight="@dimen/yPadding"
+                    app:starHorizontalSpace="@dimen/yPaddingSmall"
+                    app:starWidth="@dimen/yPadding"/>
+
+                <TextView
+                    android:id="@+id/mPriceTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mSoldNumTv"
+                    android:text="0.00"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextHugeSize"/>
+
+                <TextView
+                    android:id="@+id/mCostPriceTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignBottom="@+id/mPriceTv"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginBottom="@dimen/yPaddingSmall"
+                    android:layout_toRightOf="@+id/mPriceTv"
+                    android:text="0.00"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextSmallSize"/>
+
+                <RelativeLayout
+                    android:id="@+id/mCollectionView"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/mCollectionIv"
+                        style="@style/WrapWrap"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/heart"/>
+
+                    <TextView
+                        android:id="@+id/mCollectionTv"
+                        style="@style/WrapWrap"
+                        android:layout_below="@+id/mCollectionIv"
+                        android:layout_marginTop="@dimen/yPaddingMinSmall"
+                        android:text="@string/follow"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMiddleLarSize"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                android:id="@+id/mShopView"
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <ImageView
+                    android:id="@+id/mShopIv"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/mShopName"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_toRightOf="@+id/mShopIv"
+                    android:text="店铺"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextLargeSize"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/rightarrow"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <TextView
+                android:id="@+id/mRecommendTv"
+                style="@style/WrapWrap"
+                android:padding="@dimen/yPaddingMiddle"
+                android:text="@string/dress_man_recommend"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecommendRv"
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:padding="@dimen/yPaddingMiddle"
+                android:text="@string/detail_introduction"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <WebView
+                android:id="@+id/mWebView"
+                style="@style/MatchWrap"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomView"
+        style="@style/MatchWrap"
+        android:layout_alignParentBottom="true"
+        android:background="@color/yWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mAddCartBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/journalist"
+            android:drawablePadding="@dimen/yPaddingMinSmall"
+            android:gravity="center"
+            android:paddingTop="@dimen/yPaddingMiddle"
+            android:paddingBottom="@dimen/yPaddingMiddle"
+            android:text="@string/customer"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/yTextSmallSize"/>
+
+        <TextView
+            android:id="@+id/mCustomBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/telephonecall"
+            android:drawablePadding="@dimen/yPaddingMinSmall"
+            android:gravity="center"
+            android:paddingTop="@dimen/yPaddingMiddle"
+            android:paddingBottom="@dimen/yPaddingMiddle"
+            android:text="@string/mobile"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/yTextSmallSize"/>
+
+        <TextView
+            android:id="@+id/mBuyBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/yRed"
+            android:gravity="center"
+            android:text="@string/buy"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/mRentBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/yRed"
+            android:gravity="center"
+            android:text="@string/rent_borrow"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/mTakePhotoBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/yYellow"
+            android:gravity="center"
+            android:text="@string/take_photo"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</RelativeLayout>

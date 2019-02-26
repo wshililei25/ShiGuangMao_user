@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical">
+
+    <RelativeLayout
+        android:id="@+id/mHeadView"
+        style="@style/MatchWrap.White"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mBackIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/yPaddingSmall"
+            android:paddingRight="@dimen/yPaddingSmall"
+            android:src="@drawable/leftarrow"/>
+
+        <TextView
+            android:id="@+id/mTitleTv"
+            style="@style/WrapWrap"
+            android:layout_centerInParent="true"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextLargeSize"/>
+
+        <TextView
+            android:id="@+id/mRightTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.yizhipin.shop">
+
+    <application>
+        <activity android:name=".ui.activity.ShopActivity"/>
+        <activity android:name=".ui.activity.ShopDetailActivity"/>
+        <activity android:name=".ui.activity.ScenicActivity"/>
+        <activity android:name=".ui.activity.ScenicDetailActivity"/>
+    </application>
+</manifest>

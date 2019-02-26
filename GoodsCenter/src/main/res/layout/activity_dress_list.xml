@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical.White">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@color/yWhite"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mBackIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/yPaddingSmall"
+            android:src="@drawable/leftarrow"/>
+
+        <LinearLayout
+            style="@style/WrapWrap"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_red_corner">
+
+            <TextView
+                android:id="@+id/mWomenTv"
+                style="@style/WrapWrap"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_red_solid_left"
+                android:paddingLeft="@dimen/yPaddingBig"
+                android:paddingTop="@dimen/yPaddingMiddle"
+                android:paddingRight="@dimen/yPaddingBig"
+                android:paddingBottom="@dimen/yPaddingMiddle"
+                android:text="@string/women_dress"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/mManTv"
+                style="@style/WrapWrap"
+                android:paddingLeft="@dimen/yPaddingBig"
+                android:paddingTop="@dimen/yPaddingMiddle"
+                android:paddingRight="@dimen/yPaddingBig"
+                android:paddingBottom="@dimen/yPaddingMiddle"
+                android:text="@string/man_dress"
+                android:textColor="@color/yRed"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mOrderTab"
+        style="@style/TabsStyle.Order"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mOrderVp"
+        style="@style/MatchWrap"/>
+</LinearLayout>

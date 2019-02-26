@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.White">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingRight="@dimen/yPaddingMiddle"
+        android:paddingBottom="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mGoodsIv"
+            android:layout_width="match_parent"
+            android:layout_height="215dp"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/mGoodsNameTv"
+            style="@style/MatchWrap"
+            android:layout_below="@+id/mGoodsIv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:text="dddd"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/system"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mGoodsNameTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:background="@drawable/shape_red"
+            android:paddingLeft="@dimen/yPaddingSmall"
+            android:paddingTop="@dimen/yPaddingMin"
+            android:paddingRight="@dimen/yPaddingSmall"
+            android:paddingBottom="@dimen/yPaddingMin"
+            android:text="@string/hot_scenic"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextSmallSize"/>
+
+        <TextView
+            android:id="@+id/mPriceTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mGoodsNameTv"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/system"
+            android:text="￥ 0.00"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/mOriginalPriceTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mGoodsNameTv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mPriceTv"
+            android:gravity="bottom"
+            android:text="￥ 0.00"
+            android:textColor="@color/yGray"
+            android:textSize="@dimen/yTextSmallSize"/>
+
+    </RelativeLayout>
+</LinearLayout>

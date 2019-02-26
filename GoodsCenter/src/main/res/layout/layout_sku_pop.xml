@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/MatchWrap">
+
+    <RelativeLayout
+        android:id="@+id/mPopView"
+        style="@style/MatchWrap"
+        android:layout_alignParentBottom="true"
+        android:background="@color/yWhite">
+
+        <RelativeLayout
+            android:id="@+id/rl_sku_amount"
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingMiddle">
+
+            <ImageView
+                android:id="@+id/mGoodsIconIv"
+                android:layout_width="110dp"
+                android:layout_height="110dp"/>
+
+            <TextView
+                android:id="@+id/mNameTv"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@id/mGoodsIconIv"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextBigSize"/>
+
+            <TextView
+                android:id="@+id/mPriceTv"
+                style="@style/WrapWrap"
+                android:layout_above="@+id/mNumTv"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_marginBottom="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@id/mGoodsIconIv"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+
+            <TextView
+                android:id="@+id/mNumTv"
+                style="@style/WrapWrap"
+                android:layout_above="@+id/mNormTv"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_marginBottom="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@id/mGoodsIconIv"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+
+            <TextView
+                android:id="@+id/mNormTv"
+                style="@style/WrapWrap"
+                android:layout_alignBottom="@+id/mGoodsIconIv"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@id/mGoodsIconIv"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+
+            <View
+                android:id="@+id/mDividerView"
+                style="@style/DividerFixedHeight"
+                android:layout_below="@id/mGoodsIconIv"
+                android:layout_marginTop="@dimen/yPaddingMiddle"/>
+
+            <LinearLayout
+                android:id="@+id/mSkuView"
+                style="@style/MatchWrap.Vertical"
+                android:layout_below="@id/mDividerView"
+                android:layout_margin="@dimen/common_padding"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/mAddCartBtn"
+            style="@style/MatchWrap"
+            android:layout_below="@id/rl_sku_amount"
+            android:layout_marginTop="80dp"
+            android:layout_weight="1"
+            android:background="@color/common_red"
+            android:gravity="center"
+            android:padding="@dimen/common_padding"
+            android:text="@string/confirm"
+            android:textColor="@color/common_white"
+            android:textSize="@dimen/text_big_size"/>
+    </RelativeLayout>
+
+</RelativeLayout>

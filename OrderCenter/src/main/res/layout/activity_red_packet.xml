@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/red_reper_me"/>
+
+    <RelativeLayout
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite"
+        android:padding="@dimen/yPadding">
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:layout_centerVertical="true">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/red_blance"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+
+            <RelativeLayout
+                style="@style/WrapWrap">
+
+                <TextView
+                    android:id="@+id/mAmountTv"
+                    style="@style/WrapWrap"
+                    android:text="¥ 0.00"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextHugeSize"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignBottom="@+id/mAmountTv"
+                    android:layout_marginBottom="@dimen/yPaddingMin"
+                    android:layout_toRightOf="@+id/mAmountTv"
+                    android:text="@string/yuan"
+                    android:textColor="@color/yBlackDeep"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/mLockTv"
+            android:text="@string/deposit_balance"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+        <TextView
+            android:id="@+id/mLockTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/immediate_lock"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+    </RelativeLayout>
+
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/mMultiStateView"
+        style="@style/MultiStateStyle"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yBgGray">
+
+        <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+            android:id="@+id/mRefreshLayout"
+            style="@style/MatchMatch">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mAddressRv"
+                style="@style/commonRecyclerView"/>
+
+        </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+    </com.kennyc.view.MultiStateView>
+
+</LinearLayout>

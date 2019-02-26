@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Common"
+              android:paddingLeft="@dimen/yPaddingMiddle"
+              android:paddingTop="@dimen/yPaddingMiddle">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/mIv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/avatarw"/>
+
+</LinearLayout>

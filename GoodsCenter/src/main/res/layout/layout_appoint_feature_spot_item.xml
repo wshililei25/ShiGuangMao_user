@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Horizontal"
+              android:layout_marginRight="@dimen/yPaddingMiddle"
+              android:background="@color/yBgGray">
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite">
+
+        <ImageView
+            android:id="@+id/mIv"
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/add"/>
+
+        <TextView
+            android:id="@+id/mAmountTv"
+            style="@style/WrapWrap"
+            android:layout_marginTop="@dimen/yPadding"
+            android:text="指定景点"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </LinearLayout>
+
+    <View
+        style="@style/DividerFixedWidth_10"/>
+</LinearLayout>

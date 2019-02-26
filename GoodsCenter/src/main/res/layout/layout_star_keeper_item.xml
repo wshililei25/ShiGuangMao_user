@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical.White">
+
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical">
+
+        <TextView
+            android:id="@+id/mShopkeeperTv"
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/yPaddingSmall"
+            android:text="@string/star_shopkeeper"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <RelativeLayout
+            android:id="@+id/mShopView"
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingMiddle">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/mIv"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/avatarw"/>
+
+            <TextView
+                android:id="@+id/mNameTv"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@+id/mShopIv"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleLarSize"/>
+
+            <TextView
+                android:id="@+id/mShopNameTv"
+                style="@style/WrapWrap"
+                android:layout_below="@+id/mKeeperNameTv"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:layout_toRightOf="@+id/mShopIv"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleLarSize"/>
+
+            <TextView
+                android:id="@+id/mKeeperLockTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_red_corner_big"
+                android:paddingLeft="@dimen/yPaddingBigSmall"
+                android:paddingTop="@dimen/yPaddingMiddle"
+                android:paddingRight="@dimen/yPaddingBigSmall"
+                android:paddingBottom="@dimen/yPaddingMiddle"
+                android:text="@string/lock"
+                android:textColor="@color/yRed"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View style="@style/DividerFixedHeight"/>
+
+</LinearLayout>

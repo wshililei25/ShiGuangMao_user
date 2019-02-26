@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/MatchWrap.White"
+                android:layout_width="110dp"
+                android:padding="@dimen/yPaddingMiddle">
+
+    <ImageView
+        android:id="@+id/mIv"
+        style="@style/MatchWrap"
+        android:layout_height="68dp"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/mNameTv"
+        style="@style/WrapWrap"
+        android:layout_below="@+id/mIv"
+        android:layout_marginTop="@dimen/yPaddingSmall"
+        android:drawableLeft="@drawable/route3"
+        android:drawablePadding="@dimen/yPaddingSmall"
+        android:gravity="center"
+        android:text="dddd"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextMiddleSize"/>
+
+</RelativeLayout>

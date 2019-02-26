@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/WrapWrap"
+                android:paddingLeft="@dimen/yPaddingMiddle"
+                android:paddingTop="@dimen/yPaddingSmall"
+                android:paddingBottom="@dimen/yPaddingSmall"
+    >
+
+    <TextView
+        android:id="@+id/mNameTv"
+        style="@style/WrapWrap"
+        android:text="dddd"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextMiddleSize"/>
+</RelativeLayout>

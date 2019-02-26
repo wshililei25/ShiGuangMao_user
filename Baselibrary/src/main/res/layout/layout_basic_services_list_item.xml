@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical.White"
+              android:padding="@dimen/yPaddingMiddle">
+
+    <TextView
+        android:id="@+id/mNameTv"
+        style="@style/WrapWrap"
+        android:text="dddd"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextMiddleBigSize"/>
+
+    <TextView
+        android:id="@+id/mContentTv"
+        style="@style/WrapWrap"
+        android:layout_marginTop="@dimen/yPaddingMinSmall"
+        android:text="dddd"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextMiddleSize"/>
+</LinearLayout>

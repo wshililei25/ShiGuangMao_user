@@ -1,0 +1,11 @@
+package com.yizhipin.shop.presenter.view
+
+import com.yizhipin.base.data.response.ShopDetails
+import com.yizhipin.base.presenter.view.BaseView
+
+/**
+ * Created by ${XiLei} on 2018/7/26.
+ */
+interface PayView : BaseView {
+    fun onRechargeSuccess(result: String)
+}

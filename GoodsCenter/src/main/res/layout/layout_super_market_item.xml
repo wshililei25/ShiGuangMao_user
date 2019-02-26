@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/MatchWrap.Vertical.White"
+                android:padding="@dimen/yPaddingSmall">
+
+    <ImageView
+        android:id="@+id/mGoodsIv"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/mGoodsNameTv"
+        style="@style/WrapWrap"
+        android:layout_below="@+id/mGoodsIv"
+        android:layout_marginTop="@dimen/yPaddingSmall"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="dddd"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextBigSize"/>
+
+    <TextView
+        android:id="@+id/mAmountTv"
+        style="@style/WrapWrap"
+        android:layout_below="@+id/mGoodsNameTv"
+        android:layout_marginTop="@dimen/yPaddingSmall"
+        android:text="￥ 0.00"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextBigSize"/>
+
+    <TextView
+        android:id="@+id/mAmountRightTv"
+        style="@style/WrapWrap"
+        android:layout_below="@+id/mGoodsNameTv"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/yPaddingSmall"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextBigSize"/>
+</RelativeLayout>

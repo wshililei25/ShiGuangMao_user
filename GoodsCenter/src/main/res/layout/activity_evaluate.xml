@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap" />
+
+    <FrameLayout
+        android:id="@+id/mFrameLayout"
+        style="@style/MatchMatch" />
+
+</LinearLayout>

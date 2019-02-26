@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical.White"
+    >
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPadding">
+
+        <ImageView
+            android:id="@+id/mGoodsIv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/folder"/>
+
+        <TextView
+            android:id="@+id/mNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:layout_toLeftOf="@+id/iv"
+            android:layout_toRightOf="@+id/mGoodsIv"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleLarSize"/>
+
+        <TextView
+            android:id="@+id/mRemarkTv"
+            style="@style/WrapWrap"
+            android:layout_below="@id/mNameTv"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsIv"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextSmallSize"/>
+
+        <ImageView
+            android:id="@+id/iv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/clouddiskmenu2"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+</LinearLayout>

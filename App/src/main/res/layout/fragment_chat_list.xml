@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:hyphenate="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.White">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:layout_height="@dimen/yBtnHeight"
+        android:background="@color/yWhite"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingRight="@dimen/yPaddingMiddle">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerInParent="true"
+            android:text="@string/nav_bar_category"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextLargeSize"/>
+
+        <TextView
+            android:id="@+id/mGroupTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/group"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+
+    <!-- 会话列表-->
+    <com.hyphenate.easeui.widget.EaseConversationList
+        android:id="@+id/mChatLv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        hyphenate:cvsListPrimaryTextSize="16sp"/>
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchWrap.Vertical.White"
+                android:padding="@dimen/yPaddingMiddle">
+
+    <ImageView
+        android:id="@+id/mGoodsIv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/mNameTv"
+        style="@style/WrapWrap"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_toRightOf="@+id/mGoodsIv"
+        android:text="dddd"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextSmallLarSize"/>
+
+    <TextView
+        android:id="@+id/mTimeTv"
+        style="@style/WrapWrap"
+        android:layout_alignBottom="@+id/mGoodsIv"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_toRightOf="@+id/mGoodsIv"
+        android:text="dddd"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextSmallLarSize"/>
+
+    <com.c.gaoyuan.star_view_lib.StarView
+        android:id="@+id/mStarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/mGoodsIv"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_toRightOf="@+id/mTimeTv"
+        app:checkStarDrawable="@drawable/starform"
+        app:starCount="5"
+        app:starDrawable="@drawable/starform2"
+        app:starHeight="@dimen/yPadding"
+        app:starHorizontalSpace="@dimen/yPaddingSmall"
+        app:starWidth="@dimen/yPadding"/>
+
+    <TextView
+        android:id="@+id/mContentTv"
+        style="@style/WrapWrap"
+        android:layout_below="@+id/mGoodsIv"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:text="dddd"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextSmallLarSize"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mIvRv"
+        style="@style/MatchWrap"
+        android:layout_below="@+id/mContentTv"/>
+</RelativeLayout>

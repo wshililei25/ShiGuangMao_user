@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/MatchWrap.Vertical"
+                android:background="@color/yWhite"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/yPaddingMinSmall"
+                tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/mIv"
+        style="@style/MatchWrap"
+        android:scaleType="fitXY"
+        android:src="@drawable/mainphoto1"/>
+
+    <TextView
+        android:id="@+id/mTv"
+        style="@style/WrapWrap"
+        android:layout_alignRight="@+id/mIv"
+        android:layout_alignBottom="@+id/mIv"
+        android:layout_margin="@dimen/yPaddingSmall"
+        android:text="ddd"
+        android:textColor="@color/yWhite"
+        android:textSize="@dimen/yTextBigSize"/>
+
+</RelativeLayout>

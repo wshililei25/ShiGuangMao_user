@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchWrap.Vertical.White">
+
+    <ImageView
+        android:id="@+id/mIv"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_margin="@dimen/yPaddingMiddle"
+        android:src="@drawable/leftarroww"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <TextView
+            android:id="@+id/mShopNameTv"
+            style="@style/WrapWrap"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/mAddressTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mShopNameTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:drawableLeft="@drawable/route2"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mSoldNumTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mAddressTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <com.c.gaoyuan.star_view_lib.StarView
+            android:id="@+id/mStarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mSoldNumTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            app:checkStarDrawable="@drawable/starform"
+            app:starCount="5"
+            app:starDrawable="@drawable/starform2"
+            app:starHeight="@dimen/yPadding"
+            app:starHorizontalSpace="@dimen/yPaddingSmall"
+            app:starWidth="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mCollectionTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_red_corner_big"
+            android:paddingLeft="@dimen/yPaddingBigSmall"
+            android:paddingTop="@dimen/yPaddingMiddle"
+            android:paddingRight="@dimen/yPaddingBigSmall"
+            android:paddingBottom="@dimen/yPaddingMiddle"
+            android:text="@string/lock"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </RelativeLayout>
+
+    <View style="@style/DividerFixedHeight"/>
+
+</LinearLayout>

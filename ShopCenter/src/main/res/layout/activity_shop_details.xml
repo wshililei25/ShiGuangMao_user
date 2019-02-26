@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch"
+                android:background="@color/yWhite">
+
+    <ScrollView
+        style="@style/MatchMatch"
+        android:layout_above="@+id/bottomView">
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/MatchWrap">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/mBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp"/>
+
+                <ImageView
+                    android:id="@+id/mBackIv"
+                    style="@style/WrapWrap"
+                    android:padding="@dimen/yPadding"
+                    android:src="@drawable/leftarroww"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    android:id="@+id/mGoodName"
+                    style="@style/WrapWrap"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextBigSize"/>
+
+                <com.c.gaoyuan.star_view_lib.StarView
+                    android:id="@+id/mStarView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/mGoodName"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    app:checkStarDrawable="@drawable/starform"
+                    app:starCount="5"
+                    app:starDrawable="@drawable/starform2"
+                    app:starHeight="@dimen/yPadding"
+                    app:starHorizontalSpace="@dimen/yPaddingSmall"
+                    app:starWidth="@dimen/yPadding"/>
+
+                <TextView
+                    android:id="@+id/mNumTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mStarView"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <RelativeLayout
+                    android:id="@+id/mCollectionView"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/mCollectionIv"
+                        style="@style/WrapWrap"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/heart"/>
+
+                    <TextView
+                        android:id="@+id/mCollectionTv"
+                        style="@style/WrapWrap"
+                        android:layout_below="@+id/mCollectionIv"
+                        android:layout_marginTop="@dimen/yPaddingMinSmall"
+                        android:text="@string/follow"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMiddleLarSize"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    android:id="@+id/mAddressTv"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/route"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/shop_introduce"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/more"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginStart="@dimen/yPaddingMiddle"/>
+
+            <TextView
+                android:id="@+id/mIntroduceTv"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <android.support.v7.widget.RecyclerView
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/hot_meal"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/more"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mHotMealRv"
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/time_teacher"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/more"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mTimeTeacherRv"
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/guest_film_enjoy"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/more"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight"/>
+
+            <android.support.v7.widget.RecyclerView
+
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/time_evaluate_new"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/more"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mEvaluateRv"
+                style="@style/MatchWrap"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomView"
+        style="@style/MatchWrap.Vertical.White"
+        android:layout_alignParentBottom="true">
+
+        <View
+            style="@style/DividerFixedHeight"/>
+
+        <Button
+            android:id="@+id/mBtn"
+            style="@style/FullBtnStyle"
+            android:layout_margin="@dimen/yPaddingMiddle"
+            android:enabled="true"
+            android:text="@string/change_shop"/>
+    </LinearLayout>
+</RelativeLayout>

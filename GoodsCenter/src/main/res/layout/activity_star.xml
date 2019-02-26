@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/list_of_star"/>
+
+    <ScrollView
+        style="@style/MatchWrap">
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_gravity="center"
+                android:padding="@dimen/yPaddingSmall"
+                android:text="@string/star_shop"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mStarShopRv"
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/yPaddingSmall"
+                android:text="@string/star_shopkeeper"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mKeeperRv"
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/yPaddingSmall"
+                android:text="@string/star_teacher"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mTeacherRv"
+                style="@style/MatchWrap"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.yizhipin.ordercender">
+
+    <application>
+        <activity android:name=".ui.activity.OrderConfirmActivity"/>
+        <activity android:name=".ui.activity.ShipAddressActivity"/>
+        <activity android:name=".ui.activity.ShipAddressEditActivity"/>
+        <activity android:name=".ui.activity.OrderActivity"/>
+        <activity android:name=".ui.activity.PayConfirmActivity"/>
+        <activity android:name=".ui.activity.CouponActivity"/>
+        <activity android:name=".ui.activity.OrderDetailsActivity"/>
+        <activity android:name=".ui.activity.RedPacketActivity"/>
+    </application>
+</manifest>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            style="@style/MatchMatch.Vertical"
+            android:background="@color/yBgGray">
+
+    <LinearLayout
+        style="@style/MatchMatch.Vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background"
+            android:padding="@dimen/yPadding">
+
+            <ImageView
+                android:id="@+id/mNewIv"
+                style="@style/WrapWrap"
+                android:paddingTop="@dimen/yPaddingMinSmall"
+                android:paddingRight="@dimen/yPaddingMiddle"
+                android:src="@drawable/bellw"/>
+
+            <ImageView
+                android:id="@+id/mNewCountIv"
+                style="@style/WrapWrap"
+                android:layout_alignRight="@+id/mNewIv"
+                android:src="@drawable/pointw"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/mStoreTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@drawable/routew"
+                android:paddingTop="@dimen/yPaddingMinSmall"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextMiddleLarSize"/>
+
+            <RelativeLayout
+                style="@style/WrapWrap"
+                android:layout_below="@+id/mNewIv"
+                android:layout_marginTop="@dimen/yPadding">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/mUserIconIv"
+                    android:layout_width="@dimen/yHeadWidth"
+                    android:layout_height="@dimen/yHeadHeight"
+                    android:src="@drawable/avatarw"/>
+
+                <TextView
+                    android:id="@+id/mUserNameTv"
+                    style="@style/WrapWrap"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/mUserIconIv"
+                    android:text="@string/login"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <ImageView
+                    android:id="@+id/mGradeIv"
+                    style="@style/WrapWrap"
+                    android:layout_alignBottom="@+id/mUserIconIv"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/mUserIconIv"
+                    android:src="@drawable/addw"/>
+
+                <TextView
+                    android:id="@+id/mRelevanceTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignBottom="@+id/mUserIconIv"
+                    android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                    android:layout_marginBottom="11dp"
+                    android:layout_toRightOf="@+id/mGradeIv"
+                    android:text="@string/relevance_user"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:background="@color/yWhite"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingBottom="@dimen/yPadding">
+
+            <RelativeLayout
+                android:id="@+id/mBalanceView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/mBalanceV"
+                    style="@style/WrapWrap"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/mBalanceTv"
+                        style="@style/WrapWrap"
+                        android:text="0.00"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextLargeSize"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mBalanceTv"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toRightOf="@+id/mBalanceTv"
+                        android:text="@string/yuan"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleLarSize"/>
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mBalanceV"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/yPaddingMinSmall"
+                    android:text="@string/balance"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedWidth"/>
+
+            <RelativeLayout
+                android:id="@+id/mIntegralView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/mIntegralTv"
+                    style="@style/WrapWrap"
+                    android:layout_centerHorizontal="true"
+                    android:text="0"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextLargeSize"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mIntegralTv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/yPaddingMinSmall"
+                    android:text="@string/integral"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedWidth"/>
+
+            <RelativeLayout
+                android:id="@+id/mInvitationCodeView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/mInvitationCodeTv"
+                    style="@style/WrapWrap"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextLargeSize"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mInvitationCodeTv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/yPaddingMinSmall"
+                    android:text="@string/invitation_code_"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mAllOrderTv"
+            style="@style/MeItemStyle"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:drawableLeft="@drawable/clipboard"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/my_order"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mForegiftTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/coin"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/my_foregift"/>
+
+        <TextView
+            android:id="@+id/mollowTv"
+            style="@style/MeItemStyle"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:drawableLeft="@drawable/heart6"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/my_follow"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mCouponTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/redenvelopes"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/my_coupon"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mRedPaperTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/redenvelopes"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/red_reper_me"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mAddressTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/address_package"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/address_mannger"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mWithdrawTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/creditcard"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/withdraw"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mNoviceHelpv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/question"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/novice_help"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mCustomerPhonev"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/telephone"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/customer_phone"/>
+
+        <TextView
+            android:id="@+id/mShareMoneyTv"
+            style="@style/MeItemStyle"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:drawableLeft="@drawable/share"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/share_money"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mRecommendationsTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/highlighter"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/recommendations"/>
+
+        <TextView
+            android:id="@+id/mSettingTv"
+            style="@style/MeItemStyle"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:layout_marginBottom="@dimen/yPaddingMiddle"
+            android:drawableLeft="@drawable/settings"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/system_set"/>
+    </LinearLayout>
+</ScrollView>

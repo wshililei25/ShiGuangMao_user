@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/details"/>
+
+    <ScrollView
+        style="@style/MatchWrap"
+        android:layout_above="@+id/bottomView"
+        android:layout_below="@+id/mHeaderBar">
+
+        <LinearLayout
+            android:id="@+id/mRefreshLayout"
+            style="@style/MatchWrap.Vertical">
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/mIv"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/avatarw"/>
+
+                <TextView
+                    android:id="@+id/mNameTv"
+                    style="@style/MatchWrap"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mIv"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleBigSize"/>
+
+                <TextView
+                    android:id="@+id/mContentTv"
+                    style="@style/MatchWrap"
+                    android:layout_below="@+id/mNameTv"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mIv"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mImageRv"
+                    style="@style/MatchWrap"
+                    android:layout_below="@+id/mContentTv"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mIv"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/mDateTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mImageRv"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mIv"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:layout_below="@+id/mImageRv"
+                    android:layout_marginTop="@dimen/yPaddingMiddle">
+
+                    <TextView
+                        android:id="@+id/mLikeCountTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginRight="@dimen/yPadding"
+                        android:layout_toLeftOf="@+id/mEvaCountTv"
+                        android:drawableLeft="@drawable/heart5"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="点赞"
+                        android:textColor="@drawable/selector_text"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        android:id="@+id/mEvaCountTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:drawableLeft="@drawable/message2"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="评论"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                style="@style/MatchWrap"
+                android:background="@color/yBgGray"
+                android:paddingBottom="@dimen/yPaddingMiddle">
+
+                <ImageView
+                    style="@style/WrapWrap"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:src="@drawable/heart5"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mLikeRv"
+                    style="@style/MatchWrap"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MatchWrap"
+                android:layout_marginTop="@dimen/yPaddingMinSmall"
+                android:background="@color/yBgGray"
+                android:paddingBottom="@dimen/yPaddingMiddle">
+
+                <ImageView
+                    style="@style/WrapWrap"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:src="@drawable/message2"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mEvaRv"
+                    style="@style/MatchWrap"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomView"
+        style="@style/MatchWrap.Vertical.White"
+        android:layout_alignParentBottom="true">
+
+        <View
+            style="@style/DividerFixedHeight"/>
+
+        <EditText
+        android:id="@+id/mEt"
+            style="@style/MatchWrap"
+            android:layout_margin="@dimen/yPaddingMiddle"
+            android:background="@drawable/shape_gray_corner"
+            android:hint="添加评论"
+            android:padding="@dimen/yPaddingSmall"
+            android:textColor="@color/yBlackGray"
+            android:singleLine="true"
+            android:imeOptions="actionSend"
+            android:textColorHint="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+    </LinearLayout>
+</RelativeLayout>

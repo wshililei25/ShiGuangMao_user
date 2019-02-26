@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/mView"
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPadding">
+
+        <ImageView
+            android:id="@+id/mBg"
+            style="@style/WrapWrap"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/yPaddingSmall"
+            android:src="@drawable/dsz"/>
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_alignRight="@+id/mBg"
+            android:layout_margin="@dimen/yPadding"
+            android:src="@drawable/cancelw"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mBg"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/yPadding"
+            android:text="点击查看"
+            android:textColor="@color/yRed"/>
+
+    </RelativeLayout>
+</LinearLayout>

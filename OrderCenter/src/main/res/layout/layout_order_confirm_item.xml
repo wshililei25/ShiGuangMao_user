@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchWrap.Vertical"
+              android:background="@color/yWhite">
+
+    <View
+        style="@style/DividerFixedHeight_10"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mGoodsIv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/mGoodsNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsIv"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="dddd"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/mTypeTv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsIv"
+            android:background="@drawable/shape_red"
+            android:paddingLeft="@dimen/yPaddingMinSmall"
+            android:paddingRight="@dimen/yPaddingMinSmall"
+            android:text="@string/hamlet"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <TextView
+            android:id="@+id/mShopTv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mTypeTv"
+            android:text="kkk"
+            android:textColor="@color/yCategory"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:layout_alignBottom="@+id/mGoodsIv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsIv">
+
+            <TextView
+                android:id="@+id/mAmountTv"
+                style="@style/WrapWrap"
+                android:text="¥ 0.00"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextLargeSize"/>
+
+            <TextView
+                android:id="@+id/mOrderTypeTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:text="待成单"
+                android:textColor="@color/yRed"
+                android:textSize="@dimen/yTextLargeSize"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_below="@+id/mGoodsIv"
+        android:layout_marginTop="@dimen/yPaddingMiddle"/>
+
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            android:id="@+id/mGoodsCountTv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/buy_num"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <com.yizhipin.base.widgets.NumberButton
+            android:id="@+id/mGoodsCountBtn"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            app:editable="false"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <RelativeLayout
+        android:id="@+id/mPostageView"
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/postage"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mPostageTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:text="¥ 0.00"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mBookingDateView"
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/booking_date"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <LinearLayout
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:id="@+id/mStartDateTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_marginRight="@dimen/yPadding"
+                android:text="@string/to"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/mEndDateTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/payment"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mPracticalAmountTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:text="¥ 0.00"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/list_of_star"/>
+
+    <ScrollView
+        style="@style/MatchWrap"
+        android:layout_above="@+id/bottomView">
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_gravity="center"
+                android:padding="@dimen/yPaddingSmall"
+                android:text="@string/star_shop"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <ImageView
+                android:id="@+id/mBackIv"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_margin="@dimen/yPaddingMiddle"
+                android:src="@drawable/leftarroww"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    android:id="@+id/mStarShopNameTv"
+                    style="@style/WrapWrap"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextBigSize"/>
+
+                <TextView
+                    android:id="@+id/mAddressTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mStarShopNameTv"
+                    android:drawableLeft="@drawable/route2"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:id="@+id/mSoldNumTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mAddressTv"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <com.c.gaoyuan.star_view_lib.StarView
+                    android:id="@+id/mStarView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/mSoldNumTv"
+                    android:layout_toRightOf="@+id/mSoldNumTv"
+                    app:checkStarDrawable="@drawable/starform"
+                    app:starCount="5"
+                    app:starDrawable="@drawable/starform2"
+                    app:starHeight="@dimen/yPadding"
+                    app:starHorizontalSpace="@dimen/yPaddingSmall"
+                    app:starWidth="@dimen/yPadding"/>
+
+                <TextView
+                    android:id="@+id/mCollectionTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shape_red_corner_big"
+                    android:paddingLeft="@dimen/yPaddingBigSmall"
+                    android:paddingTop="@dimen/yPaddingMiddle"
+                    android:paddingRight="@dimen/yPaddingBigSmall"
+                    android:paddingBottom="@dimen/yPaddingMiddle"
+                    android:text="@string/lock"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <LinearLayout
+                style="@style/MatchWrap.Vertical">
+
+                <TextView
+                    android:id="@+id/mShopkeeperTv"
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/yPaddingSmall"
+                    android:text="@string/star_shopkeeper"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <RelativeLayout
+                    android:id="@+id/mShopView"
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/mShopIv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/avatarw"/>
+
+                    <TextView
+                        android:id="@+id/mKeeperNameTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:layout_marginTop="@dimen/yPaddingMiddle"
+                        android:layout_toRightOf="@+id/mShopIv"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                    <TextView
+                        android:id="@+id/mShopNameTv"
+                        style="@style/WrapWrap"
+                        android:layout_below="@+id/mKeeperNameTv"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:layout_marginTop="@dimen/yPaddingSmall"
+                        android:layout_toRightOf="@+id/mShopIv"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                    <TextView
+                        android:id="@+id/mKeeperLockTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/shape_red_corner_big"
+                        android:paddingLeft="@dimen/yPaddingBigSmall"
+                        android:paddingTop="@dimen/yPaddingMiddle"
+                        android:paddingRight="@dimen/yPaddingBigSmall"
+                        android:paddingBottom="@dimen/yPaddingMiddle"
+                        android:text="@string/lock"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMiddleSize"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/yPaddingSmall"
+                android:text="@string/star_teacher"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecommendRv"
+                style="@style/MatchWrap"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

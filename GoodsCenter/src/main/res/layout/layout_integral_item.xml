@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/MatchWrap.White"
+                android:padding="@dimen/yPaddingMiddle">
+
+
+    <ImageView
+        android:id="@+id/mGoodsIv"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/mGoodsNameTv"
+        style="@style/MatchWrap"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/mGoodsIv"
+        android:ellipsize="end"
+        android:gravity="right"
+        android:text="dddd"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextBigSize"/>
+
+    <TextView
+        android:id="@+id/mContentTv"
+        style="@style/WrapWrap"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="dddd"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextSmallLarSize"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:layout_alignBottom="@+id/mGoodsIv"
+        android:layout_toRightOf="@+id/mGoodsIv">
+
+        <TextView
+            style="@style/WrapWrap"
+
+            android:layout_marginRight="@dimen/yPaddingSmall"
+            android:layout_toLeftOf="@+id/mIntegralTv"
+            android:text="@string/integral_"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleLarSize"/>
+
+        <TextView
+            android:id="@+id/mIntegralTv"
+            style="@style/WrapWrap"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:layout_toLeftOf="@+id/mAmountTv"
+            android:text="0"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/mAmountTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+    </RelativeLayout>
+</RelativeLayout>

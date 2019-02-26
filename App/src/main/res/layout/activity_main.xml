@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:gravity="bottom">
+
+    <FrameLayout
+        android:id="@+id/mContaier"
+        style="@style/MatchMatch"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            style="@style/DividerFixedHeight"/>
+
+        <com.yizhipin.base.widgets.BottomNavBar
+            android:id="@+id/mBottomNavBar"
+            style="@style/MatchWrap"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

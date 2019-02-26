@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
+
+    aaptOptions.cruncherEnabled = false //禁止检查res不规范
+    aaptOptions.useNewCruncher = false //禁止检查res不规范
+
+    defaultConfig {
+        applicationId "com.shiguangmao.sgm"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode 1 //1.0.0
+        versionName "1.0.0"
+        flavorDimensions "versionCode" //使用同一维度
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'ShiGuangMao2019'
+            keyPassword 'ShiGuangMao2019'
+            storeFile file('F://workspace_xilei/keyStore/shiguangmao_user.jks')
+            storePassword 'ShiGuangMao2019'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+
+    productFlavors {
+
+        YINGYONGBAO {}
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
+    }
+
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if ("release".equalsIgnoreCase(variant.buildType.name)) {
+                outputFileName = "sgm_android_${defaultConfig.versionName}_${releaseTime()}.apk"
+            }
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation project(':Provider')
+    if (isUserModule.toBoolean()) {
+        implementation project(':UserCenter')
+    }
+    implementation project(':MessageCenter')
+    implementation project(':GoodsCenter')
+    implementation project(':OrderCenter')
+    implementation project(':PayCenter')
+    implementation project(':GeneralizeCenter')
+    implementation project(':ShopCenter')
+    //支付宝pay
+    api (name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+}
+
+//Parcelable序列化插件
+androidExtensions {
+    experimental = true
+}
+

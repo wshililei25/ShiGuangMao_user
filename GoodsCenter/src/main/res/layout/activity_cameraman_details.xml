@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/MatchMatch"
+                android:background="@color/yWhite">
+
+    <ScrollView
+        style="@style/MatchMatch"
+        android:layout_above="@+id/bottomView">
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_height="190dp"
+                android:background="@drawable/mainphoto2"
+                android:padding="@dimen/yPadding">
+
+                <ImageView
+                    android:id="@+id/mBackIv"
+                    style="@style/WrapWrap"
+                    android:src="@drawable/leftarroww"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/mUserIconIv"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_below="@+id/mBackIv"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:src="@drawable/avatarw"/>
+
+                <TextView
+                    android:id="@+id/mNameTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mBackIv"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mUserIconIv"
+                    android:text="摄影师"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:id="@+id/mShopNameTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mNameTv"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mUserIconIv"
+                    android:text="摄影师"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:id="@+id/mSchedulingPeriodTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginBottom="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mUserIconIv"
+                    android:drawableLeft="@drawable/userw"
+                    android:drawablePadding="@dimen/yPaddingMinSmall"
+                    android:gravity="center"
+                    android:text="@string/lock_Scheduling_period"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <RelativeLayout
+                    android:id="@+id/mCollectionView"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/yPaddingMiddle">
+
+                    <ImageView
+                        android:id="@+id/mCollectionIv"
+                        style="@style/WrapWrap"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/heart3"/>
+
+                    <TextView
+                        android:id="@+id/mCollectionTv"
+                        style="@style/WrapWrap"
+                        android:layout_below="@+id/mCollectionIv"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/yPaddingMinSmall"
+                        android:text="@string/follow"
+                        android:textColor="@color/yWhite"
+                        android:textSize="@dimen/yTextMiddleLarSize"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    android:id="@+id/appoint_cost"
+                    style="@style/WrapWrap"
+                    android:layout_width="65dp"
+                    android:layout_alignBottom="@+id/mPriceTv"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginBottom="@dimen/yPaddingSmall"
+                    android:text="@string/appoint_cost"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextSmallSize"/>
+
+                <TextView
+                    android:id="@+id/mPriceTv"
+                    style="@style/WrapWrap"
+                    android:layout_toRightOf="@+id/appoint_cost"
+                    android:text="0.00"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextHugeSize"/>
+
+                <TextView
+                    android:id="@+id/mCreditTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/yPaddingMiddle"
+                    android:text="0"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextHugeSize"/>
+
+                <TextView
+                    android:id="@+id/seniority_fee"
+                    style="@style/WrapWrap"
+                    android:layout_width="65dp"
+                    android:layout_alignBottom="@+id/mSeniorityPriceTv"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginBottom="@dimen/yPaddingSmall"
+                    android:text="@string/seniority_fee_"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextSmallSize"/>
+
+                <TextView
+                    android:id="@+id/mSeniorityPriceTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/appoint_cost"
+                    android:layout_toRightOf="@+id/seniority_fee"
+                    android:text="0.00"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextHugeSize"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/appoint_cost"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/time_credit"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextSmallSize"/>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight_10"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/yPaddingMiddle"
+                android:text="@string/teacher_introduce"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <View style="@style/DividerFixedHeight"/>
+
+            <TextView
+                android:id="@+id/mTeacherIntroduceTv"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <View
+                style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/time_evaluate_new"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/more"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mEvaluateRv"
+                style="@style/MatchWrap"/>
+
+            <View style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/works_appreciate"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:id="@+id/mTakePayTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/more"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mBasicServicesRv"
+                style="@style/MatchWrap"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomView"
+        style="@style/MatchWrap"
+        android:layout_alignParentBottom="true"
+        android:background="@color/yWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mBtn"
+            style="@style/MatchWrap"
+            android:background="@color/yRed"
+            android:gravity="center"
+            android:padding="@dimen/yPadding"
+            android:text="@string/on_destine"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+    </LinearLayout>
+</RelativeLayout>

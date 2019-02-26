@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/pay_success" />
+
+    <TextView
+        android:id="@+id/mContentTv"
+        style="@style/MatchWrap"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/yWhite"
+        android:gravity="center_horizontal"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextLargeSize" />
+
+    <Button
+        android:id="@+id/mConfirmBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:layout_marginRight="@dimen/yPadding"
+        android:enabled="true"
+        android:text="@string/confirm"
+        android:textSize="@dimen/yTextBigSize" />
+</LinearLayout>

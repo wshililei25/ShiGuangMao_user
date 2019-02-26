@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/recharge"/>
+
+    <TextView
+        style="@style/MatchWrap"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/yWhite"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/yPaddingBigLar"
+        android:text="@string/recharge_balance"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextMiddleSize"/>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+
+    <LinearLayout
+        style="@style/MatchWrap"
+        android:background="@color/yWhite"
+        android:gravity="center"
+        android:paddingTop="@dimen/yPaddingBig"
+        android:paddingBottom="@dimen/yPaddingBig">
+
+        <ImageView
+            android:id="@+id/mMinusIv"
+            style="@style/WrapWrap"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/reduce"/>
+
+        <EditText
+            android:id="@+id/mAmountEt"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:gravity="center"
+            android:text="100"
+            android:enabled="false"
+            android:clickable="false"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextMaxSize"
+            android:textStyle="bold"
+            android:theme="@style/EditTextUnderline"/>
+
+        <ImageView
+            android:id="@+id/mPlusIv"
+            style="@style/WrapWrap"
+            android:src="@drawable/increase"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite">
+
+        <TextView
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingBigLar"
+            android:text="@string/pay_way"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <View
+            style="@style/DividerFixedHeight"/>
+
+        <com.yizhipin.base.widgets.PayRadioGroup
+            android:id="@+id/mPayRadioGroup"
+            style="@style/MatchWrap"
+            android:orientation="vertical">
+
+            <com.yizhipin.base.widgets.PayRadioPurified
+                android:id="@+id/mAliRadio"
+                style="@style/MatchWrap"
+                app:checked="true"
+                app:logo1="@drawable/alipay"
+                app:radio="@drawable/radio"
+                app:title1="@string/ali_pay"/>
+
+            <com.yizhipin.base.widgets.PayRadioPurified
+                android:id="@+id/mWechatRadio"
+                style="@style/MatchWrap"
+                app:logo1="@drawable/wechatpay"
+                app:radio="@drawable/radio"
+                app:title1="@string/wechat_pay"/>
+
+        </com.yizhipin.base.widgets.PayRadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mConfirmBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:layout_marginRight="@dimen/yPadding"
+        android:enabled="true"
+        android:text="@string/confirm_recharge"
+        android:textSize="@dimen/yTextBigSize"/>
+</LinearLayout>

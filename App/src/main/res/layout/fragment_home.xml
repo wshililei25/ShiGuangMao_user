@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:layout_height="@dimen/yBtnHeight"
+        android:background="@color/yWhite"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingRight="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mNewIv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/yPaddingMiddle"
+            android:src="@drawable/bell"/>
+
+        <ImageView
+            android:id="@+id/mNewCountIv"
+            style="@style/WrapWrap"
+            android:layout_alignRight="@+id/mNewIv"
+            android:layout_marginTop="@dimen/yPaddingMinSmall"
+            android:src="@drawable/point"
+            android:visibility="gone"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerInParent="true"
+            android:text="@string/nav_bar_home"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextLargeSize"/>
+
+        <TextView
+            android:id="@+id/mStoreTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/route"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleLarSize"/>
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        style="@style/MatchWrap">
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical">
+
+            <com.youth.banner.Banner
+                android:id="@+id/mHomeBanner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mCategoryRv"
+                style="@style/MatchWrap"
+                android:background="@color/yWhite"
+                android:paddingBottom="@dimen/yPadding"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:background="@color/yWhite"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    android:id="@+id/tv"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/route"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="@string/time_top"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <com.yizhipin.base.widgets.MarqueeTextView
+                    android:id="@+id/mNewsTv"
+                    style="@style/WrapWrap"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginRight="@dimen/yPadding"
+                    android:layout_toLeftOf="@+id/mMoreTv"
+                    android:layout_toRightOf="@+id/tv"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:singleLine="true"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:id="@+id/mMoreTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/more"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecommendRv"
+                style="@style/MatchWrap"
+                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:background="@color/yWhite"
+                android:padding="@dimen/yPaddingSmall"/>
+
+            <TextView
+                style="@style/MatchWrap"
+                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:background="@color/yWhite"
+                android:drawableLeft="@drawable/hotphoto"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:padding="@dimen/yPaddingMiddle"
+                android:text="@string/hot_scenic"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mGoodsRv"
+                style="@style/MatchWrap"
+                android:paddingBottom="@dimen/common_padding_small"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

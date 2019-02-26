@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        style="@style/MatchWrap"
+        app:titleText="@string/relevance_user_add"/>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:text="@string/input_mobile_"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <EditText
+            android:id="@+id/mEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yPaddingBig"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:background="@color/yWhite"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/yBlackLight"
+            android:textColorHint="@color/yHint"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <Button
+            android:id="@+id/mBtn"
+            style="@style/FullBtnStyle"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:text="@string/add"/>
+    </LinearLayout>
+
+</LinearLayout>
