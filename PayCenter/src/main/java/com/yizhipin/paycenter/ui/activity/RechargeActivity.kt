@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -14,7 +15,14 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alipay.sdk.app.PayTask
 import com.google.gson.Gson
+import com.tencent.mm.opensdk.modelbase.BaseReq
+import com.tencent.mm.opensdk.modelbase.BaseResp
+import com.tencent.mm.opensdk.modelpay.PayReq
+import com.tencent.mm.opensdk.openapi.IWXAPI
+import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.WechatAppID
 import com.yizhipin.base.data.response.AliPayResult
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
@@ -32,6 +40,8 @@ import com.yizhipin.shop.presenter.PayPresenter
 import com.yizhipin.shop.presenter.view.PayView
 import kotlinx.android.synthetic.main.activity_recharge.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import org.json.JSONObject
 
 /**
  * Created by ${XiLei} on 2018/9/24.
@@ -39,7 +49,7 @@ import org.jetbrains.anko.startActivity
  * 充值
  */
 @Route(path = RouterPath.PayCenter.PATH_PAY_RECHARGE)
-class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickListener {
+class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, IWXAPIEventHandler, View.OnClickListener {
 
     @Autowired(name = BaseConstant.KEY_IS_CASHPLEDGE)
     @JvmField
@@ -47,12 +57,14 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
 
     private var mType = "Alipay" //支付方式
     private val SDK_PAY_FLAG = 1
+    private lateinit var mIWXAPI: IWXAPI
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recharge)
 
         initView()
+        initWechat()
     }
 
     override fun injectComponent() {
@@ -61,7 +73,6 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     }
 
     private fun initView() {
-
         if (mIsCashPledge) {
             mHintView.setVisible(true)
             mBalanceRadio.setVisible(true)
@@ -89,6 +100,24 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
                 }
             }
         })
+    }
+
+    /**
+     * WeChat Pay注册
+     */
+    private fun initWechat() {
+        mIWXAPI = WXAPIFactory.createWXAPI(this, null)
+        when (AppPrefsUtils.getString(BaseConstant.KEY_SHOP_NAME)) {
+            "临汾店" -> mIWXAPI.registerApp(WechatAppID.LINFEN)
+            "三亚店" -> mIWXAPI.registerApp(WechatAppID.SANYA)
+        }
+        mIWXAPI.handleIntent(intent, this) //支付结果监听
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        mIWXAPI.handleIntent(intent, this) //支付结果监听
     }
 
     override fun onClick(v: View) {
@@ -143,7 +172,18 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
                 payThread.start()
             }
             "Weixin" -> {
-
+                val json = JSONObject(result)
+                val req = PayReq()
+                req.appId = json.getString("appid")
+                req.partnerId = json.getString("partnerid")
+                req.prepayId = json.getString("prepayid")
+                req.packageValue = json.getString("package")
+                req.nonceStr = json.getString("noncestr")
+                req.timeStamp = json.getString("timestamp")
+                req.sign = json.getString("sign")
+                toast("正常调起微信支付")
+                // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
+                mIWXAPI.sendReq(req)
             }
         }
     }
@@ -194,4 +234,15 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     }
     //支付宝支付 end
 
+    /**
+     * 微信支付结果通知
+     */
+    override fun onResp(resp: BaseResp) {
+        Log.d("XiLei", "resp.toString = " + resp!!.toString())
+        Log.d("XiLei", "onPayFinish, errCode = " + resp!!.errCode)
+
+    }
+
+    override fun onReq(resp: BaseReq) {
+    }
 }

@@ -31,7 +31,8 @@ android {
         config {
             keyAlias 'ShiGuangMao2019'
             keyPassword 'ShiGuangMao2019'
-            storeFile file('D://android/workspace_jianzhi/keystore/shiguangmao_user.jks')
+//            storeFile file('D://android/workspace_jianzhi/keystore/shiguangmao_user.jks')
+            storeFile file('F://workspace_xilei/keyStore/shiguangmao_user.jks')
             storePassword 'ShiGuangMao2019'
         }
     }

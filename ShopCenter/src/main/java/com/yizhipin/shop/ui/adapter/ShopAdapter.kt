@@ -32,7 +32,7 @@ class ShopAdapter(var context: Context) : BaseRecyclerViewAdapter<Store, ShopAda
             holder.itemView.mGoodsNameTv.text = storeName
             holder.itemView.mAddressTv.text = province.plus(city).plus(detail)
             holder.itemView.mNumTv.text = "服务顾客：${serviceCount}人次"
-            holder.itemView.mStarView.setCheckStarCount(starCount.toInt())
+            holder.itemView.mStarView.setCheckStarCount(starCount)
         }
 
         holder.itemView.mSelectTv.onClick {

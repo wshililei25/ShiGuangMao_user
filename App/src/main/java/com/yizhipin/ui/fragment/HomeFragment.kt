@@ -11,10 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.mm.opensdk.openapi.IWXAPI
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.PhotographStatus
 import com.yizhipin.base.common.TeacherStatus
+import com.yizhipin.base.common.WechatAppID
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.onClick
@@ -65,6 +68,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
 
     private var mLongitude: Double = 0.00
     private var mLatitude: Double = 0.00
+    private lateinit var mIWXAPI: IWXAPI
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -189,6 +193,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
                 mStoreTv.text = data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)
                 loadGoodsData(data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
+                AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME))
             }
         }
     }
@@ -283,14 +288,14 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
                 if (location != null) {
                     mLongitude = location.longitude
                     mLatitude = location.latitude
-                    Log.d("2", "经纬度：" + location.longitude + "," + location.latitude)
+                    Log.d("XiLei", "经纬度：" + location.longitude + "," + location.latitude)
                     loadDefaultStore(location.longitude, location.latitude)
                 }
             }
 
             override fun onTimeout() {
                 //定位超时回调
-                Log.d("2", "定位超时")
+                Log.d("XiLei", "定位超时")
             }
         }
         locationTracker.startListening()
@@ -311,7 +316,8 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
      * 获取附近门店成功
      */
     override fun onGetDefaultStoreSuccess(result: Store) {
-        AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, result.id.toString())
+        AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, result.id)
+        AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, result.storeName)
         mStoreTv.text = result.storeName
         loadGoodsData(result.id.toString())
     }
