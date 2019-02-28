@@ -1,5 +1,6 @@
 package com.yizhipin.base.rx
 
+import android.util.Log
 import com.yizhipin.base.presenter.view.BaseView
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -8,7 +9,7 @@ import io.reactivex.disposables.Disposable
 /**
  * Created by ${XiLei} on 2018/7/26.
  */
-open  class BaseSubscriber<T>(val baseView: BaseView) : Observer<T> {
+open class BaseSubscriber<T>(val baseView: BaseView) : Observer<T> {
     override fun onSubscribe(d: Disposable) {
 
     }
@@ -18,10 +19,12 @@ open  class BaseSubscriber<T>(val baseView: BaseView) : Observer<T> {
     }
 
     override fun onError(e: Throwable) {
+        Log.d("XiLei", "e.mes=" + e.message)
         baseView.hideLoading()
-        if(e is BaseException){
+        if (e is BaseException) {
+            Log.d("XiLei", "e.mes22222=" + e.msg)
             baseView.onError(e.msg)
-        } else if (e is DataNullException){
+        } else if (e is DataNullException) {
             baseView.onDataIsNull()
         }
     }

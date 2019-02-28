@@ -1,5 +1,6 @@
 package com.yizhipin.goods.presenter
 
+import android.util.Log
 import com.yizhipin.base.data.response.BasicServices
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.OrderDetails
@@ -24,6 +25,11 @@ open class SetMealDetailsPresenter @Inject constructor() : BasePresenter<SetMeal
         mServiceImpl.getMealDetails(map).execute(object : BaseSubscriber<SetMealDetails>(mView) {
             override fun onNext(t: SetMealDetails) {
                 mView.onGetMealDetailsSuccess(t)
+            }
+
+            override fun onError(e: Throwable) {
+                Log.d("XiLei", "e.mes1111111111=" + e.message)
+                baseView.onError(e.message!!)
             }
         }, mLifecycleProvider)
     }

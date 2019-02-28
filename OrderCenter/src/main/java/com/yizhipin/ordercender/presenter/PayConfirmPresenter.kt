@@ -14,6 +14,16 @@ class PayConfirmPresenter @Inject constructor() : BasePresenter<PayConfirmView>(
     @Inject
     lateinit var mOrderServiceImpl: OrderServiceImpl
 
+    fun mealFrontMoney(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mOrderServiceImpl.mealFrontMoney(map).execute(object : BaseSubscriber<String?>(mView) {
+            override fun onNext(t: String?) {
+                mView.onMealFrontMoneySuccess(t)
+            }
+        }, mLifecycleProvider)
+
+    }
+
     /**
      * 提交订单
      */
@@ -26,6 +36,7 @@ class PayConfirmPresenter @Inject constructor() : BasePresenter<PayConfirmView>(
         }, mLifecycleProvider)
 
     }
+
     /**
      * 提交订单(一品小住)
      */

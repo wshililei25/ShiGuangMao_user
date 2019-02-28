@@ -145,7 +145,8 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
                     , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_HUAZHUANG)
 
             R.id.mBtn -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_PAY)
-                    .withString(BaseConstant.KEY_PAY_AMOUNT,mRealityPriceTv.text.toString())
+                    .withString(BaseConstant.KEY_MEAL_ORDER_ID, mOrderId)
+                    .withString(BaseConstant.KEY_PAY_AMOUNT, "1000")
                     .withString(BaseConstant.KEY_PAY_FROM, "套餐预定")
                     .navigation()
 

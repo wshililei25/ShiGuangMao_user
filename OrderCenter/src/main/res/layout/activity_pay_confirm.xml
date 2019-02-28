@@ -111,6 +111,13 @@
                 android:orientation="vertical">
 
                 <com.yizhipin.base.widgets.PayRadioPurified
+                    android:id="@+id/mBalanceRadio"
+                    style="@style/MatchWrap"
+                    app:logo1="@drawable/friendpay"
+                    app:radio="@drawable/radio"
+                    app:title1="@string/balance_pay"/>
+
+                <com.yizhipin.base.widgets.PayRadioPurified
                     android:id="@+id/mAliRadio"
                     style="@style/MatchWrap"
                     app:checked="true"
@@ -125,12 +132,6 @@
                     app:radio="@drawable/radio"
                     app:title1="@string/wechat_pay"/>
 
-                <com.yizhipin.base.widgets.PayRadioPurified
-                    android:id="@+id/mBalanceRadio"
-                    style="@style/MatchWrap"
-                    app:logo1="@drawable/friendpay"
-                    app:radio="@drawable/radio"
-                    app:title1="@string/balance_pay"/>
             </com.yizhipin.base.widgets.PayRadioGroup>
 
         </LinearLayout>
@@ -191,6 +192,7 @@
                 style="@style/FullBtnStyle"
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="11dp"
                 android:enabled="true"
                 android:gravity="center"
                 android:paddingLeft="@dimen/yPaddingBig"

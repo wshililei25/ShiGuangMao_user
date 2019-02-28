@@ -37,6 +37,10 @@ class OrderServiceImpl @Inject constructor() : OrderService {
         return mRepository.submitOrder(map).convert()
     }
 
+    override fun mealFrontMoney(map: MutableMap<String, String>): Observable<String?> {
+        return mRepository.mealFrontMoney(map).convert()
+    }
+
     override fun submitOrderReside(map: MutableMap<String, String>): Observable<String> {
         return mRepository.submitOrderReside(map).convert()
     }

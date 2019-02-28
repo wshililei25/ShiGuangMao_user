@@ -51,7 +51,7 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     @JvmField
     var mIsCashPledge: Boolean = false //余额充值还是押金充值
 
-    private var mType = "Alipay" //支付方式
+    private var mPayType = "Alipay" //支付方式
     private val SDK_PAY_FLAG = 1
     private lateinit var mIWXAPI: IWXAPI
 
@@ -86,13 +86,13 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
                     (group.getChildAt(i) as PayRadioPurified).setChangeImg(checkedId)
                 }
                 if (mBalanceRadio.isChecked) {
-                    mType = "yue"
+                    mPayType = "yue"
                 }
                 if (mAliRadio.isChecked) {
-                    mType = "Alipay"
+                    mPayType = "Alipay"
                 }
                 if (mWechatRadio.isChecked) {
-                    mType = "Weixin"
+                    mPayType = "Weixin"
                 }
             }
         })
@@ -127,7 +127,7 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
 //                map.put("amount", mAmountEt.text.toString()) //暂时注释
                 map.put("amount", "0.01")
-                map.put("payType", mType)
+                map.put("payType", mPayType)
                 if (mIsCashPledge) { //押金充值
                     mBasePresenter.rechargeCashPledge(map)
                 } else {  //余额充值
@@ -140,7 +140,7 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     }
 
     override fun onRechargeSuccess(result: String) {
-        when (mType) {
+        when (mPayType) {
 
             "yue" -> {
                 startActivity<PaySuccessActivity>(BaseConstant.KEY_PAY_CONTENT to "成功充值押金" + mAmountEt.text.toString() + "元")

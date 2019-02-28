@@ -12,7 +12,7 @@ import io.reactivex.functions.Function
 class BaseFunc<T> : Function<BaseResp<T>, Observable<T>> {
     override fun apply(t: BaseResp<T>): Observable<T> {
         if (!t.code.equals(BaseResultCode.SUCCESS)) {
-            return Observable.error(BaseException(t.code, t.msg))
+            return Observable.error(BaseException(t.code, t.msg, t.data!!))
         }
 
         if (t.data == null) {

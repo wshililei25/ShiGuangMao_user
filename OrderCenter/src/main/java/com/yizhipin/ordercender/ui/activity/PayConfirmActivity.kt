@@ -1,18 +1,33 @@
 package com.yizhipin.ordercender.ui.activity
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
+import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.alipay.sdk.app.PayTask
+import com.google.gson.Gson
+import com.tencent.mm.opensdk.modelpay.PayReq
+import com.tencent.mm.opensdk.openapi.IWXAPI
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.WechatAppID
+import com.yizhipin.base.data.response.AliPayResult
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
+import com.yizhipin.base.payresult.PayResult
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.ui.activity.PaySuccessActivity
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.base.utils.BaseAlertDialog
-import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.base.widgets.PayPasswordDialog
 import com.yizhipin.base.widgets.PayRadioGroup
 import com.yizhipin.base.widgets.PayRadioPurified
@@ -24,9 +39,11 @@ import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.PayConfirmPresenter
 import com.yizhipin.ordercender.presenter.PayConfirmView
 import com.yizhipin.provider.common.ProvideReqCode
-import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_pay_confirm.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import org.json.JSONObject
 
 /**
  * Created by ${XiLei} on 2018/9/24.
@@ -51,12 +68,18 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
     @JvmField
     var mAddressId: Int = 0
 
+    @Autowired(name = BaseConstant.KEY_MEAL_ORDER_ID)
+    @JvmField
+    var mOrderId: String = "" //订单id
+
+    private lateinit var mIWXAPI: IWXAPI
     private var mGoodsList: MutableList<Goods>? = null
     private var mGoodsId = "" //商品id
     private var mProductCounts = "" //商品数量
     private var mConponId = "" //优惠券id
-    private var mType = "balance" //支付方式
+    private var mPayType = "Alipay" //支付方式
     private lateinit var mPayPasswordDialog: PayPasswordDialog
+    private val SDK_PAY_FLAG = 1
     private var mAmount = 0.00
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +87,7 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
         setContentView(R.layout.activity_pay_confirm)
 
         initView()
+        initWechat()
     }
 
     override fun injectComponent() {
@@ -80,8 +104,6 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
             if (mIsBuy) mTypeTv.text = getString(R.string.dress_buy) else mTypeTv.text = getString(R.string.dress_hire)
         }
         /* mGoodsList = intent.getParcelableArrayListExtra<Goods>(OrderConstant.KEY_GOODS_LIST) as MutableList<Goods>
-
-
          if (mIsPin) {
              for (good in mGoodsList as MutableList<Goods>) {
                  mAmount += good.pinPrice!! * good.goodsCount
@@ -112,13 +134,13 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                     (group.getChildAt(i) as PayRadioPurified).setChangeImg(checkedId)
                 }
                 if (mBalanceRadio.isChecked) {
-                    mType = "balance"
+                    mPayType = "yue"
                 }
                 if (mAliRadio.isChecked) {
-                    mType = "Alipay"
+                    mPayType = "Alipay"
                 }
                 if (mWechatRadio.isChecked) {
-                    mType = "Weixin"
+                    mPayType = "Weixin"
                 }
             }
         })
@@ -127,52 +149,72 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
         mCouponView.onClick(this)
     }
 
+    /**
+     * WeChat Pay注册
+     */
+    private fun initWechat() {
+        mIWXAPI = WXAPIFactory.createWXAPI(this, null)
+        when (AppPrefsUtils.getString(BaseConstant.KEY_SHOP_NAME)) {
+            "临汾店" -> mIWXAPI.registerApp(WechatAppID.LINFEN)
+            "三亚店" -> mIWXAPI.registerApp(WechatAppID.SANYA)
+        }
+    }
+
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mPayBtn -> {
 
-                if (AppPrefsUtils.getString(ProviderConstant.KEY_PAY_PWD).isNullOrEmpty()) {
-
-                    val baseAlertDialog = BaseAlertDialog(this)
-                    baseAlertDialog.setMessage("请先设置支付密码")
-                    baseAlertDialog.show()
-                    baseAlertDialog.setOkClickInterface(object : BaseAlertDialog.OkClickInterface {
-                        override fun okClickListener() {
-                            ARouter.getInstance().build(RouterPath.UserCenter.SET_PAY_PWD).navigation()
-                        }
-                    })
-                    return
-                }
-
-                mPayPasswordDialog = PayPasswordDialog(this, R.style.PayDialog)
-                mPayPasswordDialog.setDialogClick(object : PayPasswordDialog.DialogClick {
-                    override fun doConfirm(password: String?) {
+                when (mPayFrom) {
+                    "套餐预定" -> {
                         var map = mutableMapOf<String, String>()
-                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-                        map.put("conponId", mConponId)
-                        map.put("payType", mType)
-                        map.put("payPwd", password!!)
-
-                        if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
-                            map.put("pid", mGoodsList!!.get(0).id.toString())
-                            map.put("productCount", mGoodsList!!.get(0).goodsCount.toString())
-                            map.put("beginTime", DateUtils.parseDateNew(mGoodsList!!.get(0).startDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
-                            map.put("endTime", DateUtils.parseDateNew(mGoodsList!!.get(0).endDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
-                            mBasePresenter.submitOrderReside(map)
-                        } else {
-                            map.put("pids", mGoodsId)
-                            map.put("addressId", mAddressId.toString())
-                            map.put("productCounts", mProductCounts)
-                            mBasePresenter.submitOrder(map)
-                        }
-
-                        mPayPasswordDialog.dismiss()
+                        map.put("orderId", mOrderId)
+                        map.put("payType", mPayType)
+                        mBasePresenter.mealFrontMoney(map)
                     }
-                })
-                mPayPasswordDialog.show()
-                mPayPasswordDialog.forgetPwdTv.onClick {
-                    ARouter.getInstance().build(RouterPath.UserCenter.RESET_PAY_PWD).navigation()
                 }
+
+                /*  if (AppPrefsUtils.getString(ProviderConstant.KEY_PAY_PWD).isNullOrEmpty()) {
+
+                      val baseAlertDialog = BaseAlertDialog(this)
+                      baseAlertDialog.setMessage("请先设置支付密码")
+                      baseAlertDialog.show()
+                      baseAlertDialog.setOkClickInterface(object : BaseAlertDialog.OkClickInterface {
+                          override fun okClickListener() {
+                              ARouter.getInstance().build(RouterPath.UserCenter.SET_PAY_PWD).navigation()
+                          }
+                      })
+                      return
+                  }
+
+                  mPayPasswordDialog = PayPasswordDialog(this, R.style.PayDialog)
+                  mPayPasswordDialog.setDialogClick(object : PayPasswordDialog.DialogClick {
+                      override fun doConfirm(password: String?) {
+                          var map = mutableMapOf<String, String>()
+                          map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                          map.put("conponId", mConponId)
+                          map.put("payType", mType)
+                          map.put("payPwd", password!!)
+
+                          if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
+                              map.put("pid", mGoodsList!!.get(0).id.toString())
+                              map.put("productCount", mGoodsList!!.get(0).goodsCount.toString())
+                              map.put("beginTime", DateUtils.parseDateNew(mGoodsList!!.get(0).startDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
+                              map.put("endTime", DateUtils.parseDateNew(mGoodsList!!.get(0).endDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
+                              mBasePresenter.submitOrderReside(map)
+                          } else {
+                              map.put("pids", mGoodsId)
+                              map.put("addressId", mAddressId.toString())
+                              map.put("productCounts", mProductCounts)
+                              mBasePresenter.submitOrder(map)
+                          }
+
+                          mPayPasswordDialog.dismiss()
+                      }
+                  })
+                  mPayPasswordDialog.show()
+                  mPayPasswordDialog.forgetPwdTv.onClick {
+                      ARouter.getInstance().build(RouterPath.UserCenter.RESET_PAY_PWD).navigation()
+                  }*/
             }
 
             R.id.mCouponView -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_COUPON)
@@ -180,6 +222,93 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                     .navigation(this, ProvideReqCode.CODE_REQ_COUPON)
         }
     }
+
+    /**
+     * 套餐支付定金
+     */
+    override fun onMealFrontMoneySuccess(result: String?) {
+        when (mPayType) {
+
+            "yue" -> {
+                startActivity<PaySuccessActivity>(BaseConstant.KEY_PAY_CONTENT to getString(R.string.pay_success))
+                finish()
+            }
+            "Alipay" -> {
+                val payRunnable = Runnable {
+                    val alipay = PayTask(this@PayConfirmActivity)
+                    val result = alipay.payV2(result.toString(), true)
+                    Log.i("XiLei", "aliPay=" + result.toString())
+                    val msg = Message()
+                    msg.what = SDK_PAY_FLAG
+                    msg.obj = result
+                    mHandler.sendMessage(msg)
+                }
+                // 必须异步调用
+                val payThread = Thread(payRunnable)
+                payThread.start()
+            }
+            "Weixin" -> {
+                val json = JSONObject(result.toString())
+                val req = PayReq()
+                req.appId = json.getString("appid")
+                req.partnerId = json.getString("partnerid")
+                req.prepayId = json.getString("prepayid")
+                req.packageValue = json.getString("package")
+                req.nonceStr = json.getString("noncestr")
+                req.timeStamp = json.getString("timestamp")
+                req.sign = json.getString("sign")
+                toast("正常调起微信支付")
+                // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
+                mIWXAPI.sendReq(req)
+            }
+        }
+    }
+
+    //支付宝支付 begin
+    @SuppressLint("HandlerLeak")
+    private val mHandler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            when (msg.what) {
+                SDK_PAY_FLAG -> {
+                    val payResult = PayResult(msg.obj as Map<String, String>)
+                    /**
+                     * 对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+                     */
+                    val resultInfo = payResult.result// 同步返回需要验证的信息
+                    val resultStatus = payResult.resultStatus
+                    // 判断resultStatus 为9000则代表支付成功
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        Log.d("XiLei", "payResult=" + payResult);
+//                        showAlert(this@RechargeActivity, getString(R.string.pay_success) + payResult)
+                        var gson = Gson().fromJson<AliPayResult>(resultInfo, AliPayResult::class.java)
+                        startActivity<PaySuccessActivity>(BaseConstant.KEY_PAY_CONTENT to getString(R.string.pay_success))
+                        finish()
+                    } else {
+                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知
+                        if (TextUtils.equals(resultStatus, "6001")) {
+                            showAlert(this@PayConfirmActivity, getString(R.string.pay_cancel))
+                            return
+                        }
+                        showAlert(this@PayConfirmActivity, getString(R.string.pay_failed))
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showAlert(ctx: Context, info: String) {
+        showAlert(ctx, info, null)
+    }
+
+    private fun showAlert(ctx: Context, info: String, onDismiss: DialogInterface.OnDismissListener?) {
+        AlertDialog.Builder(ctx)
+                .setMessage(info)
+                .setPositiveButton(R.string.confirm, null)
+                .setOnDismissListener(onDismiss)
+                .show()
+    }
+    //支付宝支付 end
 
     /**
      * 下单成功

@@ -59,6 +59,10 @@ class OrderRepository @Inject constructor() {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).submitOrder()
     }
 
+    fun mealFrontMoney(map: MutableMap<String, String>): Observable<BaseResp<String?>> {
+        return RetrofitFactoryPost(map).create(OrderApi::class.java).mealFrontMoney()
+    }
+
     fun submitOrderReside(map: MutableMap<String, String>): Observable<BaseResp<String>> {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).submitOrderReside()
     }

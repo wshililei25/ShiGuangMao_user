@@ -36,6 +36,9 @@ dependencies {
     implementation project(':Provider')
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+
+    //支付宝pay
+    api (name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
 }
 
 //Parcelable序列化插件

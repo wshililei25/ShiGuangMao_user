@@ -58,6 +58,9 @@ interface OrderApi {
     @POST(Api.SUBMIT_ORDER)
     fun submitOrder(): Observable<BaseResp<String>>
 
+    @POST(Api.MEAL_FRONT_MONEY)
+    fun mealFrontMoney(): Observable<BaseResp<String?>>
+
     /**
      * 提交订单(一品小住)
      */
@@ -75,6 +78,7 @@ interface OrderApi {
      */
     @GET(Api.RED_PACKET_LIST)
     fun getRedPacketList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<RedPacket>>>
+
     /**
      * 红包总额
      */
