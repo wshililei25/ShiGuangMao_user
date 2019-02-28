@@ -22,7 +22,6 @@ class OrderListPresenter @Inject constructor() : BasePresenter<OrderListView>() 
      */
     fun getOrderList(map: MutableMap<String, String>) {
 
-//        mView.showLoading()
         mOrderServiceImpl.getOrderList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Order>>>(mView) {
             override fun onNext(t: BasePagingResp<MutableList<Order>>) {
                 mView.onGetOrderListResult(t)

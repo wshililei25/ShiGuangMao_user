@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -15,11 +14,8 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alipay.sdk.app.PayTask
 import com.google.gson.Gson
-import com.tencent.mm.opensdk.modelbase.BaseReq
-import com.tencent.mm.opensdk.modelbase.BaseResp
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.IWXAPI
-import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.WechatAppID
@@ -49,7 +45,7 @@ import org.json.JSONObject
  * 充值
  */
 @Route(path = RouterPath.PayCenter.PATH_PAY_RECHARGE)
-class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, IWXAPIEventHandler, View.OnClickListener {
+class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickListener {
 
     @Autowired(name = BaseConstant.KEY_IS_CASHPLEDGE)
     @JvmField
@@ -111,13 +107,6 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, IWXAPIEventHa
             "临汾店" -> mIWXAPI.registerApp(WechatAppID.LINFEN)
             "三亚店" -> mIWXAPI.registerApp(WechatAppID.SANYA)
         }
-        mIWXAPI.handleIntent(intent, this) //支付结果监听
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-        mIWXAPI.handleIntent(intent, this) //支付结果监听
     }
 
     override fun onClick(v: View) {
@@ -233,16 +222,4 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, IWXAPIEventHa
                 .show()
     }
     //支付宝支付 end
-
-    /**
-     * 微信支付结果通知
-     */
-    override fun onResp(resp: BaseResp) {
-        Log.d("XiLei", "resp.toString = " + resp!!.toString())
-        Log.d("XiLei", "onPayFinish, errCode = " + resp!!.errCode)
-
-    }
-
-    override fun onReq(resp: BaseReq) {
-    }
 }

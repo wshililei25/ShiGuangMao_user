@@ -1,8 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.yizhipin.paycenter">
+    package="com.yizhipin.paycenter">
+
     <application>
-        <activity android:name=".ui.activity.RechargeActivity"/>
-        <activity android:name=".ui.activity.WithdrawActivity"/>
-        <activity android:name=".ui.activity.CashPledgeActivity"/>
+        <activity
+            android:name=".ui.activity.RechargeActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.shiguangmao.sgm.wxapi.WXPayEntryActivity"
+            android:exported="true" />
+        <activity android:name=".ui.activity.WithdrawActivity" />
+        <activity android:name=".ui.activity.CashPledgeActivity" />
     </application>
 </manifest>

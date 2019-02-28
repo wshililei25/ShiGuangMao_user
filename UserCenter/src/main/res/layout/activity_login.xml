@@ -115,7 +115,7 @@
         android:layout_marginLeft="@dimen/yPaddingBigEven"
         android:layout_marginTop="@dimen/yPaddingBig"
         android:layout_marginRight="@dimen/yPaddingBigEven"
-        >
+        android:visibility="gone">
 
         <ImageView
             style="@style/WrapWrap"

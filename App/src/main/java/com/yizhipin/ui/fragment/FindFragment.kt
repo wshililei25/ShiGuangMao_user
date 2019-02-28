@@ -1,6 +1,7 @@
 package com.yizhipin.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
+import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
@@ -19,14 +23,17 @@ import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.generalizecenter.ui.activity.InteractionActivity
 import com.yizhipin.presenter.HomePresenter
 import com.yizhipin.presenter.view.HomeView
+import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.router.RouterPath
+import com.yizhipin.shop.ui.activity.ShopActivity
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
 import fr.quentinklein.slt.LocationTracker
 import fr.quentinklein.slt.TrackerSettings
 import kotlinx.android.synthetic.main.fragment_find.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.startActivityForResult
 
 
 /**
@@ -46,6 +53,7 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         super.onViewCreated(view, savedInstanceState)
         initLocation()
         initView()
+        initObserve()
     }
 
     override fun injectComponent() {
@@ -56,14 +64,36 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
     private fun initView() {
         mInteractionTv.onClick(this)
         mIntegralMallTv.onClick(this)
+        mStoreTv.onClick(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mInteractionTv -> startActivity<InteractionActivity>()
             R.id.mIntegralMallTv -> afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_INTEGRAL).navigation() }
-
+            R.id.mStoreTv -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            ProvideReqCode.CODE_RESULT_SHOP -> {
+                mStoreTv.text = data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)
+                AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
+                AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME))
+                Bus.send(SelectShopEvent(data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)))
+            }
+        }
+    }
+
+    private fun initObserve() {
+        Bus.observe<SelectShopEvent>()
+                .subscribe { t: SelectShopEvent ->
+                    run {
+                        mStoreTv.text = t.name
+                    }
+                }.registerInBus(this)
     }
 
     override fun onStart() {

@@ -44,15 +44,15 @@ class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderA
 
             holder.itemView.mGoodsRv.layoutManager = LinearLayoutManager(context!!)
             mOrderGoodsAdapter = OrderGoodsAdapter(context!!)
-            mOrderGoodsAdapter.setData(products!!)
+//            mOrderGoodsAdapter.setData(products!!)
             holder.itemView.mGoodsRv.adapter = mOrderGoodsAdapter
 
             holder.itemView.mPriceTv.text = "${payAmount} (运费:  ¥${postage})"
-            when (orderType) {
+          /*  when (orderType) {
                 "buy" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_original)
                 "tuan" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_pin_tuan)
                 "bai" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_pin_tuan)
-            }
+            }*/
 
             when (status.toInt()) {
                 1 -> {

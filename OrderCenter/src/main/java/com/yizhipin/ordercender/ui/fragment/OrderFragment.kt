@@ -68,7 +68,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, BGAR
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
         map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-        map.put("statusStr", arguments!!.getString(OrderConstant.KEY_ORDER_STATUS, "-1").toString())
+        map.put("status", arguments!!.getString(OrderConstant.KEY_ORDER_STATUS, "-1").toString())
         mMultiStateView.startLoading()
         mBasePresenter.getOrderList(map)
     }

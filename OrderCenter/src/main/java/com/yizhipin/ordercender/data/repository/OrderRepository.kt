@@ -52,7 +52,7 @@ class OrderRepository @Inject constructor() {
         根据状态查询订单列表
      */
     fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Order>>> {
-        return RetrofitFactoryGet().create(OrderApi::class.java).getOrderList(map["currentPage"]!!, map["uid"]!!, map["statusStr"]!!)
+        return RetrofitFactoryGet().create(OrderApi::class.java).getOrderList(map["currentPage"]!!, map["uid"]!!, map["status"]!!)
     }
 
     fun submitOrder(map: MutableMap<String, String>): Observable<BaseResp<String>> {

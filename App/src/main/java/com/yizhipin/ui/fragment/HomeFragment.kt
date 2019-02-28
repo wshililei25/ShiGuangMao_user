@@ -11,15 +11,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
-import com.tencent.mm.opensdk.openapi.IWXAPI
-import com.tencent.mm.opensdk.openapi.WXAPIFactory
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.PhotographStatus
 import com.yizhipin.base.common.TeacherStatus
-import com.yizhipin.base.common.WechatAppID
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
+import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
@@ -68,7 +68,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
 
     private var mLongitude: Double = 0.00
     private var mLatitude: Double = 0.00
-    private lateinit var mIWXAPI: IWXAPI
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -84,6 +83,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         initBanner()
         initCategoryRv()
         initRecommendRv()
+        initObserve()
     }
 
     override fun injectComponent() {
@@ -194,8 +194,18 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
                 loadGoodsData(data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME))
+                Bus.send(SelectShopEvent(data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)))
             }
         }
+    }
+
+    private fun initObserve() {
+        Bus.observe<SelectShopEvent>()
+                .subscribe { t: SelectShopEvent ->
+                    run {
+                        mStoreTv.text = t.name
+                    }
+                }.registerInBus(this)
     }
 
     override fun onStart() {

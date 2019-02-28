@@ -50,7 +50,7 @@ interface OrderApi {
      */
     @GET(Api.ORDER_LIST)
     fun getOrderList(@Query("currentPage") currentPage: String, @Query("uid") uid: String
-                     , @Query("statusStr") status: String): Observable<BasePagingResp<MutableList<Order>>>
+                     , @Query("status") status: String): Observable<BasePagingResp<MutableList<Order>>>
 
     /**
      * 提交订单

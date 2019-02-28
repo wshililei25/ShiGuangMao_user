@@ -1,6 +1,7 @@
 package com.yizhipin.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -8,11 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.FeeRecord
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
+import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
@@ -21,10 +25,12 @@ import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.ordercender.ui.activity.OrderActivity
 import com.yizhipin.ordercender.ui.activity.ShipAddressActivity
 import com.yizhipin.paycenter.ui.activity.CashPledgeActivity
+import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
+import com.yizhipin.shop.ui.activity.ShopActivity
 import com.yizhipin.ui.activity.CustomServiceActivity
 import com.yizhipin.ui.activity.SettingActivity
 import com.yizhipin.usercenter.common.UserConstant
@@ -37,6 +43,7 @@ import fr.quentinklein.slt.LocationTracker
 import fr.quentinklein.slt.TrackerSettings
 import kotlinx.android.synthetic.main.fragment_me.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.startActivityForResult
 import q.rorbin.badgeview.QBadgeView
 
 /**
@@ -58,6 +65,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         super.onViewCreated(view, savedInstanceState)
         initLocation()
         initView()
+        initObserve()
     }
 
     override fun injectComponent() {
@@ -72,6 +80,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
     private fun initView() {
         mQBadgeView = QBadgeView(activity)
+        mStoreTv.onClick(this)
         mUserIconIv.onClick(this)
         mUserNameTv.onClick(this)
         mSettingTv.onClick(this)
@@ -137,6 +146,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mStoreTv -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
             R.id.mUserIconIv, R.id.mUserNameTv -> {
                 afterLogin {
                     startActivity<UserInfoActivity>(UserConstant.KEY_TO_USERINFO to true)
@@ -192,6 +202,27 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                 }
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            ProvideReqCode.CODE_RESULT_SHOP -> {
+                mStoreTv.text = data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)
+                AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
+                AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME))
+                Bus.send(SelectShopEvent(data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)))
+            }
+        }
+    }
+
+    private fun initObserve() {
+        Bus.observe<SelectShopEvent>()
+                .subscribe { t: SelectShopEvent ->
+                    run {
+                        mStoreTv.text = t.name
+                    }
+                }.registerInBus(this)
     }
 
     /**
