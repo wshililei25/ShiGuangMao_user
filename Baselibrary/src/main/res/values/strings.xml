@@ -400,4 +400,5 @@
     <string name="cash_pledge_pay_hint">押金在退还商品后，可全额退款，支付即视为同意《时光猫押金协议》</string>
     <string name="balance_pay">余额支付</string>
     <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
+    <string name="meal_destine">套餐预定</string>
 </resources>

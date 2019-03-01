@@ -1,5 +1,6 @@
 package com.yizhipin.ordercender.presenter
 
+import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
@@ -16,12 +17,29 @@ class PayConfirmPresenter @Inject constructor() : BasePresenter<PayConfirmView>(
 
     fun mealFrontMoney(map: MutableMap<String, String>) {
         mView.showLoading()
-        mOrderServiceImpl.mealFrontMoney(map).execute(object : BaseSubscriber<String?>(mView) {
-            override fun onNext(t: String?) {
+        mOrderServiceImpl.mealFrontMoney(map).execute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
                 mView.onMealFrontMoneySuccess(t)
             }
         }, mLifecycleProvider)
+    }
 
+    fun dressBuy(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mOrderServiceImpl.dressBuy(map).execute(object : BaseSubscriber<BuyResult>(mView) {
+            override fun onNext(t: BuyResult) {
+                mView.onDressBuySuccess(t)
+            }
+        }, mLifecycleProvider)
+    }
+
+    fun dressHire(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mOrderServiceImpl.dressHire(map).execute(object : BaseSubscriber<BuyResult>(mView) {
+            override fun onNext(t: BuyResult) {
+                mView.onDressBuySuccess(t)
+            }
+        }, mLifecycleProvider)
     }
 
     /**

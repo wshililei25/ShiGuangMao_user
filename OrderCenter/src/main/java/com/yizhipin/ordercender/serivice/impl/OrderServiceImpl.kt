@@ -1,6 +1,7 @@
 package com.yizhipin.ordercender.serivice.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.data.response.DressDetails
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
@@ -32,22 +33,26 @@ class OrderServiceImpl @Inject constructor() : OrderService {
         return mRepository.getOrderById(map).convert()
     }
 
-
     override fun submitOrder(map: MutableMap<String, String>): Observable<String> {
         return mRepository.submitOrder(map).convert()
     }
 
-    override fun mealFrontMoney(map: MutableMap<String, String>): Observable<String?> {
+    override fun mealFrontMoney(map: MutableMap<String, String>): Observable<String> {
         return mRepository.mealFrontMoney(map).convert()
+    }
+
+    override fun dressBuy(map: MutableMap<String, String>): Observable<BuyResult> {
+        return mRepository.dressBuy(map).convert()
+    }
+
+    override fun dressHire(map: MutableMap<String, String>): Observable<BuyResult> {
+        return mRepository.dressHire(map).convert()
     }
 
     override fun submitOrderReside(map: MutableMap<String, String>): Observable<String> {
         return mRepository.submitOrderReside(map).convert()
     }
 
-    /*
-        根据订单状态获取订单列表
-     */
     override fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Order>>> {
         return mRepository.getOrderList(map).convertPaging()
 

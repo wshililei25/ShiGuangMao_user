@@ -149,8 +149,10 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
                 }
             }
             R.id.mBuyBtn, R.id.mRentBtn -> {
-                mGoodsSkuPopView.showAtLocation(contentView, Gravity.BOTTOM, 0, 0)
-                contentView.startAnimation(mAnimationStart)
+                afterLogin {
+                    mGoodsSkuPopView.showAtLocation(contentView, Gravity.BOTTOM, 0, 0)
+                    contentView.startAnimation(mAnimationStart)
+                }
             }
 
         }

@@ -11,25 +11,28 @@ import io.reactivex.disposables.Disposable
  */
 open class BaseSubscriber<T>(val baseView: BaseView) : Observer<T> {
     override fun onSubscribe(d: Disposable) {
-
+        Log.d("XiLei", "1111111")
     }
 
     override fun onNext(t: T) {
+        Log.d("XiLei", "2222222")
         baseView.hideLoading()
     }
 
     override fun onError(e: Throwable) {
-        Log.d("XiLei", "e.mes=" + e.message)
+        Log.d("XiLei", "333333="+e.message+"========"+e.cause)
         baseView.hideLoading()
         if (e is BaseException) {
-            Log.d("XiLei", "e.mes22222=" + e.msg)
+            Log.d("XiLei", "4444")
             baseView.onError(e.msg)
         } else if (e is DataNullException) {
+            Log.d("XiLei", "555555")
             baseView.onDataIsNull()
         }
     }
 
     override fun onComplete() {
+        Log.d("XiLei", "66666666")
         baseView.hideLoading()
     }
 

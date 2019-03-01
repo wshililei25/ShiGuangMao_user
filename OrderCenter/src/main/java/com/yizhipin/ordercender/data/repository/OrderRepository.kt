@@ -7,6 +7,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.data.response.DressDetails
 import com.yizhipin.base.data.response.RedPacket
 import com.yizhipin.ordercender.data.api.OrderApi
@@ -48,9 +49,6 @@ class OrderRepository @Inject constructor() {
         return RetrofitFactoryGet().create(OrderApi::class.java).getOrderById(map["id"]!!)
     }
 
-    /*
-        根据状态查询订单列表
-     */
     fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Order>>> {
         return RetrofitFactoryGet().create(OrderApi::class.java).getOrderList(map["currentPage"]!!, map["uid"]!!, map["status"]!!)
     }
@@ -59,8 +57,16 @@ class OrderRepository @Inject constructor() {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).submitOrder()
     }
 
-    fun mealFrontMoney(map: MutableMap<String, String>): Observable<BaseResp<String?>> {
+    fun mealFrontMoney(map: MutableMap<String, String>): Observable<BaseResp<String>> {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).mealFrontMoney()
+    }
+
+    fun dressBuy(map: MutableMap<String, String>): Observable<BaseResp<BuyResult>> {
+        return RetrofitFactoryPost(map).create(OrderApi::class.java).dressBuy()
+    }
+
+    fun dressHire(map: MutableMap<String, String>): Observable<BaseResp<BuyResult>> {
+        return RetrofitFactoryPost(map).create(OrderApi::class.java).dressHire()
     }
 
     fun submitOrderReside(map: MutableMap<String, String>): Observable<BaseResp<String>> {

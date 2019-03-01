@@ -17,9 +17,6 @@ class OrderListPresenter @Inject constructor() : BasePresenter<OrderListView>() 
     @Inject
     lateinit var mOrderServiceImpl: OrderServiceImpl
 
-    /*
-        根据订单状态获取订单列表
-     */
     fun getOrderList(map: MutableMap<String, String>) {
 
         mOrderServiceImpl.getOrderList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Order>>>(mView) {

@@ -147,7 +147,7 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
             R.id.mBtn -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_PAY)
                     .withString(BaseConstant.KEY_MEAL_ORDER_ID, mOrderId)
                     .withString(BaseConstant.KEY_PAY_AMOUNT, "1000")
-                    .withString(BaseConstant.KEY_PAY_FROM, "套餐预定")
+                    .withString(BaseConstant.KEY_PAY_FROM, getString(R.string.meal_destine))
                     .navigation()
 
         }

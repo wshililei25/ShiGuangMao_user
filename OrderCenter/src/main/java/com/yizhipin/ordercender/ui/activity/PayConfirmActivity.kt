@@ -22,6 +22,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.WechatAppID
 import com.yizhipin.base.data.response.AliPayResult
+import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.payresult.PayResult
@@ -52,21 +53,25 @@ import org.json.JSONObject
 @Route(path = RouterPath.OrderCenter.PATH_ORDER_PAY)
 class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmView, View.OnClickListener {
 
-    @Autowired(name = BaseConstant.KEY_IS_BUY)
+    @Autowired(name = BaseConstant.KEY_PAY_FROM)
     @JvmField
-    var mIsBuy: Boolean = false  //是服装购买还是服装租借
+    var mPayFrom: String = ""  //支付来源
+
+    @Autowired(name = BaseConstant.KEY_DRESS_ID)
+    @JvmField
+    var mDressId: String = ""  //服装id
+
+    @Autowired(name = BaseConstant.KEY_PAY_NUM)
+    @JvmField
+    var mPayNum: String = ""  //购买数量
 
     @Autowired(name = BaseConstant.KEY_PAY_AMOUNT)
     @JvmField
     var mPayAmount: String = ""  //实际支付金额
 
-    @Autowired(name = BaseConstant.KEY_PAY_FROM)
+    @Autowired(name = BaseConstant.KEY_ADDRESS_ID)
     @JvmField
-    var mPayFrom: String = ""  //支付来源
-
-    @Autowired(name = OrderConstant.KEY_ADDRESS_ID)
-    @JvmField
-    var mAddressId: Int = 0
+    var mAddressId: String = "" //收货地址id
 
     @Autowired(name = BaseConstant.KEY_MEAL_ORDER_ID)
     @JvmField
@@ -100,9 +105,8 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
         mRealityPriceTv.text = mPayAmount
         if (mPayFrom.isNotEmpty()) {
             mTypeTv.text = mPayFrom
-        } else {
-            if (mIsBuy) mTypeTv.text = getString(R.string.dress_buy) else mTypeTv.text = getString(R.string.dress_hire)
         }
+
         /* mGoodsList = intent.getParcelableArrayListExtra<Goods>(OrderConstant.KEY_GOODS_LIST) as MutableList<Goods>
          if (mIsPin) {
              for (good in mGoodsList as MutableList<Goods>) {
@@ -165,58 +169,32 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
             R.id.mPayBtn -> {
 
                 when (mPayFrom) {
-                    "套餐预定" -> {
+                    getString(R.string.meal_destine) -> { //套餐预定
                         var map = mutableMapOf<String, String>()
                         map.put("orderId", mOrderId)
                         map.put("payType", mPayType)
                         mBasePresenter.mealFrontMoney(map)
                     }
+                    getString(R.string.dress_buy) -> { //服装购买
+                        var map = mutableMapOf<String, String>()
+                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                        map.put("clothId", mDressId)
+                        map.put("orderCount", mPayNum)
+                        map.put("payType", mPayType)
+                        map.put("addressId", mAddressId)
+                        mBasePresenter.dressBuy(map)
+                    }
+                    getString(R.string.dress_hire) -> { //服装租借
+                        var map = mutableMapOf<String, String>()
+                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                        map.put("clothId", mDressId)
+                        map.put("orderCount", mPayNum)
+                        map.put("payType", mPayType)
+                        map.put("addressId", mAddressId)
+                        mBasePresenter.dressHire(map)
+                    }
                 }
-
-                /*  if (AppPrefsUtils.getString(ProviderConstant.KEY_PAY_PWD).isNullOrEmpty()) {
-
-                      val baseAlertDialog = BaseAlertDialog(this)
-                      baseAlertDialog.setMessage("请先设置支付密码")
-                      baseAlertDialog.show()
-                      baseAlertDialog.setOkClickInterface(object : BaseAlertDialog.OkClickInterface {
-                          override fun okClickListener() {
-                              ARouter.getInstance().build(RouterPath.UserCenter.SET_PAY_PWD).navigation()
-                          }
-                      })
-                      return
-                  }
-
-                  mPayPasswordDialog = PayPasswordDialog(this, R.style.PayDialog)
-                  mPayPasswordDialog.setDialogClick(object : PayPasswordDialog.DialogClick {
-                      override fun doConfirm(password: String?) {
-                          var map = mutableMapOf<String, String>()
-                          map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-                          map.put("conponId", mConponId)
-                          map.put("payType", mType)
-                          map.put("payPwd", password!!)
-
-                          if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
-                              map.put("pid", mGoodsList!!.get(0).id.toString())
-                              map.put("productCount", mGoodsList!!.get(0).goodsCount.toString())
-                              map.put("beginTime", DateUtils.parseDateNew(mGoodsList!!.get(0).startDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
-                              map.put("endTime", DateUtils.parseDateNew(mGoodsList!!.get(0).endDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
-                              mBasePresenter.submitOrderReside(map)
-                          } else {
-                              map.put("pids", mGoodsId)
-                              map.put("addressId", mAddressId.toString())
-                              map.put("productCounts", mProductCounts)
-                              mBasePresenter.submitOrder(map)
-                          }
-
-                          mPayPasswordDialog.dismiss()
-                      }
-                  })
-                  mPayPasswordDialog.show()
-                  mPayPasswordDialog.forgetPwdTv.onClick {
-                      ARouter.getInstance().build(RouterPath.UserCenter.RESET_PAY_PWD).navigation()
-                  }*/
             }
-
             R.id.mCouponView -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_COUPON)
                     .withBoolean(OrderConstant.KEY_IS_PAY, true)
                     .navigation(this, ProvideReqCode.CODE_REQ_COUPON)
@@ -224,9 +202,20 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
     }
 
     /**
-     * 套餐支付定金
+     * 套餐预定
      */
-    override fun onMealFrontMoneySuccess(result: String?) {
+    override fun onMealFrontMoneySuccess(result: String) {
+        pay(result)
+    }
+
+    /**
+     * 服装购买、租借
+     */
+    override fun onDressBuySuccess(result: BuyResult) {
+        pay(result.payInfo)
+    }
+
+    private fun pay(result: String) {
         when (mPayType) {
 
             "yue" -> {

@@ -64,7 +64,7 @@ class GoodsSkuPopView(context: Activity) : PopupWindow(context), View.OnClickLis
 
     private fun initView() {
         mRootView.mAddCartBtn.onClick {
-            Bus.send(DressBuyEvent(mRootView.mNormTv.text.toString(),mInventory))
+            Bus.send(DressBuyEvent(mRootView.mNormTv.text.toString(), mInventory))
             dismiss()
         }
     }
@@ -99,18 +99,21 @@ class GoodsSkuPopView(context: Activity) : PopupWindow(context), View.OnClickLis
         mRootView.mNameTv.text = mDressDetails.title
         mRootView.mPriceTv.text = "¥" + mDressDetails.amount
 
-        setGoodsNum(mDressDetails.norms[0].items[0].inventory)
+        if (null != mDressDetails.norms && mDressDetails.norms.size > 0) {
+            setGoodsNum(mDressDetails.norms[0].items[0].inventory)
 
-        var str = ""
-        for (goodSku in details.norms) {
-            str += goodSku.items[0].item + GoodsConstant.SKU_SEPARATOR
+            var str = ""
+            for (goodSku in details.norms) {
+                str += goodSku.items[0].item + GoodsConstant.SKU_SEPARATOR
 
-            val skuView = SkuView(mContext)
-            skuView.setSkuData(goodSku)
-            mSkuViewList.add(skuView)
-            mRootView.mSkuView.addView(skuView)
+                val skuView = SkuView(mContext)
+                skuView.setSkuData(goodSku)
+                mSkuViewList.add(skuView)
+                mRootView.mSkuView.addView(skuView)
+            }
+            mRootView.mNormTv.text = str.take(str.length - 1)//刪除最后一个分隔
         }
-        mRootView.mNormTv.text = str.take(str.length - 1)//刪除最后一个分隔
+
     }
 
     /*

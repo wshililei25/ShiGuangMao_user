@@ -34,8 +34,12 @@ class BaseConstant {
         const val KEY_DRESS_POSITION = "dressPosition"
         //实际支付金额
         const val KEY_PAY_AMOUNT = "payAmount"
+        //购买数量
+        const val KEY_PAY_NUM = "payNum"
         //支付来源
         const val KEY_PAY_FROM = "payFrom"
+        //收货地址id
+        const val KEY_ADDRESS_ID = "addressId"
         //门店id
         const val KEY_SHOP_ID = "shopId"
         //门店名称

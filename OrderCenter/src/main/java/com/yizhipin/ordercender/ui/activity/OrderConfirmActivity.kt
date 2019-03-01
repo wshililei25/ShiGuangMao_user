@@ -33,7 +33,7 @@ import org.jetbrains.anko.toast
 
 /**
  * Created by ${XiLei} on 2018/9/24.
- * 订单确认
+ * 订单确认(服装购买、服装租借)
  */
 
 @Route(path = RouterPath.OrderCenter.PATH_ORDER_CONFIRM)
@@ -45,7 +45,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     @Autowired(name = BaseConstant.KEY_DRESS_ID) //注解接收上个页面的传参
     @JvmField
-    var mDressId: String = ""
+    var mDressId: String = "" //服装id
 
     @Autowired(name = BaseConstant.KEY_DRESS_NORMS) //注解接收上个页面的传参
     @JvmField
@@ -162,10 +162,16 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
                     return
                 }
 
-                startActivity<PayConfirmActivity>(BaseConstant.KEY_IS_BUY to mIsBuy, BaseConstant.KEY_PAY_AMOUNT to mRealityPriceTv.text.toString())
-
-//                 startActivityForResult<PayConfirmActivity>(ProvideReqCode.CODE_REQ_PAY, OrderConstant.KEY_GOODS_LIST to mGoodsList
-//                         , BaseConstant.KEY_IS_PIN to mIsPin, OrderConstant.KEY_ADDRESS_ID to if (mShipAddress == null) "" else mShipAddress!!.id)
+                startActivity<PayConfirmActivity>(BaseConstant.KEY_PAY_FROM to if (mIsBuy) {
+                    getString(R.string.dress_buy)
+                } else {
+                    getString(R.string.dress_hire)
+                }
+                        , BaseConstant.KEY_DRESS_ID to mDressId
+                        , BaseConstant.KEY_PAY_AMOUNT to mRealityPriceTv.text.toString()
+                        , BaseConstant.KEY_PAY_NUM to mGoodsCountBtn.editText.text.toString()
+                        , BaseConstant.KEY_ADDRESS_ID to mShipAddress!!.id.toString()
+                )
             }
         }
     }
