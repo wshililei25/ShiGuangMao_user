@@ -125,8 +125,8 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
 
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-//                map.put("amount", mAmountEt.text.toString()) //暂时注释
-                map.put("amount", "0.01")
+                map.put("amount", mAmountEt.text.toString())
+//                map.put("amount", "0.01")
                 map.put("payType", mPayType)
                 if (mIsCashPledge) { //押金充值
                     mBasePresenter.rechargeCashPledge(map)

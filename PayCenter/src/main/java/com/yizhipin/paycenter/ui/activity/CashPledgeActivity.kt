@@ -37,6 +37,7 @@ class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeVie
 
     private var mType = "Alipay" //支付方式
     private val SDK_PAY_FLAG = 1
+    private lateinit var mCashPledge:CashPledge
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +68,7 @@ class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeVie
     }
 
     override fun onGetCashPledgeSuccess(result: CashPledge) {
+        mCashPledge = result
         mAmountTv.text = "¥ ${result.total}"
         mRebackAmountTv.text = "(¥ ${result.available}可退)"
     }
@@ -78,8 +80,7 @@ class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeVie
 
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-//                map.put("amount", mAmountEt.text.toString()) //暂时注释
-                map.put("amount", "0.01")
+                map.put("amount", mCashPledge.available)
                 map.put("payType", mType)
                 mBasePresenter.recharge(map)
             }
