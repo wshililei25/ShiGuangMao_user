@@ -9,6 +9,7 @@ import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.data.response.DressDetails
+import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.data.response.RedPacket
 import com.yizhipin.ordercender.data.api.OrderApi
 import com.yizhipin.ordercender.data.protocol.ConfirmOrderReq
@@ -60,6 +61,9 @@ class OrderRepository @Inject constructor() {
     fun mealFrontMoney(map: MutableMap<String, String>): Observable<BaseResp<String>> {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).mealFrontMoney()
     }
+    fun mealBalancePayment(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryPost(map).create(OrderApi::class.java).mealBalancePayment()
+    }
 
     fun dressBuy(map: MutableMap<String, String>): Observable<BaseResp<BuyResult>> {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).dressBuy()
@@ -85,4 +89,7 @@ class OrderRepository @Inject constructor() {
         return RetrofitFactoryGet().create(OrderApi::class.java).getRedBalance(map["uid"]!!)
     }
 
+    fun getOrderDetails(map: MutableMap<String, String>): Observable<BaseResp<OrderDetails>> {
+        return RetrofitFactoryGet().create(OrderApi::class.java).getOrderDetails(map["id"]!!)
+    }
 }

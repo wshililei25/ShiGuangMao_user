@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
@@ -14,6 +15,7 @@ import com.yizhipin.base.common.TeacherStatus
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
+import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.goods.R
@@ -26,27 +28,29 @@ import com.yizhipin.goods.ui.adapter.AppointFeatureSpotAdapter
 import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
-import kotlinx.android.synthetic.main.activity_meal_order_confirm.*
+import kotlinx.android.synthetic.main.activity_meal_order_details.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 
 /**
  * Created by ${XiLei} on 2018/9/22.
- * 套餐订单确认
+ * 套餐订单详情
  */
-class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMealDetailsView, View.OnClickListener {
+@Route(path = RouterPath.GoodsCenter.PATH_ORDER_MEAL_DETAILS)
+class MealOrderDetailsActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMealDetailsView, View.OnClickListener {
 
     @Autowired(name = BaseConstant.KEY_MEAL_ORDER_ID)
     @JvmField
     var mOrderId: String = "" //订单id
 
+    private lateinit var mOrderDetails: OrderDetails
     private lateinit var mSetMealDetails: SetMealDetails
     private lateinit var mAppointDressAdapter: AppointDressAdapter
     private lateinit var mAppointFeatureSpotAdapter: AppointFeatureSpotAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_meal_order_confirm)
+        setContentView(R.layout.activity_meal_order_details)
 
         initView()
         loadOrderDetails()
@@ -107,14 +111,34 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
 
     override fun onOrderDetailsSuccess(result: OrderDetails) {
         with(result) {
-
+            mOrderDetails = result
             mNumTv.text = title
             mMealPriceTv.text = getString(R.string.rmb).plus(amount)
             mShopNameTv.text = packages[0].shopName
             mRealityPriceTv.text = amount
+            mOrderNumberTv.text = ordernum
+            mCreateTimeTv.text = createTime
+            mSubscriptionTimeTv.text = earnestPaytime
+            mSubscriptionAmountTv.text = if (earnestPay) "¥ ${earnestMoney}" else "¥ 0.00"
+            mBalancePaymentTv.text = if (null == payTime) "待付款" else payTime
             mGoodsIv.loadUrl(imgurl)
 
+            payType?.let {
+                mBtn.setVisible(false)
+            }
+
+            if (earnestPay) {
+                mBtn.text = "支付尾款"
+                mSubscriptionTv.setVisible(true)
+                mSubscriptionTv.text = "已交定金¥ ${earnestMoney}"
+            } else {
+                mBtn.text = "交定金（¥1000）"
+            }
+
             when (type) {
+                PhotographStatus.DEAL_WEDDING -> mTypeTv.text = getString(R.string.veil_photography)
+                PhotographStatus.DEAL_PHOTO -> mTypeTv.text = getString(R.string.describe_photography)
+                PhotographStatus.DEAL_BABY -> mTypeTv.text = getString(R.string.baby_photography)
                 PhotographStatus.DEAL_WEDDING -> mGoodNameTv.text = getString(R.string.veil_photography)
                 PhotographStatus.DEAL_PHOTO -> mGoodNameTv.text = getString(R.string.describe_photography)
                 PhotographStatus.DEAL_BABY -> mGoodNameTv.text = getString(R.string.baby_photography)
@@ -142,7 +166,9 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
 
             R.id.mBtn -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_PAY)
                     .withString(BaseConstant.KEY_MEAL_ORDER_ID, mOrderId)
-                    .withString(BaseConstant.KEY_PAY_AMOUNT, "1000")
+                    .withString(BaseConstant.KEY_PAY_AMOUNT, if (mOrderDetails.earnestPay) {
+                        (mOrderDetails.amount.toDouble() - mOrderDetails.earnestMoney.toDouble()).toString()
+                    } else "1000")
                     .withString(BaseConstant.KEY_PAY_FROM, getString(R.string.meal_destine))
                     .navigation()
 

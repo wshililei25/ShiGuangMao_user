@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
+import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.startLoading
+import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.ordercender.R
@@ -24,6 +26,7 @@ import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.OrderListPresenter
 import com.yizhipin.ordercender.presenter.view.OrderListView
 import com.yizhipin.ordercender.ui.adapter.OrderAdapter
+import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.fragment_order.*
 import org.jetbrains.anko.support.v4.toast
 
@@ -53,6 +56,14 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, BGAR
         mOrderRv.layoutManager = LinearLayoutManager(activity!!)
         mOrderAdapter = OrderAdapter(activity!!)
         mOrderRv.adapter = mOrderAdapter
+        mOrderAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Order> {
+            override fun onItemClick(item: Order, position: Int) {
+                ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_ORDER_MEAL_DETAILS)
+                        .withString(BaseConstant.KEY_MEAL_ORDER_ID, item.id)
+                        .navigation()
+            }
+
+        })
     }
 
     private fun initRefreshLayout() {

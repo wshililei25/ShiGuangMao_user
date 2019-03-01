@@ -23,6 +23,14 @@ class PayConfirmPresenter @Inject constructor() : BasePresenter<PayConfirmView>(
             }
         }, mLifecycleProvider)
     }
+    fun mealBalancePayment(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mOrderServiceImpl.mealBalancePayment(map).execute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
+                mView.onMealFrontMoneySuccess(t)
+            }
+        }, mLifecycleProvider)
+    }
 
     fun dressBuy(map: MutableMap<String, String>) {
         mView.showLoading()

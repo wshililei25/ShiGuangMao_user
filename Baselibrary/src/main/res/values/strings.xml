@@ -401,4 +401,7 @@
     <string name="balance_pay">余额支付</string>
     <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
     <string name="meal_destine">套餐预定</string>
+    <string name="subscription_time">预订金付款时间</string>
+    <string name="subscription_amount">预订金金额</string>
+    <string name="balance_payment">尾款付款时间</string>
 </resources>

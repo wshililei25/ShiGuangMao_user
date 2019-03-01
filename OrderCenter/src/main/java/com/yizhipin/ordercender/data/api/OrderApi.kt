@@ -4,6 +4,7 @@ import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.data.response.DressDetails
+import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.data.response.RedPacket
 import com.yizhipin.ordercender.data.protocol.ConfirmOrderReq
 import com.yizhipin.ordercender.data.response.Coupon
@@ -59,6 +60,9 @@ interface OrderApi {
     @POST(Api.MEAL_FRONT_MONEY)
     fun mealFrontMoney(): Observable<BaseResp<String>>
 
+    @POST(Api.MEAL_BALANCE_PAYMENT)
+    fun mealBalancePayment(): Observable<BaseResp<String>>
+
     @POST(Api.DRESS_BUY)
     fun dressBuy(): Observable<BaseResp<BuyResult>>
 
@@ -89,4 +93,6 @@ interface OrderApi {
     @GET("${Api.RED_BALANCE}${"/{uid}"}")
     fun getRedBalance(@Path("uid") uid: String): Observable<BaseResp<String>>
 
+    @GET("${Api.MEAL_ORDER}${"/{id}"}")
+    fun getOrderDetails(@Path("id") id: String): Observable<BaseResp<OrderDetails>>
 }

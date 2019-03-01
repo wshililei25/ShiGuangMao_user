@@ -22,6 +22,9 @@ class OrderDetails(
         val title: String,
         val type: String,
         val uid: String,
+        val earnestPaytime: String? = null,
+        val payTime: String? = null,
+        val payType: String? = null,
         val packages: MutableList<OrderMeal>
 ) : Parcelable
 

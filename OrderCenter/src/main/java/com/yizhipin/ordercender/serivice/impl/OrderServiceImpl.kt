@@ -3,6 +3,7 @@ package com.yizhipin.ordercender.serivice.impl
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.data.response.DressDetails
+import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
@@ -40,6 +41,9 @@ class OrderServiceImpl @Inject constructor() : OrderService {
     override fun mealFrontMoney(map: MutableMap<String, String>): Observable<String> {
         return mRepository.mealFrontMoney(map).convert()
     }
+    override fun mealBalancePayment(map: MutableMap<String, String>): Observable<String> {
+        return mRepository.mealBalancePayment(map).convert()
+    }
 
     override fun dressBuy(map: MutableMap<String, String>): Observable<BuyResult> {
         return mRepository.dressBuy(map).convert()
@@ -70,5 +74,9 @@ class OrderServiceImpl @Inject constructor() : OrderService {
      */
     override fun confirmOrder(orderId: Int): Observable<Boolean> {
         return mRepository.confirmOrder(orderId).convertBoolean()
+    }
+
+    override fun getOrderDetails(map: MutableMap<String, String>): Observable<OrderDetails> {
+        return mRepository.getOrderDetails(map).convert()
     }
 }

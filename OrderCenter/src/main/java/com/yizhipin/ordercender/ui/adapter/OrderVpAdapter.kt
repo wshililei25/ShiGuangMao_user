@@ -14,19 +14,14 @@ import com.yizhipin.ordercender.ui.fragment.OrderFragment
  */
 class OrderVpAdapter(fragmentManager: FragmentManager, context: Context) : FragmentStatePagerAdapter(fragmentManager) {
 
-    private val mTitles = arrayOf("全部", "待付款", "拼单中", "待发货", "待收货", "待评价", "售后")
+    private val mTitles = arrayOf("待完成", "已完成")
 
     override fun getItem(position: Int): Fragment {
         val fragment = OrderFragment()
         val bunder = Bundle()
         when (position) {
-            0 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_ALL)
-            1 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_PAY)
-            2 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_PIN)
-            3 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_SEND)
-            4 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_CONFIRM)
-            5 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_EVALUATE)
-            6 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_AFTER_SALE)
+            0 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_UNFINISH)
+            1 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_FINISHED)
         }
         fragment.arguments = bunder
         return fragment

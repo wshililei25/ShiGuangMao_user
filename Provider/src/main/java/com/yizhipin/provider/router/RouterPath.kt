@@ -26,6 +26,7 @@ object RouterPath {
             const val PATH_CLOUD_DISK = "/goodsCenter/cloudDisk" //时光云盘
             const val PATH_TIME_SUPERMARKET = "/goodsCenter/timeSuperMarket" //时光超市
             const val PATH_INTEGRAL = "/goodsCenter/integral" //积分商城
+            const val PATH_ORDER_MEAL_DETAILS = "/goodsCenter/orderMealDetails" //套餐订单详情
         }
     }
 

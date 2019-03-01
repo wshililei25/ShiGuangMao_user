@@ -173,7 +173,12 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                         var map = mutableMapOf<String, String>()
                         map.put("orderId", mOrderId)
                         map.put("payType", mPayType)
-                        mBasePresenter.mealFrontMoney(map)
+                        if (mPayAmount == "1000") { //支付订金
+                            mBasePresenter.mealFrontMoney(map)
+                        } else { //支付尾款
+                            mBasePresenter.mealBalancePayment(map)
+                        }
+
                     }
                     getString(R.string.dress_buy) -> { //服装购买
                         var map = mutableMapOf<String, String>()

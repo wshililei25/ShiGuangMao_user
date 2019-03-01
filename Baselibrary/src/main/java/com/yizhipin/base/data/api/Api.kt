@@ -85,6 +85,7 @@ interface Api {
         const val DEFAULT_ADDRESS = "api/UserAddress/Default"//获取默认地址
         const val SUBMIT_ORDER = "api/Order"//提交订单
         const val MEAL_FRONT_MONEY = "api/Order/Earnest"//套餐支付定金
+        const val MEAL_BALANCE_PAYMENT = "api/Order/Pay"//套餐支付尾款
         const val DRESS_BUY = "api/ClothesOrder"//服装购买
         const val DRESS_HIRE = "api/RentOrder"//服装租借
         const val SUBMIT_ORDER_RESIDE = "api/Order/Homestay"//提交订单(一品小住)

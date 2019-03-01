@@ -34,4 +34,5 @@ interface GoodsComponent {
     fun inject(activity: CameramanDetailActivity)
     fun inject(activity: StarActivity)
     fun inject(activity: BrideInfoActivity)
+    fun inject(activity: MealOrderDetailsActivity)
 }

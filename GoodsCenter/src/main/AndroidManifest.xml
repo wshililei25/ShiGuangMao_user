@@ -27,5 +27,6 @@
         <activity android:name=".ui.activity.CameramanDetailActivity"/>
         <activity android:name=".ui.activity.StarActivity"/>
         <activity android:name=".ui.activity.BrideInfoActivity"/>
+        <activity android:name=".ui.activity.MealOrderDetailsActivity"/>
     </application>
 </manifest>
