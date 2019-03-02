@@ -174,15 +174,52 @@
     <methods>;
 }
 
-#
-#---------------------------------实体类---------------------------------
-#--------(实体Model不能混淆，否则找不到对应的属性获取不到值)-----
-#
--dontwarn com.suchengkeji.android.confusiondemo.md.**
+#实体Model不能混淆，否则找不到对应的属性获取不到值
+-keep class com.yizhipin.base.data.protocol.** { *; }
+-keep class com.yizhipin.base.data.response.** { *; }
 #对含有反射类的处理
--keep class com.suchengkeji.android.confusiondemo.md.** { *; }
+#-keep class com.suchengkeji.android.confusiondemo.md.** { *; }
 
+
+# ARouter
+-keep public class com.alibaba.android.arouter.routes.**{*;}
+-keep public class com.alibaba.android.arouter.facade.**{*;}
+-keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
+# If you use the byType method to obtain Service, add the following rules to protect the interface:
+-keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
+# If single-type injection is used, that is, no interface is defined to implement IProvider, the following rules need to be added to protect the implementation
+ -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+# ARouter
 
 # 环信
-#-keep class com.hyphenate.** {*;}
-#-dontwarn  com.hyphenate.**
+-keep class com.hyphenate.** {*;}
+-keep class com.superrtc.** {*;}
+-keep class com.hyphenate.chat.** {*;}
+-keep class org.jivesoftware.** {*;}
+-keep class org.apache.** {*;}
+#另外，demo中发送表情的时候使用到反射，需要keep SmileUtils,注意前面的包名，
+#不要SmileUtils复制到自己的项目下keep的时候还是写的demo里的包名
+-keep class com.hyphenate.chatuidemo.utils.SmileUtils {*;}
+# 环信
+
+#AliPay
+-keep class com.alipay.android.app.IAlixPay{*;}
+-keep class com.alipay.android.app.IAlixPay$Stub{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
+-keep class com.alipay.sdk.app.PayTask{ public *;}
+-keep class com.alipay.sdk.app.AuthTask{ public *;}
+-keep class com.alipay.sdk.app.H5PayCallback {
+    <fields>;
+    <methods>;
+}
+-keep class com.alipay.android.phone.mrpc.core.** { *; }
+-keep class com.alipay.apmobilesecuritysdk.** { *; }
+-keep class com.alipay.mobile.framework.service.annotation.** { *; }
+-keep class com.alipay.mobilesecuritysdk.face.** { *; }
+-keep class com.alipay.tscenter.biz.rpc.** { *; }
+-keep class org.json.alipay.** { *; }
+-keep class com.alipay.tscenter.** { *; }
+-keep class com.ta.utdid2.** { *;}
+-keep class com.ut.device.** { *;}
+#AliPay

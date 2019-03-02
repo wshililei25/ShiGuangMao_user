@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.data.response.ShipAddress
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.ordercender.R
-import com.yizhipin.ordercender.data.response.ShipAddress
 import kotlinx.android.synthetic.main.layout_address_item.view.*
 
 /*

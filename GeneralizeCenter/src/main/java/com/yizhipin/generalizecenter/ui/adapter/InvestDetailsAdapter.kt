@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.data.response.InvestList
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.generalizecenter.R
-import com.yizhipin.generalizecenter.data.response.InvestList
 import kotlinx.android.synthetic.main.layout_invest_details_item.view.*
 
 class InvestDetailsAdapter(val context: Context) : BaseRecyclerViewAdapter<InvestList, InvestDetailsAdapter.ViewHolder>(context) {

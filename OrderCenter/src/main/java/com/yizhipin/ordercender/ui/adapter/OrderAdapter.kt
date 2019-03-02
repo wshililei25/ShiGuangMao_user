@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.base.common.PhotographStatus
+import com.yizhipin.base.data.response.Order
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.ordercender.R
-import com.yizhipin.ordercender.data.response.Order
 import kotlinx.android.synthetic.main.layout_order_item.view.*
 
 class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderAdapter.ViewHolder>(context) {

@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.Category
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.loadUrl
@@ -13,7 +14,6 @@ import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.data.response.Category
 import com.yizhipin.goods.injection.component.DaggerCategoryComponent
 import com.yizhipin.goods.injection.module.CategoryModule
 import com.yizhipin.goods.presenter.UserPresenter

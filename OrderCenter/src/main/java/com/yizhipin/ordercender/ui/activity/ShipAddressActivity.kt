@@ -7,12 +7,12 @@ import com.bigkoo.alertview.AlertView
 import com.bigkoo.alertview.OnItemClickListener
 import com.eightbitlab.rxbus.Bus
 import com.kennyc.view.MultiStateView
+import com.yizhipin.base.data.response.ShipAddress
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.event.SelectAddressEvent
 import com.yizhipin.ordercender.injection.component.DaggerShipAddressComponent
 import com.yizhipin.ordercender.injection.module.ShipAddressModule

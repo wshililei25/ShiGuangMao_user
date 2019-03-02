@@ -2,11 +2,11 @@ package com.yizhipin.goods.data.repository
 
 import com.yizhipin.base.data.net.*
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Cart
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.goods.data.api.CartApi
 import com.yizhipin.goods.data.protocol.SubmitCartReq
-import com.yizhipin.goods.data.response.Cart
 import io.reactivex.Observable
 import javax.inject.Inject
 

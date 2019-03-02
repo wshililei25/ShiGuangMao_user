@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.R
+import com.yizhipin.base.data.response.CategoryHome
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.shop.data.response.CategoryHome
 import kotlinx.android.synthetic.main.layout_category_item.view.*
 
 class RecommendHomeAdapter(context: Context) : BaseRecyclerViewAdapter<CategoryHome, RecommendHomeAdapter.ViewHolder>(context) {

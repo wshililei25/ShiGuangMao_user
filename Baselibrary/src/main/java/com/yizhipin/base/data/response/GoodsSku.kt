@@ -1,4 +1,4 @@
-package com.yizhipin.goods.data.response
+package com.yizhipin.base.data.response
 
 /*
     商品SKU数据类

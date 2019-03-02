@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.yizhipin.base.data.response.Category
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.data.response.Category
 import com.yizhipin.goods.ui.fragment.CategorySecondFragment
 
 /**

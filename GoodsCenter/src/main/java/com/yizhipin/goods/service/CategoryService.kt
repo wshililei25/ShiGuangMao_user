@@ -1,12 +1,7 @@
 package com.yizhipin.goods.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.CollectGoods
-import com.yizhipin.base.data.response.CollectShop
-import com.yizhipin.base.data.response.Goods
-import com.yizhipin.goods.data.response.Category
-import com.yizhipin.goods.data.response.CategorySecond
-import com.yizhipin.goods.data.response.SearchKeyword
+import com.yizhipin.base.data.response.*
 import io.reactivex.Observable
 
 

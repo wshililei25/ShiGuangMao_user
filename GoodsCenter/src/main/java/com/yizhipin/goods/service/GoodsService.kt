@@ -2,9 +2,6 @@ package com.yizhipin.goods.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
-import com.yizhipin.goods.data.response.Complain
-import com.yizhipin.goods.data.response.Report
-import com.yizhipin.goods.data.response.ShareBill
 import io.reactivex.Observable
 
 

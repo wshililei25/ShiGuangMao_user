@@ -1,8 +1,8 @@
 package com.yizhipin.ordercender.presenter.view
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Order
 import com.yizhipin.base.presenter.view.BaseView
-import com.yizhipin.ordercender.data.response.Order
 
 /*
     订单列表 视图回调

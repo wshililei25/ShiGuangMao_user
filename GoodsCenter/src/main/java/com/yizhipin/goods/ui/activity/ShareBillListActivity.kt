@@ -5,11 +5,11 @@ import android.support.v7.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseApplication.Companion.context
+import com.yizhipin.base.data.response.ShareBill
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.data.response.ShareBill
 import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.ShareBillPresenter

@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.data.response.OrderGoods
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.ordercender.R
-import com.yizhipin.ordercender.data.response.OrderGoods
 import kotlinx.android.synthetic.main.layout_order_details_item.view.*
 
 /**

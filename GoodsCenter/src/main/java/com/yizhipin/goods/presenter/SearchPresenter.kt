@@ -2,10 +2,10 @@ package com.yizhipin.goods.presenter
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.SearchKeyword
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
-import com.yizhipin.goods.data.response.SearchKeyword
 import com.yizhipin.goods.presenter.view.SearchView
 import com.yizhipin.goods.service.impl.CategoryServiceImpl
 import javax.inject.Inject

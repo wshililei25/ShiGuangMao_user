@@ -1,10 +1,7 @@
 package com.yizhipin.generalizecenter.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.Comment
-import com.yizhipin.base.data.response.Interaction
-import com.yizhipin.base.data.response.InteractionDetails
-import com.yizhipin.generalizecenter.data.response.*
+import com.yizhipin.base.data.response.*
 import io.reactivex.Observable
 
 

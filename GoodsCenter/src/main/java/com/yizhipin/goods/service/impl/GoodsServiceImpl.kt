@@ -6,9 +6,6 @@ import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.goods.data.repository.GoodsRepository
-import com.yizhipin.goods.data.response.Complain
-import com.yizhipin.goods.data.response.Report
-import com.yizhipin.goods.data.response.ShareBill
 import com.yizhipin.goods.service.GoodsService
 import io.reactivex.Observable
 import javax.inject.Inject

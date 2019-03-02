@@ -1,7 +1,7 @@
 package com.yizhipin.ordercender.presenter.view
 
+import com.yizhipin.base.data.response.ShipAddress
 import com.yizhipin.base.presenter.view.BaseView
-import com.yizhipin.ordercender.data.response.ShipAddress
 
 /*
     编辑收货人信息 视图回调

@@ -1,4 +1,4 @@
-package com.yizhipin.shop.data.response
+package com.yizhipin.base.data.response
 
 /**
  * Created by ${XiLei} on 2018/10/4.

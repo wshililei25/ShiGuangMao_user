@@ -23,6 +23,7 @@ import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.WechatAppID
 import com.yizhipin.base.data.response.AliPayResult
 import com.yizhipin.base.data.response.BuyResult
+import com.yizhipin.base.data.response.Coupon
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.payresult.PayResult
@@ -34,7 +35,6 @@ import com.yizhipin.base.widgets.PayRadioGroup
 import com.yizhipin.base.widgets.PayRadioPurified
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.data.response.Coupon
 import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.PayConfirmPresenter

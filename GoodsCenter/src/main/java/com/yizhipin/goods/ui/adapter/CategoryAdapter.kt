@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.data.response.CategorySecond
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.goods.R
-import com.yizhipin.goods.data.response.CategorySecond
 import kotlinx.android.synthetic.main.layout_top_category_item.view.*
 
 /**

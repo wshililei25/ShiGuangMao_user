@@ -18,7 +18,6 @@ open class SceincPresenter @Inject constructor() : BasePresenter<SceincView>() {
     lateinit var mServiceImpl: ShopServiceImpl
 
     fun getSceincList(map: MutableMap<String, String>) {
-        mView.showLoading()
         mServiceImpl.getSceincList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<ScenicSpot>>>(mView) {
             override fun onNext(t: BasePagingResp<MutableList<ScenicSpot>>) {
                 mView.onGetScenicListSuccess(t)

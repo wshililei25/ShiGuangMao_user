@@ -1,6 +1,6 @@
 package com.yizhipin.goods.event
 
-import com.yizhipin.goods.data.response.Category
+import com.yizhipin.base.data.response.Category
 
 
 /*

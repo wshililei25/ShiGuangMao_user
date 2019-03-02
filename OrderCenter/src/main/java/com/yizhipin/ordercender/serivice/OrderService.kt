@@ -1,11 +1,7 @@
 package com.yizhipin.ordercender.serivice
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.BuyResult
-import com.yizhipin.base.data.response.DressDetails
-import com.yizhipin.base.data.response.OrderDetails
-import com.yizhipin.ordercender.data.response.Order
-import com.yizhipin.ordercender.data.response.ShipAddress
+import com.yizhipin.base.data.response.*
 import io.reactivex.Observable
 
 /*

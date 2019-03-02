@@ -6,9 +6,6 @@ import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.goods.data.api.GoodsApi
-import com.yizhipin.goods.data.response.Complain
-import com.yizhipin.goods.data.response.Report
-import com.yizhipin.goods.data.response.ShareBill
 import io.reactivex.Observable
 import javax.inject.Inject
 

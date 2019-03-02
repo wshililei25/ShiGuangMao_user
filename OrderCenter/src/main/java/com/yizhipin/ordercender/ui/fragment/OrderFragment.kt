@@ -13,13 +13,13 @@ import com.eightbitlab.rxbus.registerInBus
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Order
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.event.DeleteOrderEvent
 import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule

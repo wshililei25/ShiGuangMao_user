@@ -1,10 +1,10 @@
 package com.yizhipin.goods.presenter
 
 import com.yizhipin.base.data.response.Evaluate
+import com.yizhipin.base.data.response.Report
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
-import com.yizhipin.goods.data.response.Report
 import com.yizhipin.goods.presenter.view.GoodsDetailView
 import com.yizhipin.goods.service.impl.GoodsServiceImpl
 import javax.inject.Inject

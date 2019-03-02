@@ -3,8 +3,8 @@ package com.yizhipin.goods.presenter.view
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.GoodsCollect
+import com.yizhipin.base.data.response.Report
 import com.yizhipin.base.presenter.view.BaseView
-import com.yizhipin.goods.data.response.Report
 
 /*
     商品详情 视图回调

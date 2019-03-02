@@ -2,14 +2,8 @@ package com.yizhipin.ordercender.data.api
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.base.data.response.BuyResult
-import com.yizhipin.base.data.response.DressDetails
-import com.yizhipin.base.data.response.OrderDetails
-import com.yizhipin.base.data.response.RedPacket
+import com.yizhipin.base.data.response.*
 import com.yizhipin.ordercender.data.protocol.ConfirmOrderReq
-import com.yizhipin.ordercender.data.response.Coupon
-import com.yizhipin.ordercender.data.response.Order
-import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.*

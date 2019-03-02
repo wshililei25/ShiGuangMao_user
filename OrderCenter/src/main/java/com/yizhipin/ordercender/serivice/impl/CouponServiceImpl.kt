@@ -1,11 +1,11 @@
 package com.yizhipin.ordercender.serivice.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Coupon
 import com.yizhipin.base.data.response.RedPacket
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.ordercender.data.repository.OrderRepository
-import com.yizhipin.ordercender.data.response.Coupon
 import com.yizhipin.ordercender.serivice.CouponService
 import io.reactivex.Observable
 import javax.inject.Inject

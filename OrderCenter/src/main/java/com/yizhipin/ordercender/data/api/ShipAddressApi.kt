@@ -1,8 +1,8 @@
 package com.yizhipin.ordercender.data.api
 
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.ShipAddress
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.*

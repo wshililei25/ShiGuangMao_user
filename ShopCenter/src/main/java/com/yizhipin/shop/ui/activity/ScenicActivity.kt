@@ -33,7 +33,6 @@ import org.jetbrains.anko.startActivityForResult
 @Route(path = RouterPath.ShopCenter.PATH_SHOP)
 class ScenicActivity : BaseMvpActivity<SceincPresenter>(), SceincView, View.OnClickListener, BGARefreshLayout.BGARefreshLayoutDelegate {
 
-
     @Autowired(name = BaseConstant.KEY_DRESS_POSITION)
     @JvmField
     var mPosition: Int = -1
@@ -48,6 +47,7 @@ class ScenicActivity : BaseMvpActivity<SceincPresenter>(), SceincView, View.OnCl
 
         initView()
         initRefreshLayout()
+        loadData()
     }
 
     private fun initView() {
@@ -58,9 +58,9 @@ class ScenicActivity : BaseMvpActivity<SceincPresenter>(), SceincView, View.OnCl
         mShopAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<ScenicSpot> {
             override fun onItemClick(item: ScenicSpot, position: Int) {
 
-                if (position == -1) {
+                if (mPosition == -1) {
                     startActivityForResult<ScenicDetailActivity>(ProvideReqCode.CODE_REQ_SHOP, BaseConstant.KEY_SCENIC_ID to item.id.toString())
-                } else {
+                } else { //套餐关联景点
                     var intent = Intent()
                     intent.putExtra(BaseConstant.KEY_SCENIC_NAME, item.title)
                     intent.putExtra(BaseConstant.KEY_SCENIC_AMOUNT, item.amount)
@@ -93,11 +93,6 @@ class ScenicActivity : BaseMvpActivity<SceincPresenter>(), SceincView, View.OnCl
         viewHolder.setRefreshViewBackgroundDrawableRes(R.color.yBgGray)
         viewHolder.setLoadMoreBackgroundColorRes(R.color.yBgGray)
         mRefreshLayout.setRefreshViewHolder(viewHolder)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        loadData()
     }
 
     private fun loadData() {

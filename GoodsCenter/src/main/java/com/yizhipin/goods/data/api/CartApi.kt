@@ -1,10 +1,10 @@
 package com.yizhipin.goods.data.api
 
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Cart
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.goods.data.protocol.SubmitCartReq
-import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.*

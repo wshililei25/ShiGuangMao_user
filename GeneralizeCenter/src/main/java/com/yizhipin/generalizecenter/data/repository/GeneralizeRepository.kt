@@ -4,10 +4,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.base.data.response.Comment
-import com.yizhipin.base.data.response.Interaction
-import com.yizhipin.base.data.response.InteractionDetails
-import com.yizhipin.generalizecenter.data.response.*
+import com.yizhipin.base.data.response.*
 import com.yizhipin.goods.data.api.GeneralizeApi
 import io.reactivex.Observable
 import javax.inject.Inject

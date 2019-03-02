@@ -1,10 +1,10 @@
 package com.yizhipin.goods.presenter.view
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Category
+import com.yizhipin.base.data.response.CategorySecond
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.presenter.view.BaseView
-import com.yizhipin.goods.data.response.Category
-import com.yizhipin.goods.data.response.CategorySecond
 
 /**
  * Created by ${XiLei} on 2018/7/26.

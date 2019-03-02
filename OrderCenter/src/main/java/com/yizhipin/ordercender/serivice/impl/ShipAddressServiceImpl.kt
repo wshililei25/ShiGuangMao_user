@@ -1,9 +1,9 @@
 package com.yizhipin.ordercender.serivice.impl
 
+import com.yizhipin.base.data.response.ShipAddress
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.ordercender.data.repository.ShipAddressRepository
-import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.serivice.ShipAddressService
 import io.reactivex.Observable
 import javax.inject.Inject

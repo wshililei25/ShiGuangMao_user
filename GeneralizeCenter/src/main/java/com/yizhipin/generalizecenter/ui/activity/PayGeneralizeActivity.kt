@@ -8,6 +8,8 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.GeneralizeCollect
+import com.yizhipin.base.data.response.GeneralizeGroupDetails
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -19,8 +21,6 @@ import com.yizhipin.base.widgets.PayRadioGroup
 import com.yizhipin.base.widgets.PayRadioPurified
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
-import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
 import com.yizhipin.goods.injection.module.GeneralizeModule

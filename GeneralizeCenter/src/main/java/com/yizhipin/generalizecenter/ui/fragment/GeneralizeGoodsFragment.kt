@@ -9,6 +9,8 @@ import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.GeneralizeCollect
+import com.yizhipin.base.data.response.GeneralizeGroupDetails
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
@@ -16,8 +18,6 @@ import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
-import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.generalizecenter.ui.activity.GeneralizeDetailsActivity
 import com.yizhipin.generalizecenter.ui.adapter.GeneralizeGoodsAdapter

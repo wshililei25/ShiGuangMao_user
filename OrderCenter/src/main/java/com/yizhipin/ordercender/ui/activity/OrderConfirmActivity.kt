@@ -9,6 +9,7 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.DressDetails
+import com.yizhipin.base.data.response.ShipAddress
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
@@ -18,7 +19,6 @@ import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.base.widgets.NumberButton
 import com.yizhipin.ordercender.R
-import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.event.SelectAddressEvent
 import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule

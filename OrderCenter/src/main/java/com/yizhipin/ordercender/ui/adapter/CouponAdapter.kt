@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.data.response.Coupon
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.ordercender.R
-import com.yizhipin.ordercender.data.response.Coupon
 import kotlinx.android.synthetic.main.layout_coupon_item.view.*
 
 class CouponAdapter(var context: Context) : BaseRecyclerViewAdapter<Coupon, CouponAdapter.ViewHolder>(context) {

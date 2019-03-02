@@ -6,6 +6,9 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.GeneralizeCollect
+import com.yizhipin.base.data.response.GeneralizeCollectGroup
+import com.yizhipin.base.data.response.GeneralizeGroupDetails
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -13,9 +16,6 @@ import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollectGroup
-import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.generalizecenter.ui.adapter.GeneralizeConsortiumAdapter
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent

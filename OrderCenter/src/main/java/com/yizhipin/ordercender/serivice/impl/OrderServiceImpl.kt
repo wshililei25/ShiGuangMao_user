@@ -1,15 +1,11 @@
 package com.yizhipin.ordercender.serivice.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.BuyResult
-import com.yizhipin.base.data.response.DressDetails
-import com.yizhipin.base.data.response.OrderDetails
+import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.ordercender.data.repository.OrderRepository
-import com.yizhipin.ordercender.data.response.Order
-import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.serivice.OrderService
 import io.reactivex.Observable
 import javax.inject.Inject

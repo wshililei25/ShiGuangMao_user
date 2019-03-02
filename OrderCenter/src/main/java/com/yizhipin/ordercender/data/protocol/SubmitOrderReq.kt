@@ -1,6 +1,6 @@
 package com.yizhipin.ordercender.data.protocol
 
-import com.yizhipin.ordercender.data.response.Order
+import com.yizhipin.base.data.response.Order
 
 /*
     提交订单

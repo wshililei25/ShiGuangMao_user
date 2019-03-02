@@ -1,7 +1,6 @@
-package com.yizhipin.goods.data.response
+package com.yizhipin.base.data.response
 
 import android.os.Parcelable
-import com.yizhipin.base.data.response.UserInfo
 import kotlinx.android.parcel.Parcelize
 
 /**

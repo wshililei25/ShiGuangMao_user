@@ -5,14 +5,14 @@ import android.support.v7.widget.LinearLayoutManager
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.GeneralizeInvest
+import com.yizhipin.base.data.response.GeneralizeInvestAmount
+import com.yizhipin.base.data.response.InvestDetails
+import com.yizhipin.base.data.response.InvestList
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.generalizecenter.R
-import com.yizhipin.generalizecenter.data.response.GeneralizeInvest
-import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
-import com.yizhipin.generalizecenter.data.response.InvestDetails
-import com.yizhipin.generalizecenter.data.response.InvestList
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeInvestView
 import com.yizhipin.generalizecenter.ui.adapter.InvestDetailsAdapter
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
@@ -24,7 +24,6 @@ import kotlinx.android.synthetic.main.activity_invest_list.*
  * Created by ${XiLei} on 2018/9/25.
  */
 class InvestListActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), GeneralizeInvestView {
-
 
     private lateinit var mOrderAdapter: InvestDetailsAdapter
 

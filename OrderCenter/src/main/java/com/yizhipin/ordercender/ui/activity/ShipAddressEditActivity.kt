@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.PopupWindow
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.ShipAddress
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.widgets.AddressPickerView
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.injection.component.DaggerShipAddressComponent
 import com.yizhipin.ordercender.injection.module.ShipAddressModule
 import com.yizhipin.ordercender.presenter.EditShipAddressPresenter

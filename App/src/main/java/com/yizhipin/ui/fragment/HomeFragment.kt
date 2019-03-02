@@ -38,7 +38,6 @@ import com.yizhipin.presenter.view.HomeView
 import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.router.RouterPath
-import com.yizhipin.shop.data.response.CategoryHome
 import com.yizhipin.shop.ui.activity.ScenicActivity
 import com.yizhipin.shop.ui.activity.ScenicDetailActivity
 import com.yizhipin.shop.ui.activity.ShopActivity

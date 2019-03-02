@@ -1,6 +1,6 @@
 package com.yizhipin.ordercender.serivice
 
-import com.yizhipin.ordercender.data.response.ShipAddress
+import com.yizhipin.base.data.response.ShipAddress
 import io.reactivex.Observable
 
 /*

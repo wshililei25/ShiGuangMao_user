@@ -7,10 +7,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.data.response.GeneralizeInvest
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.generalizecenter.R
-import com.yizhipin.generalizecenter.data.response.GeneralizeInvest
 import kotlinx.android.synthetic.main.layout_generalize_invest_item.view.*
 
 class GeneralizeInvestAdapter(val context: Context) : BaseRecyclerViewAdapter<GeneralizeInvest, GeneralizeInvestAdapter.ViewHolder>(context) {

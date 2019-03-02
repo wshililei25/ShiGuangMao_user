@@ -5,11 +5,11 @@ import android.view.KeyEvent
 import android.view.View
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.SearchKeyword
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.data.response.SearchKeyword
 import com.yizhipin.goods.injection.component.DaggerCategoryComponent
 import com.yizhipin.goods.injection.module.CategoryModule
 import com.yizhipin.goods.presenter.SearchPresenter

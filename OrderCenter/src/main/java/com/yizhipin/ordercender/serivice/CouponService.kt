@@ -1,8 +1,8 @@
 package com.yizhipin.ordercender.serivice
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Coupon
 import com.yizhipin.base.data.response.RedPacket
-import com.yizhipin.ordercender.data.response.Coupon
 import io.reactivex.Observable
 
 interface CouponService {

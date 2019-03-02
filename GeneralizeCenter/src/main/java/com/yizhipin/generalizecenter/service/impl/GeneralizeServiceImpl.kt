@@ -1,13 +1,10 @@
 package com.yizhipin.generalizecenter.service.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.Comment
-import com.yizhipin.base.data.response.Interaction
-import com.yizhipin.base.data.response.InteractionDetails
+import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
-import com.yizhipin.generalizecenter.data.response.*
 import com.yizhipin.generalizecenter.service.GeneralizeService
 import com.yizhipin.goods.data.repository.GeneralizeRepository
 import io.reactivex.Observable

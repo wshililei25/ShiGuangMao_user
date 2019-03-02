@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.data.response.ShareBill
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.goods.R
-import com.yizhipin.goods.data.response.ShareBill
 import kotlinx.android.synthetic.main.layout_share_bill_item.view.*
 
 class ShareBillAdapter(val context: Context) : BaseRecyclerViewAdapter<ShareBill, ShareBillAdapter.ViewHolder>(context) {

@@ -12,6 +12,8 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.eightbitlab.rxbus.Bus
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Category
+import com.yizhipin.base.data.response.CategorySecond
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.startLoading
@@ -19,8 +21,6 @@ import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.data.response.Category
-import com.yizhipin.goods.data.response.CategorySecond
 import com.yizhipin.goods.injection.component.DaggerCategoryComponent
 import com.yizhipin.goods.injection.module.CategoryModule
 import com.yizhipin.goods.presenter.CategoryPresenter

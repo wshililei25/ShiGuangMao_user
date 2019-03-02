@@ -3,9 +3,6 @@ package com.yizhipin.goods.data.api
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.*
-import com.yizhipin.goods.data.response.Complain
-import com.yizhipin.goods.data.response.Report
-import com.yizhipin.goods.data.response.ShareBill
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET

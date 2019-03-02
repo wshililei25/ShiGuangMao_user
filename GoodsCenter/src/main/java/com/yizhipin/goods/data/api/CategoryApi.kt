@@ -1,9 +1,9 @@
 package com.yizhipin.goods.data.api
 
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.goods.data.response.Category
-import com.yizhipin.goods.data.response.CategorySecond
-import com.yizhipin.goods.data.response.SearchKeyword
+import com.yizhipin.base.data.response.Category
+import com.yizhipin.base.data.response.CategorySecond
+import com.yizhipin.base.data.response.SearchKeyword
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET
