@@ -1,6 +1,7 @@
 package com.yizhipin.usercenter.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
@@ -12,6 +13,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.base.utils.MyOSSUtils
 import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
@@ -21,7 +23,6 @@ import com.yizhipin.usercenter.presenter.view.UserInfoView
 import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_user_info.*
 import org.jetbrains.anko.toast
-import java.io.File
 
 /**
  * Created by ${XiLei} on 2018/7/26.
@@ -92,13 +93,31 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         }
         val localFileUrl = result?.image?.compressPath
 
-        val fileKey = "avatarFile"
-        val uploadUtil = UploadUtil.getInstance()
-        uploadUtil.setOnUploadProcessListener(this@UserInfoActivity) //设置监听器监听上传状态
+        Log.d("XiLei", "localFileUrl=" + localFileUrl);
 
-        showLoading()
-        val filepath = File(localFileUrl)
-        uploadUtil.uploadFile(filepath, fileKey, BaseConstant.SERVICE_ADDRESS + "file/img", HashMap<String, String>())
+        var mMyOSSUtils = MyOSSUtils.getInstance()
+        mMyOSSUtils.upImage(this, object : MyOSSUtils.OssUpCallback {
+            override fun successImg(img_url: String?) {
+                Log.d("XiLei", "successImg");
+            }
+
+            override fun successVideo(video_url: String?) {
+                Log.d("XiLei", "video_url");
+            }
+
+            override fun inProgress(progress: Long, zong: Long) {
+                Log.d("XiLei", "progress=" + progress);
+            }
+
+        }, "aaa", localFileUrl)
+
+        /* val fileKey = "avatarFile"
+         val uploadUtil = UploadUtil.getInstance()
+         uploadUtil.setOnUploadProcessListener(this@UserInfoActivity) //设置监听器监听上传状态
+
+         showLoading()
+         val filepath = File(localFileUrl)
+         uploadUtil.uploadFile(filepath, fileKey, BaseConstant.SERVICE_ADDRESS + "file/img", HashMap<String, String>())*/
     }
 
     /**
@@ -160,6 +179,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
 
     override fun getUnReadNewCount(result: Int) {
     }
+
     override fun getFeeRecordListSuccess(result: MutableList<FeeRecord>) {
     }
 }

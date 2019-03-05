@@ -223,3 +223,9 @@
 -keep class com.ta.utdid2.** { *;}
 -keep class com.ut.device.** { *;}
 #AliPay
+
+#阿里云存储
+-keep class com.alibaba.sdk.android.oss.** { *; }
+-dontwarn okio.**
+-dontwarn org.apache.commons.codec.binary.**
+#阿里云存储

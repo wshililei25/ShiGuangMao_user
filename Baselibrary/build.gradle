@@ -92,9 +92,10 @@ dependencies {
     api "com.github.quentin7b:android-location-tracker:${location_version}"
     //环信
     api project(':easeui')
-
     //WechatPay
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //阿里云存储
+    api 'com.aliyun.dpa:oss-android-sdk:+'
 }
 
 //Parcelable序列化插件

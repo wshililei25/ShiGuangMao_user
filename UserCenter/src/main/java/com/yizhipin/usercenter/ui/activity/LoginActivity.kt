@@ -6,10 +6,12 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hyphenate.EMCallBack
 import com.hyphenate.chat.EMClient
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
@@ -67,14 +69,14 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         EMClient.getInstance().login(mMobileEt.text.toString().trim(), mPswEt.text.toString().trim(), object : EMCallBack {
 
             override fun onSuccess() {
-                Log.d("2", "环信登录成功")
+                Log.d("XiLei", "环信登录成功")
             }
 
             override fun onProgress(progress: Int, status: String) {
             }
 
             override fun onError(code: Int, error: String) {
-                Log.d("2", "环信登录失败" + code + "," + error)
+                Log.d("XiLei", "环信登录失败" + code + "," + error)
 //                runOnUiThread { Toast.makeText(applicationContext, "login failed", 0).show() }
             }
         })

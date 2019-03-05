@@ -102,10 +102,10 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
             override fun run() {
                 try {
                     EMClient.getInstance().createAccount(mMobileEt.text.toString().trim(), mPswEt.text.toString().trim())
-                    Log.d("2", "环信注册成功")
+                    Log.d("XiLei", "环信注册成功")
                 } catch (e: HyphenateException) {
                     e.printStackTrace()
-                    Log.d("2", "环信注册失败--- " + e.errorCode + "," + e.message)
+                    Log.d("XiLei", "环信注册失败--- " + e.errorCode + "," + e.message)
                 }
             }
 
