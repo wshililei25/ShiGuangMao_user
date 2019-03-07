@@ -43,7 +43,7 @@ class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecycle
             holder.itemView.mAmountTv.text = "¥${webUser.extraAmount}"
 
             var listResult = mutableListOf<String>()
-            works?.let {
+            if(null != works && works.size>0){
                 if (works[0].imgurls.contains(",")) {
                     var list = works[0].imgurls!!.split(",").toMutableList()
                     for (l in list) {
