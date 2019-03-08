@@ -93,4 +93,7 @@ interface UserApi {
      */
     @POST(Api.RESET_PAY_PWD)
     fun resetPayPwd(): Observable<BaseResp<Boolean>>
+
+    @GET(Api.OSS_SIGN)
+    fun getOssSign(@Query("content") content: String): Observable<BaseResp<String>>
 }

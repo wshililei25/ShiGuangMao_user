@@ -275,5 +275,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
     override fun getFeeRecordListSuccess(result: MutableList<FeeRecord>) {
     }
-
+    override fun onGetOssSignSuccess(result: String) {
+    }
 }

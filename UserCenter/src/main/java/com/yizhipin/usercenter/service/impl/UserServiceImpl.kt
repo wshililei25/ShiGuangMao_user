@@ -49,18 +49,22 @@ open class UserServiceImpl @Inject constructor() : UserService {
         return mRepository.getUserInfo(map)
                 .convert()
     }
+
     override fun getRelevanceUser(map: MutableMap<String, String>): Observable<MutableList<RelevanceUser>> {
         return mRepository.getRelevanceUser(map)
                 .convert()
     }
+
     override fun addRelevanceUser(map: MutableMap<String, String>): Observable<RelevanceUser> {
         return mRepository.addRelevanceUser(map)
                 .convert()
     }
+
     override fun updateRelevanceUser(map: MutableMap<String, String>): Observable<RelevanceUser> {
         return mRepository.updateRelevanceUser(map)
                 .convert()
     }
+
     override fun deleteRelevanceUser(map: MutableMap<String, String>): Observable<Boolean> {
         return mRepository.deleteRelevanceUser(map)
                 .convertBoolean()
@@ -75,6 +79,7 @@ open class UserServiceImpl @Inject constructor() : UserService {
         return mRepository.getInvitationList(map)
                 .convert()
     }
+
     override fun addInvitation(map: MutableMap<String, String>): Observable<UserInfo> {
         return mRepository.addInvitation(map)
                 .convert()
@@ -132,5 +137,9 @@ open class UserServiceImpl @Inject constructor() : UserService {
 
         return mRepository.resetPayPwd(map)
                 .convertBoolean()
+    }
+
+    override fun getOssSign(map: MutableMap<String, String>): Observable<String> {
+        return mRepository.getOssSign(map).convert()
     }
 }

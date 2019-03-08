@@ -14,4 +14,5 @@ interface UserInfoView : BaseView {
     fun getUnReadNewCount(result: Int)
     fun onEditUserResult(result: UserInfo)
     fun onGetDefaultStoreSuccess(result: Store)
+    fun onGetOssSignSuccess(result: String)
 }

@@ -104,5 +104,6 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
 
     override fun onGetDefaultStoreSuccess(result: Store) {
     }
-
+    override fun onGetOssSignSuccess(result: String) {
+    }
 }

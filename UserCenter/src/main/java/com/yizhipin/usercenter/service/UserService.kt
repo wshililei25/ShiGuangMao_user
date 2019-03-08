@@ -33,4 +33,5 @@ interface UserService {
     fun deleteRelevanceUser(map: MutableMap<String, String>): Observable<Boolean>
     fun updateRelevanceUser(map: MutableMap<String, String>): Observable<RelevanceUser>
     fun addInvitation(map: MutableMap<String, String>): Observable<UserInfo>
+    fun getOssSign(map: MutableMap<String, String>): Observable<String>
 }

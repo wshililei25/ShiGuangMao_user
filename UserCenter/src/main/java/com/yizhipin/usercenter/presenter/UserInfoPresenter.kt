@@ -26,6 +26,7 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
             }
         }, mLifecycleProvider)
     }
+
     fun loadFeeRecordList(map: MutableMap<String, String>) {
         mView.showLoading()
         mUserServiceImpl.loadFeeRecordList(map).execute(object : BaseSubscriber<MutableList<FeeRecord>>(mView) {
@@ -34,6 +35,7 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
             }
         }, mLifecycleProvider)
     }
+
     fun getUnreadNewCount(map: MutableMap<String, String>) {
         mView.showLoading()
         mUserServiceImpl.getUnreadNewCount(map).execute(object : BaseSubscriber<Int>(mView) {
@@ -47,8 +49,6 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
      * 编辑用户资料
      */
     fun editUserInfo(map: MutableMap<String, String>) {
-        if (!checkNetWork())
-            return
 
         mView.showLoading()
         mUserServiceImpl.editUserInfo(map).execute(object : BaseSubscriber<UserInfo>(mView) {
@@ -58,7 +58,7 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
         }, mLifecycleProvider)
     }
 
-    fun getDefaultStore(map: MutableMap<String,String>) {
+    fun getDefaultStore(map: MutableMap<String, String>) {
 //        mView.showLoading()
         mUserServiceImpl.getDefaultStore(map)
                 .execute(object : BaseSubscriber<Store>(mView) {
@@ -67,6 +67,15 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
                     }
                 }, mLifecycleProvider)
 
+    }
+
+    fun getOssSign(map: MutableMap<String, String>) {
+
+        mUserServiceImpl.getOssSign(map).execute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
+                mView.onGetOssSignSuccess(t)
+            }
+        }, mLifecycleProvider)
     }
 }
 

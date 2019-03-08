@@ -54,14 +54,17 @@ class UserRepository @Inject constructor() {
         return RetrofitFactoryGet().create(UserApi::class.java)
                 .getRelevanceUser(map["uid"]!!)
     }
+
     fun addRelevanceUser(map: MutableMap<String, String>): Observable<BaseResp<RelevanceUser>> {
         return RetrofitFactoryPost(map).create(UserApi::class.java)
                 .addRelevanceUser()
     }
+
     fun updateRelevanceUser(map: MutableMap<String, String>): Observable<BaseResp<RelevanceUser>> {
         return RetrofitFactoryPut(map).create(UserApi::class.java)
                 .updateRelevanceUser(map["id"]!!)
     }
+
     fun deleteRelevanceUser(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryDelete(map).create(UserApi::class.java)
                 .deleteRelevanceUser(map["id"]!!)
@@ -76,9 +79,10 @@ class UserRepository @Inject constructor() {
         return RetrofitFactoryGet().create(UserApi::class.java)
                 .getInvitationList(map["uid"]!!)
     }
+
     fun addInvitation(map: MutableMap<String, String>): Observable<BaseResp<UserInfo>> {
         return RetrofitFactoryGet().create(UserApi::class.java)
-                .addInvitation(map["uid"]!!,map["requestCode"]!!)
+                .addInvitation(map["uid"]!!, map["requestCode"]!!)
     }
 
     fun getIntegralList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<FeeRecord>>> {
@@ -129,5 +133,10 @@ class UserRepository @Inject constructor() {
     fun resetPayPwd(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(UserApi::class.java)
                 .resetPayPwd()
+    }
+
+    fun getOssSign(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryGet().create(UserApi::class.java)
+                .getOssSign(map["content"]!!)
     }
 }
