@@ -86,10 +86,8 @@ fun Button.enable(editText: EditText, method: () -> Boolean) {
  */
 fun ImageView.loadUrl(url: String) {
     if (url.contains("timecats-yunpan")) {
-        Log.d("XiLei", "1111111=" )
         GlideUtils.loadUrlImage(context, url, this)
     } else {
-        Log.d("XiLei", "222222=" )
         GlideUtils.loadUrlImage(context, AppPrefsUtils.getString(BaseConstant.IMAGE_ADDRESS) + url, this)
     }
 }
