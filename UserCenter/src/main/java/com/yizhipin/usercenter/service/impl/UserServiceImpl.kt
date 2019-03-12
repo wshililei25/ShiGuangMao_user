@@ -1,10 +1,7 @@
 package com.yizhipin.usercenter.service.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.FeeRecord
-import com.yizhipin.base.data.response.RelevanceUser
-import com.yizhipin.base.data.response.Store
-import com.yizhipin.base.data.response.UserInfo
+import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
@@ -141,5 +138,13 @@ open class UserServiceImpl @Inject constructor() : UserService {
 
     override fun getOssSign(map: MutableMap<String, String>): Observable<String> {
         return mRepository.getOssSign(map).convert()
+    }
+
+    override fun getOssSignFile(map: MutableMap<String, String>): Observable<String> {
+        return mRepository.getOssSignFile(map).convert()
+    }
+
+    override fun getOssAddress(): Observable<OssAddress> {
+        return mRepository.getOssAddress().convert()
     }
 }

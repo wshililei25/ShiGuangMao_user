@@ -48,7 +48,7 @@ class InvitationAddActivity : BaseMvpActivity<InvitationPresenter>(), Invitation
 
             R.id.mBtn -> {
                 var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                 map.put("requestCode", mEt.text.toString())
                 mBasePresenter.addInvitation(map)
 

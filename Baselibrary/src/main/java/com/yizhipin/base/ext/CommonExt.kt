@@ -1,6 +1,7 @@
 package com.yizhipin.base.ext
 
 import android.graphics.drawable.AnimationDrawable
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -84,7 +85,13 @@ fun Button.enable(editText: EditText, method: () -> Boolean) {
  * ImageView加载网络图片 扩展
  */
 fun ImageView.loadUrl(url: String) {
-    GlideUtils.loadUrlImage(context, AppPrefsUtils.getString(BaseConstant.IMAGE_ADDRESS) + url, this)
+    if (url.contains("timecats-yunpan")) {
+        Log.d("XiLei", "1111111=" )
+        GlideUtils.loadUrlImage(context, url, this)
+    } else {
+        Log.d("XiLei", "222222=" )
+        GlideUtils.loadUrlImage(context, AppPrefsUtils.getString(BaseConstant.IMAGE_ADDRESS) + url, this)
+    }
 }
 
 /**

@@ -1,23 +1,21 @@
 package com.yizhipin.usercenter.ui.activity
 
-import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.util.Log
 import android.view.View
 import com.alibaba.sdk.android.oss.*
 import com.alibaba.sdk.android.oss.callback.OSSCompletedCallback
 import com.alibaba.sdk.android.oss.callback.OSSProgressCallback
 import com.alibaba.sdk.android.oss.common.OSSLog
-import com.alibaba.sdk.android.oss.common.auth.OSSAuthCredentialsProvider
 import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider
 import com.alibaba.sdk.android.oss.common.auth.OSSCustomSignerCredentialProvider
+import com.alibaba.sdk.android.oss.common.auth.OSSStsTokenCredentialProvider
 import com.alibaba.sdk.android.oss.model.PutObjectRequest
 import com.alibaba.sdk.android.oss.model.PutObjectResult
 import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.FeeRecord
+import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
@@ -25,7 +23,6 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
@@ -33,21 +30,21 @@ import com.yizhipin.usercenter.presenter.UserInfoPresenter
 import com.yizhipin.usercenter.presenter.view.UserInfoView
 import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_user_info.*
-import org.jetbrains.anko.toast
 import java.io.File
-import java.text.SimpleDateFormat
+
 
 /**
  * Created by ${XiLei} on 2018/7/26.
  * 基本信息
  */
-class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView, View.OnClickListener, UploadUtil.OnUploadProcessListener {
+class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView, View.OnClickListener {
 
-    private var mRemoteFileUrl: String = ""
-    private var mOssSign: String = ""
+    private var mLocalFileUrl = ""
+    private var mResultUrl: String = ""
 
-    private lateinit var oss: OSS
-//    private lateinit var mMyOSSUtils: MyOSSUtils
+    private var mOssSign = ""
+    private lateinit var mOssAddress: OssAddress
+    private lateinit var mOss: OSS
     private lateinit var mOSSCredentialProvider: OSSCredentialProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,27 +52,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         setContentView(R.layout.activity_user_info)
 
         initView()
-
-//        mMyOSSUtils = MyOSSUtils.getInstance()
-      /*  var handler = object : Handler() {
-            override fun handleMessage(msg: Message?) {
-                super.handleMessage(msg)
-                initOss()
-                initOss(this@UserInfoActivity, "http://oss-cn-hangzhou.aliyuncs.com"
-                        , "LTAI1WzOdcWDGWNl", "X2AvzuKH8Zs2YGcLwweXG34POMdXa6"
-                        , "", mOSSCredentialProvider)
-            }
-        }*/
-
-        Thread(object :Runnable{
-            override fun run() {
-                initOss()
-                initOss(this@UserInfoActivity, "http://oss-cn-hangzhou.aliyuncs.com"
-                        , "LTAI1WzOdcWDGWNl", "X2AvzuKH8Zs2YGcLwweXG34POMdXa6"
-                        , "", mOSSCredentialProvider)
-            }
-
-        }).start()
+        initOssInfo()
     }
 
     private fun initView() {
@@ -86,29 +63,39 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         mConfirmBtn.enable(mNickEt, { isBtnEnable() })
     }
 
-    private fun initOss() {
-        Log.d("XiLei", "111111111")
-        mOSSCredentialProvider = object : OSSCustomSignerCredentialProvider() {
+    /**
+     * 初始化oss云存储
+     */
+    private fun initOssInfo() {
 
+        mOSSCredentialProvider = object : OSSCustomSignerCredentialProvider() {
             override fun signContent(content: String): String {
                 // 您需要在这里依照OSS规定的签名算法，实现加签一串字符内容，并把得到的签名传拼接上AccessKeyId后返回
                 // 一般实现是，将字符内容post到您的业务服务器，然后返回签名
                 // 如果因为某种原因加签失败，描述error信息后，返回nil
                 // 以下是用本地算法进行的演示
-                Log.d("XiLei", "content:$content")
-//                createSingleOssAk(content)
-
+                Log.d("XiLei", "content=" + content)
                 var map = mutableMapOf<String, String>()
+                map.put("access-token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
                 map.put("content", content)
                 mPresenter.getOssSign(map)
-
-                return mOssSign//"OSS " + AccessKeyId + ":" + OSSUtils.base64(hmac - sha1(SecretKeyId, content));
+                return mOssSign
             }
         }
+
+        //获取oss配置数据
+        mPresenter.getOssAddress()
     }
 
     override fun onGetOssSignSuccess(result: String) {
+        Log.d("XiLei", "mOssSign=" + mOssSign)
         mOssSign = result
+    }
+
+    override fun onGetOssAddressSuccess(result: OssAddress) {
+        mOssAddress = result
+        Log.d("XiLei", "result.endpoint=" + result.endpoint)
+        initOss(result.endpoint, result.accessKeyId, result.accessKeySecret, "")
     }
 
     override fun onStart() {
@@ -118,13 +105,10 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
 
     private fun initData() {
         var map = mutableMapOf<String, String>()
-        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mPresenter.getUserInfo(map)
     }
 
-    /*
-        Dagger注册
-     */
     override fun injectComponent() {
         DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
         mPresenter.mView = this
@@ -141,7 +125,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
 
                 var map = mutableMapOf<String, String>()
                 map.put("nickname", mNickEt.text.toString())
-                map.put("imgurl", mRemoteFileUrl)
+                map.put("imgurl", mResultUrl)
                 mPresenter.editUserInfo(map)
             }
 
@@ -149,58 +133,91 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
     }
 
     /**
-     * 获取图片成功回调
+     * 获取本地图片成功回调
      */
     override fun takeSuccess(result: TResult?) {
         if (!mPresenter.checkNetWork()) {
             return
         }
         val localFileUrl = result?.image?.compressPath
-
         Log.d("XiLei", "localFileUrl=" + localFileUrl);
-        OssUploadImg("timecats-yunpan", File(localFileUrl).getName(), localFileUrl!!)
+        mLocalFileUrl = localFileUrl!!
 
-        /* var mMyOSSUtils = MyOSSUtils.getInstance()
-         mMyOSSUtils.upImage(this, object : MyOSSUtils.OssUpCallback {
-             override fun successImg(img_url: String?) {
-                 Log.d("XiLei", "successImg");
-             }
+        Log.d("XiLei", "File(mLocalFileUrl).name=" + File(mLocalFileUrl).name)
+        //这里要对上传的objectKey(文件名)进行签名后才可上传
+        var map = mutableMapOf<String, String>()
+        map.put("access-token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("content", File(mLocalFileUrl).name)
+        mPresenter.getOssSignFile(map)
+    }
 
-             override fun successVideo(video_url: String?) {
-                 Log.d("XiLei", "video_url");
-             }
-
-             override fun inProgress(progress: Long, zong: Long) {
-                 Log.d("XiLei", "progress=" + progress);
-             }
-
-         }, "aaa", localFileUrl)*/
-
-        /* val fileKey = "avatarFile"
-         val uploadUtil = UploadUtil.getInstance()
-         uploadUtil.setOnUploadProcessListener(this@UserInfoActivity) //设置监听器监听上传状态
-
-         showLoading()
-         val filepath = File(localFileUrl)
-         uploadUtil.uploadFile(filepath, fileKey, BaseConstant.SERVICE_ADDRESS + "file/img", HashMap<String, String>())*/
+    override fun onGetOssSignFileSuccess(result: String) {
+        Log.d("XiLei", "mOssAddress.bucketName=" + mOssAddress.bucketName)
+        Log.d("XiLei", "mLocalFileUrl=" + mLocalFileUrl)
+        Log.d("XiLei", "result签名=" + result)
+        showLoading()
+        OssUploadImg(mOssAddress.bucketName, result, mLocalFileUrl)
     }
 
     /**
-     * 上传图片成功
+     * 向oss云上传图片
      */
-    override fun onUploadDone(responseCode: Int, message: String) {
-        runOnUiThread {
-            hideLoading()
-            toast(R.string.upload_success)
-            mRemoteFileUrl = message
-            mUserIconIv.loadUrl(mRemoteFileUrl)
+    fun OssUploadImg(bucketName: String, objectKey: String, uploadimage: String) {
+        Log.d("XiLei", "OssUploadImg==============")
+        // 构造上传请求
+        val put = PutObjectRequest(bucketName, objectKey, uploadimage)
+        // 异步上传时可以设置进度回调
+        put.progressCallback = OSSProgressCallback { request, currentSize, totalSize ->
+            Log.d("XiLei", "currentSize: $currentSize totalSize: $totalSize")
         }
+        val task = mOss.asyncPutObject(put, object : OSSCompletedCallback<PutObjectRequest, PutObjectResult> {
+            override fun onSuccess(request: PutObjectRequest, result: PutObjectResult) {
+                Log.d("XiLei", "UploadSuccess")
+                Log.d("XiLei", "result=$result")
+                Log.d("XiLei", "result.getETag=" + result.eTag)
+                Log.d("XiLei", "result.getRequestId=" + result.requestId)
+                Log.d("XiLei", "result.getServerCallbackReturnBody=" + result.serverCallbackReturnBody)
+                mResultUrl = mOss.presignPublicObjectURL(mOssAddress.bucketName, objectKey)
+                Log.d("XiLei", "mResultUrl=" + mResultUrl)
+                runOnUiThread(object : Runnable {
+                    override fun run() {
+                        mUserIconIv.loadUrl(mResultUrl)
+                    }
+                })
+            }
+
+            override fun onFailure(request: PutObjectRequest, clientExcepion: ClientException?, serviceException: ServiceException?) {
+                // 请求异常
+                clientExcepion?.printStackTrace()
+                if (clientExcepion != null) { // 本地异常
+                    Log.e("XiLei", "clientExcepion=" + clientExcepion.message)
+                }
+                if (serviceException != null) { // 服务异常
+                    Log.e("XiLei", "ErrorCode=" + serviceException.errorCode)
+                    Log.e("XiLei", "RequestId=" + serviceException.requestId)
+                    Log.e("XiLei", "HostId=" + serviceException.hostId)
+                    Log.e("XiLei", "RawMessage=" + serviceException.rawMessage)
+                }
+            }
+        })
+        // task.cancel(); // 可以取消任务
     }
 
-    override fun onUploadProcess(uploadSize: Int) {
-    }
+    private fun initOss(endpoint: String, AccessKeyId: String, SecretKeyId: String, SecurityToken: String) {
+        // 在移动端建议使用STS方式初始化OSSClient。
+        // 更多信息可查看sample 中 sts 使用方式(https://github.com/aliyun/aliyun-oss-android-sdk/tree/master/app/src/main/java/com/alibaba/sdk/android/oss/app)
+        val credentialProvider = OSSStsTokenCredentialProvider(AccessKeyId, SecretKeyId, SecurityToken)
+        // 自签名模式
 
-    override fun initUpload(fileSize: Int) {
+        //该配置类如果不设置，会有默认配置，具体可看该类
+        val conf = ClientConfiguration()
+        conf.connectionTimeout = 15 * 1000 // 连接超时，默认15秒
+        conf.socketTimeout = 15 * 1000 // socket超时，默认15秒
+        conf.maxConcurrentRequest = 5 // 最大并发请求数，默认5个
+        conf.maxErrorRetry = 2 // 失败后最大重试次数，默认2次
+        OSSLog.enableLog()  //开启可以在控制台看到日志
+        mOss = OSSClient(applicationContext, endpoint, credentialProvider, conf)
+        Log.d("XiLei", "initOss======")
     }
 
     /**
@@ -208,19 +225,9 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
      */
     override fun getUserResult(result: UserInfo) {
 
-        mRemoteFileUrl = result.imgurl
         mNickEt.setText(result.nickname)
         mNickEt.setSelection(result.nickname.length)
-        /*if (result.mobile != "") {
-            mMobileEt.setText(result.mobile)
-            mMobileIv.visibility = View.GONE
-            mMobileView.isEnabled = false
-        }*/
-        /*   if (result.weixin != "") {
-               mWeChatEt.setText(result.mobile)
-               mWeChatIv.visibility = View.GONE
-               mWeChatView.isEnabled = false
-           }*/
+
         if (result.imgurl != "") {
             mUserIconIv.loadUrl(result.imgurl)
         }
@@ -248,72 +255,4 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
     override fun getFeeRecordListSuccess(result: MutableList<FeeRecord>) {
     }
 
-    fun initOss(context: Context, endpoint: String, AccessKeyId: String, SecretKeyId: String, SecurityToken: String, credentialProvider: OSSCredentialProvider) {
-        // 在移动端建议使用STS方式初始化OSSClient。
-        // 更多信息可查看sample 中 sts 使用方式(https://github.com/aliyun/aliyun-oss-android-sdk/tree/master/app/src/main/java/com/alibaba/sdk/android/oss/app)
-        //        OSSCredentialProvider credentialProvider = new OSSStsTokenCredentialProvider(
-        //                AccessKeyId, SecretKeyId, SecurityToken);
-        //        自签名模式
-
-
-        //该配置类如果不设置，会有默认配置，具体可看该类
-        val conf = ClientConfiguration()
-        conf.connectionTimeout = 15 * 1000 // 连接超时，默认15秒
-        conf.socketTimeout = 15 * 1000 // socket超时，默认15秒
-        conf.maxConcurrentRequest = 5 // 最大并发请求数，默认5个
-        conf.maxErrorRetry = 2 // 失败后最大重试次数，默认2次
-        //开启可以在控制台看到日志，并且会支持写入手机sd卡中的一份日志文件位置在SDCard_path\OSSLog\logs.csv  默认不开启
-        //日志会记录oss操作行为中的请求数据，返回数据，异常信息
-        //例如requestId,response header等
-        //android_version：5.1  android版本
-        //mobile_model：XT1085  android手机型号
-        //network_state：connected  网络状况
-        //network_type：WIFI 网络连接类型
-        //具体的操作行为信息:
-        //[2017-09-05 16:54:52] - Encounter local execpiton: //java.lang.IllegalArgumentException: The bucket name is invalid.
-        //A bucket name must:
-        //1) be comprised of lower-case characters, numbers or dash(-);
-        //2) start with lower case or numbers;
-        //3) be between 3-63 characters long.
-        //------>end of log
-        OSSLog.enableLog()
-        oss = OSSClient(context, endpoint, credentialProvider)
-    }
-
-
-    fun OssUploadImg(bucketName: String, objectKey: String, uploadimage: String) {
-        // 构造上传请求
-        val put = PutObjectRequest(bucketName, objectKey, uploadimage)
-        // 异步上传时可以设置进度回调
-        put.progressCallback = OSSProgressCallback { request, currentSize, totalSize ->
-            Log.d("XiLei", "currentSize: $currentSize totalSize: $totalSize")
-            //                uploadimgFlag = false;
-        }
-        val task = oss.asyncPutObject(put, object : OSSCompletedCallback<PutObjectRequest, PutObjectResult> {
-            override fun onSuccess(request: PutObjectRequest, result: PutObjectResult) {
-                Log.d("XiLei", "UploadSuccess")
-                Log.d("XiLei", "PutObject==result:$result")
-                //                uploadimgFlag = true;
-            }
-
-            override fun onFailure(request: PutObjectRequest, clientExcepion: ClientException?, serviceException: ServiceException?) {
-                // 请求异常
-                if (clientExcepion != null) {
-                    // 本地异常如网络异常等
-                    clientExcepion.printStackTrace()
-                    Log.d("XiLei", "clientExcepion.getMessage()=" + clientExcepion.message)
-                }
-                if (serviceException != null) {
-                    // 服务异常
-                    Log.d("XiLei", "serviceException.getErrorCode()=" + serviceException.errorCode)
-                    Log.d("XiLei", "serviceException.requestId=" +serviceException.requestId)
-                    Log.d("XiLei", "serviceException.hostId()=" +serviceException.hostId)
-                    Log.d("XiLei","serviceException.rawMessage()=" + serviceException.rawMessage)
-                }
-                //                uploadimgFlag = true;
-            }
-        })
-        // task.cancel(); // 可以取消任务
-
-    }
 }

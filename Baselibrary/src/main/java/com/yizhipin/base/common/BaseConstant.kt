@@ -10,8 +10,10 @@ class BaseConstant {
         const val SERVICE_ADDRESS = "https://nian.im/time-cat-api/"
         //SP表名
         const val TABLE_PREFS = "ShiGuangMao"
-        //Token Key
-        const val KEY_SP_TOKEN = "id"
+        //user id
+        const val KEY_SP_USER_ID = "userId"
+        //Token
+        const val KEY_SP_TOKEN = "token"
         //图片服务器地址
         const val IMAGE_ADDRESS = "IMAGE_ADDRESS"
 

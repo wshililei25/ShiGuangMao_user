@@ -190,7 +190,7 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
                 mPayPasswordDialog.setDialogClick(object : PayPasswordDialog.DialogClick {
                     override fun doConfirm(password: String?) {
                         var map = mutableMapOf<String, String>()
-                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                         map.put("investmentId", mId.toString())
                         map.put("payType", mType)
                         map.put("payPwd", password!!)

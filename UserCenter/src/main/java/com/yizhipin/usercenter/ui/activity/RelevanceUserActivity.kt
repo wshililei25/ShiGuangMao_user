@@ -52,7 +52,7 @@ class RelevanceUserActivity : BaseMvpActivity<RelevancePresenter>(), RelevanceVi
 
     private fun getUser() {
         var map = mutableMapOf<String, String>()
-        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getUserInfo(map)
     }
 
@@ -65,7 +65,7 @@ class RelevanceUserActivity : BaseMvpActivity<RelevancePresenter>(), RelevanceVi
 
     private fun getRelevanceUser() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getRelevanceUser(map)
     }
 

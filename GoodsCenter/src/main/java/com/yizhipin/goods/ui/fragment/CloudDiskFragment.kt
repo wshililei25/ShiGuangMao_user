@@ -73,7 +73,7 @@ class CloudDiskFragment : BaseMvpFragment<CloudDiskPresenter>(), CloudDiskView, 
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         map.put("type", arguments!!.getString(BaseConstant.KEY_CLOUD_DISK_STATUS, "-1"))
         mMultiStateView.startLoading()
         mBasePresenter.getCloudDiskList(map)

@@ -124,7 +124,7 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
             R.id.mConfirmBtn -> {
 
                 var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                 map.put("amount", mAmountEt.text.toString())
 //                map.put("amount", "0.01")
                 map.put("payType", mPayType)

@@ -182,7 +182,7 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                     }
                     getString(R.string.dress_buy) -> { //服装购买
                         var map = mutableMapOf<String, String>()
-                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                         map.put("clothId", mDressId)
                         map.put("orderCount", mPayNum)
                         map.put("payType", mPayType)
@@ -191,7 +191,7 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                     }
                     getString(R.string.dress_hire) -> { //服装租借
                         var map = mutableMapOf<String, String>()
-                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                         map.put("clothId", mDressId)
                         map.put("orderCount", mPayNum)
                         map.put("payType", mPayType)

@@ -11,7 +11,8 @@ import com.yizhipin.provider.common.ProviderConstant
 object UserPrefsUtils {
 
     fun putUserInfo(userInfo: UserInfo?) {
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo?.id.toString() ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_USER_ID, userInfo?.id.toString() ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo?.token.toString() ?: "")
         AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_MOBILE, userInfo?.mobile ?: "")
         AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_ICON, userInfo?.imgurl ?: "")
         AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NICKNAME, userInfo?.nickname ?: "")
@@ -22,6 +23,7 @@ object UserPrefsUtils {
      *  退出登录时清空存储
      */
     fun clearUserInfo() {
+        AppPrefsUtils.remove(BaseConstant.KEY_SP_USER_ID)
         AppPrefsUtils.remove(BaseConstant.KEY_SP_TOKEN)
         AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_MOBILE)
         AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_ICON)

@@ -255,7 +255,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
 
     private fun loadUnReadNewCount() {
         var mapCount = mutableMapOf<String, String>()
-        mapCount.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        mapCount.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getUnreadNewCount(mapCount)
     }
 

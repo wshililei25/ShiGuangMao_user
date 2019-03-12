@@ -133,7 +133,7 @@ class CameramanDetailActivity : BaseMvpActivity<CameramanDetailsPresenter>(), Ca
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mCameramanId)
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getCameramanDetails(map)
     }
 
@@ -192,7 +192,7 @@ class CameramanDetailActivity : BaseMvpActivity<CameramanDetailsPresenter>(), Ca
     private fun loadFollow() {
         var map = mutableMapOf<String, String>()
         map.put("teacherId", mCameramanId)
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getCameramanFollow(map)
     }
 

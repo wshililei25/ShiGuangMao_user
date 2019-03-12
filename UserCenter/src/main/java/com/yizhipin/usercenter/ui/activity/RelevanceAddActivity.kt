@@ -59,12 +59,12 @@ class RelevanceAddActivity : BaseMvpActivity<RelevancePresenter>(), RelevanceVie
             R.id.mBtn -> {
                 if (mIsAdd) {
                     var map = mutableMapOf<String, String>()
-                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                     map.put("mobile", mEt.text.toString())
                     mBasePresenter.addRelevanceUser(map)
                 } else {
                     var map = mutableMapOf<String, String>()
-                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                     map.put("id", mRelevanceId)
                     map.put("mobile", mEt.text.toString())
                     mBasePresenter.updateRelevanceUser(map)

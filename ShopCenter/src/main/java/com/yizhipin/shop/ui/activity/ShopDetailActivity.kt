@@ -219,7 +219,7 @@ class ShopDetailActivity : BaseMvpActivity<ShopDetailsPresenter>(), ShopDetailsV
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mShopId)
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getShopDetails(map)
     }
 
@@ -268,7 +268,7 @@ class ShopDetailActivity : BaseMvpActivity<ShopDetailsPresenter>(), ShopDetailsV
     private fun loadFollow() {
         var map = mutableMapOf<String, String>()
         map.put("storeId", mShopId)
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getFollow(map)
     }
 

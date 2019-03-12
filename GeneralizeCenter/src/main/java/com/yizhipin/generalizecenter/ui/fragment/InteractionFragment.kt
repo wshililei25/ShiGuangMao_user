@@ -79,7 +79,7 @@ class InteractionFragment : BaseMvpFragment<InteractionPresenter>(), ReportView,
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
         map.put("type", arguments!!.getString(BaseConstant.KEY_INTERACTION_STATUS, "-1").toString())
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mMultiStateView.startLoading()
         mBasePresenter.getInteractionList(map)
     }
@@ -133,7 +133,7 @@ class InteractionFragment : BaseMvpFragment<InteractionPresenter>(), ReportView,
                 .subscribe { t: LikeEvent ->
                     run {
                         var map = mutableMapOf<String, String>()
-                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                         map.put("interactiveId", t.evaId.toString())
                         mBasePresenter.giveLike(map)
                     }

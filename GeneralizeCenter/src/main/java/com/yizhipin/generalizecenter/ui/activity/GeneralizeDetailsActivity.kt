@@ -61,7 +61,7 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
 
     private fun loadData() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         map.put("id", mId.toString())
         mBasePresenter.getGenBiddingDetails(map)
     }

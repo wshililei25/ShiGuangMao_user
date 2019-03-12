@@ -120,10 +120,10 @@ class ScenicDetailActivity : BaseMvpActivity<ScenicDetailsPresenter>(), ScenicDe
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mScenicId)
-        if (AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN).isNullOrEmpty()) {
+        if (AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID).isNullOrEmpty()) {
             map.put("loginUid", "0")
         } else {
-            map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+            map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         }
 
         mBasePresenter.getScenicDetails(map)
@@ -196,7 +196,7 @@ class ScenicDetailActivity : BaseMvpActivity<ScenicDetailsPresenter>(), ScenicDe
     private fun loadFollow() {
         var map = mutableMapOf<String, String>()
         map.put("attractionId", mScenicId)
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getFollowScenic(map)
     }
 

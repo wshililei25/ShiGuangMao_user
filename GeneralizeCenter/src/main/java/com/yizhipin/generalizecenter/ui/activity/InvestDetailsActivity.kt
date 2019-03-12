@@ -57,7 +57,7 @@ class InvestDetailsActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), Gene
 
     private fun loadData() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         map.put("investmentId", mInvestId.toString())
         mBasePresenter.getInvestDetails(map)
     }

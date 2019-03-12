@@ -95,7 +95,7 @@ dependencies {
     //WechatPay
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     //阿里云存储
-    api 'com.aliyun.dpa:oss-android-sdk:+'
+    api 'com.aliyun.dpa:oss-android-sdk:2.9.1'
 }
 
 //Parcelable序列化插件

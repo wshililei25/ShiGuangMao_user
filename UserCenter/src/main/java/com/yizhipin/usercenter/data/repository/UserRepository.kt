@@ -7,10 +7,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.net.RetrofitFactoryPut
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.base.data.response.FeeRecord
-import com.yizhipin.base.data.response.RelevanceUser
-import com.yizhipin.base.data.response.Store
-import com.yizhipin.base.data.response.UserInfo
+import com.yizhipin.base.data.response.*
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.data.api.UserApi
 import io.reactivex.Observable
@@ -99,8 +96,7 @@ class UserRepository @Inject constructor() {
      * 编辑用户信息
      */
     fun editUserInfo(map: MutableMap<String, String>): Observable<BaseResp<UserInfo>> {
-        return RetrofitFactoryPut(map).create(UserApi::class.java)
-                .editUserInfo(AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        return RetrofitFactoryPut(map).create(UserApi::class.java).editUserInfo(AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
     }
 
     fun getCartCount(map: MutableMap<String, String>): Observable<BaseResp<Int>> {
@@ -117,7 +113,7 @@ class UserRepository @Inject constructor() {
      */
     fun bindMobile(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPut(map).create(UserApi::class.java)
-                .bindMobile(AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                .bindMobile(AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
     }
 
     fun setPayPwd(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
@@ -136,7 +132,14 @@ class UserRepository @Inject constructor() {
     }
 
     fun getOssSign(map: MutableMap<String, String>): Observable<BaseResp<String>> {
-        return RetrofitFactoryGet().create(UserApi::class.java)
-                .getOssSign(map["content"]!!)
+        return RetrofitFactoryGet().create(UserApi::class.java).getOssSign(map["access-token"]!!,map["content"]!!)
+    }
+
+    fun getOssSignFile(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryGet().create(UserApi::class.java).getOssSignFile(map["access-token"]!!,map["content"]!!)
+    }
+
+    fun getOssAddress(): Observable<BaseResp<OssAddress>> {
+        return RetrofitFactoryGet().create(UserApi::class.java).getOssAddress()
     }
 }

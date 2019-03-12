@@ -1,10 +1,7 @@
 package com.yizhipin.usercenter.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.FeeRecord
-import com.yizhipin.base.data.response.RelevanceUser
-import com.yizhipin.base.data.response.Store
-import com.yizhipin.base.data.response.UserInfo
+import com.yizhipin.base.data.response.*
 import io.reactivex.Observable
 
 
@@ -34,4 +31,6 @@ interface UserService {
     fun updateRelevanceUser(map: MutableMap<String, String>): Observable<RelevanceUser>
     fun addInvitation(map: MutableMap<String, String>): Observable<UserInfo>
     fun getOssSign(map: MutableMap<String, String>): Observable<String>
+    fun getOssSignFile(map: MutableMap<String, String>): Observable<String>
+    fun getOssAddress(): Observable<OssAddress>
 }

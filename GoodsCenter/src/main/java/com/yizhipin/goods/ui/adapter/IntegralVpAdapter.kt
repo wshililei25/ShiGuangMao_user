@@ -18,8 +18,8 @@ class IntegralVpAdapter(fragmentManager: FragmentManager, context: Context) : Fr
         val fragment = IntegralFragment()
         val bunder = Bundle()
         when (position) {
-            0 -> bunder.putString(BaseConstant.KEY_SP_TOKEN, "")
-            1 -> bunder.putString(BaseConstant.KEY_SP_TOKEN, AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+            0 -> bunder.putString(BaseConstant.KEY_SP_USER_ID, "")
+            1 -> bunder.putString(BaseConstant.KEY_SP_USER_ID, AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         }
         fragment.arguments = bunder
         return fragment

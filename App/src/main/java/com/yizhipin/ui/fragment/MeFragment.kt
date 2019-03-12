@@ -14,6 +14,7 @@ import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.FeeRecord
+import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.event.SelectShopEvent
@@ -103,11 +104,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             mGradeIv.visibility = View.VISIBLE
             mRelevanceTv.visibility = View.VISIBLE
             var map = mutableMapOf<String, String>()
-            map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+            map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
             mBasePresenter.getUserInfo(map)
 
             var mapCount = mutableMapOf<String, String>()
-            mapCount.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+            mapCount.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
             mBasePresenter.getUnreadNewCount(mapCount)
 
         } else {
@@ -275,6 +276,13 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
     override fun getFeeRecordListSuccess(result: MutableList<FeeRecord>) {
     }
+
     override fun onGetOssSignSuccess(result: String) {
+    }
+
+    override fun onGetOssSignFileSuccess(result: String) {
+    }
+
+    override fun onGetOssAddressSuccess(result: OssAddress) {
     }
 }

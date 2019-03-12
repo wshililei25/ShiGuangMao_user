@@ -85,7 +85,7 @@ class RedPacketActivity : BaseMvpActivity<CouponPresenter>(), CouponView, View.O
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getRedPacketList(map)
     }
 
@@ -114,7 +114,7 @@ class RedPacketActivity : BaseMvpActivity<CouponPresenter>(), CouponView, View.O
      */
     private fun loadRedBalance() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getRedBalance(map)
     }
 

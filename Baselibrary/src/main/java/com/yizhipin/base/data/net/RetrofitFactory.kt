@@ -29,7 +29,7 @@ class RetrofitFactory private constructor() {
 //                    .addHeader("Content-Type", "application/json")
                     .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
                     .addHeader("charset", "UTF-8")
-                    .addHeader("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                    .addHeader("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                     .build()
             chain.proceed(request)
 

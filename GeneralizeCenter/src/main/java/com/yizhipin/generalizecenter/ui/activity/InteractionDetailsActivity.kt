@@ -136,7 +136,7 @@ class InteractionDetailsActivity : BaseMvpActivity<InteractionPresenter>(), Repo
     private fun comment(content: String) {
         var map = mutableMapOf<String, String>()
         map.put("interactiveId", mId)
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         map.put("content", content)
         mBasePresenter.comment(map)
     }

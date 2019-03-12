@@ -112,7 +112,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mDressId)
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getGoodsDetail(map)
     }
 
@@ -139,7 +139,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     private fun loadData() {
 
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getDefaultAddress(map)
     }
 

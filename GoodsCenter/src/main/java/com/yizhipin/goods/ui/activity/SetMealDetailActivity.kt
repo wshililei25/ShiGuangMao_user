@@ -137,7 +137,7 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
 
                 afterLogin {
                     var map = mutableMapOf<String, String>()
-                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                     map.put("packageId", mMealId)
                     mBasePresenter.order(map)
                 }
@@ -164,7 +164,7 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mMealId)
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getMealDetails(map)
     }
 
@@ -239,7 +239,7 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
     private fun loadFollow() {
         var map = mutableMapOf<String, String>()
         map.put("packageId", mMealId)
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getFollow(map)
     }
 

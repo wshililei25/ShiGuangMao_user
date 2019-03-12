@@ -164,7 +164,7 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mDressId)
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getGoodsDetail(map)
     }
 
@@ -228,7 +228,7 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
     private fun loadFollowDress() {
         var map = mutableMapOf<String, String>()
         map.put("clothesId", mDressId.toString())
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.followDress(map)
     }
 

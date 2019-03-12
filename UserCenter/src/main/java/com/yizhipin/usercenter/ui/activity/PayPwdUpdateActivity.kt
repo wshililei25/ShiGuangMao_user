@@ -81,7 +81,7 @@ class PayPwdUpdateActivity : BaseMvpActivity<PayPwdPresenter>(), PayPwdView, Vie
                 }
 
                 var map = mutableMapOf<String, String>()
-                map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                 map.put("oldPayPwd", mPassword)
                 map.put("payPwd", mPasswordNew)
 

@@ -84,7 +84,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
                 }
                 imgurls = if (imgurls.isNullOrEmpty()) "" else imgurls.subSequence(0, imgurls.length - 1).toString()
                 var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                 map.put("shopId", mShopId)
                 map.put("content", mEt.text.toString())
                 map.put("imgurls", imgurls)

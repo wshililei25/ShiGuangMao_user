@@ -70,7 +70,7 @@ class IntegralFragment : BaseMvpFragment<IntegralPresenter>(), IntegralView, BGA
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("uid", arguments!!.getString(BaseConstant.KEY_SP_TOKEN, "-1"))
+        map.put("uid", arguments!!.getString(BaseConstant.KEY_SP_USER_ID, "-1"))
         mMultiStateView.startLoading()
         mBasePresenter.getIntegralList(map)
     }

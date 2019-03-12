@@ -13,7 +13,7 @@ import com.yizhipin.provider.router.RouterPath
  * 判断是否登录
  */
 fun isLogined(): Boolean {
-    return AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN).isNotEmpty()
+    return AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID).isNotEmpty()
 }
 
 /*

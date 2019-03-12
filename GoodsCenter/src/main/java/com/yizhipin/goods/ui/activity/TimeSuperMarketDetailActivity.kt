@@ -152,7 +152,7 @@ class TimeSuperMarketDetailActivity : BaseMvpActivity<TimeSuperMarketPresenter>(
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mMarketId)
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getTimeSuperMarketDetail(map)
     }
 
@@ -216,7 +216,7 @@ class TimeSuperMarketDetailActivity : BaseMvpActivity<TimeSuperMarketPresenter>(
     private fun loadFollow() {
         var map = mutableMapOf<String, String>()
         map.put("productId", mMarketId)
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getFollowMarket(map)
     }
 

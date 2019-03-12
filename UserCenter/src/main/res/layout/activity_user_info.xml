@@ -47,7 +47,7 @@
                 style="@style/WrapWrap"
                 android:layout_below="@+id/mUserIconIv"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:layout_marginTop="@dimen/yPadding"
                 android:text="@string/add_head"
                 android:textColor="@color/yWhite"
                 android:textSize="@dimen/yTextBigSize"/>

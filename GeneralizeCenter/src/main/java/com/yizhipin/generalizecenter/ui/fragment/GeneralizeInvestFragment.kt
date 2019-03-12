@@ -69,7 +69,7 @@ class GeneralizeInvestFragment : BaseMvpFragment<GeneralizeInvestPresenter>(), G
 
     private fun loadData() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         map.put("status", arguments!!.getString(GeneralizeConstant.KEY_INVEST_STATUS, "-1").toString())
         mMultiStateView.startLoading()
         mBasePresenter.getGenInvestList(map)

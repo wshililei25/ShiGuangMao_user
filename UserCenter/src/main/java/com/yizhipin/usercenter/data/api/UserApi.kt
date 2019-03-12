@@ -3,10 +3,7 @@ package com.yizhipin.usercenter.data.api
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.base.data.response.FeeRecord
-import com.yizhipin.base.data.response.RelevanceUser
-import com.yizhipin.base.data.response.Store
-import com.yizhipin.base.data.response.UserInfo
+import com.yizhipin.base.data.response.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -29,7 +26,7 @@ interface UserApi {
     fun login(): Observable<BaseResp<UserInfo>>
 
     @GET("${Api.EDIT_USER_INFO}${"/{id}"}")
-    fun getUserInfo(@Path(BaseConstant.KEY_SP_TOKEN) id: String): Observable<BaseResp<UserInfo>>
+    fun getUserInfo(@Path("id") id: String): Observable<BaseResp<UserInfo>>
 
     @GET(Api.RELEVANCE_USER) //获取关联用户
     fun getRelevanceUser(@Query("uid") uid: String): Observable<BaseResp<MutableList<RelevanceUser>>>
@@ -58,8 +55,8 @@ interface UserApi {
     @GET(Api.INTEGRAL_LIST) //积分记录
     fun getIntegralList(@Query("uid") uid: String, @Query("currentPage") currentPage: String): Observable<BasePagingResp<MutableList<FeeRecord>>>
 
-    @PUT("${Api.EDIT_USER_INFO}${"/{"}${BaseConstant.KEY_SP_TOKEN}${"}"}") //编辑用户信息
-    fun editUserInfo(@Path(BaseConstant.KEY_SP_TOKEN) id: String): Observable<BaseResp<UserInfo>>
+    @PUT("${Api.EDIT_USER_INFO}${"/{id}"}")
+    fun editUserInfo(@Path("id") id: String): Observable<BaseResp<UserInfo>>
 
     /**
      * 获取购物车数量
@@ -67,8 +64,8 @@ interface UserApi {
     @PUT(Api.CART_COUNT)
     fun getCartCount(@Query("uid") uid: String): Observable<BaseResp<Int>>
 
-    @PUT("${Api.BIND_MOBILE}${"/{"}${BaseConstant.KEY_SP_TOKEN}${"}"}") //绑定手机号
-    fun bindMobile(@Path(BaseConstant.KEY_SP_TOKEN) id: String): Observable<BaseResp<Boolean>>
+    @PUT("${Api.BIND_MOBILE}${"/{id}"}")
+    fun bindMobile(@Path("id") id: String): Observable<BaseResp<Boolean>>
 
     /**
      * 获取附近门店
@@ -95,5 +92,11 @@ interface UserApi {
     fun resetPayPwd(): Observable<BaseResp<Boolean>>
 
     @GET(Api.OSS_SIGN)
-    fun getOssSign(@Query("content") content: String): Observable<BaseResp<String>>
+    fun getOssSign(@Header("access-token") token: String, @Query("content") content: String): Observable<BaseResp<String>>
+
+    @GET(Api.OSS_SIGN)
+    fun getOssSignFile(@Header("access-token") token: String, @Query("content") content: String): Observable<BaseResp<String>>
+
+    @GET(Api.IMAGE_ADDRESS)
+    fun getOssAddress(): Observable<BaseResp<OssAddress>>
 }

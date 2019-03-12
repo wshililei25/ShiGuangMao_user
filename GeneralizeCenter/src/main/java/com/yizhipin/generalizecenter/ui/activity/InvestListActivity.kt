@@ -51,7 +51,7 @@ class InvestListActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), General
 
     private fun loadData() {
           var map = mutableMapOf<String, String>()
-          map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+          map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
           mMultiStateView.startLoading()
           mBasePresenter.getInvestDetailsList(map)
     }

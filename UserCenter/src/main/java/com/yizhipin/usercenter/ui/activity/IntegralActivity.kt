@@ -74,7 +74,7 @@ class IntegralActivity : BaseMvpActivity<IntegralPresenter>(), IntegralView, Vie
 
     private fun loadBalance() {
         var map = mutableMapOf<String, String>()
-        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getUserInfo(map)
     }
 
@@ -91,7 +91,7 @@ class IntegralActivity : BaseMvpActivity<IntegralPresenter>(), IntegralView, Vie
     private fun getIntegralList() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mMultiStateView.startLoading()
         mBasePresenter.getIntegralList(map)
     }

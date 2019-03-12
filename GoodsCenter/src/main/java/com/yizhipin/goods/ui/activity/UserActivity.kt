@@ -62,7 +62,7 @@ class UserActivity : BaseMvpActivity<UserPresenter>(), UserView, View.OnClickLis
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mUid.toString())
-        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getUserDetails(map)
     }
 

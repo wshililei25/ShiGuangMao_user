@@ -63,7 +63,7 @@ class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeVie
 
     private fun loadData() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getCashPledge(map)
     }
 
@@ -79,7 +79,7 @@ class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeVie
             R.id.mRebackBtn -> {
 
                 var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                 map.put("amount", mCashPledge.available)
                 map.put("payType", mType)
                 mBasePresenter.recharge(map)

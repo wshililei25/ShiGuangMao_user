@@ -1,6 +1,7 @@
 package com.yizhipin.usercenter.presenter
 
 import com.yizhipin.base.data.response.FeeRecord
+import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.execute
@@ -16,11 +17,11 @@ import javax.inject.Inject
 open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>() {
 
     @Inject
-    lateinit var mUserServiceImpl: UserServiceImpl
+    lateinit var mServiceImpl: UserServiceImpl
 
     fun getUserInfo(map: MutableMap<String, String>) {
         mView.showLoading()
-        mUserServiceImpl.getUserInfo(map).execute(object : BaseSubscriber<UserInfo>(mView) {
+        mServiceImpl.getUserInfo(map).execute(object : BaseSubscriber<UserInfo>(mView) {
             override fun onNext(t: UserInfo) {
                 mView.getUserResult(t)
             }
@@ -29,7 +30,7 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
 
     fun loadFeeRecordList(map: MutableMap<String, String>) {
         mView.showLoading()
-        mUserServiceImpl.loadFeeRecordList(map).execute(object : BaseSubscriber<MutableList<FeeRecord>>(mView) {
+        mServiceImpl.loadFeeRecordList(map).execute(object : BaseSubscriber<MutableList<FeeRecord>>(mView) {
             override fun onNext(t: MutableList<FeeRecord>) {
                 mView.getFeeRecordListSuccess(t)
             }
@@ -38,7 +39,7 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
 
     fun getUnreadNewCount(map: MutableMap<String, String>) {
         mView.showLoading()
-        mUserServiceImpl.getUnreadNewCount(map).execute(object : BaseSubscriber<Int>(mView) {
+        mServiceImpl.getUnreadNewCount(map).execute(object : BaseSubscriber<Int>(mView) {
             override fun onNext(t: Int) {
                 mView.getUnReadNewCount(t)
             }
@@ -51,7 +52,7 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
     fun editUserInfo(map: MutableMap<String, String>) {
 
         mView.showLoading()
-        mUserServiceImpl.editUserInfo(map).execute(object : BaseSubscriber<UserInfo>(mView) {
+        mServiceImpl.editUserInfo(map).execute(object : BaseSubscriber<UserInfo>(mView) {
             override fun onNext(t: UserInfo) {
                 mView.onEditUserResult(t)
             }
@@ -60,7 +61,7 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
 
     fun getDefaultStore(map: MutableMap<String, String>) {
 //        mView.showLoading()
-        mUserServiceImpl.getDefaultStore(map)
+        mServiceImpl.getDefaultStore(map)
                 .execute(object : BaseSubscriber<Store>(mView) {
                     override fun onNext(t: Store) {
                         mView.onGetDefaultStoreSuccess(t)
@@ -71,11 +72,29 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
 
     fun getOssSign(map: MutableMap<String, String>) {
 
-        mUserServiceImpl.getOssSign(map).execute(object : BaseSubscriber<String>(mView) {
+        mServiceImpl.getOssSign(map).execute(object : BaseSubscriber<String>(mView) {
             override fun onNext(t: String) {
                 mView.onGetOssSignSuccess(t)
             }
         }, mLifecycleProvider)
+    }
+
+    fun getOssSignFile(map: MutableMap<String, String>) {
+
+        mServiceImpl.getOssSignFile(map).execute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
+                mView.onGetOssSignFileSuccess(t)
+            }
+        }, mLifecycleProvider)
+    }
+
+    fun getOssAddress() {
+        mServiceImpl.getOssAddress().execute(object : BaseSubscriber<OssAddress>(mView) {
+            override fun onNext(t: OssAddress) {
+                mView.onGetOssAddressSuccess(t)
+            }
+        }, mLifecycleProvider)
+
     }
 }
 

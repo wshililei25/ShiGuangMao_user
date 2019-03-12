@@ -1,6 +1,7 @@
 package com.yizhipin.usercenter.presenter.view
 
 import com.yizhipin.base.data.response.FeeRecord
+import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.presenter.view.BaseView
@@ -15,4 +16,6 @@ interface UserInfoView : BaseView {
     fun onEditUserResult(result: UserInfo)
     fun onGetDefaultStoreSuccess(result: Store)
     fun onGetOssSignSuccess(result: String)
+    fun onGetOssSignFileSuccess(result: String)
+    fun onGetOssAddressSuccess(result: OssAddress)
 }

@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.FeeRecord
+import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.onClick
@@ -60,7 +61,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
 
     private fun loadBalance() {
         var map = mutableMapOf<String, String>()
-        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mPresenter.getUserInfo(map)
     }
 
@@ -76,7 +77,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
      */
     private fun loadFeeRecordList() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mPresenter.loadFeeRecordList(map)
     }
 
@@ -104,6 +105,13 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
 
     override fun onGetDefaultStoreSuccess(result: Store) {
     }
+
     override fun onGetOssSignSuccess(result: String) {
+    }
+
+    override fun onGetOssSignFileSuccess(result: String) {
+    }
+
+    override fun onGetOssAddressSuccess(result: OssAddress) {
     }
 }

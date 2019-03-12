@@ -83,7 +83,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.OnClickLis
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-//        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+//        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getShopList(map)
     }
 
