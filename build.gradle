@@ -32,6 +32,7 @@ buildscript {
     ext.autosize_version = '1.0.1'
     ext.flowlayout_version = "1.0.3"
     ext.location_version = "3.2"
+    ext.rxpermissions_version = "0.10.2"
 
     repositories {
         google()
@@ -48,12 +49,8 @@ allprojects {
 
         google()
         jcenter()
-        maven {
-            url 'https://jitpack.io'
-        }
-        maven {
-            url "https://maven.google.com"
-        }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com" }
         // 支付宝 SDK AAR 包所需的配置
         flatDir {
             dirs 'libs'

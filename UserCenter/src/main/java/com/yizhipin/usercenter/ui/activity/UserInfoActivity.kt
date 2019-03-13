@@ -227,7 +227,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
 
         mNickEt.setText(result.nickname)
         mNickEt.setSelection(result.nickname.length)
-
+        mResultUrl = result.imgurl
         if (result.imgurl != "") {
             mUserIconIv.loadUrl(result.imgurl)
         }

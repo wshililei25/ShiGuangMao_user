@@ -1,10 +1,7 @@
 package com.yizhipin.ui.fragment
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +14,7 @@ import com.yizhipin.base.data.response.FeeRecord
 import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
+import com.yizhipin.base.event.LocationShopEvent
 import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -40,8 +38,6 @@ import com.yizhipin.usercenter.injection.module.MianModule
 import com.yizhipin.usercenter.presenter.UserInfoPresenter
 import com.yizhipin.usercenter.presenter.view.UserInfoView
 import com.yizhipin.usercenter.ui.activity.*
-import fr.quentinklein.slt.LocationTracker
-import fr.quentinklein.slt.TrackerSettings
 import kotlinx.android.synthetic.main.fragment_me.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.startActivityForResult
@@ -64,7 +60,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initLocation()
         initView()
         initObserve()
     }
@@ -224,51 +219,16 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                         mStoreTv.text = t.name
                     }
                 }.registerInBus(this)
+
+        Bus.observe<LocationShopEvent>()
+                .subscribe { t: LocationShopEvent ->
+                    run {
+                        mStoreTv.text = t.name
+                    }
+                }.registerInBus(this)
     }
 
-    /**
-     * 获取经纬度
-     */
-    @SuppressLint("MissingPermission")
-    private fun initLocation() {
-
-        //允许GPS、WiFi、基站定位，设置超时时间5秒
-        val trackerSettings = TrackerSettings()
-        trackerSettings.setUseGPS(true).setUseNetwork(true).setUsePassive(true).timeout = 5000
-        val locationTracker = object : LocationTracker(activity!!, trackerSettings) {
-            override fun onLocationFound(location: Location) {
-                //定位成功时回调
-                if (location != null) {
-                    mLongitude = location.longitude
-                    mLatitude = location.latitude
-                    Log.d("2", "经纬度：" + location.longitude + "," + location.latitude)
-                    loadDefaultStore(location.longitude, location.latitude)
-                }
-            }
-
-            override fun onTimeout() {
-                //定位超时回调
-                Log.d("2", "定位超时")
-            }
-        }
-        locationTracker.startListening()
-    }
-
-    /**
-     * 获取附近门店
-     */
-    private fun loadDefaultStore(longitude: Double, latitude: Double) {
-        var map = mutableMapOf<String, String>()
-        map.put("lng", longitude.toString())
-        map.put("lat", latitude.toString())
-        mBasePresenter.getDefaultStore(map)
-    }
-
-    /**
-     * 获取附近门店成功
-     */
     override fun onGetDefaultStoreSuccess(result: Store) {
-        mStoreTv.text = result.storeName
     }
 
     override fun onEditUserResult(result: UserInfo) {

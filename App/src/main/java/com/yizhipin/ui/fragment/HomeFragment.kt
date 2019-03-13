@@ -13,12 +13,14 @@ import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.PhotographStatus
 import com.yizhipin.base.common.TeacherStatus
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
+import com.yizhipin.base.event.LocationShopEvent
 import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
@@ -247,7 +249,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
                 if (!result[position].url.isNullOrEmpty()) {
                     startActivity<WebViewActivity>(WebViewActivity.EXTRA_URL to result[position].url)
                 }
-
             }
 
         })
@@ -291,23 +292,33 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         //允许GPS、WiFi、基站定位，设置超时时间5秒
         val trackerSettings = TrackerSettings()
         trackerSettings.setUseGPS(true).setUseNetwork(true).setUsePassive(true).timeout = 5000
-        val locationTracker = object : LocationTracker(activity!!, trackerSettings) {
-            override fun onLocationFound(location: Location) {
-                //定位成功时回调
-                if (location != null) {
-                    mLongitude = location.longitude
-                    mLatitude = location.latitude
-                    Log.d("XiLei", "经纬度：" + location.longitude + "," + location.latitude)
-                    loadDefaultStore(location.longitude, location.latitude)
-                }
-            }
 
-            override fun onTimeout() {
-                //定位超时回调
-                Log.d("XiLei", "定位超时")
-            }
-        }
-        locationTracker.startListening()
+        RxPermissions(this).request(android.Manifest.permission.ACCESS_COARSE_LOCATION
+                , android.Manifest.permission.ACCESS_FINE_LOCATION)
+                .subscribe({ granted ->
+                    if (granted) {
+                        val locationTracker = object : LocationTracker(activity!!, trackerSettings) {
+                            override fun onLocationFound(location: Location) {
+                                //定位成功时回调
+                                if (location != null) {
+                                    mLongitude = location.longitude
+                                    mLatitude = location.latitude
+                                    Log.d("XiLei", "经纬度：" + location.longitude + "," + location.latitude)
+                                    loadDefaultStore(location.longitude, location.latitude)
+                                }
+                            }
+
+                            override fun onTimeout() {
+                                //定位超时回调
+                                Log.d("XiLei", "定位超时")
+                            }
+                        }
+                        locationTracker.startListening()
+                    } else {
+                        Log.d("XiLei", "请开启定位权限111")
+                    }
+                })
+
     }
 
     /**
@@ -328,6 +339,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, result.id)
         AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, result.storeName)
         mStoreTv.text = result.storeName
+        Bus.send(LocationShopEvent(result.storeName))
         loadGoodsData(result.id.toString())
     }
 

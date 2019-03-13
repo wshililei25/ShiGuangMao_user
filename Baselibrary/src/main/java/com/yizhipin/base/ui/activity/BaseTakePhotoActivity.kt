@@ -13,6 +13,7 @@ import com.jph.takephoto.app.TakePhoto
 import com.jph.takephoto.app.TakePhotoImpl
 import com.jph.takephoto.compress.CompressConfig
 import com.jph.takephoto.model.TResult
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.base.common.BaseApplication
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.base.injection.component.DaggerActivityComponent
@@ -103,7 +104,14 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
             when (position) {
                 0 -> {
                     createTempFile()
-                    mTakePhoto.onPickFromCapture(Uri.fromFile(mTempFile))
+                    RxPermissions(this).request(android.Manifest.permission.CAMERA)
+                            .subscribe({ granted ->
+                                if (granted) {
+                                    mTakePhoto.onPickFromCapture(Uri.fromFile(mTempFile))
+                                } else {
+                                    Log.d("XiLei", "请开启拍照权限")
+                                }
+                            })
                 }
                 1 -> mTakePhoto.onPickFromGallery()
             }
@@ -133,7 +141,7 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
             }
         }
 
-        ).setOnDismissListener(object :OnDismissListener{
+        ).setOnDismissListener(object : OnDismissListener {
             override fun onDismiss(o: Any?) {
 
             }
