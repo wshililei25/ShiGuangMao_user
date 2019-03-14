@@ -8,8 +8,8 @@ import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
-import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.base.utils.ToastUtils
+import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.presenter.CommissionerPresenter
 import kotlinx.android.synthetic.main.activity_commissioner_apply.*

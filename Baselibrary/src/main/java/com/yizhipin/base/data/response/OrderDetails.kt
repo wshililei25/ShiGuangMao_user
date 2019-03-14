@@ -26,6 +26,8 @@ class OrderDetails(
         val payTime: String? = null,
         val payType: String? = null,
         val packages: MutableList<OrderMeal>,
+        val attractions: MutableList<OrderScenic>,
+        val clothes: MutableList<OrderDress>,
         val teachers: MutableList<OrderTeacher>
 ) : Parcelable
 

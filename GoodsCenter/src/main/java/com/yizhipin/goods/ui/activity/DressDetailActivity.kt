@@ -12,6 +12,7 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.DressDetails
+import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.event.DressBuyEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -31,6 +32,7 @@ import com.yizhipin.provider.router.RouterPath
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_dress_details.*
+import org.jetbrains.anko.startActivity
 import q.rorbin.badgeview.QBadgeView
 
 /**
@@ -93,6 +95,7 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
         mCollectionView.onClick(this)
         mBuyBtn.onClick(this)
         mRentBtn.onClick(this)
+        mTakePhotoBtn.onClick(this)
     }
 
     private fun initBanner() {
@@ -154,8 +157,24 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
                     contentView.startAnimation(mAnimationStart)
                 }
             }
+            R.id.mTakePhotoBtn -> {
+                afterLogin {
+                    var map = mutableMapOf<String, String>()
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                    map.put("clothesId", mDressId)
+                    mBasePresenter.orderDress(map)
+                }
+            }
 
         }
+    }
+
+    /**
+     * 下单成功
+     */
+    override fun onOrderSuccess(result: OrderDetails) {
+        startActivity<MealOrderConfirmActivity>(BaseConstant.KEY_MEAL_ORDER_ID to result.id
+                , BaseConstant.KEY_ORDER_DRESS to result.clothes[0])
     }
 
     /**

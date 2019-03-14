@@ -21,4 +21,5 @@ interface ShopService {
     fun getScenicDetails(map: MutableMap<String, String>): Observable<ScenicSpot>
     fun getFollowScenic(map: MutableMap<String, String>): Observable<Boolean>
     fun getMealData(map: MutableMap<String, String>): Observable<MutableList<Meal>>
+    fun orderScenic(map: MutableMap<String, String>): Observable<OrderDetails>
 }

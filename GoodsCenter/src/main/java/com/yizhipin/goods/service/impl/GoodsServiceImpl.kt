@@ -73,6 +73,9 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
     override fun followDress(map: MutableMap<String, String>): Observable<DressDetails> {
         return mRepository.followDress(map).convert()
     }
+    override fun orderDress(map: MutableMap<String, String>): Observable<OrderDetails> {
+        return mRepository.orderDress(map).convert()
+    }
 
     override fun getEvaluateNew(map: MutableMap<String, String>): Observable<Evaluate> {
         return mRepository.getEvaluateNew(map).convert()

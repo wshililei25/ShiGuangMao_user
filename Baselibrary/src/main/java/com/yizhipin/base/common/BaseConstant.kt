@@ -102,5 +102,9 @@ class BaseConstant {
         const val KEY_INFORMATION_ID = "informationId"
         //老师预定下单返回的老师数据
         const val KEY_ORDER_TEACHER = "orderTeacher"
+        //景点预定下单返回的景点数据
+        const val KEY_ORDER_SCENIS = "orderScenic"
+        //服装预定下单返回的服装数据
+        const val KEY_ORDER_DRESS = "orderDress"
     }
 }

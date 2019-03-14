@@ -45,8 +45,10 @@ class ShopRepository @Inject constructor() {
     }
 
     fun getMealData(map: MutableMap<String, String>): Observable<BaseResp<MutableList<Meal>>> {
-        return RetrofitFactoryGet().create(ShopApi::class.java)
-                .getMealData(map["id"]!!)
+        return RetrofitFactoryGet().create(ShopApi::class.java).getMealData(map["id"]!!)
+    }
+    fun orderScenic(map: MutableMap<String, String>): Observable<BaseResp<OrderDetails>> {
+        return RetrofitFactoryPost(map).create(ShopApi::class.java).orderScenic()
     }
 
     fun getTimeTeacherData(map: MutableMap<String, String>): Observable<BaseResp<MutableList<Teacher>>> {

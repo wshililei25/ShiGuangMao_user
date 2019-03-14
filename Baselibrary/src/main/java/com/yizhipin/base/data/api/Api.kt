@@ -26,6 +26,7 @@ interface Api {
         const val GOODS_DETAIL = "api/Clothes"//服装详情
         const val GOODS_NORM = "api/ClothesNorm/List"//服装规格
         const val FOLLOW_DRESS = "api/ClothesAttention"//关注、取消关注服装
+        const val ORDER_DRESS = "api/Order/Private/Clothes"//服装预定
         const val SHOP_LIST = "api/Store/Page"//门店列表
         const val SHOP_FOLLOW_LIST = "api/StoreAttention/Page"//门店关注列表
         const val SHOP_DETAILS = "api/Store"//门店详情
@@ -51,6 +52,7 @@ interface Api {
         const val SCENIC_DETAILS = "api/Attractions" //景点详情
         const val SCENIC_FOLLOW = "api/Attractions/Attention"//景点关注、取消关注
         const val MEAL_SENIC = "api/PackageAttraction/PhotoPackage"//景点相关套餐
+        const val ORDER_SCENIC = "api/Order/Private/Attraction"//景点预定
         const val CAMERAMAN_LIST = "api/TeacherInfo/Page" //摄影师列表
         const val TEACHER_FOLLOW_LIST = "api/TeacherAttention/Page" //老师关注列表
         const val CAMERAMAN_DETAILS = "api/TeacherInfo" //摄影师详情

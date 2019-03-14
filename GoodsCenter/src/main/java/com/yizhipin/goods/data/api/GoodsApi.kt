@@ -33,6 +33,9 @@ interface GoodsApi {
     @POST(Api.FOLLOW_DRESS)
     fun followDress(): Observable<BaseResp<DressDetails>>
 
+    @POST(Api.ORDER_DRESS)
+    fun orderDress(): Observable<BaseResp<OrderDetails>>
+
     @GET(Api.DRESS_CATEGORY)
     fun getDressCategory(@Query("sex") sex: String, @Query("type") type: String): Observable<BaseResp<MutableList<DressCategory>>>
 

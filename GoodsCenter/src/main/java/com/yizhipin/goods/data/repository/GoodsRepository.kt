@@ -67,6 +67,9 @@ class GoodsRepository @Inject constructor() {
     fun followDress(map: MutableMap<String, String>): Observable<BaseResp<DressDetails>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).followDress()
     }
+    fun orderDress(map: MutableMap<String, String>): Observable<BaseResp<OrderDetails>> {
+        return RetrofitFactoryPost(map).create(GoodsApi::class.java).orderDress()
+    }
 
     fun getEvaluateNew(map: MutableMap<String, String>): Observable<BaseResp<Evaluate>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateNew(map["pid"]!!)

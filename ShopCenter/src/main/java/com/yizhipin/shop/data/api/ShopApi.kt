@@ -6,6 +6,7 @@ import com.yizhipin.base.data.response.*
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -35,6 +36,9 @@ interface ShopApi {
 
     @GET("${Api.MEAL_SENIC}/{id}")
     fun getMealData(@Path("id") storeId: String): Observable<BaseResp<MutableList<Meal>>>
+
+    @POST(Api.ORDER_SCENIC)
+    fun orderScenic(): Observable<BaseResp<OrderDetails>>
 
     @GET(Api.TIME_TEACHER)
     fun getTimeTeacherData(@Query("storeId") storeId: String): Observable<BaseResp<MutableList<Teacher>>>

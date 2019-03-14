@@ -22,6 +22,7 @@ open class ShopServiceImpl @Inject constructor() : ShopService {
         return mRepository.getShopList(map)
                 .convertPaging()
     }
+
     override fun getSceincList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<ScenicSpot>>> {
         return mRepository.getSceincList(map)
                 .convertPaging()
@@ -31,6 +32,7 @@ open class ShopServiceImpl @Inject constructor() : ShopService {
         return mRepository.getShopDetails(map)
                 .convert()
     }
+
     override fun getScenicDetails(map: MutableMap<String, String>): Observable<ScenicSpot> {
         return mRepository.getScenicDetails(map)
                 .convert()
@@ -40,18 +42,25 @@ open class ShopServiceImpl @Inject constructor() : ShopService {
         return mRepository.getBanner(map)
                 .convert()
     }
+
     override fun getHotMealData(map: MutableMap<String, String>): Observable<MutableList<Meal>> {
         return mRepository.getHotMealData(map)
                 .convert()
     }
+
     override fun getMealData(map: MutableMap<String, String>): Observable<MutableList<Meal>> {
-        return mRepository.getMealData(map)
-                .convert()
+        return mRepository.getMealData(map).convert()
     }
+
+    override fun orderScenic(map: MutableMap<String, String>): Observable<OrderDetails> {
+        return mRepository.orderScenic(map).convert()
+    }
+
     override fun getTimeTeacherData(map: MutableMap<String, String>): Observable<MutableList<Teacher>> {
         return mRepository.getTimeTeacherData(map)
                 .convert()
     }
+
     override fun getEvaluateData(map: MutableMap<String, String>): Observable<MutableList<Evaluate>> {
         return mRepository.getEvaluateData(map)
                 .convert()
@@ -61,6 +70,7 @@ open class ShopServiceImpl @Inject constructor() : ShopService {
         return mRepository.getFollow(map)
                 .convertBoolean()
     }
+
     override fun getFollowScenic(map: MutableMap<String, String>): Observable<Boolean> {
         return mRepository.getFollowScenic(map)
                 .convertBoolean()

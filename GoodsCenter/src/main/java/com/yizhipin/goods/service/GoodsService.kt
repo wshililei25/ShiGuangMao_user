@@ -48,4 +48,5 @@ interface GoodsService {
     fun addBrideInfo(map: MutableMap<String, String>): Observable<BrideInfo>
     fun addCameraman(map: MutableMap<String, String>): Observable<AddCameraman>
     fun orderTeacher(map: MutableMap<String, String>): Observable<OrderDetails>
+    fun orderDress(map: MutableMap<String, String>): Observable<OrderDetails>
 }

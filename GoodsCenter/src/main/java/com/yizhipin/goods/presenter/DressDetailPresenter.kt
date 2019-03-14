@@ -2,6 +2,7 @@ package com.yizhipin.goods.presenter
 
 import com.yizhipin.base.data.response.DressDetails
 import com.yizhipin.base.data.response.DressNorm
+import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
@@ -21,7 +22,6 @@ class DressDetailPresenter @Inject constructor() : BasePresenter<DressDetailView
                 mView.onGetGoodsDetailSuccess(t)
             }
         }, mLifecycleProvider)
-
     }
 
     fun getGoodNorm(map: MutableMap<String, String>) {
@@ -41,7 +41,15 @@ class DressDetailPresenter @Inject constructor() : BasePresenter<DressDetailView
                 mView.onFollowDressSuccess(t)
             }
         }, mLifecycleProvider)
+    }
 
+    fun orderDress(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mGoodsServiceImpl.orderDress(map).execute(object : BaseSubscriber<OrderDetails>(mView) {
+            override fun onNext(t: OrderDetails) {
+                mView.onOrderSuccess(t)
+            }
+        }, mLifecycleProvider)
     }
 
 }

@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Meal
+import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.data.response.ScenicSpot
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -14,6 +16,7 @@ import com.yizhipin.base.ui.adapter.MealAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.provider.common.afterLogin
+import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.shop.R
 import com.yizhipin.shop.injection.component.DaggerShopComponent
 import com.yizhipin.shop.injection.module.ShopModule
@@ -100,13 +103,24 @@ class ScenicDetailActivity : BaseMvpActivity<ScenicDetailsPresenter>(), ScenicDe
             }
 
             R.id.mBtn -> {
-                /* var intent = Intent()
-                 intent.putExtra(BaseConstant.KEY_SHOP_ID, mScenicSpot.id)
-                 intent.putExtra(BaseConstant.KEY_SHOP_NAME, mScenicSpot.storeName)
-                 setResult(ProvideReqCode.CODE_RESULT_SHOP, intent)
-                 finish()*/
+                afterLogin {
+                    var map = mutableMapOf<String, String>()
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                    map.put("attractionsId", mScenicId)
+                    mBasePresenter.orderScenic(map)
+                }
             }
         }
+    }
+
+    /**
+     * 下单成功
+     */
+    override fun onOrderSuccess(result: OrderDetails) {
+
+        ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_MEAL_ORDER)
+                .withString(BaseConstant.KEY_MEAL_ORDER_ID, result.id)
+                .withParcelable(BaseConstant.KEY_ORDER_SCENIS , result.attractions[0]).navigation()
     }
 
     override fun onStart() {

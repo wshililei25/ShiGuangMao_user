@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
@@ -34,6 +35,7 @@ import org.jetbrains.anko.startActivityForResult
  * Created by ${XiLei} on 2018/9/22.
  * 套餐订单确认
  */
+@Route(path = RouterPath.GoodsCenter.PATH_MEAL_ORDER)
 class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMealDetailsView, View.OnClickListener {
 
     @Autowired(name = BaseConstant.KEY_MEAL_ORDER_ID)  //从套餐详情页面来
@@ -43,6 +45,14 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
     @Autowired(name = BaseConstant.KEY_ORDER_TEACHER)  //从老师详情页面来
     @JvmField
     var mOrderTeacher: OrderTeacher? = null
+
+    @Autowired(name = BaseConstant.KEY_ORDER_SCENIS)  //从景点详情页面来
+    @JvmField
+    var mOrderScenic: OrderScenic? = null
+
+    @Autowired(name = BaseConstant.KEY_ORDER_DRESS)  //从服装详情页面来
+    @JvmField
+    var mOrderDress: OrderDress? = null
 
     private lateinit var mSetMealDetails: SetMealDetails
     private lateinit var mAppointDressAdapter: AppointDressAdapter
@@ -62,7 +72,6 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
     }
 
     private fun initView() {
-
         mUserNameIv.loadUrl(AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON))
         mUserNameTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NICKNAME)
 
@@ -100,7 +109,7 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
         mBtn.onClick(this)
 
         mOrderTeacher?.let {
-            //从老师详情页面来  暂时注释
+            //从老师详情页面来
             when (mOrderTeacher!!.teacherType) {
                 "sheying" -> {
                     mCameramanTv.text = mOrderTeacher!!.nickname
@@ -113,6 +122,24 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
                     mDresserIv.loadUrl(mOrderTeacher!!.imgurl)
                 }
             }
+        }
+        mOrderScenic?.let {
+            //从景点详情来
+            var appiontSport = mAppointFeatureSpotAdapter.dataList[0]
+            appiontSport.amount = mOrderScenic!!.attractionsAmount
+            appiontSport.name = mOrderScenic!!.attractionsTitle
+            appiontSport.image = mOrderScenic!!.attractionsImgurl
+            mAppointFeatureSpotAdapter.notifyDataSetChanged()
+        }
+        mOrderDress?.let {
+            //从服装详情来
+            var appointDress = mAppointDressAdapter.dataList[0]
+
+            when (mOrderDress!!.sex) {
+                0 -> appointDress.manImage = mOrderDress!!.clothesImgurl
+                1 -> appointDress.womenImage = mOrderDress!!.clothesImgurl
+            }
+            mAppointDressAdapter.notifyDataSetChanged()
         }
     }
 

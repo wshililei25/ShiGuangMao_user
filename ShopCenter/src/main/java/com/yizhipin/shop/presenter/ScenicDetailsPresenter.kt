@@ -1,6 +1,7 @@
 package com.yizhipin.shop.presenter
 
 import com.yizhipin.base.data.response.Meal
+import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.data.response.ScenicSpot
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
@@ -40,6 +41,15 @@ open class ScenicDetailsPresenter @Inject constructor() : BasePresenter<ScenicDe
         mServiceImpl.getFollowScenic(map).execute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
                 mView.onFollowSuccess(t)
+            }
+        }, mLifecycleProvider)
+    }
+
+    fun orderScenic(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mServiceImpl.orderScenic(map).execute(object : BaseSubscriber<OrderDetails>(mView) {
+            override fun onNext(t: OrderDetails) {
+                mView.onOrderSuccess(t)
             }
         }, mLifecycleProvider)
     }
