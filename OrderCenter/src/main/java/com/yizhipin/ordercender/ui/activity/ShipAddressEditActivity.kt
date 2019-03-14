@@ -33,6 +33,7 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
     private var mProvice = ""
     private var mCity = ""
     private var mDistrict = ""
+    private var mPopupWindow: PopupWindow? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,7 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
 
     private fun initView() {
         mSaveBtn.onClick(this)
-        mCityAddressEt.onClick(this)
+        mCityAddressView.onClick(this)
     }
 
     private fun initData() {
@@ -68,23 +69,25 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
     override fun onClick(v: View) {
         when (v.id) {
 
-            R.id.mCityAddressEt -> {
-                val popupWindow = PopupWindow(this)
+            R.id.mCityAddressView -> {
+                mPopupWindow = PopupWindow(this)
                 val rootView = LayoutInflater.from(this).inflate(R.layout.pop_address_picker, null, false)
                 val addressView = rootView.findViewById<AddressPickerView>(R.id.apvAddress)
                 addressView.setOnAddressPickerSure(object : AddressPickerView.OnAddressPickerSureListener {
                     override fun onSureClick(provice: String?, city: String?, district: String?, provinceCode: String?, cityCode: String?, districtCode: String?) {
-                        mCityAddressEt.text = provice + city + district
+                        mCityAddressEt.setText(provice + city + district)
                         mProvice = provice!!
                         mCity = city!!
                         mDistrict = district!!
-                        popupWindow.dismiss()
+                        mPopupWindow!!.dismiss()
                     }
                 })
-                popupWindow.setContentView(rootView)
-                popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
-                popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT)
-                popupWindow.showAsDropDown(line)
+                mPopupWindow!!.setContentView(rootView)
+                mPopupWindow!!.setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
+                mPopupWindow!!.setHeight(ViewGroup.LayoutParams.MATCH_PARENT)
+                mPopupWindow!!.isOutsideTouchable = true
+                mPopupWindow!!.isTouchable = true
+                mPopupWindow!!.showAsDropDown(line)
             }
 
             R.id.mSaveBtn -> {
@@ -131,5 +134,13 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
 
     override fun onEditShipAddressResult(result: ShipAddress) {
         finish()
+    }
+
+    override fun onBackPressed() {
+        if (null != mPopupWindow && mPopupWindow!!.isShowing) {
+            mPopupWindow!!.dismiss()
+        } else {
+            finish()
+        }
     }
 }

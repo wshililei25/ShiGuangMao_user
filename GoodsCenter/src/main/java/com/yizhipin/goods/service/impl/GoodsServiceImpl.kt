@@ -102,10 +102,6 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
         return mRepository.giveLikeReport(map).convertBoolean()
     }
 
-    override fun getShopDetails(map: MutableMap<String, String>): Observable<Shop> {
-        return mRepository.getShopDetails(map).convert()
-    }
-
     override fun getMealDetails(map: MutableMap<String, String>): Observable<SetMealDetails> {
         return mRepository.getMealDetails(map).convert()
     }
@@ -116,6 +112,10 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
 
     override fun order(map: MutableMap<String, String>): Observable<OrderDetails> {
         return mRepository.order(map).convert()
+    }
+
+    override fun orderTeacher(map: MutableMap<String, String>): Observable<OrderDetails> {
+        return mRepository.orderTeacher(map).convert()
     }
 
     override fun getOrderDetails(map: MutableMap<String, String>): Observable<OrderDetails> {
@@ -136,10 +136,6 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
 
     override fun getComplainShop(map: MutableMap<String, String>): Observable<Complain> {
         return mRepository.getComplainShop(map).convert()
-    }
-
-    override fun collectShop(map: MutableMap<String, String>): Observable<Collect> {
-        return mRepository.collectShop(map).convert()
     }
 
     override fun getShareBillList(map: MutableMap<String, String>): Observable<MutableList<ShareBill>> {

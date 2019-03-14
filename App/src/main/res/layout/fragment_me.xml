@@ -198,7 +198,7 @@
             android:text="@string/my_foregift"/>
 
         <TextView
-            android:id="@+id/mollowTv"
+            android:id="@+id/mFollowTv"
             style="@style/MeItemStyle"
             android:layout_marginTop="@dimen/yPaddingMiddle"
             android:drawableLeft="@drawable/heart6"

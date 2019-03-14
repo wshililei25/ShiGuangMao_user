@@ -64,7 +64,7 @@ class StarActivity : BaseMvpActivity<StarPresenter>(), StarView, View.OnClickLis
         mTeacherRv.adapter = mCameramanAdapter
         mCameramanAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Cameraman> {
             override fun onItemClick(item: Cameraman, position: Int) {
-                startActivity<CameramanDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.id)
+                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.id)
             }
         })
 

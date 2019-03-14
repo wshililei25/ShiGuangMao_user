@@ -37,9 +37,6 @@ import org.jetbrains.anko.support.v4.startActivityForResult
  */
 class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickListener {
 
-    private var mLongitude: Double = 0.00
-    private var mLatitude: Double = 0.00
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_find, null)

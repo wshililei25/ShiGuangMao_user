@@ -2,10 +2,9 @@ package com.yizhipin.usercenter.injection.component
 
 import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
-import com.yizhipin.ui.adapter.InformationFragment
-import com.yizhipin.ui.fragment.FindFragment
-import com.yizhipin.ui.fragment.HomeFragment
-import com.yizhipin.ui.fragment.MeFragment
+import com.yizhipin.ui.activity.HelpActivity
+import com.yizhipin.ui.activity.InformationDetailsActivity
+import com.yizhipin.ui.fragment.*
 import com.yizhipin.usercenter.injection.module.MianModule
 import dagger.Component
 
@@ -20,4 +19,9 @@ interface MainComponent {
     fun inject(activity: FindFragment)
     fun inject(activity: MeFragment)
     fun inject(activity: InformationFragment)
+    fun inject(activity: MealFollowFragment)
+    fun inject(activity: TeacherFoloowFragment)
+    fun inject(activity: ShopFollowFragment)
+    fun inject(activity: InformationDetailsActivity)
+    fun inject(activity: HelpActivity)
 }

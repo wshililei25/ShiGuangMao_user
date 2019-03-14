@@ -98,5 +98,9 @@ class BaseConstant {
         const val KEY_PAY_CONTENT = "payContent"
         //余额充值还是押金充值
         const val KEY_IS_CASHPLEDGE = "isCashPledge"
+        //资讯id
+        const val KEY_INFORMATION_ID = "informationId"
+        //老师预定下单返回的老师数据
+        const val KEY_ORDER_TEACHER = "orderTeacher"
     }
 }

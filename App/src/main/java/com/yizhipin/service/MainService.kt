@@ -1,11 +1,7 @@
 package com.yizhipin.usercenter.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.News
-import com.yizhipin.base.data.response.OssAddress
-import com.yizhipin.base.data.response.ScenicSpot
-import com.yizhipin.base.data.response.Store
-import com.yizhipin.base.data.response.Banner
+import com.yizhipin.base.data.response.*
 import io.reactivex.Observable
 
 
@@ -21,4 +17,9 @@ interface MainService {
     fun getOssAddress(): Observable<OssAddress>
     fun getUnreadNewCount(map: MutableMap<String, String>): Observable<Int>
     fun getShopList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Store>>>
+    fun getMealList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<MealFollow>>>
+    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>>
+    fun getShopFollowList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<StoreFollow>>>
+    fun getInformationDetails(map: MutableMap<String, String>): Observable<News>
+    fun getHelpList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Help>>>
 }

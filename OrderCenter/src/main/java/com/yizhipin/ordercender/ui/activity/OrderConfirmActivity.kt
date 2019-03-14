@@ -24,7 +24,6 @@ import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.OrderConfirmPresenter
 import com.yizhipin.ordercender.presenter.view.OrderConfirmView
-import com.yizhipin.ordercender.ui.adapter.OrderConfirmAdapter
 import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_order_confirm.*
@@ -58,7 +57,6 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     private lateinit var mDressDetails: DressDetails
 
     private var mShipAddress: ShipAddress? = null
-    private lateinit var mOrderConfirmAdapter: OrderConfirmAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

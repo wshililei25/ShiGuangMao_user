@@ -11,6 +11,7 @@ import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.ui.adapter.EvaluateAdapter
 import com.yizhipin.base.ui.adapter.MealAdapter
 import com.yizhipin.base.ui.web.WebViewActivity
 import com.yizhipin.base.utils.AppPrefsUtils
@@ -23,7 +24,6 @@ import com.yizhipin.shop.injection.component.DaggerShopComponent
 import com.yizhipin.shop.injection.module.ShopModule
 import com.yizhipin.shop.presenter.ShopDetailsPresenter
 import com.yizhipin.shop.presenter.view.ShopDetailsView
-import com.yizhipin.shop.ui.adapter.EvaluateAdapter
 import com.yizhipin.shop.ui.adapter.TimeTeacherAdapter
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer

@@ -19,9 +19,7 @@ interface GoodsService {
     fun getReportList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>>
     fun giveLike(map: MutableMap<String, String>): Observable<Boolean>
     fun giveLikeReport(map: MutableMap<String, String>): Observable<Boolean>
-    fun getShopDetails(map: MutableMap<String, String>): Observable<Shop>
     fun getComplainShop(map: MutableMap<String, String>): Observable<Complain>
-    fun collectShop(map: MutableMap<String, String>): Observable<Collect>
     fun getUserDetails(map: MutableMap<String, String>): Observable<UserInfo>
     fun getCrowdorderList(map: MutableMap<String, String>): Observable<MutableList<UserInfo>>
     fun getShareBillList(map: MutableMap<String, String>): Observable<MutableList<ShareBill>>
@@ -49,4 +47,5 @@ interface GoodsService {
     fun getOrderDetails(map: MutableMap<String, String>): Observable<OrderDetails>
     fun addBrideInfo(map: MutableMap<String, String>): Observable<BrideInfo>
     fun addCameraman(map: MutableMap<String, String>): Observable<AddCameraman>
+    fun orderTeacher(map: MutableMap<String, String>): Observable<OrderDetails>
 }

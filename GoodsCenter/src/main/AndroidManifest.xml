@@ -4,11 +4,6 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.activity.ComplainActivity"/>
-        <activity android:name=".ui.activity.CollectActivity"/>
-        <activity android:name=".ui.activity.SearchActivity"/>
-        <activity android:name=".ui.activity.SearchGoodsActivity"/>
-        <activity android:name=".ui.activity.UserActivity"/>
         <activity android:name=".ui.activity.ShareBillListActivity"/>
         <activity android:name=".ui.activity.DressShopActivity"/>
         <activity android:name=".ui.activity.DressListActivity"/>
@@ -23,8 +18,8 @@
         <activity android:name=".ui.activity.TimeSuperMarketDetailActivity"/>
         <activity android:name=".ui.activity.IntegralActivity"/>
         <activity android:name=".ui.activity.IntegralDetailActivity"/>
-        <activity android:name=".ui.activity.CameramanActivity"/>
-        <activity android:name=".ui.activity.CameramanDetailActivity"/>
+        <activity android:name=".ui.activity.TeacherActivity"/>
+        <activity android:name=".ui.activity.TeacherDetailActivity"/>
         <activity android:name=".ui.activity.StarActivity"/>
         <activity android:name=".ui.activity.BrideInfoActivity"/>
         <activity android:name=".ui.activity.MealOrderDetailsActivity"/>

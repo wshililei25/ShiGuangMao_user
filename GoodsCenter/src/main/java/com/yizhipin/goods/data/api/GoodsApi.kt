@@ -15,39 +15,6 @@ import retrofit2.http.Query
  */
 interface GoodsApi {
 
-    /**
-     * 商品列表
-     */
-    @GET(Api.GOODS_LIST)
-    fun getGoodsList(@Query("currentPage") currentPage: String, @Query("primaryCategory") primaryCategory: String
-                     , @Query("secondCategory") secondCategory: String, @Query("order") order: String
-                     , @Query("orderType") orderType: String): Observable<BasePagingResp<MutableList<Goods>?>>
-
-    /**
-     * 商品列表
-     */
-    @GET(Api.GOODS_LIST)
-    fun getSearchGoodsList(@Query("currentPage") currentPage: String, @Query("name") name: String
-                           , @Query("order") order: String, @Query("orderType") orderType: String): Observable<BasePagingResp<MutableList<Goods>?>>
-
-    /**
-     * 店铺的商品列表
-     */
-    @GET(Api.GOODS_LIST)
-    fun getShopGoodsList(@Query("currentPage") currentPage: String, @Query("shopId") shopId: String): Observable<BasePagingResp<MutableList<Goods>?>>
-
-    /**
-     * 收藏的商品列表
-     */
-    @GET(Api.COLLECT_GOODS)
-    fun getCollectGoodsList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<CollectGoods>?>>
-
-    /**
-     * 收藏的店铺列表
-     */
-    @GET(Api.COLLECT_SHOP_LIST)
-    fun getCollectShopList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<CollectShop>?>>
-
     @GET("${Api.GOODS_DETAIL}${"/{id}"}")
     fun getGoodsDetail(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<DressDetails>>
 
@@ -146,9 +113,6 @@ interface GoodsApi {
     @POST("${Api.GIVE_LIKE_REPORT}")
     fun giveLikeReport(): Observable<BaseResp<Boolean>>
 
-    @GET("${Api.SHOP_DETAIL}${"/{id}"}")
-    fun getShopDetails(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<Shop>>
-
     @GET("${Api.CAMERAMAN_DETAILS}${"/{id}"}")
     fun getCameramanDetails(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<Cameraman>>
 
@@ -160,6 +124,9 @@ interface GoodsApi {
 
     @POST(Api.MEAL_ORDER)
     fun order(): Observable<BaseResp<OrderDetails>>
+
+    @POST(Api.TEACHER_ORDER)
+    fun orderTeacher(): Observable<BaseResp<OrderDetails>>
 
     @GET("${Api.MEAL_ORDER}${"/{id}"}")
     fun getOrderDetails(@Path("id") id: String): Observable<BaseResp<OrderDetails>>
@@ -181,12 +148,6 @@ interface GoodsApi {
      */
     @POST(Api.COMPLAIN_SHOP)
     fun getComplainShop(): Observable<BaseResp<Complain>>
-
-    /**
-     * 收藏店铺
-     */
-    @POST(Api.COLLECT_SHOP)
-    fun collectShop(): Observable<BaseResp<Collect>>
 
     /**
      * 附近品团列表

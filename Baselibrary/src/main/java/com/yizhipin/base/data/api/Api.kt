@@ -14,6 +14,8 @@ interface Api {
         const val IMAGE_ADDRESS = "api/OSS/OSSCredentials"//获取图片地址
         const val DEFAULT_STORE = "api/Store/GetByLatlng"//附近门店
         const val NEWS = "api/Information/Page" //资讯
+        const val HELP_LIST = "api/CommonProblem/Page" //新手帮助
+        const val NEWS_DETAILS = "api/Information" //资讯详情
         const val UNREAD_NEWS_COUNT = "api/UserMsg/UnRead" //获取未读消息数
         const val FEE_RECORD_LIST = "api/FeeRecord/List" //资金记录
         const val INTEGRAL_LIST = "api/ScoreRecord/Page" //积分记录
@@ -25,6 +27,7 @@ interface Api {
         const val GOODS_NORM = "api/ClothesNorm/List"//服装规格
         const val FOLLOW_DRESS = "api/ClothesAttention"//关注、取消关注服装
         const val SHOP_LIST = "api/Store/Page"//门店列表
+        const val SHOP_FOLLOW_LIST = "api/StoreAttention/Page"//门店关注列表
         const val SHOP_DETAILS = "api/Store"//门店详情
         const val SHOP_BANNER = "api/StoreBanner/List"//获取门店banner
         const val SHOP_FOLLOW = "api/StoreAttention"//门店关注、取消关注
@@ -32,6 +35,7 @@ interface Api {
         const val TIME_TEACHER = "api/TeacherInfo/List"//门店时光老师列表
         const val EVALUATE = "api/PhotoPackageEva/List"//门店、套餐 评价
         const val MEAL_LIST = "api/PhotoPackage/Page" //套餐列表
+        const val MEAL_FOLLOW_LIST = "api/PackageAttention/Page" //套餐关注列表
         const val MEAL_DETAILS = "api/PhotoPackage" //套餐详情
         const val MEAL_FOLLOW = "api/PackageAttention"//套餐关注、取消关注
         const val BASIC_SERVICES = "api/StoreService/List"//基础服务
@@ -48,6 +52,7 @@ interface Api {
         const val SCENIC_FOLLOW = "api/Attractions/Attention"//景点关注、取消关注
         const val MEAL_SENIC = "api/PackageAttraction/PhotoPackage"//景点相关套餐
         const val CAMERAMAN_LIST = "api/TeacherInfo/Page" //摄影师列表
+        const val TEACHER_FOLLOW_LIST = "api/TeacherAttention/Page" //老师关注列表
         const val CAMERAMAN_DETAILS = "api/TeacherInfo" //摄影师详情
         const val CAMERAMAN_FOLLOW = "api/TeacherAttention"//摄影师关注、取消关注
         const val CAMERAMAN_WORKS = "api/TeacherWorks/Page"//摄影师作品
@@ -58,7 +63,8 @@ interface Api {
         const val COMMENT = "api/InteractiveBar/Eva"//评论
         const val RELEVANCE_USER = "api/UserRelated/List"//关联用户
         const val ADD_RELEVANCE_USER = "api/UserRelated"//关联用户\删除关联用户\更改关联用户
-        const val MEAL_ORDER = "api/Order" //套餐下单\套餐订单详情
+        const val MEAL_ORDER = "api/Order" //套餐预定下单\套餐订单详情
+        const val TEACHER_ORDER = "api/Order/Private/Teacher" //老师预定下单
         const val ADD_BRIDE_INFO = "api/Order/Info" //添加新人信息
         const val ADD_CAMERAMAN = "api/Order/Teacher" //添加摄影师
         const val RECHERGE = "api/UserCenter/Recharge" //余额充值

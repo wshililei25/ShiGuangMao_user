@@ -5,7 +5,7 @@ package com.yizhipin.base.common
  */
 class TeacherStatus {
     companion object {
-        const val TEACHER_SHEYING = "摄影师"
-        const val TEACHER_HUAZHUANG = "化妆师"
+        const val TEACHER_SHEYING = "sheying"
+        const val TEACHER_HUAZHUANG = "huazhuang"
     }
 }

@@ -36,9 +36,13 @@ import org.jetbrains.anko.startActivityForResult
  */
 class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMealDetailsView, View.OnClickListener {
 
-    @Autowired(name = BaseConstant.KEY_MEAL_ORDER_ID)
+    @Autowired(name = BaseConstant.KEY_MEAL_ORDER_ID)  //从套餐详情页面来
     @JvmField
     var mOrderId: String = "" //订单id
+
+    @Autowired(name = BaseConstant.KEY_ORDER_TEACHER)  //从老师详情页面来
+    @JvmField
+    var mOrderTeacher: OrderTeacher? = null
 
     private lateinit var mSetMealDetails: SetMealDetails
     private lateinit var mAppointDressAdapter: AppointDressAdapter
@@ -94,6 +98,22 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
         mCameramanView.onClick(this)
         mDresserView.onClick(this)
         mBtn.onClick(this)
+
+        mOrderTeacher?.let {
+            //从老师详情页面来  暂时注释
+            when (mOrderTeacher!!.teacherType) {
+                "sheying" -> {
+                    mCameramanTv.text = mOrderTeacher!!.nickname
+                    mCameramanAmountTv.text = "¥ ${mOrderTeacher!!.teacherAmount}"
+                    mCameramanIv.loadUrl(mOrderTeacher!!.imgurl)
+                }
+                "huazhuang" -> {
+                    mDresserTv.text = mOrderTeacher!!.nickname
+                    mDresserAmountTv.text = "¥ ${mOrderTeacher!!.teacherAmount}"
+                    mDresserIv.loadUrl(mOrderTeacher!!.imgurl)
+                }
+            }
+        }
     }
 
     /**
@@ -134,10 +154,10 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
 
             R.id.mEditTv -> startActivityForResult<BrideInfoActivity>(1000, BaseConstant.KEY_MEAL_ORDER_ID to mOrderId)
 
-            R.id.mCameramanView -> startActivityForResult<CameramanActivity>(1001
+            R.id.mCameramanView -> startActivityForResult<TeacherActivity>(1001
                     , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_SHEYING)
 
-            R.id.mDresserView -> startActivityForResult<CameramanActivity>(1002
+            R.id.mDresserView -> startActivityForResult<TeacherActivity>(1002
                     , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_HUAZHUANG)
 
             R.id.mBtn -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_PAY)
@@ -166,12 +186,12 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
                 when (requestCode) {
                     1001 -> {
                         mCameramanTv.text = data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN)
-                        mCameramanAmountTv.text = data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN_AMOUNT)
+                        mCameramanAmountTv.text = "¥ " + data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN_AMOUNT)
                         mCameramanIv.loadUrl(data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN_URL)!!)
                     }
                     1002 -> {
                         mDresserTv.text = data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN)
-                        mDresserAmountTv.text = data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN_AMOUNT)
+                        mDresserAmountTv.text = "¥ " + data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN_AMOUNT)
                         mDresserIv.loadUrl(data?.getStringExtra(BaseConstant.KEY_ADD_CAMERAMAN_URL)!!)
                     }
                 }

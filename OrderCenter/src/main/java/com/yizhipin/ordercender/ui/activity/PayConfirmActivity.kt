@@ -24,7 +24,6 @@ import com.yizhipin.base.common.WechatAppID
 import com.yizhipin.base.data.response.AliPayResult
 import com.yizhipin.base.data.response.BuyResult
 import com.yizhipin.base.data.response.Coupon
-import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.payresult.PayResult
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -78,7 +77,6 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
     var mOrderId: String = "" //订单id
 
     private lateinit var mIWXAPI: IWXAPI
-    private var mGoodsList: MutableList<Goods>? = null
     private var mGoodsId = "" //商品id
     private var mProductCounts = "" //商品数量
     private var mConponId = "" //优惠券id
@@ -106,31 +104,6 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
         if (mPayFrom.isNotEmpty()) {
             mTypeTv.text = mPayFrom
         }
-
-        /* mGoodsList = intent.getParcelableArrayListExtra<Goods>(OrderConstant.KEY_GOODS_LIST) as MutableList<Goods>
-         if (mIsPin) {
-             for (good in mGoodsList as MutableList<Goods>) {
-                 mAmount += good.pinPrice!! * good.goodsCount
-             }
-         } else {
-             for (good in mGoodsList as MutableList<Goods>) {
-                 mAmount += good.price!! * good.goodsCount
-             }
-         }
-         for (list in mGoodsList!!) {
-             if (list.productId.isNullOrEmpty()) { //单价买
-                 mGoodsId += list.id.toString().plus(",")
-             } else { //购物车
-                 mGoodsId += list.productId.toString().plus(",")
-             }
-             mProductCounts += list.goodsCount.toString().plus(",")
-         }
-         mPostageTv.text = getString(R.string.rmb).plus(mAmount.toString())
-         mPaymentTv.text = getString(R.string.rmb).plus(mAmount.toString())
-
-         if (AppPrefsUtils.getString(ProviderConstant.KEY_AMOUNT).toDouble() < mAmount) {
-             mBalanceRadio.setTextDesc(getString(R.string.balance_insufficient))
-         }*/
 
         mPayRadioGroup.setOnCheckedChangeListener(object : PayRadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(group: PayRadioGroup, checkedId: Int) {

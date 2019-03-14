@@ -31,6 +31,8 @@ import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.shop.ui.activity.ShopActivity
 import com.yizhipin.ui.activity.CustomServiceActivity
+import com.yizhipin.ui.activity.FollowActivity
+import com.yizhipin.ui.activity.HelpActivity
 import com.yizhipin.ui.activity.SettingActivity
 import com.yizhipin.usercenter.common.UserConstant
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
@@ -49,8 +51,6 @@ import q.rorbin.badgeview.QBadgeView
 class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnClickListener {
     private lateinit var mQBadgeView: QBadgeView
 
-    private var mLongitude: Double = 0.00
-    private var mLatitude: Double = 0.00
     private lateinit var mUserInfo: UserInfo
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -91,6 +91,8 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mGradeIv.onClick(this)
         mRelevanceTv.onClick(this)
         mForegiftTv.onClick(this)
+        mFollowTv.onClick(this)
+        mNoviceHelpv.onClick(this)
     }
 
     private fun loadData() {
@@ -191,7 +193,13 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                     ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_RED).navigation()
                 }
             }
+            R.id.mFollowTv -> { //关注
+                afterLogin {
+                    startActivity<FollowActivity>()
+                }
+            }
             R.id.mCustomerPhonev -> startActivity<CustomServiceActivity>()
+            R.id.mNoviceHelpv -> startActivity<HelpActivity>()
             R.id.mGradeIv, R.id.mRelevanceTv -> {
                 mUserInfo?.let {
                     startActivity<RelevanceUserActivity>()

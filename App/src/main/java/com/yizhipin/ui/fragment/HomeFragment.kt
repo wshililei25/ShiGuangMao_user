@@ -32,9 +32,9 @@ import com.yizhipin.base.utils.BasePrefsUtils
 import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.goods.common.DressShopStatus
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.ui.activity.CameramanActivity
 import com.yizhipin.goods.ui.activity.DressListActivity
 import com.yizhipin.goods.ui.activity.StarActivity
+import com.yizhipin.goods.ui.activity.TeacherActivity
 import com.yizhipin.presenter.HomePresenter
 import com.yizhipin.presenter.view.HomeView
 import com.yizhipin.provider.common.ProvideReqCode
@@ -172,9 +172,9 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
             override fun onItemClick(item: CategoryHome, position: Int) {
                 when (position) {
                     0 -> startActivity<ScenicActivity>()
-                    1 -> startActivity<CameramanActivity>(BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_SHEYING)
+                    1 -> startActivity<TeacherActivity>(BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_SHEYING)
                     2 -> startActivity<StarActivity>()
-                    3 -> startActivity<DressListActivity>(GoodsConstant.KEY_DRESS_SHOP_STATUS to DressShopStatus.DRESS_SHOP_SHARE, BaseConstant.KEY_DRESS to 0)
+                    3 -> startActivity<DressListActivity>(GoodsConstant.KEY_DRESS_SHOP_STATUS to DressShopStatus.DRESS_SHOP_SHARE)
                 }
             }
         })

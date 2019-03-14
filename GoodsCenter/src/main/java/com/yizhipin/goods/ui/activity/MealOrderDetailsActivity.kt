@@ -158,10 +158,10 @@ class MealOrderDetailsActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
 
             R.id.mEditTv -> startActivityForResult<BrideInfoActivity>(1000, BaseConstant.KEY_MEAL_ORDER_ID to mOrderId)
 
-            R.id.mCameramanView -> startActivityForResult<CameramanActivity>(1001
+            R.id.mCameramanView -> startActivityForResult<TeacherActivity>(1001
                     , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_SHEYING)
 
-            R.id.mDresserView -> startActivityForResult<CameramanActivity>(1002
+            R.id.mDresserView -> startActivityForResult<TeacherActivity>(1002
                     , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_HUAZHUANG)
 
             R.id.mBtn -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_PAY)

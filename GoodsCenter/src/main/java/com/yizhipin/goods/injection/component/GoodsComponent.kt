@@ -14,7 +14,6 @@ import dagger.Component
 @Component(dependencies = arrayOf(ActivityComponent::class), modules = arrayOf(GoodsModule::class))
 interface GoodsComponent {
 
-    fun inject(activity: ComplainActivity)
     fun inject(activity: ShareBillListActivity)
     fun inject(activity: DressListActivity)
     fun inject(activity: DressFragment)
@@ -30,8 +29,8 @@ interface GoodsComponent {
     fun inject(activity: TimeSuperMarketDetailActivity)
     fun inject(activity: IntegralFragment)
     fun inject(activity: IntegralDetailActivity)
-    fun inject(activity: CameramanActivity)
-    fun inject(activity: CameramanDetailActivity)
+    fun inject(activity: TeacherActivity)
+    fun inject(activity: TeacherDetailActivity)
     fun inject(activity: StarActivity)
     fun inject(activity: BrideInfoActivity)
     fun inject(activity: MealOrderDetailsActivity)

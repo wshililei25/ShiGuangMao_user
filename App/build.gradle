@@ -90,12 +90,13 @@ dependencies {
     implementation project(':GoodsCenter')
     implementation project(':OrderCenter')
     implementation project(':PayCenter')
-    implementation project(':GeneralizeCenter')
     implementation project(':ShopCenter')
+    implementation project(':FindCenter')
     //支付宝pay
     api (name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 }
 
 //Parcelable序列化插件

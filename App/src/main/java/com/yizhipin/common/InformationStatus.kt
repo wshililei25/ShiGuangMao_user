@@ -1,7 +1,7 @@
 package com.yizhipin.common
 
-/*
-    订单状态
+/**
+ * 资讯类别
  */
 class InformationStatus {
     companion object {

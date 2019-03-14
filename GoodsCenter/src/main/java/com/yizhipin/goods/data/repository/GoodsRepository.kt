@@ -9,9 +9,6 @@ import com.yizhipin.goods.data.api.GoodsApi
 import io.reactivex.Observable
 import javax.inject.Inject
 
-/*
-    商品数据层
- */
 class GoodsRepository @Inject constructor() {
 
     fun getDressCategory(map: MutableMap<String, String>): Observable<BaseResp<MutableList<DressCategory>>> {
@@ -27,8 +24,9 @@ class GoodsRepository @Inject constructor() {
     }
 
     fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>> {
-        return RetrofitFactoryGet().create(GoodsApi::class.java).getCameramanList(map["currentPage"]!!, map["storeId"]!!,map["teacherType"]!!)
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getCameramanList(map["currentPage"]!!, map["storeId"]!!, map["teacherType"]!!)
     }
+
     fun addCameraman(map: MutableMap<String, String>): Observable<BaseResp<AddCameraman>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).addCameraman()
     }
@@ -118,10 +116,6 @@ class GoodsRepository @Inject constructor() {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).giveLikeReport()
     }
 
-    fun getShopDetails(map: MutableMap<String, String>): Observable<BaseResp<Shop>> {
-        return RetrofitFactoryGet().create(GoodsApi::class.java).getShopDetails(map["id"]!!, map["loginUid"]!!)
-    }
-
     fun getCameramanDetails(map: MutableMap<String, String>): Observable<BaseResp<Cameraman>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getCameramanDetails(map["id"]!!, map["loginUid"]!!)
     }
@@ -129,6 +123,7 @@ class GoodsRepository @Inject constructor() {
     fun getMealDetails(map: MutableMap<String, String>): Observable<BaseResp<SetMealDetails>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getMealDetails(map["id"]!!, map["loginUid"]!!)
     }
+
     fun addBrideInfo(map: MutableMap<String, String>): Observable<BaseResp<BrideInfo>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).addBrideInfo()
     }
@@ -136,6 +131,11 @@ class GoodsRepository @Inject constructor() {
     fun order(map: MutableMap<String, String>): Observable<BaseResp<OrderDetails>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).order()
     }
+
+    fun orderTeacher(map: MutableMap<String, String>): Observable<BaseResp<OrderDetails>> {
+        return RetrofitFactoryPost(map).create(GoodsApi::class.java).orderTeacher()
+    }
+
     fun getOrderDetails(map: MutableMap<String, String>): Observable<BaseResp<OrderDetails>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getOrderDetails(map["id"]!!)
     }
@@ -150,10 +150,6 @@ class GoodsRepository @Inject constructor() {
 
     fun getComplainShop(map: MutableMap<String, String>): Observable<BaseResp<Complain>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).getComplainShop()
-    }
-
-    fun collectShop(map: MutableMap<String, String>): Observable<BaseResp<Collect>> {
-        return RetrofitFactoryPost(map).create(GoodsApi::class.java).collectShop()
     }
 
     fun getShareBillList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<ShareBill>>> {

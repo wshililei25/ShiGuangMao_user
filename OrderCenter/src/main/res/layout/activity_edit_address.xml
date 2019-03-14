@@ -94,11 +94,33 @@
                 android:textColor="@color/yBlack"
                 android:textColorHint="@color/yHint"
                 android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+
+       <!-- <LinearLayout
+            android:id="@+id/mCityAddressView"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_below="@id/mShipMobileView"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapMatch"
+                android:layout_width="95dp"
+                android:text="@string/take_address"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/mCityAddressEt"
+                style="@style/WeightMatch"
+                android:hint="@string/select_city"
+                android:textColor="@color/yBlack"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
 
             <ImageView
                 style="@style/WrapWrap"
                 android:src="@drawable/rightarrow"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <View
             style="@style/DividerFixedHeight"

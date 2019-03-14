@@ -27,7 +27,7 @@ import com.yizhipin.ordercender.presenter.OrderListPresenter
 import com.yizhipin.ordercender.presenter.view.OrderListView
 import com.yizhipin.ordercender.ui.adapter.OrderAdapter
 import com.yizhipin.provider.router.RouterPath
-import kotlinx.android.synthetic.main.fragment_order.*
+import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.toast
 
 /**
@@ -40,7 +40,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, BGAR
     private lateinit var mOrderAdapter: OrderAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_order, container, false)
+        return inflater.inflate(R.layout.fragment_recyclerview, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,9 +53,9 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, BGAR
     }
 
     private fun initView() {
-        mOrderRv.layoutManager = LinearLayoutManager(activity!!)
+        mRv.layoutManager = LinearLayoutManager(activity!!)
         mOrderAdapter = OrderAdapter(activity!!)
-        mOrderRv.adapter = mOrderAdapter
+        mRv.adapter = mOrderAdapter
         mOrderAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Order> {
             override fun onItemClick(item: Order, position: Int) {
                 ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_ORDER_MEAL_DETAILS)

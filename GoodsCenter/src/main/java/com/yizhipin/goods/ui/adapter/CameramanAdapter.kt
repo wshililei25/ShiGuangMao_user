@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Cameraman
 import com.yizhipin.base.event.CameramanCheckedEvent
 import com.yizhipin.base.ext.loadUrl
@@ -14,7 +15,9 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.goods.R
+import com.yizhipin.goods.ui.activity.TeacherDetailActivity
 import kotlinx.android.synthetic.main.layout_cameraman_item.view.*
+import org.jetbrains.anko.startActivity
 
 class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecyclerViewAdapter<Cameraman, CameramanAdapter.ViewHolder>(context) {
 
@@ -43,7 +46,7 @@ class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecycle
             holder.itemView.mAmountTv.text = "¥${webUser.extraAmount}"
 
             var listResult = mutableListOf<String>()
-            if(null != works && works.size>0){
+            if (null != works && works.size > 0) {
                 if (works[0].imgurls.contains(",")) {
                     var list = works[0].imgurls!!.split(",").toMutableList()
                     for (l in list) {
@@ -66,7 +69,6 @@ class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecycle
 
         holder.itemView.mShopCb.onClick {
 
-
             for ((index) in dataList.withIndex()) {
                 mutableMap.put(index, false)
             }
@@ -76,57 +78,15 @@ class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecycle
             Bus.send(CameramanCheckedEvent(model))
         }
 
-        /*
-         //是否选中
-         holder.itemView.mShopCb.isChecked = model.isSelected
-         holder.itemView.mShopTv.text = model.shopName
+        holder.itemView.mRv.onClick {
+            context.startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to model.id)
+        }
 
-         //当一级选中时让所有二级全部选中
-         for (item in mCameramanImageAdapter.dataList) {
-             item.isSelected = holder.itemView.mShopCb.isChecked
-         }
-         Bus.send(UpdateTotalPriceEvent())
-
-         //选中按钮事件
-         holder.itemView.mShopCb.onClick {
-             model.isSelected = holder.itemView.mShopCb.isChecked
-
-             //当一级选中时让所有二级全部选中
-             for (item in mCameramanImageAdapter.dataList) {
-                 item.isSelected = holder.itemView.mShopCb.isChecked
-             }
-             mCameramanImageAdapter.notifyDataSetChanged()
-             //当所有的一级全部选中时发送事件让最外边的全部CheckBox选中
-             val isAllChecked = dataList.all { it.isSelected }
-             Bus.send(CartAllCheckedEvent(isAllChecked))
-         }
-
-         Bus.observe<CartCheckedEvent>()
-                 .subscribe { t: CartCheckedEvent ->
-                     run {
-                         //当所有的二级选中时让对应的一级选中
-                         holder.itemView.mShopCb.isChecked = t.isAllChecked
-                         model.isSelected = holder.itemView.mShopCb.isChecked
-                         //当所有的一级全部选中时发送事件让最外边的全部CheckBox选中
-                         val isAllChecked = dataList.all { it.isSelected }
-                         Bus.send(CartAllCheckedEvent(isAllChecked))
-
-                     }
-                 }.registerInBus(context)
-
-         Bus.observe<CartDeleteEvent>()
-                 .subscribe { t: CartDeleteEvent ->
-                     run {
-                         //当所有的二级全部移除时让对应的一级移除
-                         if (dataList.get(position).carts.size <= 0) {
-                             dataList.removeAt(position)
-                             notifyDataSetChanged()
-                             Bus.send(CartDeleteAllEvent())
-                         }
-
-                     }
-                 }.registerInBus(context)*/
-
+        mCameramanImageAdapter.setOnItemClickListener(object : OnItemClickListener<String> {
+            override fun onItemClick(item: String, position: Int) {
+                context.startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to model.id)
+            }
+        })
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)

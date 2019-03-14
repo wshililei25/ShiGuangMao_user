@@ -65,7 +65,6 @@ class DressFragment : BaseMvpFragment<DressPresenter>(), DressView, BGARefreshLa
                         intent.putExtra(BaseConstant.KEY_DRESS_POSITION, activity!!.intent.getIntExtra(BaseConstant.KEY_DRESS_POSITION, -1))
                         activity!!.setResult(ProvideReqCode.CODE_RESULT_DRESS_WOMEN, intent)
                         activity!!.finish()
-                        return
                     }
                     1 -> { //男装选择
                         var intent = Intent()
@@ -73,7 +72,6 @@ class DressFragment : BaseMvpFragment<DressPresenter>(), DressView, BGARefreshLa
                         intent.putExtra(BaseConstant.KEY_DRESS_POSITION, activity!!.intent.getIntExtra(BaseConstant.KEY_DRESS_POSITION, -1))
                         activity!!.setResult(ProvideReqCode.CODE_RESULT_DRESS_MAN, intent)
                         activity!!.finish()
-                        return
                     }
 
                 }

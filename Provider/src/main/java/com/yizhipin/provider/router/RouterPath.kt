@@ -20,7 +20,6 @@ object RouterPath {
     class GoodsCenter {
         companion object {
             const val PATH_GOODS_CART = "/goodsCenter/cart"
-            const val PATH_GOODS_COLLECT = "/goodsCenter/collect"
             const val PATH_GOODS_DRESSSHOP = "/goodsCenter/dressShop"
             const val PATH_MEAL = "/goodsCenter/meal" //套餐
             const val PATH_CLOUD_DISK = "/goodsCenter/cloudDisk" //时光云盘

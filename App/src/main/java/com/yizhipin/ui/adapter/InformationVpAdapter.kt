@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.yizhipin.common.InformationStatus
 import com.yizhipin.common.MainConstant
+import com.yizhipin.ui.fragment.InformationFragment
 
 /**
  * Created by ${XiLei} on 2018/9/22.

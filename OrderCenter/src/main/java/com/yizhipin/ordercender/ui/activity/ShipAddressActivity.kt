@@ -38,7 +38,6 @@ class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddress
 
     private fun initView() {
         mAddAddressBtn.onClick(this)
-//        mHeaderBar.getRightTv().onClick(this)
 
         mAddressRv.layoutManager = LinearLayoutManager(this)
         mShipAddressAdapter = ShipAddressAdapter(this)
@@ -93,9 +92,6 @@ class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddress
 
     override fun onClick(v: View) {
         when (v.id) {
-            /* R.id.mRightTv -> {
-                 refreshEditStatus()
-             }*/
             R.id.mAddAddressBtn -> {
                 startActivity<ShipAddressEditActivity>("size" to mShipAddressAdapter.dataList.size)
             }

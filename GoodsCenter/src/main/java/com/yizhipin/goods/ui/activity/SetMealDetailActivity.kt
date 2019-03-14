@@ -16,6 +16,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BasicServicesAdapter
+import com.yizhipin.base.ui.adapter.EvaluateAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.goods.R
@@ -23,7 +24,6 @@ import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.SetMealDetailsPresenter
 import com.yizhipin.goods.presenter.view.SetMealDetailsView
-import com.yizhipin.goods.ui.adapter.EvaluateAdapter
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.router.RouterPath
 import com.youth.banner.BannerConfig
@@ -134,7 +134,6 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
             }
 
             R.id.mBtn -> {
-
                 afterLogin {
                     var map = mutableMapOf<String, String>()
                     map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))

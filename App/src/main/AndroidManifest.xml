@@ -93,6 +93,9 @@
         <activity android:name=".ui.activity.VersionInfoActivity" />
         <activity android:name=".ui.activity.CustomServiceActivity" />
         <activity android:name=".ui.activity.InformationActivity" />
+        <activity android:name=".ui.activity.FollowActivity" />
+        <activity android:name=".ui.activity.InformationDetailsActivity" />
+        <activity android:name=".ui.activity.HelpActivity" />
     </application>
 
 </manifest>
