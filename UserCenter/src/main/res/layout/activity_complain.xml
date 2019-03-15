@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        style="@style/MatchWrap"
+        app:titleText="@string/recommendations" />
+
+    <RelativeLayout
+        android:id="@+id/mTypeView"
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:background="@drawable/shape_white_corner"
+        android:paddingLeft="@dimen/yPaddingMiddle">
+
+        <TextView
+            android:id="@+id/mTypeEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toLeftOf="@+id/iv"
+            android:gravity="center_vertical"
+            android:hint="选择问题类型"
+            android:textColor="@color/yBlack"
+            android:textColorHint="@color/yBlackLight"
+            android:textSize="@dimen/yTextBigSize" />
+
+        <ImageView
+            android:id="@+id/iv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:src="@drawable/downarrow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:background="@drawable/shape_white_corner"
+        android:paddingLeft="@dimen/yPaddingMiddle">
+
+
+        <EditText
+            android:id="@+id/mNameEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:background="@null"
+            android:hint="请输入您的称呼"
+            android:textColor="@color/yBlack"
+            android:textColorHint="@color/yBlackLight"
+            android:textSize="@dimen/yTextBigSize" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:background="@drawable/shape_white_corner"
+        android:paddingLeft="@dimen/yPaddingMiddle">
+
+        <EditText
+            android:id="@+id/mMobileEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:background="@null"
+            android:hint="请输入联系电话"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/yBlack"
+            android:textColorHint="@color/yBlackLight"
+            android:textSize="@dimen/yTextBigSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:background="@drawable/shape_white_corner"
+        android:paddingLeft="@dimen/yPaddingMiddle">
+
+        <EditText
+            android:id="@+id/mContentEt"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="感谢您的宝贵建议，如果妮妮有投诉我们会尽快与您取得联系！"
+            android:padding="@dimen/yPaddingMiddle"
+            android:textColor="@color/yBlack"
+            android:textColorHint="@color/yBlackLight"
+            android:textSize="@dimen/yTextBigSize" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPadding"
+        android:enabled="true"
+        android:text="@string/commit" />
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap.Vertical.White">
+
+    <TextView
+        android:id="@+id/mNameTv"
+        style="@style/WrapWrap"
+        android:padding="@dimen/yPadding"
+        android:text="dddd"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextLargeSize" />
+
+    <View style="@style/DividerFixedHeight" />
+</LinearLayout>

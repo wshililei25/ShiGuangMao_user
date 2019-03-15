@@ -93,6 +93,8 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mForegiftTv.onClick(this)
         mFollowTv.onClick(this)
         mNoviceHelpv.onClick(this)
+        mWithdrawTv.onClick(this)
+        mRecommendationsTv.onClick(this)
     }
 
     private fun loadData() {
@@ -196,6 +198,16 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             R.id.mFollowTv -> { //关注
                 afterLogin {
                     startActivity<FollowActivity>()
+                }
+            }
+            R.id.mRecommendationsTv -> {
+                afterLogin {
+                    startActivity<ComplainActivity>()
+                }
+            }
+            R.id.mWithdrawTv -> {
+                afterLogin {
+                    ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW).navigation()
                 }
             }
             R.id.mCustomerPhonev -> startActivity<CustomServiceActivity>()

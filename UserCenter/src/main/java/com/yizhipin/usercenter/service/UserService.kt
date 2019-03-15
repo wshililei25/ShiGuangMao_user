@@ -33,4 +33,5 @@ interface UserService {
     fun getOssSign(map: MutableMap<String, String>): Observable<String>
     fun getOssSignFile(map: MutableMap<String, String>): Observable<String>
     fun getOssAddress(): Observable<OssAddress>
+    fun complain(map: MutableMap<String, String>): Observable<Boolean>
 }

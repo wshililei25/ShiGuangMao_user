@@ -24,6 +24,7 @@
         <activity android:name=".ui.activity.RelevanceUserActivity"/>
         <activity android:name=".ui.activity.RelevanceAddActivity"/>
         <activity android:name=".ui.activity.InvitationAddActivity"/>
+        <activity android:name=".ui.activity.ComplainActivity"/>
 
     </application>
 </manifest>

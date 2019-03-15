@@ -27,4 +27,5 @@ interface UserComponent {
     fun inject(activity: RelevanceUserActivity)
     fun inject(activity: RelevanceAddActivity)
     fun inject(activity: InvitationAddActivity)
+    fun inject(activity: ComplainActivity)
 }

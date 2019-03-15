@@ -19,9 +19,10 @@ import javax.inject.Inject
 class UserRepository @Inject constructor() {
 
     fun getCode(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
-
-        return RetrofitFactoryGet().create(UserApi::class.java)
-                .getCode(map["mobile"]!!)
+        return RetrofitFactoryGet().create(UserApi::class.java).getCode(map["mobile"]!!)
+    }
+    fun complain(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryPost(map).create(UserApi::class.java).complain()
     }
 
     fun resetPwd(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {

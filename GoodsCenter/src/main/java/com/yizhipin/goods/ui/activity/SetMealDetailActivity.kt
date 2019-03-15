@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.WebJs
 import com.yizhipin.base.data.response.BasicServices
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.OrderDetails
@@ -30,6 +31,7 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_meal_details.*
 import org.jetbrains.anko.startActivity
+
 
 /**
  * Created by ${XiLei} on 2018/9/22.
@@ -185,7 +187,7 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
             mNegativeTv.text = "${filmCount}张"
             mRenCeTv.text = "${rucheCount}张"
 
-            mWebView.loadData(content, "text/html", "UTF-8")
+            mWebView.loadData(content + WebJs.js, "text/html", "UTF-8")
             mWebView.getSettings().setJavaScriptEnabled(true);//启用js
             mWebView.getSettings().setBlockNetworkImage(false);//解决图片不显示
 
@@ -253,4 +255,6 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
 
     override fun onOrderDetailsSuccess(result: OrderDetails) {
     }
+
+
 }
