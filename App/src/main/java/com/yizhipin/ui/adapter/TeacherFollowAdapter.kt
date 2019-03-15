@@ -1,4 +1,4 @@
-package com.yizhipin.goods.ui.adapter
+package com.yizhipin.ui.adapter
 
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
@@ -6,20 +6,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.eightbitlab.rxbus.Bus
+import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
-import com.yizhipin.base.data.response.Cameraman
-import com.yizhipin.base.event.CameramanCheckedEvent
+import com.yizhipin.base.data.response.TeacherFollow
 import com.yizhipin.base.ext.loadUrl
-import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.goods.R
 import com.yizhipin.goods.ui.activity.TeacherDetailActivity
+import com.yizhipin.goods.ui.adapter.CameramanImageAdapter
 import kotlinx.android.synthetic.main.layout_cameraman_item.view.*
 import org.jetbrains.anko.startActivity
 
-class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecyclerViewAdapter<Cameraman, CameramanAdapter.ViewHolder>(context) {
+class TeacherFollowAdapter(val context: Context, var mOrderId: String) : BaseRecyclerViewAdapter<TeacherFollow, TeacherFollowAdapter.ViewHolder>(context) {
 
     private lateinit var mCameramanImageAdapter: CameramanImageAdapter
     private var mMap = mapOf<Int, Boolean>()
@@ -33,11 +31,9 @@ class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecycle
         super.onBindViewHolder(holder, position)
         val model = dataList[position]
 
-        if (!mOrderId.isNullOrBlank()) {
-            holder.itemView.mShopCb.setVisible(true)
-        }
+        holder.itemView.mShopCb.setVisible(false)
 
-        with(model) {
+        with(model.teacherInfo) {
             holder.itemView.mIv.loadUrl(webUser.imgurl)
             holder.itemView.mNumTv.text = webUser.credit.toString()
             holder.itemView.mNameTv.text = webUser.nickname.plus(" | ").plus(teacherType)
@@ -67,21 +63,21 @@ class CameramanAdapter(val context: Context, var mOrderId: String) : BaseRecycle
             mutableMap.put(index, false)
         }
 
-        holder.itemView.mShopCb.onClick {
+        /*   holder.itemView.mShopCb.onClick {
 
-            for ((index) in dataList.withIndex()) {
-                mutableMap.put(index, false)
-            }
-            holder.itemView.mShopCb.isChecked = true
-            mutableMap.put(position, true)
-            notifyDataSetChanged()
-            Bus.send(CameramanCheckedEvent(model))
-        }
+               for ((index) in dataList.withIndex()) {
+                   mutableMap.put(index, false)
+               }
+               holder.itemView.mShopCb.isChecked = true
+               mutableMap.put(position, true)
+               notifyDataSetChanged()
+               Bus.send(CameramanCheckedEvent(model))
+           }*/
 
         mCameramanImageAdapter.setOnItemClickListener(object : OnItemClickListener<String> {
             override fun onItemClick(item: String, position: Int) {
-                context.startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to model.id
-                        , BaseConstant.KEY_TEACHER_USER_ID to model.uid)
+                context.startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to model.teacherInfo.id
+                        , BaseConstant.KEY_TEACHER_USER_ID to model.teacherInfo.uid)
             }
         })
     }

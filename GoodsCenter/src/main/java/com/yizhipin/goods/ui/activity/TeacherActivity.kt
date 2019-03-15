@@ -73,7 +73,8 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
         mRv.adapter = mAdapter
         mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Cameraman> {
             override fun onItemClick(item: Cameraman, position: Int) {
-                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.id)
+                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.id
+                        , BaseConstant.KEY_TEACHER_USER_ID to item.uid)
             }
         })
     }

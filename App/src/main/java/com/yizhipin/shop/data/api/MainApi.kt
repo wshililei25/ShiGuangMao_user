@@ -61,5 +61,5 @@ interface MainApi {
     fun getMealList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<MealFollow>>>
 
     @GET(Api.TEACHER_FOLLOW_LIST)
-    fun getCameramanList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<Cameraman>>>
+    fun getCameramanList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<TeacherFollow>>>
 }

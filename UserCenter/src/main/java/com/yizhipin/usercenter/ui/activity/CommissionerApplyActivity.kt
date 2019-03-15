@@ -2,7 +2,6 @@ package com.yizhipin.usercenter.ui.activity
 
 import android.os.Bundle
 import android.view.View
-import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.loadUrl
@@ -13,6 +12,7 @@ import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.presenter.CommissionerPresenter
 import kotlinx.android.synthetic.main.activity_commissioner_apply.*
+import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.toast
 import java.io.File
 

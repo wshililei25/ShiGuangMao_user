@@ -66,7 +66,7 @@ class MainRepository @Inject constructor() {
         return RetrofitFactoryGet().create(MainApi::class.java).getMealList(map["currentPage"]!!, map["uid"]!!)
     }
 
-    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>> {
+    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherFollow>>> {
         return RetrofitFactoryGet().create(MainApi::class.java).getCameramanList(map["currentPage"]!!, map["uid"]!!)
     }
 }

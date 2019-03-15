@@ -74,8 +74,10 @@ class BaseConstant {
         const val KEY_SCENIC_IMAGE = "scenicImage"
         //景点金额
         const val KEY_SCENIC_AMOUNT = "scenicAmount"
-        //摄影师id
+        //老师id
         const val KEY_CAMERAMAN_ID = "cameramanId"
+        //老师userId
+        const val KEY_TEACHER_USER_ID = "teacherUserId"
         //互动吧类型
         const val KEY_INTERACTION_STATUS = "interactionStatus"
         //互动吧id

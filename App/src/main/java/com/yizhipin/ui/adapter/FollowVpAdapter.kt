@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.yizhipin.ui.fragment.MealFollowFragment
 import com.yizhipin.ui.fragment.ShopFollowFragment
+import com.yizhipin.ui.fragment.TeacherFoloowFragment
 
 /**
  * Created by ${XiLei} on 2018/9/22.
@@ -18,9 +19,7 @@ class FollowVpAdapter(fragmentManager: FragmentManager, context: Context) : Frag
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = MealFollowFragment()
-//            1 -> fragment = TeacherFoloowFragment() //暂时注释
-            1 -> fragment = MealFollowFragment()
-
+            1 -> fragment = TeacherFoloowFragment()
             2 -> fragment = ShopFollowFragment()
         }
         return fragment!!

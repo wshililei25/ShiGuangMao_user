@@ -60,7 +60,7 @@ open class MainServiceImpl @Inject constructor() : MainService {
         return mRepository.getMealList(map).convertPaging()
     }
 
-    override fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>> {
+    override fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherFollow>>> {
         return mRepository.getCameramanList(map).convertPaging()
     }
 }

@@ -11,19 +11,19 @@ import com.kennyc.view.MultiStateView
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.AddCameraman
-import com.yizhipin.base.data.response.Cameraman
+import com.yizhipin.base.data.response.TeacherFollow
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.goods.presenter.view.TeacherView
 import com.yizhipin.goods.ui.activity.TeacherDetailActivity
-import com.yizhipin.goods.ui.adapter.CameramanAdapter
 import com.yizhipin.presenter.TeacherFollowPresenter
+import com.yizhipin.presenter.view.TeacherFollowView
+import com.yizhipin.ui.adapter.TeacherFollowAdapter
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
 import kotlinx.android.synthetic.main.fragment_recyclerview.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.startActivity
 
 
@@ -31,11 +31,11 @@ import org.jetbrains.anko.support.v4.startActivity
  * Created by ${XiLei} on 2018/8/23.
  * 老师关注列表
  */
-class TeacherFoloowFragment : BaseMvpFragment<TeacherFollowPresenter>(), TeacherView, BGARefreshLayout.BGARefreshLayoutDelegate {
+class TeacherFoloowFragment : BaseMvpFragment<TeacherFollowPresenter>(), TeacherFollowView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
-    private lateinit var mAdapter: CameramanAdapter
+    private lateinit var mAdapter: TeacherFollowAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_recyclerview, container, false)
@@ -52,11 +52,13 @@ class TeacherFoloowFragment : BaseMvpFragment<TeacherFollowPresenter>(), Teacher
     private fun initView() {
 
         mRv.layoutManager = LinearLayoutManager(activity)
-        mAdapter = CameramanAdapter(activity!!, "11")
+        mAdapter = TeacherFollowAdapter(activity!!, "11")
         mRv.adapter = mAdapter
-        mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Cameraman> {
-            override fun onItemClick(item: Cameraman, position: Int) {
-                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.id)
+        mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<TeacherFollow> {
+            override fun onItemClick(item: TeacherFollow, position: Int) {
+                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.teacherInfo.id
+                        , BaseConstant.KEY_TEACHER_USER_ID to item.teacherInfo.uid)
+
             }
         })
     }
@@ -91,7 +93,7 @@ class TeacherFoloowFragment : BaseMvpFragment<TeacherFollowPresenter>(), Teacher
     /**
      * 获取摄影师列表成功
      */
-    override fun onGetCameramanListSuccess(result: BasePagingResp<MutableList<Cameraman>>) {
+    override fun onGetCameramanListSuccess(result: BasePagingResp<MutableList<TeacherFollow>>) {
 
         mRefreshLayout.endLoadingMore()
         mRefreshLayout.endRefreshing()
@@ -130,9 +132,6 @@ class TeacherFoloowFragment : BaseMvpFragment<TeacherFollowPresenter>(), Teacher
         loadData()
     }
 
-    override fun onAddCameramanSuccess(result: AddCameraman) {
-
-    }
 }
 
 

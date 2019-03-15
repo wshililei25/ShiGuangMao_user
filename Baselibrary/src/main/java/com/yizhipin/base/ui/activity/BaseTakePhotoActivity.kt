@@ -9,11 +9,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.bigkoo.alertview.AlertView
 import com.bigkoo.alertview.OnDismissListener
 import com.bigkoo.alertview.OnItemClickListener
-import com.jph.takephoto.app.TakePhoto
-import com.jph.takephoto.app.TakePhotoImpl
-import com.jph.takephoto.compress.CompressConfig
-import com.jph.takephoto.model.TResult
-import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.base.common.BaseApplication
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.base.injection.component.DaggerActivityComponent
@@ -23,6 +18,15 @@ import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.presenter.view.BaseView
 import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.base.widgets.ProgressLoading
+import org.devio.takephoto.app.TakePhoto
+import org.devio.takephoto.app.TakePhotoImpl
+import org.devio.takephoto.compress.CompressConfig
+import org.devio.takephoto.model.InvokeParam
+import org.devio.takephoto.model.TContextWrap
+import org.devio.takephoto.model.TResult
+import org.devio.takephoto.permission.InvokeListener
+import org.devio.takephoto.permission.PermissionManager
+import org.devio.takephoto.permission.TakePhotoInvocationHandler
 import org.jetbrains.anko.toast
 import java.io.File
 import javax.inject.Inject
@@ -30,7 +34,7 @@ import javax.inject.Inject
 /*
     存在选择图片的Activity基础封装
  */
-abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), BaseView, TakePhoto.TakeResultListener {
+abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), BaseView, TakePhoto.TakeResultListener, InvokeListener {
 
     private lateinit var mTakePhoto: TakePhoto
 
@@ -40,16 +44,15 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
     lateinit var mPresenter: T
 
     lateinit var mActivityComponent: ActivityComponent
-
     private lateinit var mLoadingDialog: ProgressLoading
+    private var mInvokeParam: InvokeParam? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initActivityInjection()
         injectComponent()
 
-        mTakePhoto = TakePhotoImpl(this, this)
-        mTakePhoto.onCreate(savedInstanceState)
+        mTakePhoto = TakePhotoInvocationHandler.of(this).bind(TakePhotoImpl(this, this)) as TakePhoto
 
         mLoadingDialog = ProgressLoading.create(this)
         ARouter.getInstance().inject(this)
@@ -104,14 +107,7 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
             when (position) {
                 0 -> {
                     createTempFile()
-                    RxPermissions(this).request(android.Manifest.permission.CAMERA)
-                            .subscribe({ granted ->
-                                if (granted) {
-                                    mTakePhoto.onPickFromCapture(Uri.fromFile(mTempFile))
-                                } else {
-                                    Log.d("XiLei", "请开启拍照权限")
-                                }
-                            })
+                    mTakePhoto.onPickFromCapture(Uri.fromFile(mTempFile))
                 }
                 1 -> mTakePhoto.onPickFromGallery()
             }
@@ -189,6 +185,20 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
         }
 
         this.mTempFile = File(filesDir, tempFileName)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        val type = PermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        PermissionManager.handlePermissionsResult(this, type, mInvokeParam, this)
+    }
+
+    override fun invoke(invokeParam: InvokeParam): PermissionManager.TPermissionType? {
+        val type = PermissionManager.checkPermission(TContextWrap.of(this), invokeParam.method)
+        if (PermissionManager.TPermissionType.WAIT == type) {
+            this.mInvokeParam = invokeParam
+        }
+        return type
     }
 
 }

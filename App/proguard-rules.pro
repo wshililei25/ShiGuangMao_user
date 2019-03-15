@@ -180,7 +180,6 @@
 #对含有反射类的处理
 #-keep class com.suchengkeji.android.confusiondemo.md.** { *; }
 
-
 # ARouter
 -keep public class com.alibaba.android.arouter.routes.**{*;}
 -keep public class com.alibaba.android.arouter.facade.**{*;}
@@ -229,3 +228,21 @@
 -dontwarn okio.**
 -dontwarn org.apache.commons.codec.binary.**
 #阿里云存储
+
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+# Glide
+
+# TakePhoto
+-keep class com.jph.takephoto.** { *; }
+-dontwarn com.jph.takephoto.**
+-keep class com.darsh.multipleimageselect.** { *; }
+-dontwarn com.darsh.multipleimageselect.**
+-keep class com.soundcloud.android.crop.** { *; }
+-dontwarn com.soundcloud.android.crop.**
+# TakePhoto

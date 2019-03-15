@@ -18,7 +18,7 @@ interface MainService {
     fun getUnreadNewCount(map: MutableMap<String, String>): Observable<Int>
     fun getShopList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Store>>>
     fun getMealList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<MealFollow>>>
-    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>>
+    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherFollow>>>
     fun getShopFollowList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<StoreFollow>>>
     fun getInformationDetails(map: MutableMap<String, String>): Observable<News>
     fun getHelpList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Help>>>

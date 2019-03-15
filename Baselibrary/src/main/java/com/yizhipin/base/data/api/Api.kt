@@ -56,7 +56,7 @@ interface Api {
         const val CAMERAMAN_LIST = "api/TeacherInfo/Page" //摄影师列表
         const val TEACHER_FOLLOW_LIST = "api/TeacherAttention/Page" //老师关注列表
         const val CAMERAMAN_DETAILS = "api/TeacherInfo" //摄影师详情
-        const val CAMERAMAN_FOLLOW = "api/TeacherAttention"//摄影师关注、取消关注
+        const val CAMERAMAN_FOLLOW = "api/TeacherAttention"//老师关注、取消关注
         const val CAMERAMAN_WORKS = "api/TeacherWorks/Page"//摄影师作品
         const val STAR = "api/Star/Star"//明星榜
         const val INTARACTION_LIST = "api/InteractiveBar/Page"//互动吧列表

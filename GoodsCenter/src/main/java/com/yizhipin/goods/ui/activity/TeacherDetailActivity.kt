@@ -39,6 +39,10 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
     @JvmField
     var mCameramanId: String = "" //老师id
 
+    @Autowired(name = BaseConstant.KEY_TEACHER_USER_ID)
+    @JvmField
+    var mTeacherUserID: String = "" //老师用户id
+
     private lateinit var mSetMealDetails: Cameraman
     private var mAttention: Boolean = false //是否关注
     private lateinit var mCameramanWorksAdapter: CameramanWorksAdapter
@@ -205,7 +209,7 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
      */
     private fun loadFollow() {
         var map = mutableMapOf<String, String>()
-        map.put("teacherId", mCameramanId)
+        map.put("teacherId", mTeacherUserID)
         map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getCameramanFollow(map)
     }
