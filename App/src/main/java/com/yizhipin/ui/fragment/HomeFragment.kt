@@ -17,7 +17,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.PhotographStatus
-import com.yizhipin.base.common.TeacherStatus
+import com.yizhipin.base.common.TeacherType
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.event.LocationShopEvent
@@ -172,7 +172,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
             override fun onItemClick(item: CategoryHome, position: Int) {
                 when (position) {
                     0 -> startActivity<ScenicActivity>()
-                    1 -> startActivity<TeacherActivity>(BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_SHEYING)
+                    1 -> startActivity<TeacherActivity>(BaseConstant.KEY_CAMERAMAN_TYPE to TeacherType.TEACHER_SHEYING)
                     2 -> startActivity<StarActivity>()
                     3 -> startActivity<DressListActivity>(GoodsConstant.KEY_DRESS_SHOP_STATUS to DressShopStatus.DRESS_SHOP_SHARE)
                 }

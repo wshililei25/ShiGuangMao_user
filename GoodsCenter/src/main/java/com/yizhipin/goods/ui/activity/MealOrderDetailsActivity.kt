@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.PhotographStatus
-import com.yizhipin.base.common.TeacherStatus
+import com.yizhipin.base.common.TeacherType
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -159,10 +159,10 @@ class MealOrderDetailsActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
             R.id.mEditTv -> startActivityForResult<BrideInfoActivity>(1000, BaseConstant.KEY_MEAL_ORDER_ID to mOrderId)
 
             R.id.mCameramanView -> startActivityForResult<TeacherActivity>(1001
-                    , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_SHEYING)
+                    , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherType.TEACHER_SHEYING)
 
             R.id.mDresserView -> startActivityForResult<TeacherActivity>(1002
-                    , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherStatus.TEACHER_HUAZHUANG)
+                    , BaseConstant.KEY_MEAL_ORDER_ID to mOrderId, BaseConstant.KEY_CAMERAMAN_TYPE to TeacherType.TEACHER_HUAZHUANG)
 
             R.id.mBtn -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_PAY)
                     .withString(BaseConstant.KEY_MEAL_ORDER_ID, mOrderId)
