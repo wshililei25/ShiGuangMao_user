@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.WebJs
 import com.yizhipin.base.data.response.DressDetails
 import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.event.DressBuyEvent
@@ -205,7 +206,7 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
                 mShopIv.loadUrl(store.imgurl)
             }
 
-            mWebView.loadData(content, "text/html", "UTF-8")
+            mWebView.loadData(content+ WebJs.js, "text/html", "UTF-8")
             mWebView.getSettings().setJavaScriptEnabled(true);//启用js
             mWebView.getSettings().setBlockNetworkImage(false);//解决图片不显示
 

@@ -6,6 +6,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.yizhipin.base.common.BaseApplication.Companion.context
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.WebJs
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Integral
 import com.yizhipin.base.ext.onClick
@@ -71,7 +72,7 @@ class IntegralDetailActivity : BaseMvpActivity<IntegralPresenter>(), IntegralVie
             mNumTv.text = "已兑换${markerScore}次"
             mIntegralBotTv.text = score
 
-            mWebView.loadData(content, "text/html", "UTF-8")
+            mWebView.loadData(content+ WebJs.js, "text/html", "UTF-8")
             mWebView.getSettings().setJavaScriptEnabled(true);//启用js
             mWebView.getSettings().setBlockNetworkImage(false);//解决图片不显示
 

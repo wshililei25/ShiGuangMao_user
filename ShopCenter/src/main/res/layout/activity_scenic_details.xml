@@ -110,11 +110,12 @@
                 style="@style/MatchWrap"
                 android:padding="@dimen/yPaddingMiddle">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/mShopIv"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/avatarw"/>
 
                 <TextView
                     android:id="@+id/mShopName"

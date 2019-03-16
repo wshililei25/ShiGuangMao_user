@@ -6,6 +6,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.WebJs
 import com.yizhipin.base.data.response.Meal
 import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.data.response.ScenicSpot
@@ -120,7 +121,7 @@ class ScenicDetailActivity : BaseMvpActivity<ScenicDetailsPresenter>(), ScenicDe
 
         ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_MEAL_ORDER)
                 .withString(BaseConstant.KEY_MEAL_ORDER_ID, result.id)
-                .withParcelable(BaseConstant.KEY_ORDER_SCENIS , result.attractions[0]).navigation()
+                .withParcelable(BaseConstant.KEY_ORDER_SCENIS, result.attractions[0]).navigation()
     }
 
     override fun onStart() {
@@ -158,7 +159,7 @@ class ScenicDetailActivity : BaseMvpActivity<ScenicDetailsPresenter>(), ScenicDe
             mShopIv.loadUrl(store.imgurl)
             mShopName.text = store.storeName
 
-            mWebView.loadData(content, "text/html", "UTF-8")
+            mWebView.loadData(content + WebJs.js, "text/html", "UTF-8")
             mWebView.getSettings().setJavaScriptEnabled(true);//启用js
             mWebView.getSettings().setBlockNetworkImage(false);//解决图片不显示
 

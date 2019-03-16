@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.WebJs
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.DressCategory
 import com.yizhipin.base.data.response.TimeSuperMarket
@@ -174,7 +175,7 @@ class TimeSuperMarketDetailActivity : BaseMvpActivity<TimeSuperMarketPresenter>(
                 mShopIv.loadUrl(store.imgurl)
             }
 
-            mWebView.loadData(content, "text/html", "UTF-8")
+            mWebView.loadData(content + WebJs.js, "text/html", "UTF-8")
             mWebView.getSettings().setJavaScriptEnabled(true);//启用js
             mWebView.getSettings().setBlockNetworkImage(false);//解决图片不显示
 
