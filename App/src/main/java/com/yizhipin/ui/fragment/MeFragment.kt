@@ -99,7 +99,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
     private fun loadData() {
         if (isLogined()) {
-            mUserIconIv.loadUrl(AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON))
             mGradeIv.visibility = View.VISIBLE
             mRelevanceTv.visibility = View.VISIBLE
             var map = mutableMapOf<String, String>()
@@ -129,7 +128,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         with(result) {
             mUserNameTv.text = if (result.nickname.isNullOrEmpty()) getString(R.string.app_name) else nickname
             mBalanceTv.text = amount.toString()
-            mIntegralTv.text = score.toString()
+            mIntegralTv.text = score
             mInvitationCodeTv.text = requestCode
             mUserIconIv.loadUrl(imgurl)
         }

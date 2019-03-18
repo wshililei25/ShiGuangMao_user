@@ -22,4 +22,5 @@ interface MainService {
     fun getShopFollowList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<StoreFollow>>>
     fun getInformationDetails(map: MutableMap<String, String>): Observable<News>
     fun getHelpList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Help>>>
+    fun getIsShowRedPackage(map: MutableMap<String, String>): Observable<Boolean>
 }

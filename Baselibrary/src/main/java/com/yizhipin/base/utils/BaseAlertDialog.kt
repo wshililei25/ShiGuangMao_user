@@ -50,8 +50,8 @@ class BaseAlertDialog(private val mContext: Context) {
         val alertDialog = mBuilder!!.create()
         alertDialog.show()
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(mContext, R.color.yMain))
-            alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(mContext, R.color.yMain))
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(mContext, R.color.yRed))
+            alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(mContext, R.color.yRed))
         }
     }
 

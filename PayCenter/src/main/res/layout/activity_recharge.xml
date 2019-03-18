@@ -46,7 +46,7 @@
             android:enabled="false"
             android:gravity="center"
             android:text="100"
-            android:textColor="@color/yMain"
+            android:textColor="@color/yRed"
             android:textSize="@dimen/yTextMaxSize"
             android:textStyle="bold"
             android:theme="@style/EditTextUnderline"/>

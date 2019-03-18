@@ -11,7 +11,7 @@
         style="@style/WrapWrap"
         android:layout_marginTop="@dimen/yPaddingBigEven"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/trademark"/>
+        android:src="@drawable/timemall"/>
 
     <TextView
         android:id="@+id/mAboutTv"

@@ -35,7 +35,7 @@
         android:layout_marginTop="@dimen/yPadding"
         android:paddingRight="@dimen/yPadding"
         android:text="@string/forget_pwd"
-        android:textColor="@color/yMain"
+        android:textColor="@color/yRed"
         android:textSize="@dimen/yTextMiddleSize"/>
 
     <TextView

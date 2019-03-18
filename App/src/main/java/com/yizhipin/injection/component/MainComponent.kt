@@ -4,6 +4,7 @@ import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.ui.activity.HelpActivity
 import com.yizhipin.ui.activity.InformationDetailsActivity
+import com.yizhipin.ui.activity.MainActivity
 import com.yizhipin.ui.fragment.*
 import com.yizhipin.usercenter.injection.module.MianModule
 import dagger.Component
@@ -15,6 +16,7 @@ import dagger.Component
 @Component(dependencies = arrayOf(ActivityComponent::class), modules = arrayOf(MianModule::class))
 interface MainComponent {
 
+    fun inject(activity: MainActivity)
     fun inject(activity: HomeFragment)
     fun inject(activity: FindFragment)
     fun inject(activity: MeFragment)

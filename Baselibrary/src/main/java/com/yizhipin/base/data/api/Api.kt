@@ -73,8 +73,6 @@ interface Api {
         const val RECHERGE_CASH_PLEDGE = "api/UserDeposit" //押金充值
         const val CASH_PLEDGE = "api/UserDeposit/User" //押金
         const val COMPLAIN = "api/Feedback" //投诉建议
-
-
         const val BIND_MOBILE = "api/WebUser/BindingMobile"//编辑用户信息
         const val ADDRESS_LIST = "api/UserAddress/List"//收货地址列表
         const val ADD_ADDRESS = "api/UserAddress"//新增收货地址 \  修改收货地址 \  删除收货地址
@@ -109,5 +107,6 @@ interface Api {
         const val CROWDORDER_LIST = "api/Tuan/List"//拼单列表
         const val SHARE_BILL_LIST = "api/Tuan/NearBy"//附近品团列表
         const val OSS_SIGN = "api/OSS/Sign"//获取oss签名
+        const val IS_SHOW_RED = "api/UserRed/RedPrompt"//是否显示红包提示框
     }
 }

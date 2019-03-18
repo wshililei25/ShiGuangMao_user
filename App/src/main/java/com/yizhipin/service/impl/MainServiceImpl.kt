@@ -3,6 +3,7 @@ package com.yizhipin.usercenter.service.impl
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.convert
+import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.usercenter.data.repository.MainRepository
 import com.yizhipin.usercenter.service.MainService
@@ -37,6 +38,10 @@ open class MainServiceImpl @Inject constructor() : MainService {
         return mRepository.getUnreadNewCount(map).convert()
     }
 
+    override fun getIsShowRedPackage(map: MutableMap<String, String>): Observable<Boolean> {
+        return mRepository.getIsShowRedPackage(map).convertBoolean()
+    }
+
     override fun getDefaultStore(map: MutableMap<String, String>): Observable<Store> {
         return mRepository.getDefaultStore(map).convert()
     }
@@ -48,6 +53,7 @@ open class MainServiceImpl @Inject constructor() : MainService {
     override fun getNews(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
         return mRepository.getNews(map).convertPaging()
     }
+
     override fun getHelpList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Help>>> {
         return mRepository.getHelpList(map).convertPaging()
     }

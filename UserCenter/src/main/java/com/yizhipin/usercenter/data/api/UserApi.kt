@@ -46,6 +46,9 @@ interface UserApi {
     @GET(Api.UNREAD_NEWS_COUNT) //获取未读消息数
     fun getUnreadNewCount(@Query("uid") uid: String): Observable<BaseResp<Int>>
 
+    @GET("${Api.IS_SHOW_RED}${"/{uid}"}")
+    fun getIsShowRedPackage(@Path("uid") uid: String): Observable<BaseResp<Boolean>>
+
     @GET(Api.FEE_RECORD_LIST) //资金记录
     fun loadFeeRecordList(@Query("uid") uid: String): Observable<BaseResp<MutableList<FeeRecord>>>
 

@@ -50,7 +50,7 @@
         android:layout_centerVertical="true"
         android:padding="@dimen/yPadding"
         android:text="@string/withdraw_all"
-        android:textColor="@color/yMain"
+        android:textColor="@color/yRed"
         android:textSize="@dimen/yTextMiddleSize"/>
 
     <LinearLayout

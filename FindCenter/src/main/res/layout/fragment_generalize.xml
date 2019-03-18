@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/ySerchHead"
-        android:background="@color/yMain"
+        android:background="@color/yRed"
         android:paddingLeft="@dimen/yPadding"
         android:paddingRight="@dimen/yPadding">
 

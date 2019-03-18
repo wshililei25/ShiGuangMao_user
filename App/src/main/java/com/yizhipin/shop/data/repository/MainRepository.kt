@@ -39,6 +39,9 @@ class MainRepository @Inject constructor() {
         return RetrofitFactoryGet().create(UserApi::class.java)
                 .getUnreadNewCount(map["uid"]!!)
     }
+    fun getIsShowRedPackage(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryGet().create(UserApi::class.java).getIsShowRedPackage(map["uid"]!!)
+    }
 
     fun getDefaultStore(map: MutableMap<String, String>): Observable<BaseResp<Store>> {
         return RetrofitFactoryGet().create(MainApi::class.java)

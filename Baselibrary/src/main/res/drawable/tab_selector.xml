@@ -2,9 +2,9 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true">
-        <color android:color="@color/yMain" />
+        <color android:color="@color/yRed" />
     </item>
     <item android:state_selected="false">
-        <color android:color="@color/yMain" />
+        <color android:color="@color/yRed" />
     </item>
 </selector>

@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import com.hyphenate.chat.EMClient
 import com.hyphenate.exceptions.HyphenateException
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
@@ -29,6 +30,8 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
 
     private var mLongitude: Double = 0.00
     private var mLatitude: Double = 0.00
+    private var mCurrentNum = 60
+    private val TIME: Long = 1000
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +59,8 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
                     toast(R.string.input_mobile)
                     return
                 }
+                mCurrentNum = 60
+                mSendCodeTv.postDelayed(mRefreshRunnable, TIME);
                 var map = mutableMapOf<String, String>()
                 map.put("mobile", mMobileEt.text.toString())
                 mBasePresenter.getCode(map)
@@ -118,28 +123,51 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
      */
     @SuppressLint("MissingPermission")
     private fun initLocation() {
-        /*  if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-              Toast.makeText(this,"请打开定位权限",Toast.LENGTH_SHORT).show()
-              return
-          }*/
+
         //允许GPS、WiFi、基站定位，设置超时时间5秒
         val trackerSettings = TrackerSettings()
         trackerSettings.setUseGPS(true).setUseNetwork(true).setUsePassive(true).timeout = 5000
-        val locationTracker = object : LocationTracker(this, trackerSettings) {
-            override fun onLocationFound(location: Location) {
-                //定位成功时回调
-                if (location != null) {
-                    mLongitude = location.longitude
-                    mLatitude = location.latitude
-                    Log.d("2", "经纬度：" + location.longitude + "," + location.latitude)
-                }
-            }
 
-            override fun onTimeout() {
-                //定位超时回调
-                Log.d("2", "定位超时")
+        RxPermissions(this).request(android.Manifest.permission.ACCESS_COARSE_LOCATION
+                , android.Manifest.permission.ACCESS_FINE_LOCATION)
+                .subscribe({ granted ->
+                    if (granted) {
+                        val locationTracker = object : LocationTracker(this, trackerSettings) {
+                            override fun onLocationFound(location: Location) {
+                                //定位成功时回调
+                                if (location != null) {
+                                    mLongitude = location.longitude
+                                    mLatitude = location.latitude
+                                    Log.d("XiLei", "经纬度：" + location.longitude + "," + location.latitude)
+                                }
+                            }
+
+                            override fun onTimeout() {
+                                //定位超时回调
+                                Log.d("XiLei", "定位超时")
+                            }
+                        }
+                        locationTracker.startListening()
+                    } else {
+                        Log.d("XiLei", "请开启定位权限111")
+                    }
+                })
+    }
+
+    private val mRefreshRunnable: Runnable = object : Runnable {
+        override fun run() {
+            mSendCodeTv.text = mCurrentNum.toString() + "s"
+
+            if (mCurrentNum == 0) {
+                mSendCodeTv.removeCallbacks(this)
+                mSendCodeTv.isEnabled = true
+                mSendCodeTv.text = "重发验证码"
+            } else {
+                mCurrentNum -= 1
+                mSendCodeTv.isEnabled = false
+                mSendCodeTv.postDelayed(this, TIME);
             }
         }
-        locationTracker.startListening()
     }
+
 }

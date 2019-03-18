@@ -12,7 +12,7 @@
         <TextView
             style="@style/WrapWrap"
             android:text="拼单中"
-            android:textColor="@color/yMain"
+            android:textColor="@color/yRed"
             android:textSize="@dimen/yTextSmallLarSize"/>
 
         <TextView
@@ -68,7 +68,7 @@
             android:paddingLeft="@dimen/yPaddingMinSmall"
             android:paddingRight="@dimen/yPaddingMinSmall"
             android:text="@string/hamlet"
-            android:textColor="@color/yMain"
+            android:textColor="@color/yRed"
             android:textSize="@dimen/yTextSmallLarSize"/>
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_marginLeft="@dimen/yPaddingSmall"
             android:layout_toRightOf="@+id/mGoodsIv"
             android:text="¥0.00"
-            android:textColor="@color/yMain"
+            android:textColor="@color/yRed"
             android:textSize="@dimen/yTextBigSize"/>
 
         <TextView

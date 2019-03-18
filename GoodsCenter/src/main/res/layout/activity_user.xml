@@ -62,7 +62,7 @@
                             android:paddingRight="@dimen/yPaddingSmall"
                             android:paddingBottom="@dimen/yPaddingMinSmall"
                             android:text="专员"
-                            android:textColor="@color/yMain"
+                            android:textColor="@color/yRed"
                             android:textSize="@dimen/yTextSmallLarSize"
                             android:visibility="gone"/>
                     </RelativeLayout>

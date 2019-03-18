@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:layout_margin="@dimen/yPaddingBigSmall"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/mView"
+        style="@style/MatchWrap.Vertical.White"
+        android:background="@drawable/shape_whire_solid">
+
+        <TextView
+            style="@style/MatchWrap"
+            android:layout_marginTop="@dimen/yPaddingBig"
+            android:gravity="center_horizontal"
+            android:text="收到一个现金红包"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextLargeSize" />
+
+        <TextView
+            style="@style/MatchWrap"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:gravity="center_horizontal"
+            android:text="已放到您的余额中"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextLargeSize" />
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginTop="@dimen/yPaddingBig" />
+
+        <TextView
+            style="@style/MatchWrap"
+            android:layout_margin="@dimen/yPadding"
+            android:gravity="center_horizontal"
+            android:text="知道了"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextLargeSize" />
+
+    </LinearLayout>
+</LinearLayout>

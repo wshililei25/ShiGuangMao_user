@@ -77,7 +77,7 @@
                     android:id="@+id/mOrderTypeTv"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/yMain"
+                    android:textColor="@color/yRed"
                     android:textSize="@dimen/yTextLargeSize"/>
             </RelativeLayout>
 
@@ -281,7 +281,7 @@
         style="@style/MatchWrap"
         android:layout_height="@dimen/yEditHeight"
         android:layout_alignParentBottom="true"
-        android:background="@color/yMain"
+        android:background="@color/yRed"
         android:gravity="center"
         android:textColor="@color/yWhite"
         android:textSize="@dimen/yTextMiddleBigSize"

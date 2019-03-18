@@ -13,7 +13,6 @@ object UserPrefsUtils {
     fun putUserInfo(userInfo: UserInfo?) {
         AppPrefsUtils.putString(BaseConstant.KEY_SP_USER_ID, userInfo?.id.toString() ?: "")
         AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo?.token.toString() ?: "")
-        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_MOBILE, userInfo?.mobile ?: "")
         AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_ICON, userInfo?.imgurl ?: "")
         AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NICKNAME, userInfo?.nickname ?: "")
         AppPrefsUtils.putString(ProviderConstant.KEY_AMOUNT, userInfo?.amount.toString() ?: "0")
@@ -25,7 +24,6 @@ object UserPrefsUtils {
     fun clearUserInfo() {
         AppPrefsUtils.remove(BaseConstant.KEY_SP_USER_ID)
         AppPrefsUtils.remove(BaseConstant.KEY_SP_TOKEN)
-        AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_MOBILE)
         AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_ICON)
         AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_NICKNAME)
         AppPrefsUtils.remove(ProviderConstant.KEY_AMOUNT)

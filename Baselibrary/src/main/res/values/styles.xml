@@ -101,7 +101,7 @@
     <style name="SearchHeaderStyle">
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:background">@color/yMain</item>
+        <item name="android:background">@color/yRed</item>
         <item name="android:paddingTop">@dimen/common_padding_small</item>
         <item name="android:paddingRight">@dimen/common_padding</item>
         <item name="android:paddingBottom">@dimen/common_padding_small</item>
@@ -148,7 +148,6 @@
         <item name="tabSelectedTextColor">@color/common_white</item>
     </style>
 
-
     <!-- 底部出入动画 -->
     <style name="AnimBottom" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
@@ -168,10 +167,10 @@
 
     <!-- 分类Tab样式-->
     <style name="TabsStyle.Category" parent="@style/TabsStyle">
-        <item name="tabIndicatorColor">@color/yMain</item>
+        <item name="tabIndicatorColor">@color/yRed</item>
         <item name="tabBackground">@color/yWhite</item>
         <item name="tabTextColor">@color/yTab</item>
-        <item name="tabSelectedTextColor">@color/yMain</item>
+        <item name="tabSelectedTextColor">@color/yRed</item>
         <item name="tabTextAppearance">@style/TabLayoutTextStyle</item>
     </style>
     <!-- 分类TabLayout文字样式-->
@@ -206,8 +205,8 @@
 
     <!--  EditText下划线的颜色样式 -->
     <style name="EditTextUnderline" parent="Theme.AppCompat.Light">
-        <item name="colorControlNormal">@color/yMain</item>
-        <item name="colorControlActivated">@color/yMain</item>
+        <item name="colorControlNormal">@color/yRed</item>
+        <item name="colorControlActivated">@color/yRed</item>
     </style>
 
     <style name="Widget.MaterialProgressBar.ProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">

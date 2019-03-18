@@ -22,14 +22,15 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.presenter.UserInfoPresenter
 import com.yizhipin.usercenter.presenter.view.UserInfoView
-import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_user_info.*
 import org.devio.takephoto.model.TResult
+import org.jetbrains.anko.toast
 import java.io.File
 
 
@@ -122,7 +123,10 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
             R.id.mUserIconView -> showAlertView()
 
             R.id.mConfirmBtn -> {
-
+                if (mNickEt.text.toString().isNullOrEmpty()) {
+                    toast("请输入昵称")
+                    return
+                }
                 var map = mutableMapOf<String, String>()
                 map.put("nickname", mNickEt.text.toString())
                 map.put("imgurl", mResultUrl)
@@ -238,7 +242,8 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
      * 编辑用户资料成功
      */
     override fun onEditUserResult(result: UserInfo) {
-        UserPrefsUtils.putUserInfo(result)
+        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_ICON, result.imgurl)
+        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NICKNAME, result.nickname)
         finish()
     }
 

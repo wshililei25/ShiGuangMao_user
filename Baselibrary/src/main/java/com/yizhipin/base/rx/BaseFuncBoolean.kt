@@ -12,8 +12,9 @@ import io.reactivex.functions.Function
 class BaseFuncBoolean<T> : Function<BaseResp<T>, Observable<Boolean>> {
     override fun apply(t: BaseResp<T>): Observable<Boolean> {
         if (!t.code.equals(BaseResultCode.SUCCESS)) {
-            return Observable.error(BaseException(t.code, t.msg,t.data!!))
+            return Observable.error(BaseException(t.code, t.msg, t.data!!))
         }
-        return Observable.just(true)
+        return Observable.just(t.data!! as Boolean)
+//        return Observable.just(true)
     }
 }

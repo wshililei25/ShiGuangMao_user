@@ -61,7 +61,7 @@ class BindMobileActivity : BaseMvpActivity<BindMobilePresenter>(), BindMobileVie
      * 绑定手机号成功
      */
     override fun onBindMobileResult(result: Boolean) {
-        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_MOBILE, mMobileEt.text.toString())
+//        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_MOBILE, mMobileEt.text.toString())
         finish()
     }
 
