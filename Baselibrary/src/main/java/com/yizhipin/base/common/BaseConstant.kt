@@ -108,5 +108,7 @@ class BaseConstant {
         const val KEY_ORDER_SCENIS = "orderScenic"
         //服装预定下单返回的服装数据
         const val KEY_ORDER_DRESS = "orderDress"
+        //是提现还是退押金
+        const val KEY_IS_CASH = "isCash"
     }
 }

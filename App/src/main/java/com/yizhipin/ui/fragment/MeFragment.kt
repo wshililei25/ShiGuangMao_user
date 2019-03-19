@@ -206,7 +206,8 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             }
             R.id.mWithdrawTv -> {
                 afterLogin {
-                    ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW).navigation()
+                    ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW)
+                            .withBoolean(BaseConstant.KEY_IS_CASH, false).navigation()
                 }
             }
             R.id.mCustomerPhonev -> startActivity<CustomServiceActivity>()

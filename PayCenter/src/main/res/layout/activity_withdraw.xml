@@ -19,7 +19,7 @@
         android:paddingBottom="@dimen/yPaddingSmall">
 
         <TextView
-            android:id="@+id/nickName"
+            android:id="@+id/mNameTv"
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
             android:text="@string/withdraw_amount"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/yEditHeight"
             android:layout_marginLeft="@dimen/yPadding"
-            android:layout_toRightOf="@+id/nickName"
+            android:layout_toRightOf="@+id/mNameTv"
             android:background="@null"
             android:hint="可提 ¥0.00"
             android:textColor="@color/yBlackLight"
@@ -46,6 +46,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/mAllTv"
         style="@style/WrapWrap"
         android:layout_centerVertical="true"
         android:padding="@dimen/yPadding"
@@ -62,7 +63,7 @@
             android:padding="@dimen/yPaddingBigLar">
 
             <TextView
-                android:id="@+id/channel"
+                android:id="@+id/mChannelTv"
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
                 android:text="@string/withdraw_channel"
@@ -73,7 +74,7 @@
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/yPadding"
-                android:layout_toRightOf="@+id/channel"
+                android:layout_toRightOf="@+id/mChannelTv"
                 android:text="@string/wechat"
                 android:textColor="@color/yBlack"
                 android:textSize="@dimen/yTextMiddleSize"/>

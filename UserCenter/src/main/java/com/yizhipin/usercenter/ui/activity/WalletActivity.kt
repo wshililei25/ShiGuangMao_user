@@ -91,9 +91,8 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mRechargeTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE).navigation()
-        }
-        when (v.id) {
-            R.id.mWithdrawTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW).navigation()
+            R.id.mWithdrawTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW)
+                    .withBoolean(BaseConstant.KEY_IS_CASH, false).navigation()
         }
     }
 

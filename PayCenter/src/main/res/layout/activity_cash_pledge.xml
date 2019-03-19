@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.White">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
 
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
-        app:titleText="@string/cash_pledge"/>
+        app:titleText="@string/cash_pledge" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:background="@drawable/shape_red_round"
+        android:text="@string/cash_pledge"
+        android:textColor="@color/yWhite"
+        android:gravity="center"
+        android:textSize="@dimen/yTextBigSize" />
 
     <RelativeLayout
         style="@style/WrapWrap"
@@ -18,23 +28,23 @@
             style="@style/WrapWrap"
             android:text="¥ 0.00"
             android:textColor="@color/yRed"
-            android:textSize="@dimen/yTextLargeSize"/>
+            android:textSize="@dimen/yTextLargeSize" />
 
         <TextView
             android:id="@+id/mRebackAmountTv"
             style="@style/WrapWrap"
             android:layout_alignBottom="@+id/mAmountTv"
             android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_marginBottom="@dimen/yPaddingMin"
             android:layout_toRightOf="@+id/mAmountTv"
             android:text="(¥ 可退0.00)"
-            android:layout_marginBottom="@dimen/yPaddingMin"
             android:textColor="@color/yBlackLight"
-            android:textSize="@dimen/yTextMiddleSize"/>
+            android:textSize="@dimen/yTextMiddleSize" />
     </RelativeLayout>
 
     <View
         style="@style/DividerFixedHeight"
-        android:layout_marginTop="@dimen/yPaddingBig"/>
+        android:layout_marginTop="@dimen/yPaddingBig" />
 
     <TextView
         style="@style/WrapWrap"
@@ -42,7 +52,7 @@
         android:layout_marginTop="@dimen/yPaddingBigSmall"
         android:text="@string/cash_pledge_hint"
         android:textColor="@color/yBlackLight"
-        android:textSize="@dimen/yTextMiddleLarSize"/>
+        android:textSize="@dimen/yTextMiddleLarSize" />
 
     <TextView
         style="@style/WrapWrap"
@@ -50,7 +60,7 @@
         android:layout_marginTop="@dimen/yPaddingMinSmall"
         android:text="@string/cash_pledge_hint2"
         android:textColor="@color/yBlackLight"
-        android:textSize="@dimen/yTextMiddleLarSize"/>
+        android:textSize="@dimen/yTextMiddleLarSize" />
 
     <Button
         android:id="@+id/mConfirmBtn"
@@ -60,7 +70,7 @@
         android:layout_marginRight="@dimen/yPadding"
         android:enabled="true"
         android:text="@string/cash_pledge_recharge"
-        android:textSize="@dimen/yTextBigSize"/>
+        android:textSize="@dimen/yTextBigSize" />
 
     <Button
         android:id="@+id/mRebackBtn"
@@ -70,5 +80,5 @@
         android:layout_marginRight="@dimen/yPadding"
         android:enabled="true"
         android:text="@string/reback_recharge"
-        android:textSize="@dimen/yTextBigSize"/>
+        android:textSize="@dimen/yTextBigSize" />
 </LinearLayout>

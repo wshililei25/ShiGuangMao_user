@@ -405,4 +405,7 @@
     <string name="subscription_time">预订金付款时间</string>
     <string name="subscription_amount">预订金金额</string>
     <string name="balance_payment">尾款付款时间</string>
+    <string name="reback_amount">退还金额</string>
+    <string name="reback_all">全部退还</string>
+    <string name="reback_channel">退还渠道</string>
 </resources>
