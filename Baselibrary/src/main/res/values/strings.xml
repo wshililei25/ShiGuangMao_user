@@ -283,6 +283,7 @@
     <string name="deposit_balance">已存入余额,</string>
     <string name="mannger">管理</string>
     <string name="select_city">请选择省市地区</string>
+    <string name="phoneNum">400 800 2421</string>
     <string name="business_phone">业务咨询: 400 800 2421</string>
     <string name="cooperate_phone">合作咨询: 400 800 2422</string>
     <string name="customer_cos_phone">大客户部: 400 800 2423</string>
@@ -408,4 +409,7 @@
     <string name="reback_amount">退还金额</string>
     <string name="reback_all">全部退还</string>
     <string name="reback_channel">退还渠道</string>
+    <string name="select_dresser">选择化妆师</string>
+    <string name="system_news">系统消息</string>
+    <string name="works">作品集</string>
 </resources>

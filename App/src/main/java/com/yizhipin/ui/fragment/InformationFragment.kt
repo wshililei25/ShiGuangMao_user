@@ -71,7 +71,7 @@ class InformationFragment : BaseMvpFragment<HomePresenter>(), HomeView, BGARefre
         map.put("currentPage", mCurrentPage.toString())
         map.put("type", arguments!!.getString(MainConstant.INFORMATIN_TYPE, "0").toString())
         mMultiStateView.startLoading()
-        mBasePresenter.getNews(map)
+        mBasePresenter.getInformation(map)
     }
 
     override fun injectComponent() {

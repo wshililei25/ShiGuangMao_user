@@ -26,6 +26,7 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".base.common.BaseApplication"
@@ -96,6 +97,7 @@
         <activity android:name=".ui.activity.FollowActivity" />
         <activity android:name=".ui.activity.InformationDetailsActivity" />
         <activity android:name=".ui.activity.HelpActivity" />
+        <activity android:name=".ui.activity.NewsActivity" />
     </application>
 
 </manifest>

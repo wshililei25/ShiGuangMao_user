@@ -47,7 +47,7 @@ interface GoodsApi {
                      @Query("catagory") catagory: String, @Query("sellType") sellType: String): Observable<BasePagingResp<MutableList<Dress>>>
 
     @GET(Api.CAMERAMAN_LIST)
-    fun getCameramanList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("teacherType") teacherType: String): Observable<BasePagingResp<MutableList<Cameraman>>>
+    fun getCameramanList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("teacherType") teacherType: String): Observable<BasePagingResp<MutableList<Teacher>>>
 
     @POST(Api.ADD_CAMERAMAN)
     fun addCameraman(): Observable<BaseResp<AddCameraman>>
@@ -80,17 +80,12 @@ interface GoodsApi {
     @GET("${Api.CART_COUNT}")
     fun getCartCountData(@Query("uid") uid: String): Observable<BaseResp<String>>
 
-    /**
-     * 评价列表(未登陆时)
-     */
     @GET("${Api.EVALUATE_LIST}")
-    fun getEvaluateListNotLogin(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+    fun getEvaluateList(@Query("currentPage") currentPage: String, @Query("packageId") packageId: String
+                        , @Query("storeId") storeId: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
-    /**
-     * 评价列表
-     */
-    @GET("${Api.EVALUATE_LIST}")
-    fun getEvaluateList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+    @GET("${Api.EVALUATE_TEACHER_LIST}")
+    fun getEvaluateTeacherList(@Query("currentPage") currentPage: String, @Query("teacherId") teacherId: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
     /**
      * 体验报告列表(未登陆时)
@@ -117,7 +112,7 @@ interface GoodsApi {
     fun giveLikeReport(): Observable<BaseResp<Boolean>>
 
     @GET("${Api.CAMERAMAN_DETAILS}${"/{id}"}")
-    fun getCameramanDetails(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<Cameraman>>
+    fun getCameramanDetails(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<Teacher>>
 
     @GET("${Api.MEAL_DETAILS}${"/{id}"}")
     fun getMealDetails(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<SetMealDetails>>
@@ -167,9 +162,6 @@ interface GoodsApi {
     @GET(Api.MARKET_FOLLOW)
     fun getFollowMarket(): Observable<BaseResp<Boolean>>
 
-    @GET(Api.EVALUATE)
-    fun getEvaluateData(@Query("packageId") storeId: String): Observable<BaseResp<MutableList<Evaluate>>>
-
     @GET(Api.BASIC_SERVICES)
     fun getBasicServicesData(@Query("storeId") storeId: String): Observable<BaseResp<MutableList<BasicServices>>>
 
@@ -180,5 +172,5 @@ interface GoodsApi {
     fun getCloudDiskImageList(@Query("currentPage") currentPage: String, @Query("folderId") folderId: String): Observable<BasePagingResp<MutableList<CloudDiskImage>>>
 
     @GET(Api.CAMERAMAN_WORKS)
-    fun getTeacherWorks(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<CameranmanWorks>>>
+    fun getTeacherWorks(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<TeacherWorks>>>
 }

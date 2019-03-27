@@ -6,8 +6,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -85,6 +87,7 @@ class ShopDetailActivity : BaseMvpActivity<ShopDetailsPresenter>(), ShopDetailsV
         mBackIv.onClick { finish() }
         mCollectionView.onClick(this)
         mBtn.onClick(this)
+        mEvaluateMoreTv.onClick(this)
     }
 
     private fun initBanner() {
@@ -166,16 +169,19 @@ class ShopDetailActivity : BaseMvpActivity<ShopDetailsPresenter>(), ShopDetailsV
      * 获取最新评价
      */
     private fun loadEvaluateData() {
+
         var map = mutableMapOf<String, String>()
-        map.put("storeId", mShopId)
-        mBasePresenter.getEvaluateData(map)
+        map.put("currentPage", "1")
+        map.put("packageId", "") //套餐的评价
+        map.put("storeId", mShopId) //店铺的评价
+        mBasePresenter.getEvaluateList(map)
     }
 
     /**
      * 获取最新评价成功
      */
-    override fun onGetEvaluateSuccess(result: MutableList<Evaluate>) {
-        mEvaluateAdapter.setData(result)
+    override fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>) {
+        mEvaluateAdapter.setData(result.data)
     }
 
     override fun onClick(v: View) {
@@ -204,7 +210,11 @@ class ShopDetailActivity : BaseMvpActivity<ShopDetailsPresenter>(), ShopDetailsV
                 setResult(ProvideReqCode.CODE_RESULT_SHOP, intent)
                 finish()
             }
-
+            R.id.mEvaluateMoreTv -> {
+                ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_EVALUATE)
+                        .withString(BaseConstant.KEY_SHOP_ID, mShopId)
+                        .navigation()
+            }
         }
     }
 

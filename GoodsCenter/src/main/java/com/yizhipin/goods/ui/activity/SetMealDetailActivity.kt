@@ -1,14 +1,20 @@
 package com.yizhipin.goods.ui.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
+import com.hyphenate.helpdesk.easeui.util.IntentBuilder
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.WebJs
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.BasicServices
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.OrderDetails
@@ -78,6 +84,9 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
         mBtn.onClick(this)
         mTakePayTv.onClick(this)
         mShopView.onClick(this)
+        mPhoneBtn.onClick(this)
+        mCustomBtn.onClick(this)
+        mEvaluateMoreTv.onClick(this)
     }
 
     private fun initBanner() {
@@ -98,15 +107,17 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
      */
     private fun loadEvaluateData() {
         var map = mutableMapOf<String, String>()
-        map.put("packageId", mMealId)
-        mBasePresenter.getEvaluateData(map)
+        map.put("currentPage", "1")
+        map.put("packageId", mMealId) //套餐的评价
+        map.put("storeId", "") //店铺的评价
+        mBasePresenter.getEvaluateList(map)
     }
 
     /**
      * 获取最新评价成功
      */
-    override fun onGetEvaluateSuccess(result: MutableList<Evaluate>) {
-        mEvaluateAdapter.setData(result)
+    override fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>) {
+        mEvaluateAdapter.setData(result.data)
     }
 
     override fun onClick(v: View) {
@@ -133,6 +144,29 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
                 mSetMealDetails?.let {
                     startActivity<BasicServicesListActivity>(BaseConstant.KEY_SHOP_ID to mSetMealDetails.storeId)
                 }
+            }
+            R.id.mPhoneBtn -> {
+                RxPermissions(this).request(android.Manifest.permission.CALL_PHONE)
+                        .subscribe({ granted ->
+                            if (granted) {
+                                val intent = Intent(Intent.ACTION_CALL)
+                                val data = Uri.parse("tel:${getString(R.string.phoneNum)}")
+                                intent.data = data
+                                startActivity(intent)
+                            } else {
+                                Log.d("XiLei", "请开启电话权限")
+                            }
+                        })
+            }
+
+            R.id.mEvaluateMoreTv -> {
+                startActivity<EvaluateActivity>(BaseConstant.KEY_MEAL_ID to mMealId)
+            }
+            R.id.mCustomBtn -> {
+                 var intent = IntentBuilder(this)
+                         .setServiceIMNumber("100") //客服关联的IM服务号
+                         .build();
+                 startActivity(intent);
             }
 
             R.id.mBtn -> {

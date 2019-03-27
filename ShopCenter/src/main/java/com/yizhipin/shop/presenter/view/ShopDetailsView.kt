@@ -1,5 +1,6 @@
 package com.yizhipin.shop.presenter.view
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.presenter.view.BaseView
 
@@ -12,5 +13,5 @@ interface ShopDetailsView : BaseView {
     fun onFollowSuccess(result: Boolean)
     fun onGetHotMealSuccess(result: MutableList<Meal>)
     fun onGetTimeTeacherSuccess(result: MutableList<Teacher>)
-    fun onGetEvaluateSuccess(result: MutableList<Evaluate>)
+    fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>)
 }

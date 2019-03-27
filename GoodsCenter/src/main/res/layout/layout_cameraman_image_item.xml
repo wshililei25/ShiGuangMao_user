@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchWrap">
-
+    style="@style/WrapWrap"
+    android:paddingRight="@dimen/yPaddingSmall"
+    android:paddingBottom="@dimen/yPaddingSmall">
 
     <ImageView
         android:id="@+id/mIv"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginRight="@dimen/yPaddingSmall"
-        android:layout_marginBottom="@dimen/yPaddingSmall"
-        android:scaleType="fitXY"/>
+        android:scaleType="matrix" />
 
 </LinearLayout>

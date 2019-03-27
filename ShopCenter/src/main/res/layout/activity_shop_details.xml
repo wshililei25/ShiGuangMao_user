@@ -251,6 +251,7 @@
                     android:textSize="@dimen/yTextMiddleSize"/>
 
                 <TextView
+                    android:id="@+id/mEvaluateMoreTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

@@ -23,7 +23,7 @@ class GoodsRepository @Inject constructor() {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getDressList(map["currentPage"]!!, map["sex"]!!, map["catagory"]!!, map["sellType"]!!)
     }
 
-    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>> {
+    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Teacher>>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getCameramanList(map["currentPage"]!!, map["storeId"]!!, map["teacherType"]!!)
     }
 
@@ -67,6 +67,7 @@ class GoodsRepository @Inject constructor() {
     fun followDress(map: MutableMap<String, String>): Observable<BaseResp<DressDetails>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).followDress()
     }
+
     fun orderDress(map: MutableMap<String, String>): Observable<BaseResp<OrderDetails>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).orderDress()
     }
@@ -84,11 +85,11 @@ class GoodsRepository @Inject constructor() {
     }
 
     fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
-        if (map["loginUid"].isNullOrEmpty()) {
-            return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateListNotLogin(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!)
-        } else {
-            return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateList(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!, map["loginUid"]!!)
-        }
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateList(map["currentPage"]!!, map["packageId"]!!, map["storeId"]!!)
+    }
+
+    fun getEvaluateTeacherList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateTeacherList(map["currentPage"]!!, map["teacherId"]!!)
     }
 
     fun getReportList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
@@ -107,7 +108,7 @@ class GoodsRepository @Inject constructor() {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getCloudDiskImageList(map["currentPage"]!!, map["folderId"]!!)
     }
 
-    fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CameranmanWorks>>> {
+    fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherWorks>>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getTeacherWorks(map["currentPage"]!!, map["uid"]!!)
     }
 
@@ -119,7 +120,7 @@ class GoodsRepository @Inject constructor() {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).giveLikeReport()
     }
 
-    fun getCameramanDetails(map: MutableMap<String, String>): Observable<BaseResp<Cameraman>> {
+    fun getCameramanDetails(map: MutableMap<String, String>): Observable<BaseResp<Teacher>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getCameramanDetails(map["id"]!!, map["loginUid"]!!)
     }
 
@@ -169,10 +170,6 @@ class GoodsRepository @Inject constructor() {
 
     fun getFollowMarket(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).getFollowMarket()
-    }
-
-    fun getEvaluateData(map: MutableMap<String, String>): Observable<BaseResp<MutableList<Evaluate>>> {
-        return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateData(map["packageId"]!!)
     }
 
     fun getBasicServicesData(map: MutableMap<String, String>): Observable<BaseResp<MutableList<BasicServices>>> {

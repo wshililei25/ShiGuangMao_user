@@ -51,7 +51,7 @@ class DressFragment : BaseMvpFragment<DressPresenter>(), DressView, BGARefreshLa
     }
 
     private fun initView() {
-        mOrderRv.layoutManager = GridLayoutManager(activity!!, 2)
+        mOrderRv.layoutManager = GridLayoutManager(activity, 2)
         mOrderAdapter = DressAdapter(activity!!, arguments!!.getString(GoodsConstant.KEY_DRESS_SHOP_STATUS, "-1"))
         mOrderRv.adapter = mOrderAdapter
 
@@ -65,6 +65,7 @@ class DressFragment : BaseMvpFragment<DressPresenter>(), DressView, BGARefreshLa
                         intent.putExtra(BaseConstant.KEY_DRESS_POSITION, activity!!.intent.getIntExtra(BaseConstant.KEY_DRESS_POSITION, -1))
                         activity!!.setResult(ProvideReqCode.CODE_RESULT_DRESS_WOMEN, intent)
                         activity!!.finish()
+                        return
                     }
                     1 -> { //男装选择
                         var intent = Intent()
@@ -72,9 +73,10 @@ class DressFragment : BaseMvpFragment<DressPresenter>(), DressView, BGARefreshLa
                         intent.putExtra(BaseConstant.KEY_DRESS_POSITION, activity!!.intent.getIntExtra(BaseConstant.KEY_DRESS_POSITION, -1))
                         activity!!.setResult(ProvideReqCode.CODE_RESULT_DRESS_MAN, intent)
                         activity!!.finish()
+                        return
                     }
-
                 }
+
                 startActivity<DressDetailActivity>(GoodsConstant.KEY_DRESS_ID to item.id
                         , BaseConstant.KEY_IS_BUY to if (arguments!!.getString(GoodsConstant.KEY_DRESS_SHOP_STATUS, "-1") == "0") true else false)
             }

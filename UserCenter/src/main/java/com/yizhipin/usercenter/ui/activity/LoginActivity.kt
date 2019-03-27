@@ -6,12 +6,10 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hyphenate.EMCallBack
 import com.hyphenate.chat.EMClient
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
-import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
@@ -98,9 +96,9 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
     override fun onLoginSuccess(result: UserInfo) {
 
         UserPrefsUtils.putUserInfo(result)
-        //          if (result.newUser) {
-        startActivity<UserInfoActivity>()
-//          }
+        if (result.nickname.isNullOrEmpty()) {
+            startActivity<UserInfoActivity>()
+        }
         finish()
     }
 

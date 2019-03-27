@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
-import com.eightbitlab.rxbus.registerInBus
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
@@ -21,7 +20,6 @@ import com.yizhipin.base.common.TeacherType
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.event.LocationShopEvent
-import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
@@ -39,12 +37,14 @@ import com.yizhipin.presenter.HomePresenter
 import com.yizhipin.presenter.view.HomeView
 import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.afterLogin
+import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.shop.ui.activity.ScenicActivity
 import com.yizhipin.shop.ui.activity.ScenicDetailActivity
 import com.yizhipin.shop.ui.activity.ShopActivity
 import com.yizhipin.shop.ui.adapter.ScenicAdapter
 import com.yizhipin.ui.activity.InformationActivity
+import com.yizhipin.ui.activity.NewsActivity
 import com.yizhipin.ui.adapter.CategoryHomeAdapter
 import com.yizhipin.ui.adapter.RecommendHomeAdapter
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
@@ -77,14 +77,17 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initLocation()
+        if (AppPrefsUtils.getString(BaseConstant.KEY_SHOP_NAME).isNullOrEmpty()) {
+            initLocation()
+        }
         initOssAddress()
         initView()
         initHotGoodsView()
         initBanner()
         initCategoryRv()
         initRecommendRv()
-        initObserve()
+        loadNewsData()
+        loadGoodsData()
     }
 
     override fun injectComponent() {
@@ -95,6 +98,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
     private fun initView() {
         mMoreTv.onClick(this)
         mStoreTv.onClick(this)
+        mNewIv.onClick(this)
     }
 
     private fun initHotGoodsView() {
@@ -137,7 +141,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         mCategoryRv.adapter = categoryHomeAdapter
         categoryHomeAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<CategoryHome> {
             override fun onItemClick(item: CategoryHome, position: Int) {
-//                Bus.send(HomeIntentEvent(position))
 
                 when (position) {
                     0 -> ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_MEAL).withString(BaseConstant.KEY_PHOTOGRAPH, PhotographStatus.DEAL_WEDDING).navigation()
@@ -184,6 +187,11 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         when (v.id) {
             R.id.mMoreTv -> startActivity<InformationActivity>()
             R.id.mStoreTv -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
+            R.id.mNewIv -> {
+                afterLogin {
+                    startActivity<NewsActivity>()
+                }
+            }
         }
     }
 
@@ -192,39 +200,30 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         when (resultCode) {
             ProvideReqCode.CODE_RESULT_SHOP -> {
                 mStoreTv.text = data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)
-                loadGoodsData(data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME))
-                Bus.send(SelectShopEvent(data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)))
             }
         }
     }
 
-    private fun initObserve() {
-        Bus.observe<SelectShopEvent>()
-                .subscribe { t: SelectShopEvent ->
-                    run {
-                        mStoreTv.text = t.name
-                    }
-                }.registerInBus(this)
-    }
-
     override fun onStart() {
         super.onStart()
+        mStoreTv.text = AppPrefsUtils.getString(BaseConstant.KEY_SHOP_NAME)
         loadData()
     }
 
     private fun loadData() {
-        loadUnReadNewCount()
-        loadNewsData()
         loadBannerData()
+        if (isLogined()) {
+            loadUnReadNewCount()
+        }
     }
 
     private fun loadNewsData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", "1")
         map.put("type", "0")
-        mBasePresenter.getNews(map)
+        mBasePresenter.getInformation(map)
     }
 
     override fun onGetNewsSuccess(result: BasePagingResp<MutableList<News>>) {
@@ -340,15 +339,13 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, result.storeName)
         mStoreTv.text = result.storeName
         Bus.send(LocationShopEvent(result.storeName))
-        loadGoodsData(result.id.toString())
     }
 
     /**
      * 获取热门景点
      */
-    private fun loadGoodsData(storeId: String) {
+    private fun loadGoodsData() {
         var map = mutableMapOf<String, String>()
-        map.put("storeId", storeId)
         map.put("hot", "true")
         mBasePresenter.getGoodsList(map)
     }

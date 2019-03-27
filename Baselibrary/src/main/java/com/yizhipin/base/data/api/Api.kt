@@ -13,9 +13,10 @@ interface Api {
         const val EDIT_USER_INFO = "api/WebUser"//编辑用户信息
         const val IMAGE_ADDRESS = "api/OSS/OSSCredentials"//获取图片地址
         const val DEFAULT_STORE = "api/Store/GetByLatlng"//附近门店
-        const val NEWS = "api/Information/Page" //资讯
+        const val INFORMATION = "api/Information/Page" //资讯
         const val HELP_LIST = "api/CommonProblem/Page" //新手帮助
         const val NEWS_DETAILS = "api/Information" //资讯详情
+        const val NEWS_LIST = "api/UserMsg/Page" //消息列表
         const val UNREAD_NEWS_COUNT = "api/UserMsg/UnRead" //获取未读消息数
         const val FEE_RECORD_LIST = "api/FeeRecord/List" //资金记录
         const val INTEGRAL_LIST = "api/ScoreRecord/Page" //积分记录
@@ -34,7 +35,8 @@ interface Api {
         const val SHOP_FOLLOW = "api/StoreAttention"//门店关注、取消关注
         const val HOT_MEAL = "api/PhotoPackage/List"//门店热门套餐
         const val TIME_TEACHER = "api/TeacherInfo/List"//门店时光老师列表
-        const val EVALUATE = "api/PhotoPackageEva/List"//门店、套餐 评价
+        const val EVALUATE_LIST = "api/PhotoPackageEva/Page"//门店、套餐 评价列表
+        const val EVALUATE_TEACHER_LIST = "api/TeacherEva/Page"//老师 评价列表
         const val MEAL_LIST = "api/PhotoPackage/Page" //套餐列表
         const val MEAL_FOLLOW_LIST = "api/PackageAttention/Page" //套餐关注列表
         const val MEAL_DETAILS = "api/PhotoPackage" //套餐详情
@@ -80,7 +82,6 @@ interface Api {
         const val BANNER = "api/Banner/List"//获取banner
         const val EVALUATE_NEW = "api/ProductEva/New"//最新评价
         const val REPORT_NEW = "api/Experience/Product"//最新体验报告
-        const val EVALUATE_LIST = "api/ProductEva/Page"//评价列表
         const val REPORT_LIST = "api/Experience/Page"//体验报告列表
         const val GIVE_LIKE_REPORT = "api/Experience/Zan"//点赞体验报告
         const val COMPLAIN_SHOP = "api/ShopComplaint"//举报投诉

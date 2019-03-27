@@ -75,7 +75,7 @@ class BaseConstant {
         //景点金额
         const val KEY_SCENIC_AMOUNT = "scenicAmount"
         //老师id
-        const val KEY_CAMERAMAN_ID = "cameramanId"
+        const val KEY_TEACHER_ID = "teacherId"
         //老师userId
         const val KEY_TEACHER_USER_ID = "teacherUserId"
         //互动吧类型
@@ -110,5 +110,7 @@ class BaseConstant {
         const val KEY_ORDER_DRESS = "orderDress"
         //是提现还是退押金
         const val KEY_IS_CASH = "isCash"
+        //是否预定
+        const val KEY_IS_DESTINE = "destine"
     }
 }

@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class Star(
         val stores: MutableList<Store>,
         val storeManagers: MutableList<Store>,
-        val teachers: MutableList<Cameraman>
+        val teachers: MutableList<Teacher>
 ) : Parcelable

@@ -2,20 +2,17 @@ package com.yizhipin.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
-import com.eightbitlab.rxbus.Bus
-import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.FeeRecord
 import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.UserInfo
-import com.yizhipin.base.event.LocationShopEvent
-import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
@@ -25,15 +22,11 @@ import com.yizhipin.ordercender.ui.activity.OrderActivity
 import com.yizhipin.ordercender.ui.activity.ShipAddressActivity
 import com.yizhipin.paycenter.ui.activity.CashPledgeActivity
 import com.yizhipin.provider.common.ProvideReqCode
-import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.shop.ui.activity.ShopActivity
-import com.yizhipin.ui.activity.CustomServiceActivity
-import com.yizhipin.ui.activity.FollowActivity
-import com.yizhipin.ui.activity.HelpActivity
-import com.yizhipin.ui.activity.SettingActivity
+import com.yizhipin.ui.activity.*
 import com.yizhipin.usercenter.common.UserConstant
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
@@ -61,7 +54,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        initObserve()
+
     }
 
     override fun injectComponent() {
@@ -71,6 +64,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
     override fun onStart() {
         super.onStart()
+        mStoreTv.text = AppPrefsUtils.getString(BaseConstant.KEY_SHOP_NAME)
         loadData()
     }
 
@@ -95,6 +89,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mNoviceHelpv.onClick(this)
         mWithdrawTv.onClick(this)
         mRecommendationsTv.onClick(this)
+        mNewIv.onClick(this)
     }
 
     private fun loadData() {
@@ -108,7 +103,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             var mapCount = mutableMapOf<String, String>()
             mapCount.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
             mBasePresenter.getUnreadNewCount(mapCount)
-
         } else {
             mUserIconIv.setImageResource(R.drawable.avatarw)
             mUserNameTv.text = activity!!.getString(R.string.login)
@@ -217,6 +211,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                     startActivity<RelevanceUserActivity>()
                 }
             }
+            R.id.mNewIv -> {
+                afterLogin {
+                    startActivity<NewsActivity>()
+                }
+            }
         }
     }
 
@@ -227,25 +226,8 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                 mStoreTv.text = data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME))
-                Bus.send(SelectShopEvent(data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)))
             }
         }
-    }
-
-    private fun initObserve() {
-        Bus.observe<SelectShopEvent>()
-                .subscribe { t: SelectShopEvent ->
-                    run {
-                        mStoreTv.text = t.name
-                    }
-                }.registerInBus(this)
-
-        Bus.observe<LocationShopEvent>()
-                .subscribe { t: LocationShopEvent ->
-                    run {
-                        mStoreTv.text = t.name
-                    }
-                }.registerInBus(this)
     }
 
     override fun onGetDefaultStoreSuccess(result: Store) {

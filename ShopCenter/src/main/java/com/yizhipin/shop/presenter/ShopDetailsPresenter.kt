@@ -1,5 +1,6 @@
 package com.yizhipin.shop.presenter
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
@@ -52,20 +53,19 @@ open class ShopDetailsPresenter @Inject constructor() : BasePresenter<ShopDetail
         }, mLifecycleProvider)
     }
 
-    fun getEvaluateData(map: MutableMap<String, String>) {
-        mView.showLoading()
-        mServiceImpl.getEvaluateData(map).execute(object : BaseSubscriber<MutableList<Evaluate>>(mView) {
-            override fun onNext(t: MutableList<Evaluate>) {
-                mView.onGetEvaluateSuccess(t)
-            }
-        }, mLifecycleProvider)
-    }
-
     fun getFollow(map: MutableMap<String, String>) {
         mView.showLoading()
         mServiceImpl.getFollow(map).execute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
                 mView.onFollowSuccess(t)
+            }
+        }, mLifecycleProvider)
+    }
+
+    fun getEvaluateList(map: MutableMap<String, String>) {
+        mServiceImpl.getEvaluateList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Evaluate>>>(mView) {
+            override fun onNext(t: BasePagingResp<MutableList<Evaluate>>) {
+                mView.onGetEvaluateListSuccess(t)
             }
         }, mLifecycleProvider)
     }

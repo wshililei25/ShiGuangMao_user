@@ -31,8 +31,7 @@ class MainRepository @Inject constructor() {
     }
 
     fun getGoodsList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<ScenicSpot>>> {
-        return RetrofitFactoryGet().create(MainApi::class.java)
-                .getGoodsList(map["storeId"]!!, map["hot"]!!)
+        return RetrofitFactoryGet().create(MainApi::class.java).getGoodsList( map["hot"]!!)
     }
 
     fun getUnreadNewCount(map: MutableMap<String, String>): Observable<BaseResp<Int>> {
@@ -52,9 +51,11 @@ class MainRepository @Inject constructor() {
                 .getInformationDetails(map["id"]!!)
     }
 
+    fun getInformation(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
+        return RetrofitFactoryGet().create(MainApi::class.java).getInformation(map["currentPage"]!!, map["type"]!!)
+    }
     fun getNews(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
-        return RetrofitFactoryGet().create(MainApi::class.java)
-                .getNews(map["currentPage"]!!, map["type"]!!)
+        return RetrofitFactoryGet().create(MainApi::class.java).getNews(map["currentPage"]!!, map["uid"]!!)
     }
     fun getHelpList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Help>>> {
         return RetrofitFactoryGet().create(MainApi::class.java)

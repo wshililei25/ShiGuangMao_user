@@ -43,12 +43,13 @@ interface ShopApi {
     @GET(Api.TIME_TEACHER)
     fun getTimeTeacherData(@Query("storeId") storeId: String): Observable<BaseResp<MutableList<Teacher>>>
 
-    @GET(Api.EVALUATE)
-    fun getEvaluateData(@Query("storeId") storeId: String): Observable<BaseResp<MutableList<Evaluate>>>
-
     @GET(Api.SHOP_FOLLOW)
     fun getFollow(): Observable<BaseResp<Boolean>>
 
     @GET(Api.SCENIC_FOLLOW)
     fun getFollowScenic(): Observable<BaseResp<Boolean>>
+
+    @GET("${Api.EVALUATE_LIST}")
+    fun getEvaluateList(@Query("currentPage") currentPage: String, @Query("packageId") packageId: String
+                        , @Query("storeId") storeId: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 }

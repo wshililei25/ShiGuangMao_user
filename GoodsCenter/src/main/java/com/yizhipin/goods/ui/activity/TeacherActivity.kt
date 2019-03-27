@@ -13,7 +13,7 @@ import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.AddCameraman
-import com.yizhipin.base.data.response.Cameraman
+import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.event.CameramanCheckedEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
@@ -26,7 +26,7 @@ import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.TeacherPresenter
 import com.yizhipin.goods.presenter.view.TeacherView
-import com.yizhipin.goods.ui.adapter.CameramanAdapter
+import com.yizhipin.goods.ui.adapter.TeacherAdapter
 import com.yizhipin.provider.common.ProvideReqCode
 import kotlinx.android.synthetic.main.activity_cameraman.*
 import org.jetbrains.anko.startActivity
@@ -48,8 +48,8 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
 
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
-    private lateinit var mAdapter: CameramanAdapter
-    private var mCameraman: Cameraman? = null
+    private lateinit var mAdapter: TeacherAdapter
+    private var mTeacher: Teacher? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +59,14 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
         initObserve()
         initRefreshLayout()
         mAmountTv.setText("0.00")
+        loadData()
     }
 
     private fun initView() {
+
+        if (mTeacherType == "huazhuang") {
+            mHeaderBar.getTiTleTv().text = getString(R.string.select_dresser)
+        }
 
         mBtn.onClick(this)
         if (!mOrderId.isNullOrBlank()) {
@@ -69,12 +74,12 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
         }
 
         mRv.layoutManager = LinearLayoutManager(this)
-        mAdapter = CameramanAdapter(this, if (mOrderId.isNullOrBlank()) "" else mOrderId)
+        mAdapter = TeacherAdapter(this, if (mOrderId.isNullOrBlank()) "" else mOrderId)
         mRv.adapter = mAdapter
-        mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Cameraman> {
-            override fun onItemClick(item: Cameraman, position: Int) {
-                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.id
-                        , BaseConstant.KEY_TEACHER_USER_ID to item.uid)
+        mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Teacher> {
+            override fun onItemClick(item: Teacher, position: Int) {
+                startActivity<TeacherDetailActivity>(BaseConstant.KEY_TEACHER_ID to item.id
+                        , BaseConstant.KEY_TEACHER_USER_ID to item.uid, BaseConstant.KEY_IS_DESTINE to if (mOrderId.isNullOrBlank()) true else false)
             }
         })
     }
@@ -86,12 +91,6 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
         viewHolder.setRefreshViewBackgroundDrawableRes(R.color.yBgGray)
         viewHolder.setLoadMoreBackgroundColorRes(R.color.yBgGray)
         mRefreshLayout.setRefreshViewHolder(viewHolder)
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-        loadData()
     }
 
     override fun injectComponent() {
@@ -111,7 +110,7 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
     /**
      * 获取摄影师列表成功
      */
-    override fun onGetCameramanListSuccess(result: BasePagingResp<MutableList<Cameraman>>) {
+    override fun onGetCameramanListSuccess(result: BasePagingResp<MutableList<Teacher>>) {
 
         mRefreshLayout.endLoadingMore()
         mRefreshLayout.endRefreshing()
@@ -154,11 +153,11 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
         Bus.observe<CameramanCheckedEvent>()
                 .subscribe { t: CameramanCheckedEvent ->
                     run {
-                        mCameraman = t.cameraman
-                        if (t.cameraman.webUser.extraAmount.toDouble() > 0) {
-                            mAmountTv.text = "¥${t.cameraman.webUser.photoAmount}/套服装 + ¥${t.cameraman.webUser.extraAmount}"
+                        mTeacher = t.teacher
+                        if (t.teacher.webUser.extraAmount.toDouble() > 0) {
+                            mAmountTv.text = "¥${t.teacher.webUser.photoAmount}/套服装 + ¥${t.teacher.webUser.extraAmount}"
                         } else {
-                            mAmountTv.text = "¥${t.cameraman.webUser.photoAmount}/套服装"
+                            mAmountTv.text = "¥${t.teacher.webUser.photoAmount}/套服装"
                         }
                     }
                 }.registerInBus(this)
@@ -167,13 +166,13 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mBtn -> {
-                if (null == mCameraman) {
+                if (null == mTeacher) {
                     finish()
                     return
                 }
                 var map = mutableMapOf<String, String>()
                 map.put("orderId", mOrderId)
-                map.put("teacherId", mCameraman!!.uid)
+                map.put("teacherId", mTeacher!!.uid)
                 mBasePresenter.addCameraman(map)
             }
         }
@@ -182,9 +181,9 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
     override fun onAddCameramanSuccess(result: AddCameraman) {
 
         var intent = Intent()
-        intent.putExtra(BaseConstant.KEY_ADD_CAMERAMAN, mCameraman!!.webUser.nickname.plus(" | ").plus(mCameraman!!.teacherType))
-        intent.putExtra(BaseConstant.KEY_ADD_CAMERAMAN_AMOUNT, "¥${mCameraman!!.webUser.photoAmount}")
-        intent.putExtra(BaseConstant.KEY_ADD_CAMERAMAN_URL, mCameraman!!.webUser.imgurl)
+        intent.putExtra(BaseConstant.KEY_ADD_CAMERAMAN, mTeacher!!.webUser.nickname.plus(" | ").plus(mTeacher!!.teacherType))
+        intent.putExtra(BaseConstant.KEY_ADD_CAMERAMAN_AMOUNT, "¥${mTeacher!!.webUser.photoAmount}")
+        intent.putExtra(BaseConstant.KEY_ADD_CAMERAMAN_URL, mTeacher!!.webUser.imgurl)
         setResult(ProvideReqCode.CODE_RESULT_ADD_CAMERAMAN, intent)
         finish()
     }

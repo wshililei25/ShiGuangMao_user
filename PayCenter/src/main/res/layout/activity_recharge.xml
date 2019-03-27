@@ -38,13 +38,12 @@
 
         <EditText
             android:id="@+id/mAmountEt"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="@dimen/yEditHeight"
             android:layout_marginLeft="@dimen/yPadding"
             android:layout_marginRight="@dimen/yPadding"
-            android:clickable="false"
-            android:enabled="false"
             android:gravity="center"
+            android:inputType="numberDecimal"
             android:text="100"
             android:textColor="@color/yRed"
             android:textSize="@dimen/yTextMaxSize"

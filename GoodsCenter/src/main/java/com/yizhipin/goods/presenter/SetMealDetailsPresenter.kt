@@ -1,5 +1,6 @@
 package com.yizhipin.goods.presenter
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.BasicServices
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.OrderDetails
@@ -46,11 +47,10 @@ open class SetMealDetailsPresenter @Inject constructor() : BasePresenter<SetMeal
         }, mLifecycleProvider)
     }
 
-    fun getEvaluateData(map: MutableMap<String, String>) {
-        mView.showLoading()
-        mServiceImpl.getEvaluateData(map).execute(object : BaseSubscriber<MutableList<Evaluate>>(mView) {
-            override fun onNext(t: MutableList<Evaluate>) {
-                mView.onGetEvaluateSuccess(t)
+    fun getEvaluateList(map: MutableMap<String, String>) {
+        mServiceImpl.getEvaluateList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Evaluate>>>(mView) {
+            override fun onNext(t: BasePagingResp<MutableList<Evaluate>>) {
+                mView.onGetEvaluateListSuccess(t)
             }
         }, mLifecycleProvider)
     }

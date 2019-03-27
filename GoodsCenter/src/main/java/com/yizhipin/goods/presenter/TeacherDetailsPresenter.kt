@@ -1,8 +1,8 @@
 package com.yizhipin.goods.presenter
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.Cameraman
-import com.yizhipin.base.data.response.CameranmanWorks
+import com.yizhipin.base.data.response.Teacher
+import com.yizhipin.base.data.response.TeacherWorks
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.ext.execute
@@ -22,26 +22,17 @@ open class TeacherDetailsPresenter @Inject constructor() : BasePresenter<Teacher
 
     fun getCameramanDetails(map: MutableMap<String, String>) {
         mView.showLoading()
-        mServiceImpl.getCameramanDetails(map).execute(object : BaseSubscriber<Cameraman>(mView) {
-            override fun onNext(t: Cameraman) {
+        mServiceImpl.getCameramanDetails(map).execute(object : BaseSubscriber<Teacher>(mView) {
+            override fun onNext(t: Teacher) {
                 mView.onGetCameramanDetailsSuccess(t)
-            }
-        }, mLifecycleProvider)
-    }
-
-    fun getEvaluateData(map: MutableMap<String, String>) {
-        mView.showLoading()
-        mServiceImpl.getEvaluateData(map).execute(object : BaseSubscriber<MutableList<Evaluate>>(mView) {
-            override fun onNext(t: MutableList<Evaluate>) {
-                mView.onGetEvaluateSuccess(t)
             }
         }, mLifecycleProvider)
     }
 
     fun getTeacherWorks(map: MutableMap<String, String>) {
         mView.showLoading()
-        mServiceImpl.getTeacherWorks(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<CameranmanWorks>>>(mView) {
-            override fun onNext(t: BasePagingResp<MutableList<CameranmanWorks>>) {
+        mServiceImpl.getTeacherWorks(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<TeacherWorks>>>(mView) {
+            override fun onNext(t: BasePagingResp<MutableList<TeacherWorks>>) {
                 mView.onGetTeacherWorksSuccess(t)
             }
         }, mLifecycleProvider)
@@ -61,6 +52,14 @@ open class TeacherDetailsPresenter @Inject constructor() : BasePresenter<Teacher
         mServiceImpl.orderTeacher(map).execute(object : BaseSubscriber<OrderDetails>(mView) {
             override fun onNext(t: OrderDetails) {
                 mView.onOrderSuccess(t)
+            }
+        }, mLifecycleProvider)
+    }
+
+    fun getEvaluateTeacherList(map: MutableMap<String, String>) {
+        mServiceImpl.getEvaluateTeacherList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Evaluate>>>(mView) {
+            override fun onNext(t: BasePagingResp<MutableList<Evaluate>>) {
+                mView.onGetEvaluateListSuccess(t)
             }
         }, mLifecycleProvider)
     }

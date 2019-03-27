@@ -12,5 +12,5 @@ class TeacherFollow(
         val packageId: String,
         val uid: String,
         val attentionTime: String,
-        val teacherInfo: Cameraman
+        val teacherInfo: Teacher
 ) : Parcelable

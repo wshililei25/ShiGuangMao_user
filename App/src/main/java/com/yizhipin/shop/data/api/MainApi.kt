@@ -37,7 +37,7 @@ interface MainApi {
      * 获取热门景点
      */
     @GET(Api.HOT_GOODS_LIST)
-    fun getGoodsList(@Query("storeId") storeId: String, @Query("hot") hot: String): Observable<BaseResp<MutableList<ScenicSpot>>>
+    fun getGoodsList(@Query("hot") hot: String): Observable<BaseResp<MutableList<ScenicSpot>>>
 
     /**
      * 获取附近门店
@@ -48,11 +48,11 @@ interface MainApi {
     @GET("${Api.NEWS_DETAILS}${"/{id}"}")
     fun getInformationDetails(@Path("id") id: String): Observable<BaseResp<News>>
 
-    /**
-     * 资讯
-     */
-    @GET(Api.NEWS)
-    fun getNews(@Query("currentPage") currentPage: String, @Query("type") type: String): Observable<BasePagingResp<MutableList<News>>>
+    @GET(Api.INFORMATION)
+    fun getInformation(@Query("currentPage") currentPage: String, @Query("type") type: String): Observable<BasePagingResp<MutableList<News>>>
+
+    @GET(Api.NEWS_LIST)
+    fun getNews(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<News>>>
 
     @GET(Api.HELP_LIST)
     fun getHelpList(@Query("currentPage") currentPage: String): Observable<BasePagingResp<MutableList<Help>>>

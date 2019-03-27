@@ -61,11 +61,6 @@ open class ShopServiceImpl @Inject constructor() : ShopService {
                 .convert()
     }
 
-    override fun getEvaluateData(map: MutableMap<String, String>): Observable<MutableList<Evaluate>> {
-        return mRepository.getEvaluateData(map)
-                .convert()
-    }
-
     override fun getFollow(map: MutableMap<String, String>): Observable<Boolean> {
         return mRepository.getFollow(map)
                 .convertBoolean()
@@ -75,5 +70,10 @@ open class ShopServiceImpl @Inject constructor() : ShopService {
         return mRepository.getFollowScenic(map)
                 .convertBoolean()
     }
+
+    override fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
+        return mRepository.getEvaluateList(map).convertPaging()
+    }
+
 
 }

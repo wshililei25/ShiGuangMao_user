@@ -2,6 +2,7 @@ package com.yizhipin.goods.ui.adapter
 
 import android.app.Activity
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,12 @@ class AppointFeatureSpotAdapter(var context: Context) : BaseRecyclerViewAdapter<
         with(modle) {
             holder.itemView.mAmountTv.text = amount
             holder.itemView.mNameTv.text = name
-            holder.itemView.mIv.loadUrl(image)
+
+            if(image.isNullOrEmpty()){
+                holder.itemView.mIv.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.add))
+            }else{
+                holder.itemView.mIv.loadUrl(image)
+            }
         }
 
         holder.itemView.mIv.onClick {

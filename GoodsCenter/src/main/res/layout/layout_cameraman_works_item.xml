@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                style="@style/MatchWrap.White"
-                android:layout_width="110dp"
-                android:padding="@dimen/yPaddingMiddle">
+    style="@style/WrapWrap"
+    android:background="@color/yWhite"
+    android:paddingTop="@dimen/yPaddingSmall"
+    android:paddingBottom="@dimen/yPaddingSmall"
+    android:paddingLeft="@dimen/yPaddingSmall">
 
     <ImageView
         android:id="@+id/mIv"
-        style="@style/MatchWrap"
+        android:layout_width="110dp"
         android:layout_height="68dp"
-        android:scaleType="fitXY"/>
+        android:scaleType="matrix" />
 
     <TextView
         android:id="@+id/mNameTv"
@@ -20,6 +22,6 @@
         android:gravity="center"
         android:text="dddd"
         android:textColor="@color/yBlackGray"
-        android:textSize="@dimen/yTextMiddleSize"/>
+        android:textSize="@dimen/yTextMiddleSize" />
 
 </RelativeLayout>

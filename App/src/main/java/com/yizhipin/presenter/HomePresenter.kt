@@ -22,7 +22,6 @@ open class HomePresenter @Inject constructor() : BasePresenter<HomeView>() {
     lateinit var mServiceImpl: MainServiceImpl
 
     fun getBanner() {
-        mView.showLoading()
         mServiceImpl.getBanner().execute(object : BaseSubscriber<MutableList<Banner>>(mView) {
             override fun onNext(t: MutableList<Banner>) {
                 mView.onGetBannerSuccess(t)
@@ -31,7 +30,6 @@ open class HomePresenter @Inject constructor() : BasePresenter<HomeView>() {
     }
 
     fun getGoodsList(map: MutableMap<String, String>) {
-//        mView.showLoading()
         mServiceImpl.getGoodsList(map)
                 .execute(object : BaseSubscriber<MutableList<ScenicSpot>>(mView) {
                     override fun onNext(t: MutableList<ScenicSpot>) {
@@ -42,7 +40,6 @@ open class HomePresenter @Inject constructor() : BasePresenter<HomeView>() {
     }
 
     fun getUnreadNewCount(map: MutableMap<String, String>) {
-        mView.showLoading()
         mServiceImpl.getUnreadNewCount(map).execute(object : BaseSubscriber<Int>(mView) {
             override fun onNext(t: Int) {
                 mView.getUnReadNewCount(t)
@@ -61,9 +58,8 @@ open class HomePresenter @Inject constructor() : BasePresenter<HomeView>() {
 
     }
 
-    fun getNews(map: MutableMap<String, String>) {
-//        mView.showLoading()
-        mServiceImpl.getNews(map)
+    fun getInformation(map: MutableMap<String, String>) {
+        mServiceImpl.getInformation(map)
                 .execute(object : BaseSubscriber<BasePagingResp<MutableList<News>>>(mView) {
                     override fun onNext(t: BasePagingResp<MutableList<News>>) {
                         mView.onGetNewsSuccess(t)

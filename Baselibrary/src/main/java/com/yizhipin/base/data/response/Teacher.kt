@@ -3,9 +3,6 @@ package com.yizhipin.base.data.response
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-/**
- * Created by ${XiLei} on 2018/10/4.
- */
 @Parcelize
 class Teacher(
         val applyType: String,
@@ -17,14 +14,18 @@ class Teacher(
         val emergencyContact: String,
         val emergencyMobile: String,
         val id: String,
-        val loginUid: String,
+        val loginUid: String? = null,
         val pay: Boolean,
         val payAmount: String,
         val provice: String,
-        val selfIntroduction: String,
+        val selfStringroduction: String,
         val status: String,
         val storeId: String,
         val teacherType: String,
         val uid: String,
-        val webUser: TeacherInfo
+        val selfIntroduction: String,
+        val store: Store,
+        val webUser: UserInfo,
+        val works: MutableList<TeacherWorks>,
+        var isSelected: Boolean
 ) : Parcelable

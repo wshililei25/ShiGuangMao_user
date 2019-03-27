@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.base.common.BaseConstant
-import com.yizhipin.base.data.response.Cameraman
+import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.data.response.Star
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -15,7 +15,7 @@ import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.StarPresenter
 import com.yizhipin.goods.presenter.view.StarView
-import com.yizhipin.goods.ui.adapter.CameramanAdapter
+import com.yizhipin.goods.ui.adapter.TeacherAdapter
 import com.yizhipin.goods.ui.adapter.KeeperAdapter
 import com.yizhipin.goods.ui.adapter.StarShopAdapter
 import com.yizhipin.provider.router.RouterPath
@@ -30,7 +30,7 @@ class StarActivity : BaseMvpActivity<StarPresenter>(), StarView, View.OnClickLis
 
     private lateinit var mStarShopAdapter: StarShopAdapter
     private lateinit var mKeeperAdapter: KeeperAdapter
-    private lateinit var mCameramanAdapter: CameramanAdapter
+    private lateinit var mTeacherAdapter: TeacherAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,11 +60,11 @@ class StarActivity : BaseMvpActivity<StarPresenter>(), StarView, View.OnClickLis
         mKeeperRv.adapter = mKeeperAdapter
 
         mTeacherRv.layoutManager = LinearLayoutManager(this)
-        mCameramanAdapter = CameramanAdapter(this,"")
-        mTeacherRv.adapter = mCameramanAdapter
-        mCameramanAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Cameraman> {
-            override fun onItemClick(item: Cameraman, position: Int) {
-                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.id)
+        mTeacherAdapter = TeacherAdapter(this,"")
+        mTeacherRv.adapter = mTeacherAdapter
+        mTeacherAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Teacher> {
+            override fun onItemClick(item: Teacher, position: Int) {
+                startActivity<TeacherDetailActivity>(BaseConstant.KEY_TEACHER_ID to item.id)
             }
         })
 
@@ -86,7 +86,7 @@ class StarActivity : BaseMvpActivity<StarPresenter>(), StarView, View.OnClickLis
             mKeeperAdapter.setData(result.storeManagers)
         }
         result.teachers?.let {
-            mCameramanAdapter.setData(result.teachers)
+            mTeacherAdapter.setData(result.teachers)
         }
 
     }

@@ -20,7 +20,6 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
     lateinit var mServiceImpl: UserServiceImpl
 
     fun getUserInfo(map: MutableMap<String, String>) {
-        mView.showLoading()
         mServiceImpl.getUserInfo(map).execute(object : BaseSubscriber<UserInfo>(mView) {
             override fun onNext(t: UserInfo) {
                 mView.getUserResult(t)
@@ -38,7 +37,6 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
     }
 
     fun getUnreadNewCount(map: MutableMap<String, String>) {
-        mView.showLoading()
         mServiceImpl.getUnreadNewCount(map).execute(object : BaseSubscriber<Int>(mView) {
             override fun onNext(t: Int) {
                 mView.getUnReadNewCount(t)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                style="@style/MatchMatch"
-                android:background="@color/yWhite">
+    style="@style/MatchMatch"
+    android:background="@color/yWhite">
 
     <ScrollView
         style="@style/MatchMatch"
@@ -14,13 +14,13 @@
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_height="190dp"
-                android:background="@drawable/mainphoto2"
+                android:background="@drawable/user_bg"
                 android:padding="@dimen/yPadding">
 
                 <ImageView
                     android:id="@+id/mBackIv"
                     style="@style/WrapWrap"
-                    android:src="@drawable/leftarroww"/>
+                    android:src="@drawable/leftarroww" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/mUserIconIv"
@@ -28,7 +28,7 @@
                     android:layout_height="72dp"
                     android:layout_below="@+id/mBackIv"
                     android:layout_marginTop="@dimen/yPaddingMiddle"
-                    android:src="@drawable/avatarw"/>
+                    android:src="@drawable/avatarw" />
 
                 <TextView
                     android:id="@+id/mNameTv"
@@ -39,7 +39,7 @@
                     android:layout_toRightOf="@+id/mUserIconIv"
                     android:text="摄影师"
                     android:textColor="@color/yWhite"
-                    android:textSize="@dimen/yTextMiddleLarSize"/>
+                    android:textSize="@dimen/yTextMiddleLarSize" />
 
                 <TextView
                     android:id="@+id/mShopNameTv"
@@ -50,7 +50,7 @@
                     android:layout_toRightOf="@+id/mUserIconIv"
                     android:text="摄影师"
                     android:textColor="@color/yWhite"
-                    android:textSize="@dimen/yTextMiddleLarSize"/>
+                    android:textSize="@dimen/yTextMiddleLarSize" />
 
                 <TextView
                     android:id="@+id/mSchedulingPeriodTv"
@@ -64,7 +64,7 @@
                     android:gravity="center"
                     android:text="@string/lock_Scheduling_period"
                     android:textColor="@color/yWhite"
-                    android:textSize="@dimen/yTextMiddleLarSize"/>
+                    android:textSize="@dimen/yTextMiddleLarSize" />
 
                 <RelativeLayout
                     android:id="@+id/mCollectionView"
@@ -77,7 +77,7 @@
                         android:id="@+id/mCollectionIv"
                         style="@style/WrapWrap"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/heart3"/>
+                        android:src="@drawable/heart3" />
 
                     <TextView
                         android:id="@+id/mCollectionTv"
@@ -87,7 +87,7 @@
                         android:layout_marginTop="@dimen/yPaddingMinSmall"
                         android:text="@string/follow"
                         android:textColor="@color/yWhite"
-                        android:textSize="@dimen/yTextMiddleLarSize"/>
+                        android:textSize="@dimen/yTextMiddleLarSize" />
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -104,7 +104,7 @@
                     android:layout_marginBottom="@dimen/yPaddingSmall"
                     android:text="@string/appoint_cost"
                     android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallSize"/>
+                    android:textSize="@dimen/yTextSmallSize" />
 
                 <TextView
                     android:id="@+id/mPriceTv"
@@ -112,7 +112,7 @@
                     android:layout_toRightOf="@+id/appoint_cost"
                     android:text="0.00"
                     android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextHugeSize"/>
+                    android:textSize="@dimen/yTextHugeSize" />
 
                 <TextView
                     android:id="@+id/mCreditTv"
@@ -121,7 +121,7 @@
                     android:layout_marginRight="@dimen/yPaddingMiddle"
                     android:text="0"
                     android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextHugeSize"/>
+                    android:textSize="@dimen/yTextHugeSize" />
 
                 <TextView
                     android:id="@+id/seniority_fee"
@@ -132,7 +132,7 @@
                     android:layout_marginBottom="@dimen/yPaddingSmall"
                     android:text="@string/seniority_fee_"
                     android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallSize"/>
+                    android:textSize="@dimen/yTextSmallSize" />
 
                 <TextView
                     android:id="@+id/mSeniorityPriceTv"
@@ -141,7 +141,7 @@
                     android:layout_toRightOf="@+id/seniority_fee"
                     android:text="0.00"
                     android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextHugeSize"/>
+                    android:textSize="@dimen/yTextHugeSize" />
 
                 <TextView
                     style="@style/WrapWrap"
@@ -149,12 +149,11 @@
                     android:layout_alignParentRight="true"
                     android:text="@string/time_credit"
                     android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallSize"/>
+                    android:textSize="@dimen/yTextSmallSize" />
 
             </RelativeLayout>
 
-            <View
-                style="@style/DividerFixedHeight_10"/>
+            <View style="@style/DividerFixedHeight_10" />
 
             <TextView
                 style="@style/WrapWrap"
@@ -162,9 +161,9 @@
                 android:padding="@dimen/yPaddingMiddle"
                 android:text="@string/teacher_introduce"
                 android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
+                android:textSize="@dimen/yTextMiddleSize" />
 
-            <View style="@style/DividerFixedHeight"/>
+            <View style="@style/DividerFixedHeight" />
 
             <TextView
                 android:id="@+id/mTeacherIntroduceTv"
@@ -172,10 +171,9 @@
                 android:layout_centerVertical="true"
                 android:padding="@dimen/yPaddingMiddle"
                 android:textColor="@color/yBlackGray"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
+                android:textSize="@dimen/yTextMiddleBigSize" />
 
-            <View
-                style="@style/DividerFixedHeight_10"/>
+            <View style="@style/DividerFixedHeight_10" />
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -186,9 +184,10 @@
                     android:layout_centerVertical="true"
                     android:text="@string/time_evaluate_new"
                     android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
+                    android:textSize="@dimen/yTextMiddleSize" />
 
                 <TextView
+                    android:id="@+id/mEvaluateMoreTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -197,16 +196,16 @@
                     android:drawablePadding="@dimen/yPaddingSmall"
                     android:text="@string/more"
                     android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextMiddleSize"/>
+                    android:textSize="@dimen/yTextMiddleSize" />
             </RelativeLayout>
 
-            <View style="@style/DividerFixedHeight"/>
+            <View style="@style/DividerFixedHeight" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/mEvaluateRv"
-                style="@style/MatchWrap"/>
+                style="@style/MatchWrap" />
 
-            <View style="@style/DividerFixedHeight_10"/>
+            <View style="@style/DividerFixedHeight_10" />
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -217,10 +216,10 @@
                     android:layout_centerVertical="true"
                     android:text="@string/works_appreciate"
                     android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
+                    android:textSize="@dimen/yTextMiddleSize" />
 
                 <TextView
-                    android:id="@+id/mTakePayTv"
+                    android:id="@+id/mMoreWorkTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -232,11 +231,11 @@
                     android:textSize="@dimen/yTextMiddleSize"/>
             </RelativeLayout>
 
-            <View style="@style/DividerFixedHeight"/>
+            <View style="@style/DividerFixedHeight" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/mBasicServicesRv"
-                style="@style/MatchWrap"/>
+                style="@style/MatchWrap" />
 
         </LinearLayout>
 
@@ -257,7 +256,7 @@
             android:padding="@dimen/yPadding"
             android:text="@string/on_destine"
             android:textColor="@color/yWhite"
-            android:textSize="@dimen/yTextMiddleBigSize"/>
+            android:textSize="@dimen/yTextMiddleBigSize" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -127,13 +127,13 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/mUserNameIv"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextLargeSize"/>
+                        android:src="@drawable/avatarw"/>
 
                     <TextView
                         android:id="@+id/mUserNameTv"

@@ -28,7 +28,6 @@ interface GoodsService {
     fun getMealList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Meal>>>
     fun getMealDetails(map: MutableMap<String, String>): Observable<SetMealDetails>
     fun getFollow(map: MutableMap<String, String>): Observable<Boolean>
-    fun getEvaluateData(map: MutableMap<String, String>): Observable<MutableList<Evaluate>>
     fun getBasicServicesData(map: MutableMap<String, String>): Observable<MutableList<BasicServices>>
     fun getCloudDiskList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CloudDisk>>>
     fun getCloudDiskImageList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CloudDiskImage>>>
@@ -38,10 +37,10 @@ interface GoodsService {
     fun getFollowMarket(map: MutableMap<String, String>): Observable<Boolean>
     fun getIntegralList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Integral>>>
     fun getIntegralDetail(map: MutableMap<String, String>): Observable<Integral>
-    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>>
-    fun getCameramanDetails(map: MutableMap<String, String>): Observable<Cameraman>
+    fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Teacher>>>
+    fun getCameramanDetails(map: MutableMap<String, String>): Observable<Teacher>
     fun getCameramanFollow(map: MutableMap<String, String>): Observable<Boolean>
-    fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CameranmanWorks>>>
+    fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherWorks>>>
     fun getStar(): Observable<Star>
     fun order(map: MutableMap<String, String>): Observable<OrderDetails>
     fun getOrderDetails(map: MutableMap<String, String>): Observable<OrderDetails>
@@ -49,4 +48,5 @@ interface GoodsService {
     fun addCameraman(map: MutableMap<String, String>): Observable<AddCameraman>
     fun orderTeacher(map: MutableMap<String, String>): Observable<OrderDetails>
     fun orderDress(map: MutableMap<String, String>): Observable<OrderDetails>
+    fun getEvaluateTeacherList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>>
 }

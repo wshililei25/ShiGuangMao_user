@@ -16,10 +16,10 @@ interface ShopService {
     fun getFollow(map: MutableMap<String, String>): Observable<Boolean>
     fun getHotMealData(map: MutableMap<String, String>): Observable<MutableList<Meal>>
     fun getTimeTeacherData(map: MutableMap<String, String>): Observable<MutableList<Teacher>>
-    fun getEvaluateData(map: MutableMap<String, String>): Observable<MutableList<Evaluate>>
     fun getSceincList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<ScenicSpot>>>
     fun getScenicDetails(map: MutableMap<String, String>): Observable<ScenicSpot>
     fun getFollowScenic(map: MutableMap<String, String>): Observable<Boolean>
     fun getMealData(map: MutableMap<String, String>): Observable<MutableList<Meal>>
     fun orderScenic(map: MutableMap<String, String>): Observable<OrderDetails>
+    fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>>
 }

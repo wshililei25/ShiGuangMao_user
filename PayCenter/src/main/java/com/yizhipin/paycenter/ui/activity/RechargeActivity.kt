@@ -75,7 +75,7 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
             mContentTv.text = getString(R.string.cash_pledge_recharge)
             mHeaderBar.getTiTleTv().text = getString(R.string.cash_pledge_pay)
         }
-
+        mAmountEt.setSelection(mAmountEt.text.length)
         mMinusIv.onClick(this)
         mPlusIv.onClick(this)
         mConfirmBtn.onClick(this)
@@ -112,14 +112,18 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mMinusIv -> {
-                if (mAmountEt.text.toString().toInt() > 100) {
-                    var amount = mAmountEt.text.toString().toInt() - 100
+                if (mAmountEt.text.toString().isNotEmpty() && mAmountEt.text.toString().toDouble() > 0) {
+                    var amount = mAmountEt.text.toString().toDouble() / 2
                     mAmountEt.setText(amount.toString())
+                    mAmountEt.setSelection(mAmountEt.text.length)
                 }
             }
             R.id.mPlusIv -> {
-                var amount = mAmountEt.text.toString().toInt() + 100
-                mAmountEt.setText(amount.toString())
+                if (mAmountEt.text.toString().isNotEmpty()) {
+                    var amount = mAmountEt.text.toString().toDouble() * 2
+                    mAmountEt.setText(amount.toString())
+                    mAmountEt.setSelection(mAmountEt.text.length)
+                }
             }
             R.id.mConfirmBtn -> {
 

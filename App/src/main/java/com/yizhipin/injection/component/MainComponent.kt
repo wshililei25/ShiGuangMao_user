@@ -5,6 +5,7 @@ import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.ui.activity.HelpActivity
 import com.yizhipin.ui.activity.InformationDetailsActivity
 import com.yizhipin.ui.activity.MainActivity
+import com.yizhipin.ui.activity.NewsActivity
 import com.yizhipin.ui.fragment.*
 import com.yizhipin.usercenter.injection.module.MianModule
 import dagger.Component
@@ -26,4 +27,5 @@ interface MainComponent {
     fun inject(activity: ShopFollowFragment)
     fun inject(activity: InformationDetailsActivity)
     fun inject(activity: HelpActivity)
+    fun inject(activity: NewsActivity)
 }

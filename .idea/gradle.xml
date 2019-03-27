@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/ShopCenter" />
             <option value="$PROJECT_DIR$/UserCenter" />
             <option value="$PROJECT_DIR$/easeui" />
+            <option value="$PROJECT_DIR$/kefu-easeui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

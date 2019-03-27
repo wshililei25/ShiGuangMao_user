@@ -2,7 +2,7 @@ package com.yizhipin.goods.presenter
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.AddCameraman
-import com.yizhipin.base.data.response.Cameraman
+import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
@@ -19,8 +19,8 @@ open class TeacherPresenter @Inject constructor() : BasePresenter<TeacherView>()
     lateinit var mServiceImpl: GoodsServiceImpl
 
     fun getCameramanList(map: MutableMap<String, String>) {
-        mServiceImpl.getCameramanList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Cameraman>>>(mView) {
-            override fun onNext(t: BasePagingResp<MutableList<Cameraman>>) {
+        mServiceImpl.getCameramanList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Teacher>>>(mView) {
+            override fun onNext(t: BasePagingResp<MutableList<Teacher>>) {
                 mView.onGetCameramanListSuccess(t)
             }
         }, mLifecycleProvider)

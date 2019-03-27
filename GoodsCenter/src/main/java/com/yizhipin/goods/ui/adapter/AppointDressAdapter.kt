@@ -2,6 +2,9 @@ package com.yizhipin.goods.ui.adapter
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
+import android.support.annotation.RequiresApi
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -35,8 +38,16 @@ class AppointDressAdapter(var context: Context) : BaseRecyclerViewAdapter<Appion
 
         with(modle) {
             holder.itemView.mTitleTv.text = title
-            holder.itemView.mWomenIv.loadUrl(womenImage)
-            holder.itemView.mManIv.loadUrl(manImage)
+            if(womenImage.isNullOrEmpty()){
+                holder.itemView.mWomenIv.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.add))
+            }else{
+                holder.itemView.mWomenIv.loadUrl(womenImage)
+            }
+            if(manImage.isNullOrEmpty()){
+                holder.itemView.mManIv.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.add))
+            }else{
+                holder.itemView.mManIv.loadUrl(manImage)
+            }
         }
 
         holder.itemView.mWomenDressView.onClick {

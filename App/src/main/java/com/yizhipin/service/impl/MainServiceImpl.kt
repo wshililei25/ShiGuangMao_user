@@ -49,10 +49,13 @@ open class MainServiceImpl @Inject constructor() : MainService {
     override fun getInformationDetails(map: MutableMap<String, String>): Observable<News> {
         return mRepository.getInformationDetails(map).convert()
     }
-
     override fun getNews(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
         return mRepository.getNews(map).convertPaging()
     }
+    override fun getInformation(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
+        return mRepository.getInformation(map).convertPaging()
+    }
+
 
     override fun getHelpList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Help>>> {
         return mRepository.getHelpList(map).convertPaging()

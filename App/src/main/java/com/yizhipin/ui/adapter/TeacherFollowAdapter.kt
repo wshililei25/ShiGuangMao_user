@@ -13,13 +13,13 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.goods.ui.activity.TeacherDetailActivity
-import com.yizhipin.goods.ui.adapter.CameramanImageAdapter
+import com.yizhipin.goods.ui.adapter.TeacherImageAdapter
 import kotlinx.android.synthetic.main.layout_cameraman_item.view.*
 import org.jetbrains.anko.startActivity
 
 class TeacherFollowAdapter(val context: Context, var mOrderId: String) : BaseRecyclerViewAdapter<TeacherFollow, TeacherFollowAdapter.ViewHolder>(context) {
 
-    private lateinit var mCameramanImageAdapter: CameramanImageAdapter
+    private lateinit var mTeacherImageAdapter: TeacherImageAdapter
     private var mMap = mapOf<Int, Boolean>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -53,9 +53,9 @@ class TeacherFollowAdapter(val context: Context, var mOrderId: String) : BaseRec
                 }
             }
             holder.itemView.mRv.layoutManager = GridLayoutManager(context!!, 3)
-            mCameramanImageAdapter = CameramanImageAdapter(context!!)
-            mCameramanImageAdapter.setData(listResult)
-            holder.itemView.mRv.adapter = mCameramanImageAdapter
+            mTeacherImageAdapter = TeacherImageAdapter(context!!)
+            mTeacherImageAdapter.setData(listResult)
+            holder.itemView.mRv.adapter = mTeacherImageAdapter
         }
 
         var mutableMap = mMap.toMutableMap()
@@ -74,9 +74,9 @@ class TeacherFollowAdapter(val context: Context, var mOrderId: String) : BaseRec
                Bus.send(CameramanCheckedEvent(model))
            }*/
 
-        mCameramanImageAdapter.setOnItemClickListener(object : OnItemClickListener<String> {
+        mTeacherImageAdapter.setOnItemClickListener(object : OnItemClickListener<String> {
             override fun onItemClick(item: String, position: Int) {
-                context.startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to model.teacherInfo.id
+                context.startActivity<TeacherDetailActivity>(BaseConstant.KEY_TEACHER_ID to model.teacherInfo.id
                         , BaseConstant.KEY_TEACHER_USER_ID to model.teacherInfo.uid)
             }
         })

@@ -27,6 +27,7 @@ object RouterPath {
             const val PATH_INTEGRAL = "/goodsCenter/integral" //积分商城
             const val PATH_ORDER_MEAL_DETAILS = "/goodsCenter/orderMealDetails" //套餐订单详情
             const val PATH_MEAL_ORDER = "/goodsCenter/mealOrder" //下单
+            const val PATH_EVALUATE = "/goodsCenter/evaluate" //评价列表
         }
     }
 

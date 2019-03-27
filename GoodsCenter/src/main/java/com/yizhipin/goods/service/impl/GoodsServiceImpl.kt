@@ -30,7 +30,7 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
         return mRepository.getDressList(map).convertPaging()
     }
 
-    override fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Cameraman>>> {
+    override fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Teacher>>> {
         return mRepository.getCameramanList(map).convertPaging()
     }
 
@@ -73,6 +73,7 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
     override fun followDress(map: MutableMap<String, String>): Observable<DressDetails> {
         return mRepository.followDress(map).convert()
     }
+
     override fun orderDress(map: MutableMap<String, String>): Observable<OrderDetails> {
         return mRepository.orderDress(map).convert()
     }
@@ -91,6 +92,10 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
 
     override fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
         return mRepository.getEvaluateList(map).convertPaging()
+    }
+
+    override fun getEvaluateTeacherList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
+        return mRepository.getEvaluateTeacherList(map).convertPaging()
     }
 
     override fun getReportList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
@@ -125,7 +130,7 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
         return mRepository.getOrderDetails(map).convert()
     }
 
-    override fun getCameramanDetails(map: MutableMap<String, String>): Observable<Cameraman> {
+    override fun getCameramanDetails(map: MutableMap<String, String>): Observable<Teacher> {
         return mRepository.getCameramanDetails(map).convert()
     }
 
@@ -153,10 +158,6 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
         return mRepository.getCameramanFollow(map).convertBoolean()
     }
 
-    override fun getEvaluateData(map: MutableMap<String, String>): Observable<MutableList<Evaluate>> {
-        return mRepository.getEvaluateData(map)
-                .convert()
-    }
 
     override fun getBasicServicesData(map: MutableMap<String, String>): Observable<MutableList<BasicServices>> {
         return mRepository.getBasicServicesData(map)
@@ -171,7 +172,7 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
         return mRepository.getCloudDiskImageList(map).convertPaging()
     }
 
-    override fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CameranmanWorks>>> {
+    override fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherWorks>>> {
         return mRepository.getTeacherWorks(map).convertPaging()
     }
 
@@ -179,4 +180,5 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
         return mRepository.getFollowMarket(map)
                 .convertBoolean()
     }
+
 }

@@ -56,11 +56,6 @@ class ShopRepository @Inject constructor() {
                 .getTimeTeacherData(map["storeId"]!!)
     }
 
-    fun getEvaluateData(map: MutableMap<String, String>): Observable<BaseResp<MutableList<Evaluate>>> {
-        return RetrofitFactoryGet().create(ShopApi::class.java)
-                .getEvaluateData(map["storeId"]!!)
-    }
-
     fun getFollow(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(ShopApi::class.java)
                 .getFollow()
@@ -69,5 +64,9 @@ class ShopRepository @Inject constructor() {
     fun getFollowScenic(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(ShopApi::class.java)
                 .getFollowScenic()
+    }
+
+    fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
+        return RetrofitFactoryGet().create(ShopApi::class.java).getEvaluateList(map["currentPage"]!! ,map["packageId"]!!, map["storeId"]!!)
     }
 }

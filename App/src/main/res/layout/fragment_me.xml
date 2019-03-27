@@ -212,7 +212,7 @@
         <TextView
             android:id="@+id/mCouponTv"
             style="@style/MeItemStyle"
-            android:drawableLeft="@drawable/redenvelopes"
+            android:drawableLeft="@drawable/quan2"
             android:drawablePadding="@dimen/yPaddingSmall"
             android:text="@string/my_coupon"/>
 
@@ -223,7 +223,7 @@
         <TextView
             android:id="@+id/mRedPaperTv"
             style="@style/MeItemStyle"
-            android:drawableLeft="@drawable/redenvelopes"
+            android:drawableLeft="@drawable/hongbao"
             android:drawablePadding="@dimen/yPaddingSmall"
             android:text="@string/red_reper_me"/>
 

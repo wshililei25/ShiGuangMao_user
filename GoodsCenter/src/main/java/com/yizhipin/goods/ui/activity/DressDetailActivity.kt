@@ -1,7 +1,10 @@
 package com.yizhipin.goods.ui.activity
 
+import android.content.Intent
 import android.graphics.Paint
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
@@ -10,6 +13,8 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.hyphenate.helpdesk.easeui.util.IntentBuilder
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.WebJs
 import com.yizhipin.base.data.response.DressDetails
@@ -92,11 +97,12 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
 
         mBackIv.onClick { finish() }
         mShopView.onClick(this)
-        mAddCartBtn.onClick(this)
         mCollectionView.onClick(this)
         mBuyBtn.onClick(this)
         mRentBtn.onClick(this)
         mTakePhotoBtn.onClick(this)
+        mPhoneBtn.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     private fun initBanner() {
@@ -166,7 +172,25 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
                     mBasePresenter.orderDress(map)
                 }
             }
-
+            R.id.mPhoneBtn -> {
+                RxPermissions(this).request(android.Manifest.permission.CALL_PHONE)
+                        .subscribe({ granted ->
+                            if (granted) {
+                                val intent = Intent(Intent.ACTION_CALL)
+                                val data = Uri.parse("tel:${getString(R.string.phoneNum)}")
+                                intent.data = data
+                                startActivity(intent)
+                            } else {
+                                Log.d("XiLei", "请开启电话权限")
+                            }
+                        })
+            }
+            R.id.mCustomBtn -> {
+                var intent = IntentBuilder(this)
+                        .setServiceIMNumber("100") //客服关联的IM服务号
+                        .build();
+                startActivity(intent);
+            }
         }
     }
 

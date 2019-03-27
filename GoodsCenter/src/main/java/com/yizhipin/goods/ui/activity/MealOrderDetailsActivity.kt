@@ -12,6 +12,7 @@ import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.PhotographStatus
 import com.yizhipin.base.common.TeacherType
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -227,9 +228,6 @@ class MealOrderDetailsActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
     override fun onOrderSuccess(result: OrderDetails) {
     }
 
-    override fun onGetEvaluateSuccess(result: MutableList<Evaluate>) {
-    }
-
     override fun onFollowSuccess(result: Boolean) {
     }
 
@@ -237,5 +235,8 @@ class MealOrderDetailsActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
     }
 
     override fun onGetMealDetailsSuccess(result: SetMealDetails) {
+    }
+    override fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>) {
+
     }
 }

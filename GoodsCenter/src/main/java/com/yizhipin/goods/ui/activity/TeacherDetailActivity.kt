@@ -1,20 +1,21 @@
 package com.yizhipin.goods.ui.activity
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.TeacherType
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.Cameraman
-import com.yizhipin.base.data.response.CameranmanWorks
+import com.yizhipin.base.data.response.Teacher
+import com.yizhipin.base.data.response.TeacherWorks
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.OrderDetails
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
+import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.EvaluateAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
@@ -23,7 +24,7 @@ import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.TeacherDetailsPresenter
 import com.yizhipin.goods.presenter.view.TeacherDetailsView
-import com.yizhipin.goods.ui.adapter.CameramanWorksAdapter
+import com.yizhipin.goods.ui.adapter.TeacherWorksAdapter
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_cameraman_details.*
@@ -35,17 +36,21 @@ import org.jetbrains.anko.startActivity
  */
 class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), TeacherDetailsView, View.OnClickListener {
 
-    @Autowired(name = BaseConstant.KEY_CAMERAMAN_ID)
+    @Autowired(name = BaseConstant.KEY_TEACHER_ID)
     @JvmField
-    var mCameramanId: String = "" //老师id
+    var mTeacherId: String = "" //老师id
 
     @Autowired(name = BaseConstant.KEY_TEACHER_USER_ID)
     @JvmField
     var mTeacherUserID: String = "" //老师用户id
 
-    private lateinit var mSetMealDetails: Cameraman
+    @Autowired(name = BaseConstant.KEY_IS_DESTINE)
+    @JvmField
+    var mDestine: Boolean = false //是老师列表查看还是选择老师查看
+
+    private lateinit var mSetMealDetails: Teacher
     private var mAttention: Boolean = false //是否关注
-    private lateinit var mCameramanWorksAdapter: CameramanWorksAdapter
+    private lateinit var mTeacherWorksAdapter: TeacherWorksAdapter
     private lateinit var mEvaluateAdapter: EvaluateAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,14 +73,21 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
         mEvaluateAdapter = EvaluateAdapter(this)
         mEvaluateRv.adapter = mEvaluateAdapter
         //作品欣赏
-        mBasicServicesRv.layoutManager = GridLayoutManager(this, 3)
-        mCameramanWorksAdapter = CameramanWorksAdapter(this)
-        mBasicServicesRv.adapter = mCameramanWorksAdapter
+        var linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        mBasicServicesRv.layoutManager = linearLayoutManager
+        mTeacherWorksAdapter = TeacherWorksAdapter(this)
+        mBasicServicesRv.adapter = mTeacherWorksAdapter
 
         mBackIv.onClick { finish() }
         mCollectionView.onClick(this)
         mBtn.onClick(this)
-        mTakePayTv.onClick(this)
+        mMoreWorkTv.onClick(this)
+        mEvaluateMoreTv.onClick(this)
+        mMoreWorkTv.onClick(this)
+
+        if (mDestine) bottomView.setVisible(true) else bottomView.setVisible(false)
+
     }
 
     /**
@@ -83,15 +95,16 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
      */
     private fun loadEvaluateData() {
         var map = mutableMapOf<String, String>()
-        map.put("packageId", mCameramanId)
-        mBasePresenter.getEvaluateData(map)
+        map.put("currentPage", "1")
+        map.put("teacherId", mTeacherId)
+        mBasePresenter.getEvaluateTeacherList(map)
     }
 
     /**
      * 获取最新评价成功
      */
-    override fun onGetEvaluateSuccess(result: MutableList<Evaluate>) {
-        mEvaluateAdapter.setData(result)
+    override fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>) {
+        mEvaluateAdapter.setData(result.data)
     }
 
     override fun onClick(v: View) {
@@ -114,12 +127,6 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
                 }
             }
 
-            R.id.mTakePayTv -> {
-                /*   mSetMealDetails?.let {
-                       startActivity<BasicServicesListActivity>(BaseConstant.KEY_SHOP_ID to mSetMealDetails.storeId)
-                   }*/
-            }
-
             R.id.mBtn -> {
                 afterLogin {
                     var map = mutableMapOf<String, String>()
@@ -128,7 +135,13 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
                     mBasePresenter.orderTeacher(map)
                 }
             }
+            R.id.mEvaluateMoreTv -> {
+                startActivity<EvaluateActivity>(BaseConstant.KEY_TEACHER_ID to mTeacherId)
+            }
 
+            R.id.mMoreWorkTv -> {
+                startActivity<TeacherWorksActivity>(BaseConstant.KEY_TEACHER_USER_ID to mSetMealDetails.webUser.id)
+            }
         }
     }
 
@@ -150,7 +163,7 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
      */
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
-        map.put("id", mCameramanId)
+        map.put("id", mTeacherId)
         map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mBasePresenter.getCameramanDetails(map)
     }
@@ -158,16 +171,20 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
     /**
      * 获取摄影师详情成功
      */
-    override fun onGetCameramanDetailsSuccess(result: Cameraman) {
+    override fun onGetCameramanDetailsSuccess(result: Teacher) {
         mSetMealDetails = result
         with(result) {
 
             mUserIconIv.loadUrl(webUser.imgurl)
-            mNameTv.text = webUser.nickname + " " + teacherType + " | " + applyType
             mPriceTv.text = "¥${webUser.photoAmount}/套系"
             mSeniorityPriceTv.text = "¥${webUser.extraAmount}/套系"
             mCreditTv.text = webUser.credit
             mTeacherIntroduceTv.text = selfIntroduction
+
+            when (teacherType) {
+                TeacherType.TEACHER_SHEYING -> mNameTv.text = webUser.nickname + " 摄影师 | " + applyType
+                TeacherType.TEACHER_HUAZHUANG -> mNameTv.text = webUser.nickname + " 化妆师 | " + applyType
+            }
 
             store?.let {
                 mShopNameTv.text = store.storeName
@@ -199,9 +216,9 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherDetailsPresenter>(), Teache
     /**
      * 获取摄影师作品成功
      */
-    override fun onGetTeacherWorksSuccess(result: BasePagingResp<MutableList<CameranmanWorks>>) {
+    override fun onGetTeacherWorksSuccess(result: BasePagingResp<MutableList<TeacherWorks>>) {
 
-        mCameramanWorksAdapter.setData(result.data)
+        mTeacherWorksAdapter.setData(result.data)
     }
 
     /**

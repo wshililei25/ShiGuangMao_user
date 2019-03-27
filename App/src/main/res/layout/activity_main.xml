@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/MatchMatch.Vertical"
     android:gravity="bottom">
 
     <FrameLayout
-        android:id="@+id/mContaier"
+        android:id="@+id/mFrameLayout"
         style="@style/MatchMatch"
         android:layout_weight="1">
 
@@ -17,13 +17,13 @@
         android:layout_gravity="bottom"
         android:orientation="vertical">
 
-        <View
-            style="@style/DividerFixedHeight"/>
+        <View style="@style/DividerFixedHeight" />
 
-        <com.yizhipin.base.widgets.BottomNavBar
+        <me.majiajie.pagerbottomtabstrip.PageNavigationView
             android:id="@+id/mBottomNavBar"
-            style="@style/MatchWrap"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:elevation="8dp" />
     </LinearLayout>
 
 

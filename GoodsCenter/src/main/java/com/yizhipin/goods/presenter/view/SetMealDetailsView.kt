@@ -1,5 +1,6 @@
 package com.yizhipin.goods.presenter.view
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.BasicServices
 import com.yizhipin.base.data.response.Evaluate
 import com.yizhipin.base.data.response.OrderDetails
@@ -14,6 +15,6 @@ interface SetMealDetailsView : BaseView {
     fun onOrderSuccess(result: OrderDetails)
     fun onOrderDetailsSuccess(result: OrderDetails)
     fun onFollowSuccess(result: Boolean)
-    fun onGetEvaluateSuccess(result: MutableList<Evaluate>)
+    fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>)
     fun onGetBasicServicesSuccess(result: MutableList<BasicServices>)
 }

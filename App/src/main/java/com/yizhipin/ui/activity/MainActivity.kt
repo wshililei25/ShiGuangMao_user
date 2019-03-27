@@ -2,8 +2,7 @@ package com.yizhipin.ui.activity
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
-import com.ashokvarma.bottomnavigation.BottomNavigationBar
+import android.support.v4.content.ContextCompat
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
@@ -23,12 +22,13 @@ import com.yizhipin.ui.fragment.MeFragment
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
 import kotlinx.android.synthetic.main.activity_main.*
+import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener
 import org.jetbrains.anko.toast
-import java.util.*
+
 
 class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
 
-    private val mStack = Stack<Fragment>()
+    private var mFragments: MutableList<Fragment>? = null
     private val mHomeFragment by lazy { HomeFragment() }
     private val mCategoryFragment by lazy { ChatListFragment() }
     private val mFindFragment by lazy { FindFragment() }
@@ -39,7 +39,6 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
         setContentView(R.layout.activity_main)
         initFragment()
         initBottomNav()
-        changeFragment(0)
         initObserve()
         initDialog()
     }
@@ -50,42 +49,53 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
     }
 
     private fun initFragment() {
-        val manager = supportFragmentManager.beginTransaction()
-        manager.add(R.id.mContaier, mHomeFragment)
-        manager.add(R.id.mContaier, mCategoryFragment)
-        manager.add(R.id.mContaier, mFindFragment)
-        manager.add(R.id.mContaier, mMeFragment)
-        manager.commit()
 
-        mStack.add(mHomeFragment)
-        mStack.add(mCategoryFragment)
-        mStack.add(mFindFragment)
-        mStack.add(mMeFragment)
+        mFragments = ArrayList()
+        mFragments!!.add(mHomeFragment)
+        mFragments!!.add(mCategoryFragment)
+        mFragments!!.add(mFindFragment)
+        mFragments!!.add(mMeFragment)
+        if (mHomeFragment != null) { //默认选中第一个
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(R.id.mFrameLayout, mHomeFragment)
+            transaction.commit()
+        }
+
     }
 
     private fun initBottomNav() {
-        mBottomNavBar.setTabSelectedListener(object : BottomNavigationBar.OnTabSelectedListener {
-            override fun onTabReselected(position: Int) {
+
+        var navigationController = mBottomNavBar.material()
+                .addItem(R.drawable.house, getString(com.yizhipin.base.R.string.nav_bar_home))
+                .addItem(R.drawable.speech_bubble2, getString(com.yizhipin.base.R.string.nav_bar_category))
+                .addItem(R.drawable.other, getString(com.yizhipin.base.R.string.nav_bar_extend))
+                .addItem(R.drawable.user, getString(com.yizhipin.base.R.string.nav_bar_user))
+                .setDefaultColor(ContextCompat.getColor(this, R.color.yGray))
+                .build()
+
+        //底部按钮的点击事件监听
+        navigationController.addTabItemSelectedListener(object : OnTabItemSelectedListener {
+            override fun onSelected(index: Int, old: Int) {
+                val currentFragment = mFragments!!.get(index)
+                if (currentFragment != null) {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.mFrameLayout, currentFragment!!)
+                    transaction.commit()
+                }
             }
 
-            override fun onTabUnselected(position: Int) {
-            }
-
-            override fun onTabSelected(position: Int) {
-                changeFragment(position)
-            }
-
+            override fun onRepeat(index: Int) {}
         })
     }
 
-    private fun changeFragment(position: Int) {
-        val manager = supportFragmentManager.beginTransaction()
-        for (fragment in mStack) {
-            manager.hide(fragment)
-        }
-        manager.show(mStack[position])
-        manager.commit()
-    }
+    /*   private fun changeFragment(position: Int) {
+           val manager = supportFragmentManager.beginTransaction()
+           for (fragment in mStack) {
+               manager.hide(fragment)
+           }
+           manager.show(mStack[position])
+           manager.commit()
+       }*/
 
     private fun initDialog() {
         if (!AppPrefsUtils.getBoolean("isFirst")) {
@@ -101,11 +111,11 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
                     run {
 
                         if (t.position == 3) {
-                            changeFragment(2)
-                            mBottomNavBar.selectTab(2)
+//                            changeFragment(2)
+//                            mBottomNavBar.selectTab(2)
                         } else {
-                            changeFragment(1)
-                            mBottomNavBar.selectTab(1)
+//                            changeFragment(1)
+//                            mBottomNavBar.selectTab(1)
                         }
                     }
                 }.registerInBus(this)

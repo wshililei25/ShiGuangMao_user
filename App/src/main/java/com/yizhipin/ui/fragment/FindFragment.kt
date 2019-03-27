@@ -6,14 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
-import com.eightbitlab.rxbus.Bus
-import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
-import com.yizhipin.base.event.LocationShopEvent
-import com.yizhipin.base.event.SelectShopEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
@@ -23,8 +19,10 @@ import com.yizhipin.presenter.HomePresenter
 import com.yizhipin.presenter.view.HomeView
 import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.afterLogin
+import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.shop.ui.activity.ShopActivity
+import com.yizhipin.ui.activity.NewsActivity
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
 import kotlinx.android.synthetic.main.fragment_find.*
@@ -45,7 +43,6 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        initObserve()
     }
 
     override fun injectComponent() {
@@ -57,6 +54,7 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         mInteractionTv.onClick(this)
         mIntegralMallTv.onClick(this)
         mStoreTv.onClick(this)
+        mNewIv.onClick(this)
     }
 
     override fun onClick(v: View) {
@@ -64,6 +62,11 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
             R.id.mInteractionTv -> startActivity<InteractionActivity>()
             R.id.mIntegralMallTv -> afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_INTEGRAL).navigation() }
             R.id.mStoreTv -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
+            R.id.mNewIv -> {
+                afterLogin {
+                    startActivity<NewsActivity>()
+                }
+            }
         }
     }
 
@@ -74,34 +77,16 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
                 mStoreTv.text = data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_ID, data!!.getStringExtra(BaseConstant.KEY_SHOP_ID))
                 AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME))
-                Bus.send(SelectShopEvent(data!!.getStringExtra(BaseConstant.KEY_SHOP_NAME)))
             }
         }
     }
 
-    private fun initObserve() {
-        Bus.observe<SelectShopEvent>()
-                .subscribe { t: SelectShopEvent ->
-                    run {
-                        mStoreTv.text = t.name
-                    }
-                }.registerInBus(this)
-
-        Bus.observe<LocationShopEvent>()
-                .subscribe { t: LocationShopEvent ->
-                    run {
-                        mStoreTv.text = t.name
-                    }
-                }.registerInBus(this)
-    }
-
     override fun onStart() {
         super.onStart()
-        loadData()
-    }
-
-    private fun loadData() {
-        loadUnReadNewCount()
+        mStoreTv.text = AppPrefsUtils.getString(BaseConstant.KEY_SHOP_NAME)
+        if (isLogined()) {
+            loadUnReadNewCount()
+        }
     }
 
     private fun loadUnReadNewCount() {

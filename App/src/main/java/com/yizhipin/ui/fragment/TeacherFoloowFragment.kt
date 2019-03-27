@@ -56,7 +56,7 @@ class TeacherFoloowFragment : BaseMvpFragment<TeacherFollowPresenter>(), Teacher
         mRv.adapter = mAdapter
         mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<TeacherFollow> {
             override fun onItemClick(item: TeacherFollow, position: Int) {
-                startActivity<TeacherDetailActivity>(BaseConstant.KEY_CAMERAMAN_ID to item.teacherInfo.id
+                startActivity<TeacherDetailActivity>(BaseConstant.KEY_TEACHER_ID to item.teacherInfo.id
                         , BaseConstant.KEY_TEACHER_USER_ID to item.teacherInfo.uid)
 
             }

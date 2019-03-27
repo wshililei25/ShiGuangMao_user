@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap.Vertical"
+    android:background="@color/yWhite">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <TextView
+            android:id="@+id/mTitleTv"
+            style="@style/WrapWrap"
+            android:text="dddd"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize" />
+
+        <TextView
+            android:id="@+id/mContentTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mTitleTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:text="2018-10-10"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleLarSize" />
+
+        <TextView
+            android:id="@+id/mTimeTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mContentTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:text="2018-10-10"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_below="@+id/mGoodsIv" />
+</LinearLayout>
