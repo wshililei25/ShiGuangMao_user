@@ -7,7 +7,7 @@
         android:id="@+id/mGoodsIv"
         android:layout_width="match_parent"
         android:layout_height="175dp"
-        android:scaleType="fitXY"/>
+        android:scaleType="matrix"/>
 
     <TextView
         android:id="@+id/mGoodsNameTv"

@@ -79,6 +79,7 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
         mMinusIv.onClick(this)
         mPlusIv.onClick(this)
         mConfirmBtn.onClick(this)
+        mCustomBtn.onClick(this)
 
         mPayRadioGroup.setOnCheckedChangeListener(object : PayRadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(group: PayRadioGroup, checkedId: Int) {
@@ -111,6 +112,7 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mMinusIv -> {
                 if (mAmountEt.text.toString().isNotEmpty() && mAmountEt.text.toString().toDouble() > 0) {
                     var amount = mAmountEt.text.toString().toDouble() / 2
@@ -130,7 +132,6 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                 map.put("amount", mAmountEt.text.toString())
-//                map.put("amount", "0.01")
                 map.put("payType", mPayType)
                 if (mIsCashPledge) { //押金充值
                     mBasePresenter.rechargeCashPledge(map)

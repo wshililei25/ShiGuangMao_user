@@ -7,7 +7,9 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import com.yizhipin.base.R
 import com.yizhipin.base.ext.onClick
+import com.yizhipin.base.ui.web.ContentWebActivity
 import kotlinx.android.synthetic.main.layout_dialog_custom.*
+import org.jetbrains.anko.startActivity
 
 /**
  * Created by ${XiLei} on 2017/2/10.
@@ -30,8 +32,11 @@ class CustomDialog(context: Context) : Dialog(context, R.style.HB_Dialog) {
         params.gravity = Gravity.CENTER
         window.attributes = params
 
-        mView.onClick {
+        mCloseIv.onClick {
             dismiss()
+        }
+        mBg.onClick {
+            context.startActivity<ContentWebActivity>()
         }
     }
 

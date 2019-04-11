@@ -4,7 +4,6 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.activity.ShareBillListActivity"/>
         <activity android:name=".ui.activity.DressShopActivity"/>
         <activity android:name=".ui.activity.DressListActivity"/>
         <activity android:name=".ui.activity.DressDetailActivity"/>
@@ -25,5 +24,6 @@
         <activity android:name=".ui.activity.MealOrderDetailsActivity"/>
         <activity android:name=".ui.activity.EvaluateActivity"/>
         <activity android:name=".ui.activity.TeacherWorksActivity"/>
+        <activity android:name=".ui.activity.ImageLookActivity"/>
     </application>
 </manifest>

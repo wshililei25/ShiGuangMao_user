@@ -1,6 +1,7 @@
 package com.yizhipin.shop.service.impl
 
 import com.yizhipin.base.data.response.CashPledge
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.convert
 import com.yizhipin.shop.data.repository.PayRepository
 import com.yizhipin.shop.service.PayService
@@ -30,5 +31,12 @@ open class PayServiceImpl @Inject constructor() : PayService {
                 .convert()
     }
 
+    override fun getUserInfo(map: MutableMap<String, String>): Observable<UserInfo> {
+        return mRepository.getUserInfo(map).convert()
+    }
+
+    override fun applyWithdraw(map: MutableMap<String, String>): Observable<String> {
+        return mRepository.applyWithdraw(map).convert()
+    }
 
 }

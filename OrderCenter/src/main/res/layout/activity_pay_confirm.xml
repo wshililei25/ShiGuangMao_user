@@ -1,205 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/MatchWrap">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchWrap">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHeaderBar"
-        style="@style/MatchWrap"
-        app:titleText="@string/pay_order"/>
+    <RelativeLayout style="@style/MatchMatch.Vertical.White">
 
-    <View
-        android:id="@+id/line"
-        style="@style/DividerFixedHeight"
-        android:layout_below="@+id/mHeaderBar"/>
-
-    <ScrollView
-        style="@style/MatchWrap"
-        android:layout_below="@+id/line"
-        android:background="@color/yWhite">
-
-        <LinearLayout
-            style="@style/MatchMatch.Vertical">
-
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:background="@drawable/border_all"
-                android:padding="@dimen/yPadding">
-
-                <TextView
-                    android:id="@+id/mTypeTv"
-                    style="@style/WrapWrap"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/mPostageTv"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:text="¥ 0.00"
-                    android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-            </RelativeLayout>
-
-            <View
-                style="@style/DividerFixedHeight"
-                android:layout_marginLeft="@dimen/yPadding"/>
-
-            <TextView
-                style="@style/WrapWrap"
-                android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/exclamation"
-                android:drawablePadding="@dimen/yPaddingMiddle"
-                android:paddingLeft="@dimen/yPadding"
-                android:paddingTop="@dimen/yPaddingSmall"
-                android:paddingRight="@dimen/yPadding"
-                android:paddingBottom="@dimen/yPadding"
-                android:text="@string/select_pay_type"
-                android:textColor="@color/yBlackLight"
-                android:textSize="@dimen/yTextSmallSize"/>
-
-            <View
-                style="@style/DividerFixedHeight_10"/>
-
-            <RelativeLayout
-                android:id="@+id/mCouponView"
-                style="@style/MatchWrap"
-                android:background="@drawable/border_all"
-                android:padding="@dimen/yPadding">
-
-                <TextView
-                    android:id="@+id/discount"
-                    style="@style/WrapWrap"
-                    android:text="@string/discount"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_marginLeft="@dimen/yPadding"
-                    android:layout_toRightOf="@+id/discount"
-                    android:text="@string/rent_hint"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/mDiscountTv"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:text="- ¥ 0.00"
-                    android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-            </RelativeLayout>
-
-            <View
-                style="@style/DividerFixedHeight_10"/>
-
-            <TextView
-                style="@style/WrapWrap"
-                android:padding="@dimen/yPadding"
-                android:text="@string/pay_type"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <View
-                style="@style/DividerFixedHeight"
-                android:layout_marginLeft="@dimen/yPadding"/>
-
-            <com.yizhipin.base.widgets.PayRadioGroup
-                android:id="@+id/mPayRadioGroup"
-                style="@style/MatchWrap"
-                android:orientation="vertical">
-
-                <com.yizhipin.base.widgets.PayRadioPurified
-                    android:id="@+id/mBalanceRadio"
-                    style="@style/MatchWrap"
-                    app:logo1="@drawable/wallet"
-                    app:radio="@drawable/radio"
-                    app:title1="@string/balance_pay"/>
-
-                <com.yizhipin.base.widgets.PayRadioPurified
-                    android:id="@+id/mAliRadio"
-                    style="@style/MatchWrap"
-                    app:checked="true"
-                    app:logo1="@drawable/alipay"
-                    app:radio="@drawable/radio"
-                    app:title1="@string/ali_pay"/>
-
-                <com.yizhipin.base.widgets.PayRadioPurified
-                    android:id="@+id/mWechatRadio"
-                    style="@style/MatchWrap"
-                    app:logo1="@drawable/wechatpay"
-                    app:radio="@drawable/radio"
-                    app:title1="@string/wechat_pay"/>
-
-            </com.yizhipin.base.widgets.PayRadioGroup>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/bottomView"
-        style="@style/MatchWrap.Vertical"
-        android:layout_alignParentBottom="true">
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@+id/mHeaderBar"
+            style="@style/MatchWrap"
+            app:titleText="@string/pay_order" />
 
         <View
-            android:id="@+id/line1"
-            style="@style/DividerFixedHeight"/>
+            android:id="@+id/line"
+            style="@style/DividerFixedHeight"
+            android:layout_below="@+id/mHeaderBar" />
 
-        <RelativeLayout
+        <ScrollView
             style="@style/MatchWrap"
-            android:layout_below="@+id/line1"
-            android:background="@color/yWhite"
-            android:padding="@dimen/yPaddingMiddle">
+            android:layout_below="@+id/line"
+            android:background="@color/yWhite">
+
+            <LinearLayout style="@style/MatchMatch.Vertical">
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:background="@drawable/border_all"
+                    android:padding="@dimen/yPadding">
+
+                    <TextView
+                        android:id="@+id/mTypeTv"
+                        style="@style/WrapWrap"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:id="@+id/mPostageTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:text="¥ 0.00"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMiddleSize" />
+                </RelativeLayout>
+
+                <View
+                    style="@style/DividerFixedHeight"
+                    android:layout_marginLeft="@dimen/yPadding" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/exclamation"
+                    android:drawablePadding="@dimen/yPaddingMiddle"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding"
+                    android:paddingBottom="@dimen/yPadding"
+                    android:text="@string/select_pay_type"
+                    android:textColor="@color/yBlackLight"
+                    android:textSize="@dimen/yTextSmallSize" />
+
+                <View style="@style/DividerFixedHeight_10" />
+
+                <RelativeLayout
+                    android:id="@+id/mCouponView"
+                    style="@style/MatchWrap"
+                    android:background="@drawable/border_all"
+                    android:padding="@dimen/yPadding">
+
+                    <TextView
+                        android:id="@+id/discount"
+                        style="@style/WrapWrap"
+                        android:text="@string/discount"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPadding"
+                        android:layout_toRightOf="@+id/discount"
+                        android:text="@string/rent_hint"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:id="@+id/mDiscountTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:text="- ¥ 0.00"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMiddleSize" />
+                </RelativeLayout>
+
+                <View style="@style/DividerFixedHeight_10" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:padding="@dimen/yPadding"
+                    android:text="@string/pay_type"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <View
+                    style="@style/DividerFixedHeight"
+                    android:layout_marginLeft="@dimen/yPadding" />
+
+                <com.yizhipin.base.widgets.PayRadioGroup
+                    android:id="@+id/mPayRadioGroup"
+                    style="@style/MatchWrap"
+                    android:orientation="vertical">
+
+                    <com.yizhipin.base.widgets.PayRadioPurified
+                        android:id="@+id/mBalanceRadio"
+                        style="@style/MatchWrap"
+                        app:logo1="@drawable/wallet"
+                        app:radio="@drawable/radio"
+                        app:title1="@string/balance_pay" />
+
+                    <com.yizhipin.base.widgets.PayRadioPurified
+                        android:id="@+id/mAliRadio"
+                        style="@style/MatchWrap"
+                        app:checked="true"
+                        app:logo1="@drawable/alipay"
+                        app:radio="@drawable/radio"
+                        app:title1="@string/ali_pay" />
+
+                    <com.yizhipin.base.widgets.PayRadioPurified
+                        android:id="@+id/mWechatRadio"
+                        style="@style/MatchWrap"
+                        app:logo1="@drawable/wechatpay"
+                        app:radio="@drawable/radio"
+                        app:title1="@string/wechat_pay" />
+
+                </com.yizhipin.base.widgets.PayRadioGroup>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/bottomView"
+            style="@style/MatchWrap.Vertical"
+            android:layout_alignParentBottom="true">
+
+            <View
+                android:id="@+id/line1"
+                style="@style/DividerFixedHeight" />
 
             <RelativeLayout
-                style="@style/WrapWrap"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical">
+                style="@style/MatchWrap"
+                android:layout_below="@+id/line1"
+                android:background="@color/yWhite"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <RelativeLayout
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/payment"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mRealityPriceTv"
+                        android:layout_marginBottom="@dimen/yPaddingMinSmall"
+                        android:text="@string/payment"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:id="@+id/rmb"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mRealityPriceTv"
+                        android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                        android:layout_marginBottom="@dimen/yPaddingMinSmall"
+                        android:layout_toRightOf="@+id/payment"
+                        android:text="@string/rmb"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:id="@+id/mRealityPriceTv"
+                        style="@style/WrapWrap"
+                        android:layout_toRightOf="@+id/rmb"
+                        android:text="0.00"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMaxSize" />
+                </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/payment"
-                    style="@style/WrapWrap"
-                    android:layout_alignBottom="@+id/mRealityPriceTv"
-                    android:layout_marginBottom="@dimen/yPaddingMinSmall"
-                    android:text="@string/payment"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/rmb"
-                    style="@style/WrapWrap"
-                    android:layout_alignBottom="@+id/mRealityPriceTv"
-                    android:layout_marginLeft="@dimen/yPaddingMinSmall"
-                    android:layout_marginBottom="@dimen/yPaddingMinSmall"
-                    android:layout_toRightOf="@+id/payment"
-                    android:text="@string/rmb"
-                    android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/mRealityPriceTv"
-                    style="@style/WrapWrap"
-                    android:layout_toRightOf="@+id/rmb"
-                    android:text="0.00"
-                    android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextMaxSize"/>
+                    android:id="@+id/mPayBtn"
+                    style="@style/FullBtnStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="11dp"
+                    android:enabled="true"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/yPaddingBig"
+                    android:paddingRight="@dimen/yPaddingBig"
+                    android:text="@string/confirm_pay"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextMiddleBigSize" />
             </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/mPayBtn"
-                style="@style/FullBtnStyle"
-                android:layout_width="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="11dp"
-                android:enabled="true"
-                android:gravity="center"
-                android:paddingLeft="@dimen/yPaddingBig"
-                android:paddingRight="@dimen/yPaddingBig"
-                android:text="@string/confirm_pay"
-                android:textColor="@color/yWhite"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

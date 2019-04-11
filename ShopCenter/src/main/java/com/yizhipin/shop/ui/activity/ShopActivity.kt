@@ -10,6 +10,7 @@ import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Store
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.provider.common.ProvideReqCode
@@ -19,7 +20,7 @@ import com.yizhipin.shop.injection.module.ShopModule
 import com.yizhipin.shop.presenter.ShopPresenter
 import com.yizhipin.shop.presenter.view.ShopView
 import com.yizhipin.shop.ui.adapter.ShopAdapter
-import kotlinx.android.synthetic.main.activity_shop.*
+import kotlinx.android.synthetic.main.activity_recyclerview.*
 import org.jetbrains.anko.startActivityForResult
 
 /**
@@ -35,17 +36,19 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.OnClickLis
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shop)
+        setContentView(R.layout.activity_recyclerview)
 
         initView()
         initRefreshLayout()
     }
 
     private fun initView() {
+        mCustomBtn.onClick(this)
 
-        mAddressRv.layoutManager = LinearLayoutManager(this)
+        mHeaderBar.getTiTleTv().text = getString(R.string.select_shop)
+        mRv.layoutManager = LinearLayoutManager(this)
         mShopAdapter = ShopAdapter(this)
-        mAddressRv.adapter = mShopAdapter
+        mRv.adapter = mShopAdapter
         mShopAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Store> {
             override fun onItemClick(item: Store, position: Int) {
                 startActivityForResult<ShopDetailActivity>(ProvideReqCode.CODE_REQ_SHOP, BaseConstant.KEY_SHOP_ID to item.id.toString())
@@ -94,7 +97,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.OnClickLis
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
         }
     }
 

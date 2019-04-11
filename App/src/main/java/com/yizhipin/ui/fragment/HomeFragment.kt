@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
+import com.hyphenate.helpdesk.easeui.util.IntentBuilder
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
@@ -147,14 +148,10 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
                     1 -> ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_MEAL).withString(BaseConstant.KEY_PHOTOGRAPH, PhotographStatus.DEAL_PHOTO).navigation()
                     2 -> ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_MEAL).withString(BaseConstant.KEY_PHOTOGRAPH, PhotographStatus.DEAL_BABY).navigation()
                     3 -> ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_GOODS_DRESSSHOP).navigation()
-                    4 -> {
-                        afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_CLOUD_DISK).navigation() }
-                    }
+                    4 -> afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_CLOUD_DISK).navigation() }
                     5 -> ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_TIME_SUPERMARKET).navigation()
                     6 -> toast(getString(R.string.please_look_forward_to))
-                    7 -> {
-                        afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_INTEGRAL).navigation() }
-                    }
+                    7 -> afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_INTEGRAL).navigation() }
                 }
             }
         })
@@ -187,11 +184,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         when (v.id) {
             R.id.mMoreTv -> startActivity<InformationActivity>()
             R.id.mStoreTv -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
-            R.id.mNewIv -> {
-                afterLogin {
-                    startActivity<NewsActivity>()
-                }
-            }
+            R.id.mNewIv -> afterLogin { startActivity<NewsActivity>() }
         }
     }
 

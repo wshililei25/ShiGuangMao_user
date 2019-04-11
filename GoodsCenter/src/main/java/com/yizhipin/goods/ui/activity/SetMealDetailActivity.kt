@@ -37,6 +37,7 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_meal_details.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.startActivityForResult
 
 
 /**
@@ -87,6 +88,7 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
         mPhoneBtn.onClick(this)
         mCustomBtn.onClick(this)
         mEvaluateMoreTv.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     private fun initBanner() {
@@ -122,7 +124,7 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mShopView -> ARouter.getInstance().build(RouterPath.ShopCenter.PATH_SHOP_DETAILS).withString(BaseConstant.KEY_SHOP_ID, mSetMealDetails.storeId).navigation()
             R.id.mCollectionView -> {
 
@@ -289,6 +291,5 @@ class SetMealDetailActivity : BaseMvpActivity<SetMealDetailsPresenter>(), SetMea
 
     override fun onOrderDetailsSuccess(result: OrderDetails) {
     }
-
 
 }

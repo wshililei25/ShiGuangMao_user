@@ -6,7 +6,6 @@
               android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/mView"
         style="@style/MatchWrap"
         android:padding="@dimen/yPadding">
 
@@ -18,9 +17,11 @@
             android:src="@drawable/dsz"/>
 
         <ImageView
+            android:id="@+id/mCloseIv"
             style="@style/WrapWrap"
             android:layout_alignRight="@+id/mBg"
             android:layout_margin="@dimen/yPadding"
+            android:padding="@dimen/yPaddingMiddle"
             android:src="@drawable/cancelw"/>
 
         <TextView

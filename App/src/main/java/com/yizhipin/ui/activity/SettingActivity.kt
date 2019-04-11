@@ -45,11 +45,13 @@ class SettingActivity : BaseActivity(), View.OnClickListener {
         mAboutTv.onClick(this)
         mLogoutBtn.onClick(this)
         mUpdateLoginTv.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     override fun onClick(v: View) {
 
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mAboutTv -> startActivity<VersionInfoActivity>()
 
             R.id.mLogoutBtn -> {

@@ -1,88 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.Common">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.Common">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        style="@style/MatchWrap"
-        app:rightText="@string/invitation_rule"
-        app:titleText="@string/invitation_code_"/>
+    <LinearLayout style="@style/MatchMatch.Vertical.White">
 
-    <View
-        style="@style/DividerFixedHeight_10"/>
+        <com.yizhipin.base.widgets.HeaderBar
+            style="@style/MatchWrap"
+            app:rightText="@string/invitation_rule"
+            app:titleText="@string/invitation_code_" />
 
-    <LinearLayout
-        style="@style/MatchWrap.Vertical"
-        android:background="@color/yWhite"
-        android:gravity="center_horizontal"
-        android:paddingTop="@dimen/yPaddingBigSmall"
-        android:paddingBottom="@dimen/yPaddingBigSmall">
+        <View style="@style/DividerFixedHeight_10" />
 
-        <TextView
-            android:id="@+id/mIntegralTv"
-            style="@style/WrapWrap"
-            android:textColor="@color/text_light_dark"
-            android:textSize="@dimen/yTextHugeSize"/>
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:background="@color/yWhite"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/yPaddingBigSmall"
+            android:paddingBottom="@dimen/yPaddingBigSmall">
 
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_marginTop="@dimen/yPaddingMinSmall"
-            android:text="@string/my_invitation"
-            android:textColor="@color/text_normal"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            <TextView
+                android:id="@+id/mIntegralTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/text_light_dark"
+                android:textSize="@dimen/yTextHugeSize" />
 
-        <TextView
-            android:id="@+id/mIntegralMallTv"
-            style="@style/WrapWrap"
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/yPaddingMinSmall"
+                android:text="@string/my_invitation"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/mIntegralMallTv"
+                style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:drawableLeft="@drawable/tirps"
+                android:drawablePadding="@dimen/yPaddingMinSmall"
+                android:text="@string/my_invitation_hint"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextSmallSize" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/MatchWrap"
             android:layout_marginTop="@dimen/yPaddingMiddle"
-            android:drawableLeft="@drawable/tirps"
-            android:drawablePadding="@dimen/yPaddingMinSmall"
-            android:text="@string/my_invitation_hint"
-            android:textColor="@color/yCategory"
-            android:textSize="@dimen/yTextSmallSize"/>
+            android:background="@color/yWhite"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/yPadding">
 
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/invitation_peo"
+                android:textColor="@color/text_light_dark"
+                android:textSize="@dimen/yTextMiddleLarSize" />
+
+            <TextView
+                android:id="@+id/mInvitationTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/rightarrow"
+                android:drawablePadding="@dimen/yPaddingMinSmall"
+                android:text="@string/my_invitation_hint_"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextMiddleSize" />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/MatchWrap"
+            android:background="@color/yBgGray"
+            android:padding="@dimen/yPadding"
+            android:text="@string/my_invitation_peo"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleLarSize" />
+
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/mMultiStateView"
+            style="@style/MultiStateStyle">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerView"
+                style="@style/commonRecyclerView" />
+        </com.kennyc.view.MultiStateView>
     </LinearLayout>
 
-    <RelativeLayout
-        style="@style/MatchWrap"
-        android:layout_marginTop="@dimen/yPaddingMiddle"
-        android:background="@color/yWhite"
-        android:gravity="center_horizontal"
-        android:padding="@dimen/yPadding">
-
-        <TextView
-            style="@style/WrapWrap"
-            android:text="@string/invitation_peo"
-            android:textColor="@color/text_light_dark"
-            android:textSize="@dimen/yTextMiddleLarSize"/>
-
-        <TextView
-            android:id="@+id/mInvitationTv"
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:drawableRight="@drawable/rightarrow"
-            android:drawablePadding="@dimen/yPaddingMinSmall"
-            android:text="@string/my_invitation_hint_"
-            android:textColor="@color/yCategory"
-            android:textSize="@dimen/yTextMiddleSize"/>
-
-    </RelativeLayout>
-
-    <TextView
-        style="@style/MatchWrap"
-        android:background="@color/yBgGray"
-        android:padding="@dimen/yPadding"
-        android:text="@string/my_invitation_peo"
-        android:textColor="@color/yBlack"
-        android:textSize="@dimen/yTextMiddleLarSize"/>
-
-    <com.kennyc.view.MultiStateView
-        android:id="@+id/mMultiStateView"
-        style="@style/MultiStateStyle">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mRecyclerView"
-            style="@style/commonRecyclerView"/>
-    </com.kennyc.view.MultiStateView>
-
-</LinearLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

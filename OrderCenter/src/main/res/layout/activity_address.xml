@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/MatchMatch.Vertical.Common">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.Common">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHeaderBar"
-        style="@style/MatchWrap"
-        app:titleText="@string/take_address"/>
+    <RelativeLayout style="@style/MatchMatch.Vertical.White">
 
-    <com.kennyc.view.MultiStateView
-        android:id="@+id/mMultiStateView"
-        style="@style/MultiStateStyle"
-        android:layout_above="@+id/mAddAddressView"
-        android:layout_below="@id/mHeaderBar"
-        android:layout_marginTop="@dimen/yPaddingMiddle">
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@+id/mHeaderBar"
+            style="@style/MatchWrap"
+            app:titleText="@string/take_address" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mAddressRv"
-            style="@style/commonRecyclerView"/>
-    </com.kennyc.view.MultiStateView>
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/mMultiStateView"
+            style="@style/MultiStateStyle"
+            android:layout_above="@+id/mAddAddressView"
+            android:layout_below="@id/mHeaderBar"
+            android:layout_marginTop="@dimen/yPaddingMiddle">
 
-    <RelativeLayout
-        android:id="@+id/mAddAddressView"
-        style="@style/MatchWrap"
-        android:layout_alignParentBottom="true"
-        android:background="@color/yWhite"
-        android:padding="@dimen/yPaddingMiddle">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mAddressRv"
+                style="@style/commonRecyclerView" />
+        </com.kennyc.view.MultiStateView>
 
-        <Button
-            android:id="@+id/mAddAddressBtn"
-            style="@style/FullBtnStyle"
-            android:enabled="true"
-            android:text="@string/add_address"/>
+        <RelativeLayout
+            android:id="@+id/mAddAddressView"
+            style="@style/MatchWrap"
+            android:layout_alignParentBottom="true"
+            android:background="@color/yWhite"
+            android:padding="@dimen/yPaddingMiddle">
+
+            <Button
+                android:id="@+id/mAddAddressBtn"
+                style="@style/FullBtnStyle"
+                android:enabled="true"
+                android:text="@string/add_address" />
+        </RelativeLayout>
     </RelativeLayout>
 
-</RelativeLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

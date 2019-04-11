@@ -90,6 +90,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mWithdrawTv.onClick(this)
         mRecommendationsTv.onClick(this)
         mNewIv.onClick(this)
+        mShareMoneyTv.onClick(this)
     }
 
     private fun loadData() {
@@ -214,6 +215,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             R.id.mNewIv -> {
                 afterLogin {
                     startActivity<NewsActivity>()
+                }
+            }
+            R.id.mShareMoneyTv -> {
+                afterLogin {
+                    startActivity<ShareActivity>(UserConstant.KEY_INCITATION_CODE to mUserInfo.requestCode)
                 }
             }
         }

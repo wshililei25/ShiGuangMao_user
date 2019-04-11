@@ -22,6 +22,7 @@ import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.shop.ui.activity.ShopActivity
+import com.yizhipin.ui.activity.InformationActivity
 import com.yizhipin.ui.activity.NewsActivity
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
@@ -55,6 +56,8 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         mIntegralMallTv.onClick(this)
         mStoreTv.onClick(this)
         mNewIv.onClick(this)
+        mTimeTopTv.onClick(this)
+        mOnSelectionTv.onClick(this)
     }
 
     override fun onClick(v: View) {
@@ -62,11 +65,9 @@ class FindFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
             R.id.mInteractionTv -> startActivity<InteractionActivity>()
             R.id.mIntegralMallTv -> afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_INTEGRAL).navigation() }
             R.id.mStoreTv -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
-            R.id.mNewIv -> {
-                afterLogin {
-                    startActivity<NewsActivity>()
-                }
-            }
+            R.id.mTimeTopTv -> startActivity<InformationActivity>()
+            R.id.mNewIv -> afterLogin { startActivity<NewsActivity>() }
+            R.id.mOnSelectionTv -> afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_CLOUD_DISK).navigation() }
         }
     }
 

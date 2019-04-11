@@ -88,6 +88,7 @@ class ShopDetailActivity : BaseMvpActivity<ShopDetailsPresenter>(), ShopDetailsV
         mCollectionView.onClick(this)
         mBtn.onClick(this)
         mEvaluateMoreTv.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     private fun initBanner() {
@@ -186,7 +187,7 @@ class ShopDetailActivity : BaseMvpActivity<ShopDetailsPresenter>(), ShopDetailsV
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mCollectionView -> {
 
                 afterLogin {

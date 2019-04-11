@@ -1,7 +1,10 @@
 package com.yizhipin.goods.ui.activity
 
+import android.content.Intent
 import android.graphics.Paint
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
@@ -10,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.WebJs
 import com.yizhipin.base.data.protocol.BasePagingResp
@@ -82,9 +86,10 @@ class TimeSuperMarketDetailActivity : BaseMvpActivity<TimeSuperMarketPresenter>(
 
         mBackIv.onClick { finish() }
         mShopView.onClick(this)
-        mAddCartBtn.onClick(this)
+        mPhoneBtn.onClick(this)
         mCollectionView.onClick(this)
         mBuyBtn.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     private fun initBanner() {
@@ -124,6 +129,7 @@ class TimeSuperMarketDetailActivity : BaseMvpActivity<TimeSuperMarketPresenter>(
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mShopView -> ARouter.getInstance().build(RouterPath.ShopCenter.PATH_SHOP_DETAILS).withString(BaseConstant.KEY_SHOP_ID, mTimeSuperMarket.storeId).navigation()
             R.id.mCollectionView -> {
 
@@ -138,6 +144,20 @@ class TimeSuperMarketDetailActivity : BaseMvpActivity<TimeSuperMarketPresenter>(
                     }
                     loadFollow()
                 }
+            }
+
+            R.id.mPhoneBtn -> {
+                RxPermissions(this).request(android.Manifest.permission.CALL_PHONE)
+                        .subscribe({ granted ->
+                            if (granted) {
+                                val intent = Intent(Intent.ACTION_CALL)
+                                val data = Uri.parse("tel:${getString(R.string.phoneNum)}")
+                                intent.data = data
+                                startActivity(intent)
+                            } else {
+                                Log.d("XiLei", "请开启电话权限")
+                            }
+                        })
             }
             R.id.mBuyBtn, R.id.mRentBtn -> {
                 mMarketSkuPopView.showAtLocation(contentView, Gravity.BOTTOM, 0, 0)

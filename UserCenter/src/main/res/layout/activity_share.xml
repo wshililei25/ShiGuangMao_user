@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <RelativeLayout style="@style/MatchMatch.Vertical.White">
+
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@+id/mHeaderBar"
+            style="@style/MatchWrap"
+            app:titleText="@string/share_money" />
+
+        <RelativeLayout
+            android:layout_below="@+id/mHeaderBar"
+            style="@style/MatchMatch"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                android:id="@+id/tv"
+                style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:text="@string/share_money"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_below="@+id/tv"
+                android:layout_marginTop="@dimen/yPaddingMinSmall"
+                android:text="新用户通过老顾客分享的邀请码订单有分享金"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize" />
+
+            <Button
+                android:id="@+id/mBtn"
+                style="@style/FullBtnStyle"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_marginTop="@dimen/yPadding"
+                android:layout_marginRight="@dimen/yPadding"
+                android:enabled="true"
+                android:text="查看我的邀请码" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

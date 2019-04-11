@@ -1,6 +1,8 @@
 package com.yizhipin.generalizecenter.ui.activity
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
@@ -13,6 +15,7 @@ import com.yizhipin.base.data.response.Comment
 import com.yizhipin.base.data.response.Interaction
 import com.yizhipin.base.data.response.InteractionDetails
 import com.yizhipin.base.ext.loadUrl
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
@@ -75,6 +78,9 @@ class InteractionDetailsActivity : BaseMvpActivity<InteractionPresenter>(), Repo
             }
         })
 
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
 
@@ -101,6 +107,8 @@ class InteractionDetailsActivity : BaseMvpActivity<InteractionPresenter>(), Repo
             mDateTv.text = DateUtils.parseDate(releaseTime, DateUtils.FORMAT_SHORT).toString()
             mLikeCountTv.text = "${zanCount}点赞"
             mEvaCountTv.text = "${evaCount}评论"
+            mLikeCountTv.isSelected = zan
+            mLikeCountTv.setCompoundDrawables(getSortStatus(zan), null, null, null)
 
             nickname?.let {
                 mNameTv.text = nickname
@@ -144,6 +152,21 @@ class InteractionDetailsActivity : BaseMvpActivity<InteractionPresenter>(), Repo
     override fun onCommentSuccess(result: Comment) {
         mEt.setText("")
         loadData()
+    }
+
+    private fun getSortStatus(isLike: Boolean): Drawable? {
+        var drawable: Drawable? = null
+        when (isLike) {
+            true -> {
+                drawable = ContextCompat.getDrawable(context, R.drawable.heart7)!!
+                drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
+            }
+            false -> {
+                drawable = ContextCompat.getDrawable(context, R.drawable.heart5)!!
+                drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
+            }
+        }
+        return drawable
     }
 
     override fun onGetInteractionListSuccess(result: BasePagingResp<MutableList<Interaction>>) {

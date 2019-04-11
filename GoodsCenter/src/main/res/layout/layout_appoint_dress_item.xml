@@ -33,7 +33,7 @@
                     android:id="@+id/mWomenIv"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="center"
                     android:src="@drawable/add"/>
 
                 <TextView
@@ -57,7 +57,7 @@
                     android:id="@+id/mManIv"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="center"
                     android:src="@drawable/add"/>
 
                 <TextView

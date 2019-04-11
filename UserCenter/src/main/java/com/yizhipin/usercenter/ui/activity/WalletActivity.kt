@@ -47,6 +47,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
     private fun initView() {
         mRechargeTv.onClick(this)
         mWithdrawTv.onClick(this)
+        mCustomBtn.onClick(this)
 
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mFeeRecordAdapter = FeeRecordAdapter(this)
@@ -90,6 +91,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mRechargeTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE).navigation()
             R.id.mWithdrawTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW)
                     .withBoolean(BaseConstant.KEY_IS_CASH, false).navigation()

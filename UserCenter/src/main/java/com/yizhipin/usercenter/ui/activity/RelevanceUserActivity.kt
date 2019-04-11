@@ -43,6 +43,7 @@ class RelevanceUserActivity : BaseMvpActivity<RelevancePresenter>(), RelevanceVi
         mBtn.onClick(this)
         mRenewalTv.onClick(this)
         mDeleteTv.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     override fun onStart() {
@@ -85,6 +86,7 @@ class RelevanceUserActivity : BaseMvpActivity<RelevancePresenter>(), RelevanceVi
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mBtn -> startActivity<RelevanceAddActivity>(BaseConstant.KEY_IS_ADD to true)
             R.id.mRenewalTv -> startActivity<RelevanceAddActivity>(BaseConstant.KEY_IS_ADD to false,BaseConstant.KEY_RELEVANCE_ID to mRelevanceUser.id)
             R.id.mDeleteTv -> {

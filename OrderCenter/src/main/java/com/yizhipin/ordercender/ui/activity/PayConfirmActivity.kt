@@ -124,6 +124,7 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
 
         mPayBtn.onClick(this)
         mCouponView.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     /**
@@ -139,6 +140,7 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mPayBtn -> {
 
                 when (mPayFrom) {
@@ -198,6 +200,8 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
 
             "yue" -> {
                 startActivity<PaySuccessActivity>(BaseConstant.KEY_PAY_CONTENT to getString(R.string.pay_success))
+                var intent = Intent()
+                setResult(ProvideReqCode.CODE_RESULT_PAY_SUCCESS, intent)
                 finish()
             }
             "Alipay" -> {
@@ -229,6 +233,9 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                 mIWXAPI.sendReq(req)
             }
         }
+
+        var intent = Intent()
+        setResult(ProvideReqCode.CODE_RESULT_PAY_SUCCESS, intent)
     }
 
     //支付宝支付 begin

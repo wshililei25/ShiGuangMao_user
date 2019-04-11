@@ -5,10 +5,12 @@ import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.hyphenate.helpdesk.easeui.util.IntentBuilder
 import com.yizhipin.R
 import com.yizhipin.base.common.AppManager
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.event.HomeIntentEvent
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.dialog.CustomDialog
 import com.yizhipin.base.ui.dialog.RedPackageDialog
@@ -37,6 +39,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initView()
         initFragment()
         initBottomNav()
         initObserve()
@@ -46,6 +49,12 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
     override fun injectComponent() {
         DaggerMainComponent.builder().activityComponent(mActivityComponent).mianModule(MianModule()).build().inject(this)
         mBasePresenter.mView = this
+    }
+
+    private fun initView(){
+        mCustomBtn.onClick {
+           custom()
+        }
     }
 
     private fun initFragment() {

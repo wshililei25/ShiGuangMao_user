@@ -1,55 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.Common">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.Common">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        style="@style/MatchWrap"
-        app:titleText="@string/version_info"/>
+    <LinearLayout style="@style/MatchMatch.Vertical">
 
-    <ImageView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPaddingBig"
-        android:src="@drawable/telephoneservice"/>
+        <com.yizhipin.base.widgets.HeaderBar
+            style="@style/MatchWrap"
+            app:titleText="@string/version_info" />
 
-    <TextView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPadding"
-        android:text="@string/business_phone"
-        android:textColor="@color/yBlackDeep"
-        android:textSize="@dimen/yTextBigSize"/>
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingBig"
+            android:src="@drawable/telephoneservice" />
 
-    <TextView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPadding"
-        android:text="@string/cooperate_phone"
-        android:textColor="@color/yBlackDeep"
-        android:textSize="@dimen/yTextBigSize"/>
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPadding"
+            android:text="@string/business_phone"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextBigSize" />
 
-    <TextView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPadding"
-        android:text="@string/customer_cos_phone"
-        android:textColor="@color/yBlackDeep"
-        android:textSize="@dimen/yTextBigSize"/>
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPadding"
+            android:text="@string/cooperate_phone"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextBigSize" />
 
-    <ImageView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPaddingBig"
-        android:src="@drawable/wechatservice"/>
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPadding"
+            android:text="@string/customer_cos_phone"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextBigSize" />
 
-    <TextView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPadding"
-        android:text="@string/wechat_phone"
-        android:textColor="@color/yBlackDeep"
-        android:textSize="@dimen/yTextBigSize"/>
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingBig"
+            android:src="@drawable/wechatservice" />
 
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPadding"
+            android:text="@string/wechat_phone"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextBigSize" />
+    </LinearLayout>
 
-</LinearLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

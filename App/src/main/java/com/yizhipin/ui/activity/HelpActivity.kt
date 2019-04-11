@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
+import com.hyphenate.helpdesk.easeui.util.IntentBuilder
 import com.kennyc.view.MultiStateView
 import com.yizhipin.R
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Help
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.presenter.HelpPresenter
@@ -41,6 +43,10 @@ class HelpActivity : BaseMvpActivity<HelpPresenter>(), HelpView, BGARefreshLayou
         mRv.layoutManager = LinearLayoutManager(this)
         mAdapter = HelpAdapter(this)
         mRv.adapter = mAdapter
+
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
     private fun initRefreshLayout() {

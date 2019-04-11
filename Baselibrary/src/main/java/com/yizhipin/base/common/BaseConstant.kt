@@ -112,5 +112,7 @@ class BaseConstant {
         const val KEY_IS_CASH = "isCash"
         //是否预定
         const val KEY_IS_DESTINE = "destine"
+        //可退还押金
+        const val KEY_DEPOSIT = "deposit"
     }
 }

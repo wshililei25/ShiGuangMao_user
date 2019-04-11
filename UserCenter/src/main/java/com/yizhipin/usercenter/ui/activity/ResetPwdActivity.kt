@@ -31,6 +31,7 @@ class ResetPwdActivity : BaseMvpActivity<ResetPwdPresenter>(), ResetPwdView, Vie
         mBackIv.onClick(this)
         mSendCodeTv.onClick(this)
         mLoginBtn.onClick(this)
+        mCustomBtn.onClick(this)
         mLoginBtn.enable(mMobileEt, { isBtnEnable() })
         mLoginBtn.enable(mCodeEt, { isBtnEnable() })
         mLoginBtn.enable(mPswEt, { isBtnEnable() })
@@ -38,6 +39,7 @@ class ResetPwdActivity : BaseMvpActivity<ResetPwdPresenter>(), ResetPwdView, Vie
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mBackIv -> finish()
             R.id.mSendCodeTv -> {
                 if (mMobileEt.text.toString().isNullOrEmpty()) {

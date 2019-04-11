@@ -95,7 +95,6 @@ dependencies {
     api(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
 }
 
 //Parcelable序列化插件

@@ -45,6 +45,7 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
 
     private fun initView() {
         mSaveBtn.onClick(this)
+        mCustomBtn.onClick(this)
         mCityAddressView.onClick(this)
     }
 
@@ -68,7 +69,7 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mCityAddressView -> {
                 mPopupWindow = PopupWindow(this)
                 val rootView = LayoutInflater.from(this).inflate(R.layout.pop_address_picker, null, false)

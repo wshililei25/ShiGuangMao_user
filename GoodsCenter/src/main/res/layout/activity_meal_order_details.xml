@@ -1,683 +1,688 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/MatchMatch"
-                android:background="@color/yWhite">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch"
+    android:background="@color/yWhite">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHeaderBar"
-        style="@style/MatchWrap"
-        app:titleText="@string/confirm_order"/>
+    <RelativeLayout style="@style/MatchMatch.Vertical">
 
-    <ScrollView
-        style="@style/MatchMatch"
-        android:layout_above="@+id/bottomView"
-        android:layout_below="@+id/mHeaderBar">
-
-        <LinearLayout
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@+id/mHeaderBar"
             style="@style/MatchWrap"
-            android:orientation="vertical">
+            app:titleText="@string/confirm_order" />
 
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:background="@color/yRed"
-                android:padding="@dimen/yPadding">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:text="准备阶段"
-                    android:textColor="@color/yWhite"
-                    android:textSize="@dimen/yTextLargeSize"/>
-
-                <TextView
-                    android:id="@+id/mTypeTv"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:text="准备阶段"
-                    android:textColor="@color/yWhite"
-                    android:textSize="@dimen/yTextSmallSize"/>
-            </RelativeLayout>
-
-            <TextView
-                style="@style/WrapWrap"
-                android:padding="@dimen/yPaddingMiddle"
-                android:text="@string/order_commodity_information"
-                android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <View
-                style="@style/DividerFixedHeight"/>
-
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:padding="@dimen/yPaddingMiddle">
-
-                <ImageView
-                    android:id="@+id/mGoodsIv"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:scaleType="fitXY"/>
-
-                <TextView
-                    android:id="@+id/mGoodNameTv"
-                    style="@style/WrapWrap"
-                    android:layout_marginLeft="@dimen/yPaddingSmall"
-                    android:layout_toRightOf="@+id/mGoodsIv"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleBigSize"/>
-
-                <TextView
-                    android:id="@+id/mMealPriceTv"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:text="￥ 0.00"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/mNumTv"
-                    style="@style/WrapWrap"
-                    android:layout_below="@+id/mGoodNameTv"
-                    android:layout_marginLeft="@dimen/yPaddingSmall"
-                    android:layout_marginTop="@dimen/yPaddingSmall"
-                    android:layout_toRightOf="@+id/mGoodsIv"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/mShopNameTv"
-                    style="@style/WrapWrap"
-                    android:layout_alignBottom="@+id/mGoodsIv"
-                    android:layout_marginLeft="@dimen/yPaddingSmall"
-                    android:layout_toRightOf="@+id/mGoodsIv"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-            </RelativeLayout>
-
-            <View
-                style="@style/DividerFixedHeight_10"/>
-
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:padding="@dimen/yPaddingMiddle">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:text="@string/user_info"
-                    android:textColor="@color/yCategory"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/mEditTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:drawableRight="@drawable/rightarrow"
-                    android:drawablePadding="@dimen/yPaddingSmall"
-                    android:text="@string/edit"
-                    android:textColor="@color/yCategory"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-            </RelativeLayout>
-
-            <View
-                style="@style/DividerFixedHeight"/>
+        <ScrollView
+            style="@style/MatchMatch"
+            android:layout_above="@+id/bottomView"
+            android:layout_below="@+id/mHeaderBar">
 
             <LinearLayout
                 style="@style/MatchWrap"
-                android:paddingTop="@dimen/yPaddingBigSmall"
-                android:paddingBottom="@dimen/yPaddingBigSmall">
-
-                <LinearLayout
-                    style="@style/MatchWrap.Vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/mUserNameIv"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextLargeSize"/>
-
-                    <TextView
-                        android:id="@+id/mUserNameTv"
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPaddingSmall"
-                        android:text="@string/dress"
-                        android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextMiddleBigSize"/>
-                </LinearLayout>
-
-                <View
-                    style="@style/DividerFixedWidth"/>
+                android:orientation="vertical">
 
                 <RelativeLayout
-                    style="@style/MatchWrap.Vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/yPaddingMiddle"
-                    android:layout_weight="1"
-                    android:gravity="center">
+                    style="@style/MatchWrap"
+                    android:background="@color/yRed"
+                    android:padding="@dimen/yPadding">
 
                     <TextView
-                        android:id="@+id/bridegroom"
                         style="@style/WrapWrap"
-                        android:text="@string/bridegroom"
-                        android:textColor="@color/yCategory"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:text="准备阶段"
+                        android:textColor="@color/yWhite"
+                        android:textSize="@dimen/yTextLargeSize" />
 
                     <TextView
-                        android:id="@+id/mBridegroomTv"
+                        android:id="@+id/mTypeTv"
                         style="@style/WrapWrap"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"
-                        android:layout_toRightOf="@+id/bridegroom"
-                        android:text="-----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
-
-                    <TextView
-                        android:id="@+id/bride"
-                        style="@style/WrapWrap"
-                        android:layout_below="@+id/bridegroom"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:text="@string/bride"
-                        android:textColor="@color/yCategory"
-                        android:textSize="@dimen/yTextMiddleSize"/>
-
-                    <TextView
-                        android:id="@+id/mBrideTv"
-                        style="@style/WrapWrap"
-                        android:layout_below="@+id/bridegroom"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:layout_toRightOf="@+id/bride"
-                        android:text="-----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
-
-                    <TextView
-                        android:id="@+id/wedding_day"
-                        style="@style/WrapWrap"
-                        android:layout_below="@+id/bride"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:text="@string/wedding_day"
-                        android:textColor="@color/yCategory"
-                        android:textSize="@dimen/yTextMiddleSize"/>
-
-                    <TextView
-                        android:id="@+id/mWeddingDayTv"
-                        style="@style/WrapWrap"
-                        android:layout_below="@+id/bride"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:layout_toRightOf="@+id/wedding_day"
-                        android:text="-----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:layout_alignParentRight="true"
+                        android:text="准备阶段"
+                        android:textColor="@color/yWhite"
+                        android:textSize="@dimen/yTextSmallSize" />
                 </RelativeLayout>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:padding="@dimen/yPaddingMiddle"
+                    android:text="@string/order_commodity_information"
+                    android:textColor="@color/yCategory"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <View style="@style/DividerFixedHeight" />
 
                 <RelativeLayout
-                    style="@style/MatchWrap.Vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
-                    android:gravity="center">
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle">
+
+                    <ImageView
+                        android:id="@+id/mGoodsIv"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:scaleType="fitXY" />
 
                     <TextView
-                        android:id="@+id/time"
+                        android:id="@+id/mGoodNameTv"
                         style="@style/WrapWrap"
-                        android:text="@string/time"
-                        android:textColor="@color/yCategory"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:layout_marginLeft="@dimen/yPaddingSmall"
+                        android:layout_toRightOf="@+id/mGoodsIv"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleBigSize" />
 
                     <TextView
-                        android:id="@+id/mTimeTv"
+                        android:id="@+id/mMealPriceTv"
                         style="@style/WrapWrap"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"
-                        android:layout_toRightOf="@+id/time"
-                        android:text="-----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:layout_alignParentRight="true"
+                        android:text="￥ 0.00"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
 
                     <TextView
-                        android:id="@+id/scenic"
+                        android:id="@+id/mNumTv"
                         style="@style/WrapWrap"
-                        android:layout_below="@+id/time"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:text="@string/scenic"
-                        android:textColor="@color/yCategory"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:layout_below="@+id/mGoodNameTv"
+                        android:layout_marginLeft="@dimen/yPaddingSmall"
+                        android:layout_marginTop="@dimen/yPaddingSmall"
+                        android:layout_toRightOf="@+id/mGoodsIv"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
 
                     <TextView
+                        android:id="@+id/mShopNameTv"
                         style="@style/WrapWrap"
-                        android:layout_below="@+id/time"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:layout_toRightOf="@+id/scenic"
-                        android:text="-----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:layout_alignBottom="@+id/mGoodsIv"
+                        android:layout_marginLeft="@dimen/yPaddingSmall"
+                        android:layout_toRightOf="@+id/mGoodsIv"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
 
-                    <TextView
-                        android:id="@+id/receive"
-                        style="@style/WrapWrap"
-                        android:layout_below="@+id/scenic"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:text="@string/receive"
-                        android:textColor="@color/yCategory"
-                        android:textSize="@dimen/yTextMiddleSize"/>
-
-                    <TextView
-                        android:id="@+id/mReceiveTv"
-                        style="@style/WrapWrap"
-                        android:layout_below="@+id/scenic"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"
-                        android:layout_marginTop="@dimen/yPaddingMiddle"
-                        android:layout_toRightOf="@+id/receive"
-                        android:text="-----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
                 </RelativeLayout>
-            </LinearLayout>
 
-            <View style="@style/DividerFixedHeight_10"/>
+                <View style="@style/DividerFixedHeight_10" />
 
-            <TextView
-                style="@style/WrapWrap"
-                android:padding="@dimen/yPaddingMiddle"
-                android:text="@string/appoint_teacher"
-                android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextMiddleSize"/>
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle">
 
-            <View style="@style/DividerFixedHeight"/>
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:text="@string/user_info"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextMiddleSize" />
 
-            <LinearLayout
-                style="@style/MatchWrap"
-                android:paddingTop="@dimen/yPaddingBigSmall"
-                android:paddingBottom="@dimen/yPaddingBigSmall">
+                    <TextView
+                        android:id="@+id/mEditTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/rightarrow"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="@string/edit"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextMiddleSize" />
+                </RelativeLayout>
+
+                <View style="@style/DividerFixedHeight" />
 
                 <LinearLayout
-                    android:id="@+id/mCameramanView"
-                    style="@style/MatchWrap.Vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    style="@style/MatchWrap"
+                    android:paddingTop="@dimen/yPaddingBigSmall"
+                    android:paddingBottom="@dimen/yPaddingBigSmall">
 
-                    <ImageView
-                        android:id="@+id/mCameramanIv"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/mainicon2"/>
+                    <LinearLayout
+                        style="@style/MatchWrap.Vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/mCameramanTv"
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPadding"
-                        android:text="@string/appoint_teacher"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        <ImageView
+                            android:id="@+id/mUserNameIv"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextLargeSize" />
 
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPaddingSmall"
-                        android:text="@string/cameraman"
-                        android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        <TextView
+                            android:id="@+id/mUserNameTv"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPaddingSmall"
+                            android:text="@string/dress"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleBigSize" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/mCameramanAmountTv"
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPadding"
-                        android:text="￥ -----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                    <View style="@style/DividerFixedWidth" />
 
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPaddingSmall"
-                        android:text="X 1套系服装"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                    <RelativeLayout
+                        style="@style/MatchWrap.Vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/bridegroom"
+                            style="@style/WrapWrap"
+                            android:text="@string/bridegroom"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/mBridegroomTv"
+                            style="@style/WrapWrap"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:layout_toRightOf="@+id/bridegroom"
+                            android:text="-----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/bride"
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/bridegroom"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:text="@string/bride"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/mBrideTv"
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/bridegroom"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:layout_toRightOf="@+id/bride"
+                            android:text="-----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/wedding_day"
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/bride"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:text="@string/wedding_day"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/mWeddingDayTv"
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/bride"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:layout_toRightOf="@+id/wedding_day"
+                            android:text="-----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/MatchWrap.Vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/time"
+                            style="@style/WrapWrap"
+                            android:text="@string/time"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/mTimeTv"
+                            style="@style/WrapWrap"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:layout_toRightOf="@+id/time"
+                            android:text="-----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/scenic"
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/time"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:text="@string/scenic"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/time"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:layout_toRightOf="@+id/scenic"
+                            android:text="-----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/receive"
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/scenic"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:text="@string/receive"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/mReceiveTv"
+                            style="@style/WrapWrap"
+                            android:layout_below="@+id/scenic"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:layout_marginTop="@dimen/yPaddingMiddle"
+                            android:layout_toRightOf="@+id/receive"
+                            android:text="-----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+                    </RelativeLayout>
                 </LinearLayout>
 
-                <View
-                    style="@style/DividerFixedWidth"/>
+                <View style="@style/DividerFixedHeight_10" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:padding="@dimen/yPaddingMiddle"
+                    android:text="@string/appoint_teacher"
+                    android:textColor="@color/yCategory"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <View style="@style/DividerFixedHeight" />
 
                 <LinearLayout
-                    android:id="@+id/mDresserView"
-                    style="@style/MatchWrap.Vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    style="@style/MatchWrap"
+                    android:paddingTop="@dimen/yPaddingBigSmall"
+                    android:paddingBottom="@dimen/yPaddingBigSmall">
 
-                    <ImageView
-                        android:id="@+id/mDresserIv"
-                        style="@style/WrapWrap"
-                        android:src="@drawable/dresser"/>
+                    <LinearLayout
+                        android:id="@+id/mCameramanView"
+                        style="@style/MatchWrap.Vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/mDresserTv"
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPadding"
-                        android:text="@string/appoint_teacher"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        <ImageView
+                            android:id="@+id/mCameramanIv"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/mainicon2" />
 
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPaddingSmall"
-                        android:text="@string/dresser"
-                        android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        <TextView
+                            android:id="@+id/mCameramanTv"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPadding"
+                            android:text="@string/appoint_teacher"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
 
-                    <TextView
-                        android:id="@+id/mDresserAmountTv"
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPadding"
-                        android:text="￥ -----"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPaddingSmall"
+                            android:text="@string/cameraman"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleSize" />
 
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPaddingSmall"
-                        android:text="X 1套系服装"
-                        android:textColor="@color/yRed"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        <TextView
+                            android:id="@+id/mCameramanAmountTv"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPadding"
+                            android:text="￥ -----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPaddingSmall"
+                            android:text="X 1套系服装"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+                    </LinearLayout>
+
+                    <View style="@style/DividerFixedWidth" />
+
+                    <LinearLayout
+                        android:id="@+id/mDresserView"
+                        style="@style/MatchWrap.Vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/mDresserIv"
+                            style="@style/WrapWrap"
+                            android:src="@drawable/dresser" />
+
+                        <TextView
+                            android:id="@+id/mDresserTv"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPadding"
+                            android:text="@string/appoint_teacher"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPaddingSmall"
+                            android:text="@string/dresser"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            android:id="@+id/mDresserAmountTv"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPadding"
+                            android:text="￥ -----"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPaddingSmall"
+                            android:text="X 1套系服装"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize" />
+                    </LinearLayout>
+
+                    <View style="@style/DividerFixedWidth" />
+
+                    <LinearLayout
+                        style="@style/MatchWrap.Vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            style="@style/WrapWrap"
+                            android:src="@drawable/digitaldivision" />
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPadding"
+                            android:text="将由平台指派"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPaddingSmall"
+                            android:text="@string/digital_engineer"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/yPadding"
+                            android:text="￥ 0"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleSize" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
-                <View
-                    style="@style/DividerFixedWidth"/>
+                <View style="@style/DividerFixedHeight_10" />
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:text="@string/appoint_dress"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/rightarrow"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="@string/edit"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextMiddleSize" />
+                </RelativeLayout>
+
+                <View style="@style/DividerFixedHeight" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mAppointDressRv"
+                    style="@style/MatchWrap" />
+
+                <View style="@style/DividerFixedHeight_10" />
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:text="@string/appoint_feature_spot"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                </RelativeLayout>
+
+                <View style="@style/DividerFixedHeight" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mAppointFeatureSpotRv"
+                    style="@style/MatchWrap" />
+
+                <View style="@style/DividerFixedHeight_10" />
 
                 <LinearLayout
-                    style="@style/MatchWrap.Vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        style="@style/WrapWrap"
-                        android:src="@drawable/digitaldivision"/>
+                    style="@style/MatchWrap"
+                    android:background="@color/yWhite"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPadding"
+                    android:paddingRight="@dimen/yPadding">
 
                     <TextView
                         style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPadding"
-                        android:text="将由平台指派"
-                        android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:text="@string/order_number"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
 
                     <TextView
+                        android:id="@+id/mOrderNumberTv"
                         style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPaddingSmall"
-                        android:text="@string/digital_engineer"
-                        android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextMiddleSize"/>
-
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/yPadding"
-                        android:text="￥ 0"
-                        android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextMiddleSize"/>
-
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
                 </LinearLayout>
 
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:background="@color/yWhite"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/create_time"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+
+                    <TextView
+                        android:id="@+id/mCreateTimeTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:background="@color/yWhite"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/subscription_time"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+
+                    <TextView
+                        android:id="@+id/mSubscriptionTimeTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:background="@color/yWhite"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/subscription_amount"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+
+                    <TextView
+                        android:id="@+id/mSubscriptionAmountTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:background="@color/yWhite"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding"
+                    android:paddingBottom="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/balance_payment"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+
+                    <TextView
+                        android:id="@+id/mBalancePaymentTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+                </LinearLayout>
+
+                <View style="@style/DividerFixedHeight_10" />
+
             </LinearLayout>
 
-            <View style="@style/DividerFixedHeight_10"/>
+        </ScrollView>
 
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:padding="@dimen/yPaddingMiddle">
+
+        <RelativeLayout
+            android:id="@+id/bottomView"
+            style="@style/MatchWrap"
+            android:layout_alignParentBottom="true"
+            android:background="@color/yWhite"
+            android:padding="@dimen/yPaddingMiddle">
+
+            <LinearLayout style="@style/WrapWrap.Vertical">
 
                 <TextView
+                    android:id="@+id/mSubscriptionTv"
                     style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:text="@string/appoint_dress"
-                    android:textColor="@color/yCategory"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:drawableRight="@drawable/rightarrow"
-                    android:drawablePadding="@dimen/yPaddingSmall"
-                    android:text="@string/edit"
-                    android:textColor="@color/yCategory"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-            </RelativeLayout>
-
-            <View style="@style/DividerFixedHeight"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mAppointDressRv"
-                style="@style/MatchWrap"/>
-
-            <View style="@style/DividerFixedHeight_10"/>
-
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:padding="@dimen/yPaddingMiddle">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:text="@string/appoint_feature_spot"
-                    android:textColor="@color/yCategory"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-            </RelativeLayout>
-
-            <View style="@style/DividerFixedHeight"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mAppointFeatureSpotRv"
-                style="@style/MatchWrap"/>
-
-            <View style="@style/DividerFixedHeight_10"/>
-
-            <LinearLayout
-                style="@style/MatchWrap"
-                android:background="@color/yWhite"
-                android:paddingLeft="@dimen/yPadding"
-                android:paddingTop="@dimen/yPadding"
-                android:paddingRight="@dimen/yPadding">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:text="@string/order_number"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-
-                <TextView
-                    android:id="@+id/mOrderNumberTv"
-                    style="@style/WrapWrap"
-                    android:layout_marginLeft="@dimen/yPaddingMiddle"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/MatchWrap"
-                android:background="@color/yWhite"
-                android:paddingLeft="@dimen/yPadding"
-                android:paddingTop="@dimen/yPaddingSmall"
-                android:paddingRight="@dimen/yPadding">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:text="@string/create_time"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-
-                <TextView
-                    android:id="@+id/mCreateTimeTv"
-                    style="@style/WrapWrap"
-                    android:layout_marginLeft="@dimen/yPaddingMiddle"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/MatchWrap"
-                android:background="@color/yWhite"
-                android:paddingLeft="@dimen/yPadding"
-                android:paddingTop="@dimen/yPaddingSmall"
-                android:paddingRight="@dimen/yPadding">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:text="@string/subscription_time"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-
-                <TextView
-                    android:id="@+id/mSubscriptionTimeTv"
-                    style="@style/WrapWrap"
-                    android:layout_marginLeft="@dimen/yPaddingMiddle"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/MatchWrap"
-                android:background="@color/yWhite"
-                android:paddingLeft="@dimen/yPadding"
-                android:paddingTop="@dimen/yPaddingSmall"
-                android:paddingRight="@dimen/yPadding">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:text="@string/subscription_amount"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-
-                <TextView
-                    android:id="@+id/mSubscriptionAmountTv"
-                    style="@style/WrapWrap"
-                    android:layout_marginLeft="@dimen/yPaddingMiddle"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/MatchWrap"
-                android:background="@color/yWhite"
-                android:paddingLeft="@dimen/yPadding"
-                android:paddingTop="@dimen/yPaddingSmall"
-                android:paddingRight="@dimen/yPadding"
-                android:paddingBottom="@dimen/yPadding">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:text="@string/balance_payment"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-
-                <TextView
-                    android:id="@+id/mBalancePaymentTv"
-                    style="@style/WrapWrap"
-                    android:layout_marginLeft="@dimen/yPaddingMiddle"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-            </LinearLayout>
-
-            <View style="@style/DividerFixedHeight_10"/>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-    <RelativeLayout
-        android:id="@+id/bottomView"
-        style="@style/MatchWrap"
-        android:layout_alignParentBottom="true"
-        android:background="@color/yWhite"
-        android:padding="@dimen/yPaddingMiddle">
-
-        <LinearLayout
-            style="@style/WrapWrap.Vertical">
-
-            <TextView
-                android:id="@+id/mSubscriptionTv"
-                style="@style/WrapWrap"
-                android:text="0.00"
-                android:textColor="@color/yBlackLight"
-                android:visibility="gone"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <RelativeLayout
-                style="@style/WrapWrap"
-                android:layout_centerVertical="true">
-
-                <TextView
-                    android:id="@+id/payment"
-                    style="@style/WrapWrap"
-                    android:layout_alignBottom="@+id/mRealityPriceTv"
-                    android:layout_marginBottom="@dimen/yPaddingMinSmall"
-                    android:text="@string/package_cost"
-                    android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/rmb"
-                    style="@style/WrapWrap"
-                    android:layout_alignBottom="@+id/mRealityPriceTv"
-                    android:layout_marginLeft="@dimen/yPaddingMinSmall"
-                    android:layout_marginBottom="@dimen/yPaddingMinSmall"
-                    android:layout_toRightOf="@+id/payment"
-                    android:text="@string/rmb"
-                    android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextMiddleSize"/>
-
-                <TextView
-                    android:id="@+id/mRealityPriceTv"
-                    style="@style/WrapWrap"
-                    android:layout_toRightOf="@+id/rmb"
                     android:text="0.00"
-                    android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextMaxSize"/>
-            </RelativeLayout>
+                    android:textColor="@color/yBlackLight"
+                    android:textSize="@dimen/yTextMiddleSize"
+                    android:visibility="gone" />
 
-        </LinearLayout>
+                <RelativeLayout
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true">
 
-        <TextView
-            android:id="@+id/mBtn"
-            style="@style/FullBtnStyle"
-            android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
-            android:enabled="true"
-            android:gravity="center"
-            android:paddingLeft="@dimen/yPaddingBigLar"
-            android:paddingRight="@dimen/yPaddingBigLar"
-            android:textColor="@color/yWhite"
-            android:textSize="@dimen/yTextMiddleBigSize"/>
+                    <TextView
+                        android:id="@+id/payment"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mRealityPriceTv"
+                        android:layout_marginBottom="@dimen/yPaddingMinSmall"
+                        android:text="@string/package_cost"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:id="@+id/rmb"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mRealityPriceTv"
+                        android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                        android:layout_marginBottom="@dimen/yPaddingMinSmall"
+                        android:layout_toRightOf="@+id/payment"
+                        android:text="@string/rmb"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:id="@+id/mRealityPriceTv"
+                        style="@style/WrapWrap"
+                        android:layout_toRightOf="@+id/rmb"
+                        android:text="0.00"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMaxSize" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/mBtn"
+                style="@style/FullBtnStyle"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:enabled="true"
+                android:gravity="center"
+                android:paddingLeft="@dimen/yPaddingBigLar"
+                android:paddingRight="@dimen/yPaddingBigLar"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextMiddleBigSize" />
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

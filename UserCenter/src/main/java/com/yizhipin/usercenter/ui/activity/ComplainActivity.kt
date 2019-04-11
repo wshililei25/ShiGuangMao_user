@@ -5,6 +5,7 @@ import android.view.View
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.Complain
 import com.yizhipin.base.event.ComplainTypeCheckedEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -24,7 +25,7 @@ import org.jetbrains.anko.toast
  */
 class ComplainActivity : BaseMvpActivity<ComplainPresenter>(), ComplainView, View.OnClickListener {
 
-   private var mType = ""
+    private var mType = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +42,12 @@ class ComplainActivity : BaseMvpActivity<ComplainPresenter>(), ComplainView, Vie
     private fun initView() {
         mTypeView.onClick(this)
         mBtn.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mTypeView -> {
                 var customDialog = ComplainTypeDialog(this)
                 customDialog.show()
@@ -69,7 +71,8 @@ class ComplainActivity : BaseMvpActivity<ComplainPresenter>(), ComplainView, Vie
         }
     }
 
-    override fun onComplainViewSuccess(result: Boolean) {
+    override fun onComplainViewSuccess(result: Complain) {
+        toast("提交成功")
         finish()
     }
 

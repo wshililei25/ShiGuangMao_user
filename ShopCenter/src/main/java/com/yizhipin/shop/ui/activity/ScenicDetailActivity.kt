@@ -67,6 +67,7 @@ class ScenicDetailActivity : BaseMvpActivity<ScenicDetailsPresenter>(), ScenicDe
         mCollectionView.onClick(this)
         mShopView.onClick(this)
         mBtn.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     private fun initBanner() {
@@ -84,7 +85,7 @@ class ScenicDetailActivity : BaseMvpActivity<ScenicDetailsPresenter>(), ScenicDe
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mShopView -> startActivity<ShopDetailActivity>(BaseConstant.KEY_SHOP_ID to mScenicSpot.store.id.toString())
 
             R.id.mCollectionView -> {

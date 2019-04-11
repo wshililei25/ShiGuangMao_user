@@ -27,7 +27,9 @@ class InteractionDetailsEvaAdapter(var context: Context) : BaseRecyclerViewAdapt
         with(modle) {
             holder.itemView.mNameTv.text = nickname
             holder.itemView.mContentTv.text = content
-            holder.itemView.mIv.loadUrl(imgurl)
+            imgurl?.let{
+                holder.itemView.mIv.loadUrl(imgurl)
+            }
         }
     }
 

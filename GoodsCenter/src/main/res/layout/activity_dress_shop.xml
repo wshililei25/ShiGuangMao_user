@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.Common"
-    >
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.Common">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHeaderBar"
-        style="@style/MatchWrap"
-        app:titleText="@string/dress_shop"/>
+    <LinearLayout style="@style/MatchMatch.Vertical">
 
-    <ImageView
-        android:id="@+id/mSellIv"
-        style="@style/MatchWrap"
-        android:padding="@dimen/yPadding"
-        android:scaleType="fitXY"
-        android:src="@drawable/salearea"/>
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@+id/mHeaderBar"
+            style="@style/MatchWrap"
+            app:titleText="@string/dress_shop" />
 
-    <ImageView
-        android:id="@+id/mShareIv"
-        style="@style/MatchWrap"
-        android:paddingLeft="@dimen/yPadding"
-        android:paddingRight="@dimen/yPadding"
-        android:scaleType="fitXY"
-        android:src="@drawable/sharearea"/>
-</LinearLayout>
+        <ImageView
+            android:id="@+id/mSellIv"
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPadding"
+            android:scaleType="fitXY"
+            android:src="@drawable/salearea" />
+
+        <ImageView
+            android:id="@+id/mShareIv"
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding"
+            android:scaleType="fitXY"
+            android:src="@drawable/sharearea" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

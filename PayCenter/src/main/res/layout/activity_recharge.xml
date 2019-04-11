@@ -1,136 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical"
-              android:background="@color/yBgGray">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/yBgGray">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHeaderBar"
-        style="@style/MatchWrap"
-        app:titleText="@string/recharge"/>
+    <LinearLayout style="@style/MatchMatch.Vertical.White">
 
-    <TextView
-        android:id="@+id/mContentTv"
-        style="@style/MatchWrap"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/yWhite"
-        android:gravity="center_horizontal"
-        android:padding="@dimen/yPaddingBigLar"
-        android:text="@string/recharge_balance"
-        android:textColor="@color/yBlackLight"
-        android:textSize="@dimen/yTextMiddleSize"/>
-
-    <View
-        style="@style/DividerFixedHeight"/>
-
-    <LinearLayout
-        style="@style/MatchWrap"
-        android:background="@color/yWhite"
-        android:gravity="center"
-        android:paddingTop="@dimen/yPaddingBig"
-        android:paddingBottom="@dimen/yPaddingBig">
-
-        <ImageView
-            android:id="@+id/mMinusIv"
-            style="@style/WrapWrap"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/reduce"/>
-
-        <EditText
-            android:id="@+id/mAmountEt"
-            android:layout_width="150dp"
-            android:layout_height="@dimen/yEditHeight"
-            android:layout_marginLeft="@dimen/yPadding"
-            android:layout_marginRight="@dimen/yPadding"
-            android:gravity="center"
-            android:inputType="numberDecimal"
-            android:text="100"
-            android:textColor="@color/yRed"
-            android:textSize="@dimen/yTextMaxSize"
-            android:textStyle="bold"
-            android:theme="@style/EditTextUnderline"/>
-
-        <ImageView
-            android:id="@+id/mPlusIv"
-            style="@style/WrapWrap"
-            android:src="@drawable/increase"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/mHintView"
-        style="@style/MatchWrap.White"
-        android:gravity="center"
-        android:paddingBottom="@dimen/yPadding"
-        android:visibility="gone">
-
-        <ImageView
-            style="@style/WrapWrap"
-            android:src="@drawable/tirps"/>
-
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_marginLeft="@dimen/yPaddingSmall"
-            android:text="@string/cash_pledge_pay_hint"
-            android:textColor="@color/yBlackLight"
-            android:textSize="@dimen/yTextSmallSize"/>
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/MatchWrap.Vertical"
-        android:layout_marginTop="@dimen/yPaddingMiddle"
-        android:background="@color/yWhite">
-
-        <TextView
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@+id/mHeaderBar"
             style="@style/MatchWrap"
+            app:titleText="@string/recharge" />
+
+        <TextView
+            android:id="@+id/mContentTv"
+            style="@style/MatchWrap"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/yWhite"
+            android:gravity="center_horizontal"
             android:padding="@dimen/yPaddingBigLar"
-            android:text="@string/pay_way"
+            android:text="@string/recharge_balance"
             android:textColor="@color/yBlackLight"
-            android:textSize="@dimen/yTextMiddleSize"/>
+            android:textSize="@dimen/yTextMiddleSize" />
 
-        <View
-            style="@style/DividerFixedHeight"/>
+        <View style="@style/DividerFixedHeight" />
 
-        <com.yizhipin.base.widgets.PayRadioGroup
-            android:id="@+id/mPayRadioGroup"
+        <LinearLayout
             style="@style/MatchWrap"
-            android:orientation="vertical">
+            android:background="@color/yWhite"
+            android:gravity="center"
+            android:paddingTop="@dimen/yPaddingBig"
+            android:paddingBottom="@dimen/yPaddingBig">
 
-            <com.yizhipin.base.widgets.PayRadioPurified
-                android:id="@+id/mBalanceRadio"
+            <ImageView
+                android:id="@+id/mMinusIv"
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/reduce" />
+
+            <EditText
+                android:id="@+id/mAmountEt"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_marginRight="@dimen/yPadding"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:text="100"
+                android:textColor="@color/yRed"
+                android:textSize="@dimen/yTextMaxSize"
+                android:textStyle="bold"
+                android:theme="@style/EditTextUnderline" />
+
+            <ImageView
+                android:id="@+id/mPlusIv"
+                style="@style/WrapWrap"
+                android:src="@drawable/increase" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mHintView"
+            style="@style/MatchWrap.White"
+            android:gravity="center"
+            android:paddingBottom="@dimen/yPadding"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:src="@drawable/tirps" />
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:text="@string/cash_pledge_pay_hint"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextSmallSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:background="@color/yWhite">
+
+            <TextView
                 style="@style/MatchWrap"
-                app:checked="false"
-                app:logo1="@drawable/wallet"
-                app:radio="@drawable/radio"
-                android:visibility="gone"
-                app:title1="@string/balance_pay"/>
+                android:padding="@dimen/yPaddingBigLar"
+                android:text="@string/pay_way"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize" />
 
-            <com.yizhipin.base.widgets.PayRadioPurified
-                android:id="@+id/mAliRadio"
+            <View style="@style/DividerFixedHeight" />
+
+            <com.yizhipin.base.widgets.PayRadioGroup
+                android:id="@+id/mPayRadioGroup"
                 style="@style/MatchWrap"
-                app:checked="true"
-                app:logo1="@drawable/alipay"
-                app:radio="@drawable/radio"
-                app:title1="@string/ali_pay"/>
+                android:orientation="vertical">
 
-            <com.yizhipin.base.widgets.PayRadioPurified
-                android:id="@+id/mWechatRadio"
-                style="@style/MatchWrap"
-                app:logo1="@drawable/wechatpay"
-                app:radio="@drawable/radio"
-                app:title1="@string/wechat_pay"/>
+                <com.yizhipin.base.widgets.PayRadioPurified
+                    android:id="@+id/mBalanceRadio"
+                    style="@style/MatchWrap"
+                    android:visibility="gone"
+                    app:checked="false"
+                    app:logo1="@drawable/wallet"
+                    app:radio="@drawable/radio"
+                    app:title1="@string/balance_pay" />
 
-        </com.yizhipin.base.widgets.PayRadioGroup>
+                <com.yizhipin.base.widgets.PayRadioPurified
+                    android:id="@+id/mAliRadio"
+                    style="@style/MatchWrap"
+                    app:checked="true"
+                    app:logo1="@drawable/alipay"
+                    app:radio="@drawable/radio"
+                    app:title1="@string/ali_pay" />
 
+                <com.yizhipin.base.widgets.PayRadioPurified
+                    android:id="@+id/mWechatRadio"
+                    style="@style/MatchWrap"
+                    app:logo1="@drawable/wechatpay"
+                    app:radio="@drawable/radio"
+                    app:title1="@string/wechat_pay" />
+
+            </com.yizhipin.base.widgets.PayRadioGroup>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/mConfirmBtn"
+            style="@style/FullBtnStyle"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPaddingBigSmall"
+            android:layout_marginRight="@dimen/yPadding"
+            android:enabled="true"
+            android:text="@string/confirm_recharge"
+            android:textSize="@dimen/yTextBigSize" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/mConfirmBtn"
-        style="@style/FullBtnStyle"
-        android:layout_marginLeft="@dimen/yPadding"
-        android:layout_marginTop="@dimen/yPaddingBigSmall"
-        android:layout_marginRight="@dimen/yPadding"
-        android:enabled="true"
-        android:text="@string/confirm_recharge"
-        android:textSize="@dimen/yTextBigSize"/>
-</LinearLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

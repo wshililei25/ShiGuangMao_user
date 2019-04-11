@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.Common">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.Common">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        style="@style/MatchWrap"
-        app:titleText="@string/add_invitation"/>
+    <LinearLayout style="@style/MatchMatch.Vertical.White">
 
-    <LinearLayout
-        style="@style/MatchWrap.Vertical"
-        android:padding="@dimen/yPadding">
+        <com.yizhipin.base.widgets.HeaderBar
+            style="@style/MatchWrap"
+            app:titleText="@string/add_invitation" />
 
-        <TextView
-            style="@style/WrapWrap"
-            android:text="@string/input_mobile_invitation"
-            android:textColor="@color/yBlackGray"
-            android:textSize="@dimen/yTextMiddleSize"/>
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:padding="@dimen/yPadding">
 
-        <EditText
-            android:id="@+id/mEt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/yPaddingBig"
-            android:layout_marginTop="@dimen/yPaddingMiddle"
-            android:background="@color/yWhite"
-            android:textColor="@color/yBlackLight"
-            android:textColorHint="@color/yHint"
-            android:textSize="@dimen/yTextBigSize"/>
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/input_mobile_invitation"
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextMiddleSize" />
 
-        <Button
-            android:id="@+id/mBtn"
-            style="@style/FullBtnStyle"
-            android:layout_marginLeft="@dimen/yPadding"
-            android:layout_marginTop="@dimen/yPadding"
-            android:layout_marginRight="@dimen/yPadding"
-            android:text="@string/add"/>
+            <EditText
+                android:id="@+id/mEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yPaddingBig"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:background="@color/yWhite"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <Button
+                android:id="@+id/mBtn"
+                style="@style/FullBtnStyle"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_marginTop="@dimen/yPadding"
+                android:layout_marginRight="@dimen/yPadding"
+                android:text="@string/add" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

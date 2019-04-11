@@ -7,6 +7,7 @@ import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseApplication.Companion.context
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.BasicServices
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BasicServicesListAdapter
@@ -15,7 +16,7 @@ import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.BasicServicesPresenter
 import com.yizhipin.goods.presenter.view.BasicServicesView
-import kotlinx.android.synthetic.main.activity_basic_services_list.*
+import kotlinx.android.synthetic.main.activity_recyclerview.*
 
 
 /**
@@ -32,15 +33,20 @@ class BasicServicesListActivity : BaseMvpActivity<BasicServicesPresenter>(), Bas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_basic_services_list)
+        setContentView(R.layout.activity_recyclerview)
         initView()
         loadData()
     }
 
     private fun initView() {
-        mCartRv.layoutManager = LinearLayoutManager(this!!)
+        mHeaderBar.getTiTleTv().text = getString(R.string.basic_services)
+        mRv.layoutManager = LinearLayoutManager(this!!)
         mCartAdapter = BasicServicesListAdapter(context!!)
-        mCartRv.adapter = mCartAdapter
+        mRv.adapter = mCartAdapter
+
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
     override fun injectComponent() {

@@ -51,6 +51,7 @@ class IntegralActivity : BaseMvpActivity<IntegralPresenter>(), IntegralView, Vie
 
     private fun initView() {
         mIntegralMallTv.onClick(this)
+        mCustomBtn.onClick(this)
 
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mFeeRecordAdapter = FeeRecordAdapter(this)
@@ -119,6 +120,7 @@ class IntegralActivity : BaseMvpActivity<IntegralPresenter>(), IntegralView, Vie
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mIntegralMallTv -> afterLogin { ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_INTEGRAL).navigation() }
         }
     }

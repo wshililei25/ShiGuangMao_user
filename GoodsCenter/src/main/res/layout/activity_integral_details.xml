@@ -1,146 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                style="@style/MatchMatch"
-                android:background="@color/yWhite">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch"
+    android:background="@color/yWhite">
 
-    <ScrollView
-        style="@style/MatchMatch"
-        android:layout_above="@+id/bottomView">
+    <RelativeLayout style="@style/MatchMatch.Vertical">
 
-        <LinearLayout
-            style="@style/MatchWrap"
-            android:orientation="vertical">
+        <ScrollView
+            style="@style/MatchMatch"
+            android:layout_above="@+id/bottomView">
 
-            <RelativeLayout
-                style="@style/MatchWrap">
-
-                <ImageView
-                    android:id="@+id/mBackIv"
-                    style="@style/WrapWrap"
-                    android:padding="@dimen/yPadding"
-                    android:src="@drawable/leftarroww"/>
-
-                <com.youth.banner.Banner
-                    android:id="@+id/mBanner"
-                    android:layout_width="match_parent"
-                    android:layout_height="375dp"/>
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/mGoodName"
-                style="@style/WrapWrap"
-                android:padding="@dimen/yPaddingMiddle"
-                android:text="ddddd"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextBigSize"/>
-
-            <TextView
-                android:id="@+id/mIntroductionTv"
-                style="@style/WrapWrap"
-                android:paddingLeft="@dimen/yPaddingMiddle"
-                android:text="0"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextSmallSize"/>
-
-            <RelativeLayout
+            <LinearLayout
                 style="@style/MatchWrap"
-                android:padding="@dimen/yPaddingMiddle">
+                android:orientation="vertical">
+
+                <RelativeLayout style="@style/MatchWrap">
+
+                    <ImageView
+                        android:id="@+id/mBackIv"
+                        style="@style/WrapWrap"
+                        android:padding="@dimen/yPadding"
+                        android:src="@drawable/leftarroww" />
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/mBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="375dp" />
+                </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/integral"
+                    android:id="@+id/mGoodName"
                     style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/yPaddingSmall"
+                    android:padding="@dimen/yPaddingMiddle"
+                    android:text="ddddd"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextBigSize" />
+
+                <TextView
+                    android:id="@+id/mIntroductionTv"
+                    style="@style/WrapWrap"
+                    android:paddingLeft="@dimen/yPaddingMiddle"
+                    android:text="0"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextSmallSize" />
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle">
+
+                    <TextView
+                        android:id="@+id/integral"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/yPaddingSmall"
+                        android:text="@string/integral_"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextMiddleLarSize" />
+
+                    <TextView
+                        android:id="@+id/mIntegralTv"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/yPaddingMiddle"
+                        android:layout_toRightOf="@+id/integral"
+                        android:text="0"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextBigSize" />
+
+                    <TextView
+                        android:id="@+id/mAmountTv"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/mIntegralTv"
+                        android:text="0.00"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+
+                    <TextView
+                        android:id="@+id/mNumTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="0"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize" />
+                </RelativeLayout>
+
+                <View style="@style/DividerFixedHeight_10" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:padding="@dimen/yPaddingMiddle"
+                    android:text="@string/goods_details"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <WebView
+                    android:id="@+id/mWebView"
+                    style="@style/MatchWrap"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/bottomView"
+            style="@style/MatchWrap"
+            android:layout_alignParentBottom="true"
+            android:background="@color/yWhite"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="@dimen/yPadding"
+                android:paddingBottom="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapWrap"
                     android:text="@string/integral_"
                     android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextMiddleLarSize"/>
+                    android:textSize="@dimen/yTextMiddleLarSize" />
 
                 <TextView
-                    android:id="@+id/mIntegralTv"
+                    android:id="@+id/mIntegralBotTv"
                     style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/yPaddingMiddle"
-                    android:layout_toRightOf="@+id/integral"
                     android:text="0"
                     android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextBigSize"/>
-
-                <TextView
-                    android:id="@+id/mAmountTv"
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/mIntegralTv"
-                    android:text="0.00"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-
-                <TextView
-                    android:id="@+id/mNumTv"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="0"
-                    android:textColor="@color/yBlackGray"
-                    android:textSize="@dimen/yTextSmallLarSize"/>
-            </RelativeLayout>
-
-            <View style="@style/DividerFixedHeight_10"/>
+                    android:textSize="@dimen/yTextMiddleLarSize" />
+            </LinearLayout>
 
             <TextView
-                style="@style/WrapWrap"
-                android:padding="@dimen/yPaddingMiddle"
-                android:text="@string/goods_details"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <WebView
-                android:id="@+id/mWebView"
-                style="@style/MatchWrap"
-                android:layout_gravity="center_horizontal"/>
+                android:id="@+id/mBuyBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/yRed"
+                android:gravity="center"
+                android:text="@string/immediate_exchange"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextMiddleBigSize" />
 
         </LinearLayout>
+    </RelativeLayout>
 
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/bottomView"
-        style="@style/MatchWrap"
-        android:layout_alignParentBottom="true"
-        android:background="@color/yWhite"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingTop="@dimen/yPadding"
-            android:paddingBottom="@dimen/yPadding">
-
-            <TextView
-                style="@style/WrapWrap"
-                android:text="@string/integral_"
-                android:textColor="@color/yBlackGray"
-                android:textSize="@dimen/yTextMiddleLarSize"/>
-
-            <TextView
-                android:id="@+id/mIntegralBotTv"
-                style="@style/WrapWrap"
-                android:text="0"
-                android:textColor="@color/yRed"
-                android:textSize="@dimen/yTextMiddleLarSize"/>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/mBuyBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/yRed"
-            android:gravity="center"
-            android:text="@string/immediate_exchange"
-            android:textColor="@color/yWhite"
-            android:textSize="@dimen/yTextMiddleBigSize"/>
-
-    </LinearLayout>
-</RelativeLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

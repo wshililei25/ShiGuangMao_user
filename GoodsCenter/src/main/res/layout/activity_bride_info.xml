@@ -1,200 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Common"
-              android:orientation="vertical">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Common"
+    android:orientation="vertical">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        android:id="@id/mHeaderBar"
-        style="@style/MatchWrap"
-        app:titleText="@string/info"/>
+    <LinearLayout style="@style/MatchMatch.Vertical">
 
-    <LinearLayout
-        style="@style/WrapWrap.Vertical"
-        android:layout_marginTop="@dimen/yPaddingMiddle"
-        android:background="@color/yWhite">
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@id/mHeaderBar"
+            style="@style/MatchWrap"
+            app:titleText="@string/info" />
 
         <LinearLayout
-            android:id="@+id/mShipNameView"
-            style="@style/MatchWrap.Horizontal"
-            android:padding="@dimen/yPadding">
+            style="@style/WrapWrap.Vertical"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:background="@color/yWhite">
 
-            <TextView
-                style="@style/WrapMatch"
-                android:layout_width="80dp"
-                android:text="@string/bridegroom_name"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
+            <LinearLayout
+                android:id="@+id/mShipNameView"
+                style="@style/MatchWrap.Horizontal"
+                android:padding="@dimen/yPadding">
 
-            <EditText
-                android:id="@+id/mShipNameEt"
-                style="@style/WeightMatch"
-                android:background="@null"
-                android:hint="@string/input_addressee"
-                android:textColor="@color/yBlack"
-                android:textColorHint="@color/yHint"
-                android:textSize="@dimen/yTextMiddleSize"/>
+                <TextView
+                    style="@style/WrapMatch"
+                    android:layout_width="80dp"
+                    android:text="@string/bridegroom_name"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <EditText
+                    android:id="@+id/mShipNameEt"
+                    style="@style/WeightMatch"
+                    android:background="@null"
+                    android:hint="@string/input_addressee"
+                    android:textColor="@color/yBlack"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextMiddleSize" />
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding" />
+
+            <LinearLayout
+                android:id="@+id/mShipMobileView"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_below="@id/mShipNameView"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapMatch"
+                    android:layout_width="80dp"
+                    android:text="@string/bride_name"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <EditText
+                    android:id="@+id/mShipMobileEt"
+                    style="@style/WeightMatch"
+                    android:background="@null"
+                    android:hint="@string/input_bride_name"
+                    android:maxLength="11"
+                    android:textColor="@color/yBlack"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextMiddleSize" />
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding" />
+
+            <LinearLayout
+                android:id="@+id/mShootTimeView"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_below="@id/mShipMobileView"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapMatch"
+                    android:layout_width="80dp"
+                    android:text="@string/shooting_time"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <TextView
+                    android:id="@+id/mShootTimeTv"
+                    style="@style/WeightMatch"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:enabled="false"
+                    android:hint="@string/please_select"
+                    android:textColor="@color/yBlack"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding" />
+
+            <LinearLayout
+                android:id="@+id/mShootTypeView"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_below="@id/mShipMobileView"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapMatch"
+                    android:layout_width="80dp"
+                    android:text="@string/shooting_type"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <TextView
+                    android:id="@+id/mShootTypeTv"
+                    style="@style/WeightMatch"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:hint="请选择"
+                    android:textColor="@color/yBlack"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding" />
+
+            <LinearLayout
+                android:id="@+id/mWeddingDayView"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_below="@id/mShipMobileView"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapMatch"
+                    android:layout_width="80dp"
+                    android:text="@string/wedding_day_time"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <TextView
+                    android:id="@+id/mWeddingDayTv"
+                    style="@style/WeightMatch"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:hint="@string/please_select"
+                    android:textColor="@color/yBlack"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding" />
+
+            <LinearLayout
+                android:id="@+id/mShopReceiveView"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_below="@id/mShipMobileView"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapMatch"
+                    android:layout_width="80dp"
+                    android:text="@string/shop_receive"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <EditText
+                    android:id="@+id/mShopReceiveTv"
+                    style="@style/WeightMatch"
+                    android:background="@null"
+                    android:drawableRight="@drawable/rightarrow"
+                    android:hint="请输入"
+                    android:textColor="@color/yBlack"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <View
-            style="@style/DividerFixedHeight"
-            android:layout_marginLeft="@dimen/yPadding"/>
-
-        <LinearLayout
-            android:id="@+id/mShipMobileView"
-            style="@style/MatchWrap.Horizontal"
-            android:layout_below="@id/mShipNameView"
-            android:padding="@dimen/yPadding">
-
-            <TextView
-                style="@style/WrapMatch"
-                android:layout_width="80dp"
-                android:text="@string/bride_name"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <EditText
-                android:id="@+id/mShipMobileEt"
-                style="@style/WeightMatch"
-                android:background="@null"
-                android:hint="@string/input_bride_name"
-                android:maxLength="11"
-                android:textColor="@color/yBlack"
-                android:textColorHint="@color/yHint"
-                android:textSize="@dimen/yTextMiddleSize"/>
-        </LinearLayout>
-
-        <View
-            style="@style/DividerFixedHeight"
-            android:layout_marginLeft="@dimen/yPadding"/>
-
-        <LinearLayout
-            android:id="@+id/mShootTimeView"
-            style="@style/MatchWrap.Horizontal"
-            android:layout_below="@id/mShipMobileView"
-            android:padding="@dimen/yPadding">
-
-            <TextView
-                style="@style/WrapMatch"
-                android:layout_width="80dp"
-                android:text="@string/shooting_time"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <TextView
-                android:id="@+id/mShootTimeTv"
-                style="@style/WeightMatch"
-                android:hint="@string/please_select"
-                android:textColor="@color/yBlack"
-                android:textColorHint="@color/yHint"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <ImageView
-                style="@style/WrapWrap"
-                android:src="@drawable/rightarrow"/>
-        </LinearLayout>
-
-        <View
-            style="@style/DividerFixedHeight"
-            android:layout_marginLeft="@dimen/yPadding"/>
-
-        <LinearLayout
-            android:id="@+id/mShootTypeView"
-            style="@style/MatchWrap.Horizontal"
-            android:layout_below="@id/mShipMobileView"
-            android:padding="@dimen/yPadding">
-
-            <TextView
-                style="@style/WrapMatch"
-                android:layout_width="80dp"
-                android:text="@string/shooting_type"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <TextView
-                android:id="@+id/mShootTypeTv"
-                style="@style/WeightMatch"
-                android:text="不定制"
-                android:textColor="@color/yBlack"
-                android:textColorHint="@color/yHint"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <ImageView
-                style="@style/WrapWrap"
-                android:src="@drawable/rightarrow"/>
-        </LinearLayout>
-
-        <View
-            style="@style/DividerFixedHeight"
-            android:layout_marginLeft="@dimen/yPadding"/>
-
-        <LinearLayout
-            android:id="@+id/mWeddingDayView"
-            style="@style/MatchWrap.Horizontal"
-            android:layout_below="@id/mShipMobileView"
-            android:padding="@dimen/yPadding">
-
-            <TextView
-                style="@style/WrapMatch"
-                android:layout_width="80dp"
-                android:text="@string/wedding_day_time"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <TextView
-                android:id="@+id/mWeddingDayTv"
-                style="@style/WeightMatch"
-                android:hint="@string/please_select"
-                android:textColor="@color/yBlack"
-                android:textColorHint="@color/yHint"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <ImageView
-                style="@style/WrapWrap"
-                android:src="@drawable/rightarrow"/>
-        </LinearLayout>
-
-        <View
-            style="@style/DividerFixedHeight"
-            android:layout_marginLeft="@dimen/yPadding"/>
-
-        <LinearLayout
-            android:id="@+id/mShopReceiveView"
-            style="@style/MatchWrap.Horizontal"
-            android:layout_below="@id/mShipMobileView"
-            android:padding="@dimen/yPadding">
-
-            <TextView
-                style="@style/WrapMatch"
-                android:layout_width="80dp"
-                android:text="@string/shop_receive"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <TextView
-                android:id="@+id/mShopReceiveTv"
-                style="@style/WeightMatch"
-                android:text="13002563698"
-                android:textColor="@color/yBlack"
-                android:textColorHint="@color/yHint"
-                android:textSize="@dimen/yTextMiddleSize"/>
-
-            <ImageView
-                style="@style/WrapWrap"
-                android:src="@drawable/rightarrow"/>
-        </LinearLayout>
-
-        <View
-            style="@style/DividerFixedHeight"
-            android:layout_marginLeft="@dimen/yPadding"/>
-
-
+        <Button
+            android:id="@+id/mSaveBtn"
+            style="@style/FullBtnStyle"
+            android:layout_margin="@dimen/yPadding"
+            android:enabled="true"
+            android:text="@string/save" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/mSaveBtn"
-        style="@style/FullBtnStyle"
-        android:layout_margin="@dimen/yPadding"
-        android:enabled="true"
-        android:text="@string/save"/>
-</LinearLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

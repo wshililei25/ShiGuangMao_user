@@ -12,6 +12,7 @@ import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.ScenicSpot
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
@@ -23,7 +24,7 @@ import com.yizhipin.shop.injection.module.ShopModule
 import com.yizhipin.shop.presenter.SceincPresenter
 import com.yizhipin.shop.presenter.view.SceincView
 import com.yizhipin.shop.ui.adapter.ScenicAdapter
-import kotlinx.android.synthetic.main.activity_shop.*
+import kotlinx.android.synthetic.main.activity_recyclerview.*
 import org.jetbrains.anko.startActivityForResult
 
 /**
@@ -43,7 +44,7 @@ class ScenicActivity : BaseMvpActivity<SceincPresenter>(), SceincView, View.OnCl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sceinc)
+        setContentView(R.layout.activity_recyclerview)
 
         initView()
         initRefreshLayout()
@@ -52,9 +53,12 @@ class ScenicActivity : BaseMvpActivity<SceincPresenter>(), SceincView, View.OnCl
 
     private fun initView() {
 
-        mAddressRv.layoutManager = LinearLayoutManager(this)
+        mCustomBtn.onClick(this)
+
+        mHeaderBar.getTiTleTv().text = getString(R.string.select_sceinc)
+        mRv.layoutManager = LinearLayoutManager(this)
         mShopAdapter = ScenicAdapter(this)
-        mAddressRv.adapter = mShopAdapter
+        mRv.adapter = mShopAdapter
         mShopAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<ScenicSpot> {
             override fun onItemClick(item: ScenicSpot, position: Int) {
 
@@ -110,7 +114,7 @@ class ScenicActivity : BaseMvpActivity<SceincPresenter>(), SceincView, View.OnCl
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
         }
     }
 

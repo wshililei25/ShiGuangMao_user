@@ -1,61 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.White">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHeaderBar"
-        style="@style/MatchWrap"
-        app:titleText="@string/list_of_star"/>
+    <LinearLayout style="@style/MatchMatch.Vertical">
 
-    <ScrollView
-        style="@style/MatchWrap">
+        <com.yizhipin.base.widgets.HeaderBar
+            android:id="@+id/mHeaderBar"
+            style="@style/MatchWrap"
+            app:titleText="@string/list_of_star" />
 
-        <LinearLayout
-            style="@style/MatchWrap.Vertical">
+        <ScrollView style="@style/MatchWrap">
 
-            <TextView
-                style="@style/WrapWrap"
-                android:layout_gravity="center"
-                android:padding="@dimen/yPaddingSmall"
-                android:text="@string/star_shop"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
+            <LinearLayout style="@style/MatchWrap.Vertical">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mStarShopRv"
-                style="@style/MatchWrap"/>
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/yPaddingSmall"
+                    android:text="@string/star_shop"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
 
-            <View style="@style/DividerFixedHeight_10"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mStarShopRv"
+                    style="@style/MatchWrap" />
 
-            <TextView
-                style="@style/WrapWrap"
-                android:layout_gravity="center_horizontal"
-                android:padding="@dimen/yPaddingSmall"
-                android:text="@string/star_shopkeeper"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
+                <View style="@style/DividerFixedHeight_10" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mKeeperRv"
-                style="@style/MatchWrap"/>
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/yPaddingSmall"
+                    android:text="@string/star_shopkeeper"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
 
-            <View style="@style/DividerFixedHeight_10"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mKeeperRv"
+                    style="@style/MatchWrap" />
 
-            <TextView
-                style="@style/WrapWrap"
-                android:layout_gravity="center_horizontal"
-                android:padding="@dimen/yPaddingSmall"
-                android:text="@string/star_teacher"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize"/>
+                <View style="@style/DividerFixedHeight_10" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mTeacherRv"
-                style="@style/MatchWrap"/>
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/yPaddingSmall"
+                    android:text="@string/star_teacher"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize" />
 
-        </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mTeacherRv"
+                    style="@style/MatchWrap" />
 
-    </ScrollView>
+            </LinearLayout>
 
-</LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

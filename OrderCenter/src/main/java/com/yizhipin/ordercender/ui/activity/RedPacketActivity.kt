@@ -47,6 +47,7 @@ class RedPacketActivity : BaseMvpActivity<CouponPresenter>(), CouponView, View.O
 
     private fun initView() {
         mLockTv.onClick(this)
+        mCustomBtn.onClick(this)
         mLockTv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG)
         mAddressRv.layoutManager = LinearLayoutManager(this!!)
         mCouponAdapter = RedPacketAdapter(this)
@@ -75,6 +76,7 @@ class RedPacketActivity : BaseMvpActivity<CouponPresenter>(), CouponView, View.O
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mLockTv ->   ARouter.getInstance().build(RouterPath.UserCenter.BALANCE).navigation()
         }
     }

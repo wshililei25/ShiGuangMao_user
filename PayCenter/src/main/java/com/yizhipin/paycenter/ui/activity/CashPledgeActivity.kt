@@ -41,6 +41,7 @@ class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeVie
     private fun initView() {
         mConfirmBtn.onClick(this)
         mRebackBtn.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     override fun onStart() {
@@ -62,9 +63,15 @@ class CashPledgeActivity : BaseMvpActivity<CashPledgePresenter>(), CashPledgeVie
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mConfirmBtn -> startActivity<RechargeActivity>(BaseConstant.KEY_IS_CASHPLEDGE to true)
-            R.id.mRebackBtn -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW)
-                    .withBoolean(BaseConstant.KEY_IS_CASH, true).navigation()
+            R.id.mRebackBtn -> {
+                mCashPledge?.let {
+                    ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW)
+                            .withBoolean(BaseConstant.KEY_IS_CASH, true)
+                            .withString(BaseConstant.KEY_DEPOSIT, mCashPledge.available).navigation()
+                }
+            }
         }
     }
 

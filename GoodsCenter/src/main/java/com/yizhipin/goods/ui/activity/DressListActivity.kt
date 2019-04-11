@@ -54,6 +54,7 @@ class DressListActivity : BaseMvpActivity<DressPresenter>(), DressView, View.OnC
         mBackIv.onClick(this)
         mWomenTv.onClick(this)
         mManTv.onClick(this)
+        mCustomBtn.onClick(this)
         when (mType) {
             0 -> initWomenView()
             1 -> initManView()
@@ -81,6 +82,7 @@ class DressListActivity : BaseMvpActivity<DressPresenter>(), DressView, View.OnC
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mBackIv -> finish()
             R.id.mWomenTv -> initWomenView()
             R.id.mManTv -> initManView()

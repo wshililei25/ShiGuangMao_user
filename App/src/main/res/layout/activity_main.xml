@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/MatchMatch.Vertical"
-    android:gravity="bottom">
+    style="@style/MatchMatch">
 
-    <FrameLayout
-        android:id="@+id/mFrameLayout"
-        style="@style/MatchMatch"
-        android:layout_weight="1">
+    <LinearLayout style="@style/MatchMatch.Vertical">
 
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/mFrameLayout"
+            style="@style/MatchMatch"
+            android:layout_weight="1">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="vertical">
+        </FrameLayout>
 
-        <View style="@style/DividerFixedHeight" />
-
-        <me.majiajie.pagerbottomtabstrip.PageNavigationView
-            android:id="@+id/mBottomNavBar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            app:elevation="8dp" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <View style="@style/DividerFixedHeight" />
+
+            <me.majiajie.pagerbottomtabstrip.PageNavigationView
+                android:id="@+id/mBottomNavBar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:elevation="8dp" />
+        </LinearLayout>
     </LinearLayout>
 
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

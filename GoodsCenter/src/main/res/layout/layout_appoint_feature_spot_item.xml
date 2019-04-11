@@ -14,7 +14,7 @@
             android:id="@+id/mIv"
             android:layout_height="100dp"
             android:layout_width="100dp"
-            android:scaleType="fitXY"
+            android:scaleType="center"
             android:src="@drawable/add"/>
 
         <TextView

@@ -76,6 +76,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
         mBtn.onClick(this)
         mShipView.onClick(this)
         mSelectShipTv.onClick(this)
+        mCustomBtn.onClick(this)
 
         mGoodsCountBtn.setOnWarnListener(object : NumberButton.OnWarnListener {
             override fun onWarningForBuyMax(max: Int) {
@@ -123,9 +124,9 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
             mNormsTv.text = mDressNorms
             mPostageTv.text = getString(R.string.rmb).plus(postage)
             mRealityPriceTv.text = "${amount + postage}"
+            mGoodsIv.loadUrl(imgurl)
 
             store?.let {
-                mGoodsIv.loadUrl(store.imgurl)
                 mShopTv.text = store.storeName
             }
         }
@@ -151,6 +152,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mSelectShipTv, R.id.mShipView -> {
                 startActivity<ShipAddressActivity>()
             }

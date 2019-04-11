@@ -47,6 +47,7 @@ class InvitationActivity : BaseMvpActivity<InvitationPresenter>(), InvitationVie
 
     private fun initView() {
         mInvitationTv.onClick(this)
+        mCustomBtn.onClick(this)
 
         mIntegralTv.text = mCode
         mRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -84,6 +85,7 @@ class InvitationActivity : BaseMvpActivity<InvitationPresenter>(), InvitationVie
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mInvitationTv -> startActivity<InvitationAddActivity>()
         }
     }

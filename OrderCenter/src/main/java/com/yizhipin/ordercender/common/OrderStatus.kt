@@ -5,7 +5,7 @@ package com.yizhipin.ordercender.common
  */
 class OrderStatus {
     companion object {
-        const val ORDER_UNFINISH = "0"//待完成
+        const val ORDER_UNFINISH = "1"//待完成
         const val ORDER_FINISHED = "3"//已完成
     }
 }

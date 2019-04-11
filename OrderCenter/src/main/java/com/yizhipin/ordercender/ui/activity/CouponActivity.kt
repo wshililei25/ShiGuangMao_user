@@ -13,6 +13,7 @@ import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Coupon
 import com.yizhipin.base.data.response.RedPacket
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
@@ -25,7 +26,7 @@ import com.yizhipin.ordercender.presenter.view.CouponView
 import com.yizhipin.ordercender.ui.adapter.CouponAdapter
 import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.router.RouterPath
-import kotlinx.android.synthetic.main.activity_coupon.*
+import kotlinx.android.synthetic.main.activity_recyclerview.*
 
 /**
  * Created by ${XiLei} on 2018/9/24.
@@ -45,17 +46,17 @@ class CouponActivity : BaseMvpActivity<CouponPresenter>(), CouponView, View.OnCl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coupon)
+        setContentView(R.layout.activity_recyclerview)
 
         initView()
         initRefreshLayout()
     }
 
     private fun initView() {
-
-        mAddressRv.layoutManager = LinearLayoutManager(this!!)
+        mHeaderBar.getTiTleTv().text = getString(R.string.coupon)
+        mRv.layoutManager = LinearLayoutManager(this!!)
         mCouponAdapter = CouponAdapter(this)
-        mAddressRv.adapter = mCouponAdapter
+        mRv.adapter = mCouponAdapter
         mCouponAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Coupon> {
             override fun onItemClick(item: Coupon, position: Int) {
                 if (mIsPay) {
@@ -66,6 +67,10 @@ class CouponActivity : BaseMvpActivity<CouponPresenter>(), CouponView, View.OnCl
                 }
             }
         })
+
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
     private fun initRefreshLayout() {
@@ -140,6 +145,7 @@ class CouponActivity : BaseMvpActivity<CouponPresenter>(), CouponView, View.OnCl
 
     override fun onRedPacketListSuccess(result: BasePagingResp<MutableList<RedPacket>>) {
     }
+
     override fun onRedBalanceSuccess(result: String) {
     }
 }

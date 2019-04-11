@@ -75,9 +75,9 @@
     <string name="add_address">新增收货地址</string>
     <string name="confirm_add">确认添加</string>
     <string name="addressee">收件人</string>
-    <string name="input_addressee">请输入新郎姓名</string>
+    <string name="input_addressee">请输入姓名</string>
     <string name="take_mobile">收件电话</string>
-    <string name="input_addressee_mobile">请输入新郎电话</string>
+    <string name="input_addressee_mobile">请输入电话</string>
     <string name="detail_addressee">详细地址</string>
     <string name="input_detail_addressee">请输入详细街道、门牌地址</string>
     <string name="set">设置</string>

@@ -230,19 +230,19 @@ class DressDetailActivity : BaseMvpActivity<DressDetailPresenter>(), DressDetail
                 mShopIv.loadUrl(store.imgurl)
             }
 
-            mWebView.loadData(content+ WebJs.js, "text/html", "UTF-8")
+            mWebView.loadData(content + WebJs.js, "text/html", "UTF-8")
             mWebView.getSettings().setJavaScriptEnabled(true);//启用js
             mWebView.getSettings().setBlockNetworkImage(false);//解决图片不显示
 
-            imgurls?.let {
+            imgurl?.let {
                 var listResult = mutableListOf<String>()
-                if (imgurls.contains(",")) {
-                    var list = imgurls!!.split(",").toMutableList()
+                if (imgurl.contains(",")) {
+                    var list = imgurl!!.split(",").toMutableList()
                     for (l in list) {
                         listResult.add(AppPrefsUtils.getString(BaseConstant.IMAGE_ADDRESS).plus(l))
                     }
                 } else {
-                    listResult.add(AppPrefsUtils.getString(BaseConstant.IMAGE_ADDRESS).plus(imgurls))
+                    listResult.add(AppPrefsUtils.getString(BaseConstant.IMAGE_ADDRESS).plus(imgurl))
                 }
                 mBanner.setImages(listResult)
                 mBanner.start()

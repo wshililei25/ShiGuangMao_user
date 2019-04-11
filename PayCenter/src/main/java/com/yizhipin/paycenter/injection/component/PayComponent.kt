@@ -4,6 +4,7 @@ import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.paycenter.ui.activity.CashPledgeActivity
 import com.yizhipin.paycenter.ui.activity.RechargeActivity
+import com.yizhipin.paycenter.ui.activity.WithdrawActivity
 import com.yizhipin.shop.injection.module.PayModule
 import dagger.Component
 
@@ -16,4 +17,5 @@ interface PayComponent {
 
     fun inject(activity: RechargeActivity)
     fun inject(activity: CashPledgeActivity)
+    fun inject(activity: WithdrawActivity)
 }

@@ -12,8 +12,6 @@
         <activity android:name=".ui.activity.RegisterActivity"/>
         <activity android:name=".ui.activity.ResetPwdActivity"/>
         <activity android:name=".ui.activity.UserInfoActivity"/>
-        <activity android:name=".ui.activity.BindMobileActivity"/>
-        <activity android:name=".ui.activity.BindWeChatActivity"/>
         <activity android:name=".ui.activity.CommissionerApplyActivity"/>
         <activity android:name=".ui.activity.WalletActivity"/>
         <activity android:name=".ui.activity.PayPwdSetActivity"/>
@@ -25,6 +23,7 @@
         <activity android:name=".ui.activity.RelevanceAddActivity"/>
         <activity android:name=".ui.activity.InvitationAddActivity"/>
         <activity android:name=".ui.activity.ComplainActivity"/>
+        <activity android:name=".ui.activity.ShareActivity"/>
 
     </application>
 </manifest>

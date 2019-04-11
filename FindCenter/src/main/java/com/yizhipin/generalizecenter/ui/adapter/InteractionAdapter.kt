@@ -110,7 +110,7 @@ class InteractionAdapter(var context: Context) : BaseRecyclerViewAdapter<Interac
         var drawable: Drawable? = null
         when (isLike) {
             true -> {
-                drawable = ContextCompat.getDrawable(context, R.drawable.heart)!!
+                drawable = ContextCompat.getDrawable(context, R.drawable.heart7)!!
                 drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
             }
             false -> {

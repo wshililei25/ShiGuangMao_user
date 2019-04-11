@@ -1,104 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.White">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        style="@style/MatchWrap"
-        app:titleText="@string/balance"/>
+    <LinearLayout style="@style/MatchMatch.Vertical.White">
 
-    <View
-        style="@style/DividerFixedHeight_10"/>
+        <com.yizhipin.base.widgets.HeaderBar
+            style="@style/MatchWrap"
+            app:titleText="@string/balance" />
 
-    <TextView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPaddingBigSmall"
-        android:text="@string/account_balance"
-        android:textColor="@color/yBlackDeep"
-        android:textSize="@dimen/yTextSmallLarSize"/>
-
-    <RelativeLayout
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPaddingMiddle"
-        android:layout_marginBottom="@dimen/yPaddingBigSmall">
-
-        <TextView
-            android:id="@+id/mAmountTv"
-            style="@style/WrapWrap"
-            android:text="¥ 0.00"
-            android:textColor="@color/yBlack"
-            android:textSize="@dimen/yTextHugeSize"
-            android:textStyle="bold"/>
+        <View style="@style/DividerFixedHeight_10" />
 
         <TextView
             style="@style/WrapWrap"
-            android:layout_alignBottom="@+id/mAmountTv"
-            android:layout_toRightOf="@+id/mAmountTv"
-            android:text="@string/yuan"
-            android:layout_marginBottom="@dimen/yPaddingMin"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingBigSmall"
+            android:text="@string/account_balance"
             android:textColor="@color/yBlackDeep"
-            android:textSize="@dimen/yTextSmallLarSize"/>
-    </RelativeLayout>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
-    <View
-        style="@style/DividerFixedHeight"/>
+        <RelativeLayout
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:layout_marginBottom="@dimen/yPaddingBigSmall">
 
-    <LinearLayout
-        style="@style/MatchWrap.Horizontal"
-        android:layout_height="@dimen/yPaddingBig">
-
-        <LinearLayout
-            android:id="@+id/mRechargeTv"
-            style="@style/MatchWrap.Horizontal"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
+            <TextView
+                android:id="@+id/mAmountTv"
                 style="@style/WrapWrap"
-                android:src="@drawable/inbox"/>
+                android:text="¥ 0.00"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextHugeSize"
+                android:textStyle="bold" />
 
             <TextView
                 style="@style/WrapWrap"
+                android:layout_alignBottom="@+id/mAmountTv"
+                android:layout_marginBottom="@dimen/yPaddingMin"
+                android:layout_toRightOf="@+id/mAmountTv"
+                android:text="@string/yuan"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextSmallLarSize" />
+        </RelativeLayout>
+
+        <View style="@style/DividerFixedHeight" />
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_height="@dimen/yPaddingBig">
+
+            <LinearLayout
+                android:id="@+id/mRechargeTv"
+                style="@style/MatchWrap.Horizontal"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/yPaddingMiddle"
-                android:text="@string/recharge"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    style="@style/WrapWrap"
+                    android:src="@drawable/inbox" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:text="@string/recharge"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleBigSize" />
+            </LinearLayout>
+
+            <View style="@style/DividerFixedWidth.MarginTopBottom" />
+
+            <LinearLayout
+                android:id="@+id/mWithdrawTv"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    style="@style/WrapWrap"
+                    android:src="@drawable/inbox2" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:text="@string/withdraw_w"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleBigSize" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <View
-            style="@style/DividerFixedWidth.MarginTopBottom"/>
+        <View style="@style/DividerFixedHeight_10" />
 
-        <LinearLayout
-            android:id="@+id/mWithdrawTv"
-            style="@style/MatchWrap.Horizontal"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                style="@style/WrapWrap"
-                android:src="@drawable/inbox2"/>
-
-            <TextView
-                style="@style/WrapWrap"
-                android:layout_marginLeft="@dimen/yPaddingMiddle"
-                android:text="@string/withdraw_w"
-                android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
-        </LinearLayout>
-
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <View
-        style="@style/DividerFixedHeight_10"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

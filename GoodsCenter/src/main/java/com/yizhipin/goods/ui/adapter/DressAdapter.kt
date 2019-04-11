@@ -31,7 +31,6 @@ class DressAdapter(val context: Context, val mDressShopStatus: String) : BaseRec
                 holder.itemView.mAmountRightTv.text = context.getString(R.string.clap) + "  " + context.getString(R.string.rmb) + paiAmount.toString()
             }
 
-
             if (!model.imgurl.isNullOrEmpty()) {
                 holder.itemView.mGoodsIv.loadUrl(imgurl!!)
             }

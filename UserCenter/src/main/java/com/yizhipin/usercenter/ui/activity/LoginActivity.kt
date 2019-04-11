@@ -40,12 +40,14 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         mRegistBtn.onClick(this)
         mLoginBtn.onClick(this)
         mRightTv.onClick(this)
+        mCustomBtn.onClick(this)
         mLoginBtn.enable(mMobileEt, { isBtnEnable() })
         mLoginBtn.enable(mPswEt, { isBtnEnable() })
     }
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mBackIv -> finish()
             R.id.mRegistBtn -> startActivity<RegisterActivity>()
             R.id.mRightTv -> startActivity<ResetPwdActivity>()

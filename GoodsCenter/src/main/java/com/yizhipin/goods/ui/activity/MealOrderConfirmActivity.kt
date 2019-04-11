@@ -83,31 +83,28 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
         mAppointDressAdapter = AppointDressAdapter(this)
         mAppointDressRv.adapter = mAppointDressAdapter
         var list = ArrayList<AppiontDress>()
-        var appointDress1 = AppiontDress()
-        appointDress1.title = "指定服装1"
-        list.add(appointDress1)
-        var appointDress2 = AppiontDress()
-        appointDress2.title = "指定服装2"
-        list.add(appointDress2)
+        var appointDress = AppiontDress()
+        appointDress.title = "指定服装1"
+        list.add(appointDress)
         mAppointDressAdapter.setData(list)
 
         //指定景点
-        mAppointFeatureSpotRv.layoutManager = GridLayoutManager(this, 3)
+        var linearLayoutManager1 = LinearLayoutManager(this!!)
+        linearLayoutManager1.orientation = LinearLayoutManager.HORIZONTAL
+        mAppointFeatureSpotRv.layoutManager = linearLayoutManager1
         mAppointFeatureSpotAdapter = AppointFeatureSpotAdapter(this)
         mAppointFeatureSpotRv.adapter = mAppointFeatureSpotAdapter
         var list1 = ArrayList<AppiontSport>()
-        var appiontSport1 = AppiontSport()
-        appiontSport1.name = "指定景点1"
-        list1.add(appiontSport1)
-        var appiontSport2 = AppiontSport()
-        appiontSport2.name = "指定景点2"
-        list1.add(appiontSport2)
+        var appiontSport = AppiontSport()
+        appiontSport.name = "指定景点1"
+        list1.add(appiontSport)
         mAppointFeatureSpotAdapter.setData(list1)
 
         mEditTv.onClick(this)
         mCameramanView.onClick(this)
         mDresserView.onClick(this)
         mBtn.onClick(this)
+        mCustomBtn.onClick(this)
 
         mOrderTeacher?.let {
             //从老师详情页面来
@@ -173,7 +170,7 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mTakePayTv -> {
                 mSetMealDetails?.let {
                     startActivity<BasicServicesListActivity>(BaseConstant.KEY_SHOP_ID to mSetMealDetails.storeId)
@@ -192,14 +189,14 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
                     .withString(BaseConstant.KEY_MEAL_ORDER_ID, mOrderId)
                     .withString(BaseConstant.KEY_PAY_AMOUNT, "1000")
                     .withString(BaseConstant.KEY_PAY_FROM, getString(R.string.meal_destine))
-                    .navigation()
-
+                    .navigation(this, 100)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (resultCode) {
+            ProvideReqCode.CODE_RESULT_PAY_SUCCESS -> finish() //支付成功
             ProvideReqCode.CODE_RESULT_BRIDE_INFO -> { //添加用户信息返回
                 val mBrideInfo = data!!.getParcelableExtra<BrideInfo>(BaseConstant.KEY_BRIDE_INFO)
                 with(mBrideInfo) {
@@ -225,17 +222,35 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
                 }
             }
             ProvideReqCode.CODE_RESULT_DRESS_WOMEN -> { //添加女装返回
-                mAppointDressAdapter.dataList.get(data!!.getIntExtra(BaseConstant.KEY_DRESS_POSITION, 0)).womenImage = data!!.getStringExtra(BaseConstant.KEY_DRESS_WOMEN_IMAGE)
+                val position = data!!.getIntExtra(BaseConstant.KEY_DRESS_POSITION, 0)
+                mAppointDressAdapter.dataList.get(position).womenImage = data!!.getStringExtra(BaseConstant.KEY_DRESS_WOMEN_IMAGE)
+                if (mAppointDressAdapter.dataList.get(position).womenImage.isNotEmpty()
+                        && mAppointDressAdapter.dataList.get(position).manImage.isNotEmpty()) {
+                    var appointDress = AppiontDress()
+                    appointDress.title = "指定服装${mAppointDressAdapter.dataList.size + 1}"
+                    mAppointDressAdapter.dataList.add(appointDress)
+                }
                 mAppointDressAdapter.notifyDataSetChanged()
             }
             ProvideReqCode.CODE_RESULT_DRESS_MAN -> { //添加男装返回
-                mAppointDressAdapter.dataList.get(data!!.getIntExtra(BaseConstant.KEY_DRESS_POSITION, 0)).manImage = data!!.getStringExtra(BaseConstant.KEY_DRESS_MAN_IMAGE)
+                val position = data!!.getIntExtra(BaseConstant.KEY_DRESS_POSITION, 0)
+                mAppointDressAdapter.dataList.get(position).manImage = data!!.getStringExtra(BaseConstant.KEY_DRESS_MAN_IMAGE)
+                if (mAppointDressAdapter.dataList.get(position).womenImage.isNotEmpty()
+                        && mAppointDressAdapter.dataList.get(position).manImage.isNotEmpty()) {
+                    var appointDress = AppiontDress()
+                    appointDress.title = "指定服装${mAppointDressAdapter.dataList.size + 1}"
+                    mAppointDressAdapter.dataList.add(appointDress)
+                }
                 mAppointDressAdapter.notifyDataSetChanged()
             }
             ProvideReqCode.CODE_RESULT_FEATURE -> { //添加景点返回
                 mAppointFeatureSpotAdapter.dataList.get(data!!.getIntExtra(BaseConstant.KEY_DRESS_POSITION, 0)).name = data!!.getStringExtra(BaseConstant.KEY_SCENIC_NAME)
                 mAppointFeatureSpotAdapter.dataList.get(data!!.getIntExtra(BaseConstant.KEY_DRESS_POSITION, 0)).amount = data!!.getStringExtra(BaseConstant.KEY_SCENIC_AMOUNT)
                 mAppointFeatureSpotAdapter.dataList.get(data!!.getIntExtra(BaseConstant.KEY_DRESS_POSITION, 0)).image = data!!.getStringExtra(BaseConstant.KEY_SCENIC_IMAGE)
+
+                var appiontSport = AppiontSport()
+                appiontSport.name = "指定景点${mAppointFeatureSpotAdapter.dataList.size + 1}"
+                mAppointFeatureSpotAdapter.dataList.add(appiontSport)
                 mAppointFeatureSpotAdapter.notifyDataSetChanged()
             }
         }
@@ -250,8 +265,8 @@ class MealOrderConfirmActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
     }
 
     override fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>) {
-
     }
+
     override fun onFollowSuccess(result: Boolean) {
     }
 

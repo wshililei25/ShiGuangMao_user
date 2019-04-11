@@ -51,7 +51,7 @@ class DressFragment : BaseMvpFragment<DressPresenter>(), DressView, BGARefreshLa
     }
 
     private fun initView() {
-        mOrderRv.layoutManager = GridLayoutManager(activity, 2)
+        mOrderRv.layoutManager = GridLayoutManager(activity!!, 2)
         mOrderAdapter = DressAdapter(activity!!, arguments!!.getString(GoodsConstant.KEY_DRESS_SHOP_STATUS, "-1"))
         mOrderRv.adapter = mOrderAdapter
 

@@ -61,6 +61,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         mBackIv.onClick(this)
         mUserIconView.onClick(this)
         mConfirmBtn.onClick(this)
+        mCustomBtn.onClick(this)
         mConfirmBtn.enable(mNickEt, { isBtnEnable() })
     }
 
@@ -118,6 +119,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
     override fun onClick(v: View) {
 
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mRightTv, R.id.mBackIv -> finish()
 
             R.id.mUserIconView -> showAlertView()

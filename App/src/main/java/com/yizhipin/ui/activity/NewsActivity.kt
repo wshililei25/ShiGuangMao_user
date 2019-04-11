@@ -9,13 +9,13 @@ import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.News
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.presenter.NewsPresenter
 import com.yizhipin.presenter.view.NewsView
-import com.yizhipin.ui.adapter.InformationAdapter
 import com.yizhipin.ui.adapter.NewsAdapter
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
@@ -35,7 +35,6 @@ class NewsActivity : BaseMvpActivity<NewsPresenter>(), NewsView, BGARefreshLayou
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)
 
-
         initView()
         initRefreshLayout()
         loadData()
@@ -51,6 +50,10 @@ class NewsActivity : BaseMvpActivity<NewsPresenter>(), NewsView, BGARefreshLayou
 //                startActivity<InformationDetailsActivity>(BaseConstant.KEY_INFORMATION_ID to item.id)
             }
         })
+
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
     private fun initRefreshLayout() {

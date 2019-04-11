@@ -26,10 +26,12 @@ class DressShopActivity : BaseActivity(), View.OnClickListener {
 
         mSellIv.onClick(this)
         mShareIv.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mSellIv -> startActivity<DressListActivity>(GoodsConstant.KEY_DRESS_SHOP_STATUS to DressShopStatus.DRESS_SHOP_SELL)
             R.id.mShareIv -> startActivity<DressListActivity>(GoodsConstant.KEY_DRESS_SHOP_STATUS to DressShopStatus.DRESS_SHOP_SHARE)
         }

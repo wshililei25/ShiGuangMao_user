@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseActivity
 import com.yizhipin.goods.R
 import com.yizhipin.goods.ui.adapter.CloudDiskVpAdapter
 import com.yizhipin.provider.router.RouterPath
-import kotlinx.android.synthetic.main.activity_cloud_disk.*
+import kotlinx.android.synthetic.main.activity_tablayout.*
 
 /**
  * Created by ${XiLei} on 2018/9/25.
@@ -19,21 +20,23 @@ class CloudDiskActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cloud_disk)
+        setContentView(R.layout.activity_tablayout)
 
         initView()
     }
 
     private fun initView() {
+        mHeaderBar.getTiTleTv().text = getString(R.string.time_cloud)
+        mTab.tabMode = TabLayout.MODE_FIXED
+        mVp.adapter = CloudDiskVpAdapter(supportFragmentManager, this)
+        mTab.setupWithViewPager(mVp)
 
-        mOrderTab.tabMode = TabLayout.MODE_FIXED
-        mOrderVp.adapter = CloudDiskVpAdapter(supportFragmentManager, this)
-        mOrderTab.setupWithViewPager(mOrderVp)
+        mCustomBtn.onClick(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
         }
     }
 

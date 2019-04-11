@@ -46,6 +46,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
         mBackIv.onClick(this)
         mSendCodeTv.onClick(this)
         mLoginBtn.onClick(this)
+        mCustomBtn.onClick(this)
         mLoginBtn.enable(mMobileEt, { isBtnEnable() })
         mLoginBtn.enable(mCodeEt, { isBtnEnable() })
         mLoginBtn.enable(mPswEt, { isBtnEnable() })
@@ -53,6 +54,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mBackIv -> finish()
             R.id.mSendCodeTv -> {
                 if (mMobileEt.text.toString().isNullOrEmpty()) {

@@ -1,12 +1,12 @@
 package com.yizhipin.ui.activity
 
 import android.os.Bundle
-import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.News
 import com.yizhipin.base.ext.loadUrl
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.presenter.InformationDetailsPresenter
 import com.yizhipin.presenter.view.InformationDetailsView
@@ -28,7 +28,14 @@ class InformationDetailsActivity : BaseMvpActivity<InformationDetailsPresenter>(
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_information_details)
 
+        initView()
         loadData()
+    }
+
+    private fun initView() {
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
     private fun loadData() {

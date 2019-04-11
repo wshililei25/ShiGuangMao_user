@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchMatch.Vertical.Common">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.Common">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        style="@style/MatchWrap"
-        app:titleText="@string/version_info"/>
+    <LinearLayout style="@style/MatchMatch.Vertical">
 
-    <ImageView
-        style="@style/WrapWrap"
-        android:layout_marginTop="@dimen/yPaddingBigEven"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/timemall"/>
+        <com.yizhipin.base.widgets.HeaderBar
+            style="@style/MatchWrap"
+            app:titleText="@string/version_info" />
 
-    <TextView
-        android:id="@+id/mAboutTv"
-        style="@style/WrapWrap"
-        android:layout_marginTop="@dimen/yPaddingBig"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/version_info"
-        android:textSize="@dimen/yTextBigSize"
-        android:textColor="@color/yBlackDeep"/>
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingBigEven"
+            android:src="@drawable/timemall" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/mAboutTv"
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingBig"
+            android:text="@string/version_info"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextBigSize" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

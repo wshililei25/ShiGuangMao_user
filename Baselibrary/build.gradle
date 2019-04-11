@@ -101,6 +101,7 @@ dependencies {
     api 'com.aliyun.dpa:oss-android-sdk:+'
     //权限管理
     api "com.github.tbruyelle:rxpermissions:${rxpermissions_version}"
+
 }
 
 //Parcelable序列化插件

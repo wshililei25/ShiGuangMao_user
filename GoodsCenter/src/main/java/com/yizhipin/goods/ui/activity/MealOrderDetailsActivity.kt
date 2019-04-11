@@ -99,6 +99,7 @@ class MealOrderDetailsActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
         mCameramanView.onClick(this)
         mDresserView.onClick(this)
         mBtn.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     /**
@@ -150,7 +151,7 @@ class MealOrderDetailsActivity : BaseMvpActivity<SetMealDetailsPresenter>(), Set
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mTakePayTv -> {
                 mSetMealDetails?.let {
                     startActivity<BasicServicesListActivity>(BaseConstant.KEY_SHOP_ID to mSetMealDetails.storeId)

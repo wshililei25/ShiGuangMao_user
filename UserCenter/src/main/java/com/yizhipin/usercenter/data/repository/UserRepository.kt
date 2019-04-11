@@ -21,7 +21,7 @@ class UserRepository @Inject constructor() {
     fun getCode(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryGet().create(UserApi::class.java).getCode(map["mobile"]!!)
     }
-    fun complain(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+    fun complain(map: MutableMap<String, String>): Observable<BaseResp<Complain>> {
         return RetrofitFactoryPost(map).create(UserApi::class.java).complain()
     }
 

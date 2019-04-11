@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/MatchMatch.Vertical.White">
 
-    <com.yizhipin.base.widgets.HeaderBar
-        style="@style/MatchWrap"
-        app:titleText="@string/information_details" />
+    <LinearLayout style="@style/MatchMatch.Vertical">
 
-    <TextView
-        android:id="@+id/mNameTv"
-        style="@style/MatchWrap"
-        android:layout_marginTop="@dimen/yPadding"
-        android:gravity="center_horizontal"
-        android:textColor="@color/yBlack"
-        android:textSize="@dimen/yTextBigSize" />
+        <com.yizhipin.base.widgets.HeaderBar
+            style="@style/MatchWrap"
+            app:titleText="@string/information_details" />
 
-    <TextView
-        android:id="@+id/mDateTv"
-        style="@style/MatchWrap"
-        android:padding="@dimen/yPadding"
-        android:textColor="@color/yBlackLight"
-        android:textSize="@dimen/yTextBigSize" />
+        <TextView
+            android:id="@+id/mNameTv"
+            style="@style/MatchWrap"
+            android:layout_marginTop="@dimen/yPadding"
+            android:gravity="center_horizontal"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize" />
 
-    <ImageView
-        android:id="@+id/mIv"
-        style="@style/MatchWrap"
-        android:layout_margin="@dimen/yPadding"
-        android:scaleType="fitXY" />
+        <TextView
+            android:id="@+id/mDateTv"
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPadding"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextBigSize" />
 
-    <TextView
-        android:id="@+id/mContenTv"
-        style="@style/MatchWrap"
-        android:padding="@dimen/yPadding"
-        android:textColor="@color/yBlackLight"
-        android:textSize="@dimen/yTextMiddleSize" />
-</LinearLayout>
+        <ImageView
+            android:id="@+id/mIv"
+            style="@style/MatchWrap"
+            android:layout_margin="@dimen/yPadding"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/mContenTv"
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPadding"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

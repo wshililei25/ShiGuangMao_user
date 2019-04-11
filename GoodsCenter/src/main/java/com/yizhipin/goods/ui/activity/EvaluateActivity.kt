@@ -10,6 +10,7 @@ import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Evaluate
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.EvaluateAdapter
@@ -58,6 +59,10 @@ class EvaluateActivity : BaseMvpActivity<EvaluatePresenter>(), ReportView, BGARe
         mRv.layoutManager = LinearLayoutManager(this)
         mEvaluateAdapter = EvaluateAdapter(this!!)
         mRv.adapter = mEvaluateAdapter
+
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
     private fun initRefreshLayout() {

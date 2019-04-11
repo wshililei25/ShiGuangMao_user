@@ -19,6 +19,7 @@ class ProvideReqCode {
         const val CODE_RESULT_DRESS_WOMEN= 1005
         const val CODE_RESULT_DRESS_MAN= 1006
         const val CODE_RESULT_FEATURE= 1007
+        const val CODE_RESULT_PAY_SUCCESS = 1008
     }
 
 

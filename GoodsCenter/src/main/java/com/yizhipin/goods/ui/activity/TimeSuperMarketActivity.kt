@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.DressCategory
 import com.yizhipin.base.data.response.TimeSuperMarket
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.goods.R
 import com.yizhipin.goods.injection.component.DaggerGoodsComponent
@@ -15,7 +16,7 @@ import com.yizhipin.goods.presenter.TimeSuperMarketPresenter
 import com.yizhipin.goods.presenter.view.TimeSuperMarketView
 import com.yizhipin.goods.ui.adapter.TimeSuperMarketVpAdapter
 import com.yizhipin.provider.router.RouterPath
-import kotlinx.android.synthetic.main.activity_time_supermarket.*
+import kotlinx.android.synthetic.main.activity_tablayout.*
 
 /**
  * Created by ${XiLei} on 2018/9/25.
@@ -26,7 +27,7 @@ class TimeSuperMarketActivity() : BaseMvpActivity<TimeSuperMarketPresenter>(), T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_time_supermarket)
+        setContentView(R.layout.activity_tablayout)
 
         initView()
         getTimeSuperMarketCategory()
@@ -38,7 +39,10 @@ class TimeSuperMarketActivity() : BaseMvpActivity<TimeSuperMarketPresenter>(), T
     }
 
     private fun initView() {
-
+        mHeaderBar.getTiTleTv().text = getString(R.string.time_supermarket)
+        mCustomBtn.onClick {
+            custom()
+        }
     }
 
     /**
@@ -52,9 +56,9 @@ class TimeSuperMarketActivity() : BaseMvpActivity<TimeSuperMarketPresenter>(), T
      * 获取服装类别成功
      */
     override fun onGetTimeSuperMarketCategorySuccess(result: MutableList<DressCategory>) {
-        mOrderTab.tabMode = TabLayout.MODE_SCROLLABLE
-        mOrderVp.adapter = TimeSuperMarketVpAdapter(supportFragmentManager, this, result)
-        mOrderTab.setupWithViewPager(mOrderVp)
+        mTab.tabMode = TabLayout.MODE_SCROLLABLE
+        mVp.adapter = TimeSuperMarketVpAdapter(supportFragmentManager, this, result)
+        mTab.setupWithViewPager(mVp)
     }
 
     override fun onClick(v: View) {
@@ -65,8 +69,10 @@ class TimeSuperMarketActivity() : BaseMvpActivity<TimeSuperMarketPresenter>(), T
 
     override fun onGetTimeSuperMarketListSuccess(result: BasePagingResp<MutableList<TimeSuperMarket>>) {
     }
+
     override fun onGetTimeSuperMarketDetailSuccess(result: TimeSuperMarket) {
     }
+
     override fun onFollowSuccess(result: Boolean) {
     }
 }

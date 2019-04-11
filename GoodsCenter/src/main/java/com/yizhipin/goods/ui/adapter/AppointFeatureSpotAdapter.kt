@@ -46,10 +46,6 @@ class AppointFeatureSpotAdapter(var context: Context) : BaseRecyclerViewAdapter<
         holder.itemView.mIv.onClick {
             ARouter.getInstance().build(RouterPath.ShopCenter.PATH_SHOP)
                     .withInt(BaseConstant.KEY_DRESS_POSITION, position).navigation(context as Activity, 1002)
-
-            /*(context as Activity).startActivityForResult<ScenicActivity>(1000
-                    , GoodsConstant.KEY_DRESS_SHOP_STATUS to DressShopStatus.DRESS_SHOP_SHARE
-                    , BaseConstant.KEY_DRESS to 0, BaseConstant.KEY_DRESS_POSITION to position)*/
         }
     }
 

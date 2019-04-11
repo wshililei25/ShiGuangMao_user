@@ -46,6 +46,7 @@ class RelevanceAddActivity : BaseMvpActivity<RelevancePresenter>(), RelevanceVie
 
     private fun initView() {
         mBtn.onClick(this)
+        mCustomBtn.onClick(this)
         mBtn.enable(mEt, { isBtnEnable() })
     }
 
@@ -55,7 +56,7 @@ class RelevanceAddActivity : BaseMvpActivity<RelevancePresenter>(), RelevanceVie
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mCustomBtn -> custom()
             R.id.mBtn -> {
                 if (mIsAdd) {
                     var map = mutableMapOf<String, String>()

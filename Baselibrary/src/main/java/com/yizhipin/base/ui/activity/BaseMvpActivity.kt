@@ -1,6 +1,7 @@
 package com.yizhipin.base.ui.activity
 
 import android.os.Bundle
+import com.hyphenate.helpdesk.easeui.util.IntentBuilder
 import com.yizhipin.base.common.BaseApplication
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.base.injection.component.DaggerActivityComponent
@@ -50,6 +51,5 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
     override fun onError(mes: String) {
         toast(mes)
     }
-
 
 }

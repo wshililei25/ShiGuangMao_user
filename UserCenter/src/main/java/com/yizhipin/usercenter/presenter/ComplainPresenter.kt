@@ -1,5 +1,6 @@
 package com.yizhipin.usercenter.presenter
 
+import com.yizhipin.base.data.response.Complain
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
@@ -18,9 +19,9 @@ open class ComplainPresenter @Inject constructor() : BasePresenter<ComplainView>
     fun complain(map: MutableMap<String, String>) {
 
         mView.showLoading()
-        mUserServiceImpl.getCode(map)
-                .execute(object : BaseSubscriber<Boolean>(mView) {
-                    override fun onNext(t: Boolean) {
+        mUserServiceImpl.complain(map)
+                .execute(object : BaseSubscriber<Complain>(mView) {
+                    override fun onNext(t: Complain) {
                         mView.onComplainViewSuccess(t)
                     }
                 }, mLifecycleProvider)

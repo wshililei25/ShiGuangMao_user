@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WrapWrap">
+
+    <LinearLayout
+        style="@style/WrapWrap"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_red_round"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/journalist" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/yPaddingMinSmall"
+            android:text="客服"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextSmallSize" />
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

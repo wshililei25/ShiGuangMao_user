@@ -1,169 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchMatch.Vertical"
-              android:background="@drawable/ssssss">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/yPaddingMiddle">
+    <LinearLayout style="@style/MatchMatch.Vertical.White"
+        android:background="@drawable/ssssss">
 
-        <ImageView
-            android:id="@+id/mBackIv"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/yPaddingSmall"
-            android:paddingRight="@dimen/yPaddingSmall"
-            android:src="@drawable/leftarroww"/>
+            android:padding="@dimen/yPaddingMiddle">
 
-        <TextView
-            android:id="@+id/mTitleTv"
-            style="@style/WrapWrap"
-            android:layout_centerInParent="true"
-            android:text="@string/register_acount"
-            android:textColor="@color/yWhite"
-            android:textSize="@dimen/yTextLargeSize"/>
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/mBackIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/yPaddingSmall"
+                android:paddingRight="@dimen/yPaddingSmall"
+                android:src="@drawable/leftarroww" />
 
-    <LinearLayout
-        style="@style/MatchWrap.Horizontal"
-        android:layout_marginLeft="@dimen/yPaddingMiddle"
-        android:layout_marginTop="@dimen/yPaddingBigSmall"
-        android:layout_marginRight="@dimen/yPaddingMiddle"
-        android:alpha="0.5"
-        android:background="@drawable/shape_login"
-        android:paddingLeft="@dimen/yPaddingMiddle">
+            <TextView
+                android:id="@+id/mTitleTv"
+                style="@style/WrapWrap"
+                android:layout_centerInParent="true"
+                android:text="@string/register_acount"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextLargeSize" />
+        </RelativeLayout>
 
-        <ImageView
-            style="@style/WrapWrap"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/telephonew"/>
-
-        <EditText
-            android:id="@+id/mMobileEt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/yEditHeight"
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
             android:layout_marginLeft="@dimen/yPaddingMiddle"
-            android:background="@null"
-            android:hint="@string/input_mobile"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:textColor="@color/yBlackLight"
-            android:textColorHint="@color/yHint"
-            android:textSize="@dimen/yTextBigSize"/>
-    </LinearLayout>
-
-    <RelativeLayout
-        style="@style/MatchWrap.Horizontal"
-        android:layout_marginLeft="@dimen/yPaddingMiddle"
-        android:layout_marginTop="@dimen/yPadding"
-        android:layout_marginRight="@dimen/yPaddingMiddle"
-        android:alpha="0.5"
-        android:background="@drawable/shape_login"
-        android:paddingLeft="@dimen/yPaddingMiddle">
-
-        <ImageView
-            android:id="@+id/iv"
-            style="@style/WrapWrap"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/abw"/>
-
-        <EditText
-            android:id="@+id/mCodeEt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/yEditHeight"
-            android:layout_marginLeft="@dimen/yPaddingMiddle"
-            android:layout_toRightOf="@+id/iv"
-            android:background="@null"
-            android:hint="@string/input_sms_code"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:textColor="@color/yBlackLight"
-            android:textColorHint="@color/yHint"
-            android:textSize="@dimen/yTextBigSize"/>
-
-        <TextView
-            android:id="@+id/mSendCodeTv"
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/yPaddingBigSmall"
             android:layout_marginRight="@dimen/yPaddingMiddle"
-            android:text="@string/get_code"
+            android:alpha="0.5"
+            android:background="@drawable/shape_login"
+            android:paddingLeft="@dimen/yPaddingMiddle">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/telephonew" />
+
+            <EditText
+                android:id="@+id/mMobileEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:background="@null"
+                android:hint="@string/input_mobile"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextBigSize" />
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_marginTop="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:alpha="0.5"
+            android:background="@drawable/shape_login"
+            android:paddingLeft="@dimen/yPaddingMiddle">
+
+            <ImageView
+                android:id="@+id/iv"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/abw" />
+
+            <EditText
+                android:id="@+id/mCodeEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@+id/iv"
+                android:background="@null"
+                android:hint="@string/input_sms_code"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/mSendCodeTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/yPaddingMiddle"
+                android:text="@string/get_code"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextBigSize" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_marginTop="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:alpha="0.5"
+            android:background="@drawable/shape_login"
+            android:paddingLeft="@dimen/yPaddingMiddle">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/unlockw" />
+
+            <EditText
+                android:id="@+id/mPswEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:background="@null"
+                android:hint="@string/input_pwd"
+                android:inputType="textPassword"
+                android:maxLength="11"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextBigSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_marginTop="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:alpha="0.5"
+            android:background="@drawable/shape_login"
+            android:paddingLeft="@dimen/yPaddingMiddle">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/hygienicw" />
+
+            <EditText
+                android:id="@+id/mInvitationCodeEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:background="@null"
+                android:hint="@string/invitation_code"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextBigSize" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/mLoginBtn"
+            style="@style/FullBtnStyle"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:text="@string/register" />
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:text="@string/register_agreement"
             android:textColor="@color/yWhite"
-            android:textSize="@dimen/yTextBigSize"/>
-    </RelativeLayout>
-
-    <LinearLayout
-        style="@style/MatchWrap.Horizontal"
-        android:layout_marginLeft="@dimen/yPaddingMiddle"
-        android:layout_marginTop="@dimen/yPadding"
-        android:layout_marginRight="@dimen/yPaddingMiddle"
-        android:alpha="0.5"
-        android:background="@drawable/shape_login"
-        android:paddingLeft="@dimen/yPaddingMiddle">
-
-        <ImageView
-            style="@style/WrapWrap"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/unlockw"/>
-
-        <EditText
-            android:id="@+id/mPswEt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/yEditHeight"
-            android:layout_marginLeft="@dimen/yPaddingMiddle"
-            android:background="@null"
-            android:hint="@string/input_pwd"
-            android:inputType="textPassword"
-            android:maxLength="11"
-            android:textColor="@color/yBlackLight"
-            android:textColorHint="@color/yHint"
-            android:textSize="@dimen/yTextBigSize"/>
+            android:textSize="@dimen/yTextSmallSize" />
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/MatchWrap.Horizontal"
-        android:layout_marginLeft="@dimen/yPaddingMiddle"
-        android:layout_marginTop="@dimen/yPadding"
-        android:layout_marginRight="@dimen/yPaddingMiddle"
-        android:alpha="0.5"
-        android:background="@drawable/shape_login"
-        android:paddingLeft="@dimen/yPaddingMiddle">
-
-        <ImageView
-            style="@style/WrapWrap"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/hygienicw"/>
-
-        <EditText
-            android:id="@+id/mInvitationCodeEt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/yEditHeight"
-            android:layout_marginLeft="@dimen/yPaddingMiddle"
-            android:background="@null"
-            android:hint="@string/invitation_code"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:textColor="@color/yBlackLight"
-            android:textColorHint="@color/yHint"
-            android:textSize="@dimen/yTextBigSize"/>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/mLoginBtn"
-        style="@style/FullBtnStyle"
-        android:layout_marginLeft="@dimen/yPadding"
-        android:layout_marginTop="@dimen/yPadding"
-        android:layout_marginRight="@dimen/yPadding"
-        android:text="@string/register"/>
-
-    <TextView
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/yPaddingMiddle"
-        android:text="@string/register_agreement"
-        android:textColor="@color/yWhite"
-        android:textSize="@dimen/yTextSmallSize"/>
-</LinearLayout>
+    <include
+        android:id="@+id/mCustomBtn"
+        layout="@layout/activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/yPaddingBigSmall"
+        android:layout_marginBottom="70dp" />
+</android.support.design.widget.CoordinatorLayout>

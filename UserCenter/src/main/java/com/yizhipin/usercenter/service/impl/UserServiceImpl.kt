@@ -22,8 +22,8 @@ open class UserServiceImpl @Inject constructor() : UserService {
         return mRepository.getCode(map).convertBoolean()
     }
 
-    override fun complain(map: MutableMap<String, String>): Observable<Boolean> {
-        return mRepository.complain(map).convertBoolean()
+    override fun complain(map: MutableMap<String, String>): Observable<Complain> {
+        return mRepository.complain(map).convert()
     }
 
     override fun resetPwd(map: MutableMap<String, String>): Observable<Boolean> {

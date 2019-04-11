@@ -109,5 +109,6 @@ interface Api {
         const val SHARE_BILL_LIST = "api/Tuan/NearBy"//附近品团列表
         const val OSS_SIGN = "api/OSS/Sign"//获取oss签名
         const val IS_SHOW_RED = "api/UserRed/RedPrompt"//是否显示红包提示框
+        const val APPLY_WITHDRAW = "api/Withdraw"//申请提现
     }
 }

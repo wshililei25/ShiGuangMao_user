@@ -49,11 +49,13 @@ class IntegralDetailActivity : BaseMvpActivity<IntegralPresenter>(), IntegralVie
 
         mBackIv.onClick { finish() }
         mBuyBtn.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mBackIv -> finish()
+            R.id.mCustomBtn -> custom()
         }
     }
 

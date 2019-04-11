@@ -17,7 +17,7 @@ interface UserApi {
     fun getCode(@Query("mobile") mobile: String): Observable<BaseResp<Boolean>>
 
     @POST(Api.COMPLAIN)
-    fun complain(): Observable<BaseResp<Boolean>>
+    fun complain(): Observable<BaseResp<Complain>>
 
     @POST(Api.RESET_PWD) //重置密码
     fun resetPwd(): Observable<BaseResp<Boolean>>

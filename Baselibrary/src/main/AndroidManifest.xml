@@ -8,5 +8,6 @@
     <application>
         <activity android:name=".utils.permissions.PermissionsActivity"/>
         <activity android:name=".ui.activity.PaySuccessActivity"/>
+        <activity android:name=".ui.web.ContentWebActivity"/>
     </application>
 </manifest>

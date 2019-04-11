@@ -64,11 +64,13 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
 
     private fun initView() {
 
+        mBtn.onClick(this)
+        mCustomBtn.onClick(this)
+
         if (mTeacherType == "huazhuang") {
             mHeaderBar.getTiTleTv().text = getString(R.string.select_dresser)
         }
 
-        mBtn.onClick(this)
         if (!mOrderId.isNullOrBlank()) {
             mBottomView.setVisible(true)
         }
@@ -165,6 +167,7 @@ class TeacherActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, View.O
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
             R.id.mBtn -> {
                 if (null == mTeacher) {
                     finish()

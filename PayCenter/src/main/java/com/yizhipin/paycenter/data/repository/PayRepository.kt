@@ -4,6 +4,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.CashPledge
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.shop.data.api.PayApi
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -25,5 +26,12 @@ class PayRepository @Inject constructor() {
         return RetrofitFactoryGet().create(PayApi::class.java)
                 .getCashPledge(map["uid"]!!)
     }
-
+    fun getUserInfo(map: MutableMap<String, String>): Observable<BaseResp<UserInfo>> {
+        return RetrofitFactoryGet().create(PayApi::class.java)
+                .getUserInfo(map["id"]!!)
+    }
+    fun applyWithdraw(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryPost(map).create(PayApi::class.java)
+                .applyWithdraw()
+    }
 }

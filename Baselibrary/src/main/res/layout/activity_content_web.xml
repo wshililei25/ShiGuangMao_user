@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="董事长的一份信" />
+
+    <ScrollView style="@style/MatchMatch">
+
+        <WebView
+            android:id="@+id/mWebView"
+            style="@style/MatchWrap"
+            android:layout_gravity="center_horizontal" />
+
+    </ScrollView>
+
+</LinearLayout>

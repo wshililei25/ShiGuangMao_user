@@ -7,10 +7,14 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.codbking.widget.DatePickDialog
 import com.codbking.widget.OnSureLisener
 import com.codbking.widget.bean.DateType
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.BrideInfo
+import com.yizhipin.base.event.ComplainTypeCheckedEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.ui.dialog.CustomMadeTypeDialog
 import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.injection.component.DaggerGoodsComponent
@@ -32,6 +36,7 @@ class BrideInfoActivity : BaseMvpActivity<BrideInfoPresenter>(), BrideInfoView, 
     @JvmField
     var mOrderId: String = "" //订单id
 
+    private var mType = ""
     private lateinit var mDialog: DatePickDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,12 +45,15 @@ class BrideInfoActivity : BaseMvpActivity<BrideInfoPresenter>(), BrideInfoView, 
 
         initView()
         initDialog()
+        initObserve()
     }
 
     private fun initView() {
         mSaveBtn.onClick(this)
         mShootTimeView.onClick(this)
         mWeddingDayView.onClick(this)
+        mShootTypeView.onClick(this)
+        mCustomBtn.onClick(this)
     }
 
     private fun initDialog() {
@@ -69,6 +77,11 @@ class BrideInfoActivity : BaseMvpActivity<BrideInfoPresenter>(), BrideInfoView, 
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mCustomBtn -> custom()
+            R.id.mShootTypeView -> {
+                var customDialog = CustomMadeTypeDialog(this)
+                customDialog.show()
+            }
 
             R.id.mShootTimeView -> {
                 //设置点击确定按钮回调
@@ -93,7 +106,8 @@ class BrideInfoActivity : BaseMvpActivity<BrideInfoPresenter>(), BrideInfoView, 
             }
 
             R.id.mSaveBtn -> {
-                if (mShipNameEt.text.isNullOrEmpty() || mShipMobileEt.text.isNullOrEmpty() || mShootTimeTv.text.isNullOrEmpty()) {
+                if (mShipNameEt.text.isNullOrEmpty() || mShipMobileEt.text.isNullOrEmpty() || mShootTimeTv.text.isNullOrEmpty()
+                        || mShopReceiveTv.text.isNullOrEmpty() || mType.isNullOrEmpty()) {
                     toast("内容输入不能为空")
                     return@onClick
                 }
@@ -105,7 +119,7 @@ class BrideInfoActivity : BaseMvpActivity<BrideInfoPresenter>(), BrideInfoView, 
                 map.put("photoTime", mShootTimeTv.text.toString())
                 map.put("weddingDate", mWeddingDayTv.text.toString())
                 map.put("recevice", mShopReceiveTv.text.toString())
-                map.put("duan", "0")
+                map.put("duan", mType)
                 mBasePresenter.addBrideInfo(map)
             }
         }
@@ -116,6 +130,16 @@ class BrideInfoActivity : BaseMvpActivity<BrideInfoPresenter>(), BrideInfoView, 
         intent.putExtra(BaseConstant.KEY_BRIDE_INFO, result)
         setResult(ProvideReqCode.CODE_RESULT_BRIDE_INFO, intent)
         finish()
+    }
+
+    private fun initObserve() {
+        Bus.observe<ComplainTypeCheckedEvent>()
+                .subscribe { t: ComplainTypeCheckedEvent ->
+                    run {
+                        mType = t.complainType.type
+                        mShootTypeTv.setText(t.complainType.name)
+                    }
+                }.registerInBus(this)
     }
 
 }
