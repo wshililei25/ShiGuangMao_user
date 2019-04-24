@@ -8,10 +8,12 @@ import android.view.View
 import com.hyphenate.chat.EMClient
 import com.hyphenate.exceptions.HyphenateException
 import com.tbruyelle.rxpermissions2.RxPermissions
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
@@ -105,7 +107,8 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
      */
     override fun onRegisterSuccess(result: UserInfo) {
 
-        Thread(object : Runnable {
+        //由于后台做了环信注册，这里不需要再注册
+        /*Thread(object : Runnable {
             override fun run() {
                 try {
                     EMClient.getInstance().createAccount(mMobileEt.text.toString().trim(), mPswEt.text.toString().trim())
@@ -116,7 +119,8 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
                 }
             }
 
-        }).start()
+        }).start()*/
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_USER_ID, result.id)
         finish()
     }
 

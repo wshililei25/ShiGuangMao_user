@@ -35,6 +35,11 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         initView()
     }
 
+    override fun injectComponent() {
+        DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
+        mBasePresenter.mView = this
+    }
+
     private fun initView() {
         mBackIv.onClick(this)
         mRegistBtn.onClick(this)
@@ -53,7 +58,6 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
             R.id.mRightTv -> startActivity<ResetPwdActivity>()
 
             R.id.mLoginBtn -> {
-                loginHuanXin()
                 var map = mutableMapOf<String, String>()
                 map.put("mobile", mMobileEt.text.toString().trim())
                 map.put("password", mPswEt.text.toString().trim())
@@ -65,8 +69,23 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         }
     }
 
-    private fun loginHuanXin() {
-        EMClient.getInstance().login(mMobileEt.text.toString().trim(), mPswEt.text.toString().trim(), object : EMCallBack {
+    /**
+     * 登录成功
+     */
+    override fun onLoginSuccess(result: UserInfo) {
+        loginHuanXin(result.id)
+        UserPrefsUtils.putUserInfo(result)
+        if (result.nickname.isNullOrEmpty()) {
+            startActivity<UserInfoActivity>()
+        }
+        finish()
+    }
+
+    /**
+     * 环信登陆
+     */
+    private fun loginHuanXin(uid: String) {
+        EMClient.getInstance().login(uid, mPswEt.text.toString().trim(), object : EMCallBack {
 
             override fun onSuccess() {
                 Log.d("XiLei", "环信登录成功")
@@ -86,22 +105,4 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         return mMobileEt.text.isNullOrEmpty().not() &&
                 mPswEt.text.isNullOrEmpty().not()
     }
-
-    override fun injectComponent() {
-        DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
-        mBasePresenter.mView = this
-    }
-
-    /**
-     * 登录成功
-     */
-    override fun onLoginSuccess(result: UserInfo) {
-
-        UserPrefsUtils.putUserInfo(result)
-        if (result.nickname.isNullOrEmpty()) {
-            startActivity<UserInfoActivity>()
-        }
-        finish()
-    }
-
 }

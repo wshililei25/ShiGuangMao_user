@@ -7,6 +7,8 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.hyphenate.helpdesk.easeui.util.IntentBuilder
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import com.yizhipin.base.common.AppManager
+import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.utils.AppPrefsUtils
 import org.jetbrains.anko.find
 
 /**
@@ -37,9 +39,14 @@ open class BaseActivity : RxAppCompatActivity() {
      * 客服
      */
     fun custom() {
-        var intent = IntentBuilder(this)
-                .setServiceIMNumber("100") //客服关联的IM服务号
-                .build();
-        startActivity(intent);
+        if(AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID).isNotEmpty()){
+            var intent = IntentBuilder(this)
+                    .setServiceIMNumber("100") //客服关联的IM服务号
+                    .build()
+            startActivity(intent)
+        }else{
+            ARouter.getInstance().build("/userCenter/login").navigation()
+        }
+
     }
 }
