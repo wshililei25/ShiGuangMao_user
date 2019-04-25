@@ -127,14 +127,14 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
     }
 
     private fun initCategoryRv() {
-        var dataList = mutableListOf(CategoryHome(R.drawable.mainicon1, getString(R.string.veil_photography)),
-                CategoryHome(R.drawable.mainicon2, getString(R.string.describe_photography)),
-                CategoryHome(R.drawable.mainicon3, getString(R.string.baby_photography)),
-                CategoryHome(R.drawable.mainicon4, getString(R.string.formal_place)),
-                CategoryHome(R.drawable.mainicon5, getString(R.string.time_cloud)),
+        var dataList = mutableListOf(CategoryHome(R.drawable.cate1, getString(R.string.veil_photography)),
+                CategoryHome(R.drawable.cate2, getString(R.string.describe_photography)),
+                CategoryHome(R.drawable.cate3, getString(R.string.baby_photography)),
+                CategoryHome(R.drawable.cate4, getString(R.string.formal_place)),
+                CategoryHome(R.drawable.cate5, getString(R.string.time_cloud)),
                 CategoryHome(R.drawable.mainicon6, getString(R.string.time_supermarket)),
-                CategoryHome(R.drawable.mainicon7, getString(R.string.with_pat)),
-                CategoryHome(R.drawable.mainicon8, getString(R.string.integral_mall)))
+                CategoryHome(R.drawable.cate7, getString(R.string.with_pat)),
+                CategoryHome(R.drawable.cate8, getString(R.string.integral_mall)))
 
         mCategoryRv.layoutManager = GridLayoutManager(activity, 4)
         val categoryHomeAdapter = CategoryHomeAdapter(activity!!)
