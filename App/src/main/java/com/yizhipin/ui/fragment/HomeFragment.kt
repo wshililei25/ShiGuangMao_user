@@ -132,7 +132,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
                 CategoryHome(R.drawable.cate3, getString(R.string.baby_photography)),
                 CategoryHome(R.drawable.cate4, getString(R.string.formal_place)),
                 CategoryHome(R.drawable.cate5, getString(R.string.time_cloud)),
-                CategoryHome(R.drawable.mainicon6, getString(R.string.time_supermarket)),
+                CategoryHome(R.drawable.cate6, getString(R.string.time_supermarket)),
                 CategoryHome(R.drawable.cate7, getString(R.string.with_pat)),
                 CategoryHome(R.drawable.cate8, getString(R.string.integral_mall)))
 
