@@ -27,6 +27,9 @@ import org.jetbrains.anko.find
  * Created by ${XiLei} on 2018/7/26.
  */
 
+/**
+ * RxJava订阅扩展
+ */
 fun <T> Observable<T>.execute(baseSubscriber: BaseSubscriber<T>, lifecycleProvider: LifecycleProvider<*>) {
     this.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

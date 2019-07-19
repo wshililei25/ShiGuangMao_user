@@ -5,6 +5,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.*
+import com.yizhipin.base.ext.execute
 import com.yizhipin.goods.data.api.GeneralizeApi
 import io.reactivex.Observable
 import javax.inject.Inject

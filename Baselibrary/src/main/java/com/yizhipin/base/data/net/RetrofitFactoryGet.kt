@@ -3,6 +3,7 @@ package com.yizhipin.base.data.net
 import com.yizhipin.base.common.BaseConstant
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -31,8 +32,8 @@ class RetrofitFactoryGet {
 
         mRetrofit = Retrofit.Builder()
                 .baseUrl(BaseConstant.SERVICE_ADDRESS)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())//数据转换器，用来将HTTP请求返回结果由F类型转换为T类型，或者将HTTP请求体F转换为T
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//请求适配器，用于将Retrofit2.Call<T>对象转换为Observable<T>类型
                 .client(initClient())
                 .build()
     }

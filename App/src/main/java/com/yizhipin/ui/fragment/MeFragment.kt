@@ -142,9 +142,9 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         when (v.id) {
             R.id.mStoreTv -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
             R.id.mUserIconIv, R.id.mUserNameTv -> {
-                afterLogin {
+//                afterLogin {
                     startActivity<UserInfoActivity>(UserConstant.KEY_TO_USERINFO to true)
-                }
+//                }
             }
             R.id.mInvitationCodeView -> { //邀请码
                 afterLogin {

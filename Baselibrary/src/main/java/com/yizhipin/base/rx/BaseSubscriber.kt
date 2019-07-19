@@ -1,6 +1,5 @@
 package com.yizhipin.base.rx
 
-import android.util.Log
 import com.yizhipin.base.presenter.view.BaseView
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -17,6 +16,13 @@ open class BaseSubscriber<T>(val baseView: BaseView) : Observer<T> {
         baseView.hideLoading()
     }
 
+    /**
+     * 当不会再有新的 onNext() 发出时，需要触发 onCompleted() 方法作为标志
+     */
+    override fun onComplete() {
+        baseView.hideLoading()
+    }
+
     override fun onError(e: Throwable) {
         baseView.hideLoading()
         if (e is BaseException) {
@@ -24,10 +30,6 @@ open class BaseSubscriber<T>(val baseView: BaseView) : Observer<T> {
         } else if (e is DataNullException) {
             baseView.onDataIsNull()
         }
-    }
-
-    override fun onComplete() {
-        baseView.hideLoading()
     }
 
 }
